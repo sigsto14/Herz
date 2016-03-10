@@ -93,7 +93,9 @@ $state = 0;
 {!! Form::close() !!}
 
 @else
-<td><p>Favorit</p></td>
+<td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))	!!}
+			{!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
+{!! Form::close() !!}</td>
 @endif
 
 

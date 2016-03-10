@@ -63,6 +63,7 @@ $favorite = new Favorite();
          $favorite->userID = $request->get('userID');
        $favorite->soundID = $request->get('soundID');
        $favorite->save();
+       return back();
     }
 
     /**
