@@ -34,6 +34,7 @@ Route::post('user/edit', 'UserController@update');
 
 
 
+
 Route::resource('/', 'IndexController');
 
 Route::resource('channel', 'ChannelController');
@@ -54,6 +55,9 @@ Route::get('register', function () {
 
 Route::get('home', function () {
     return view('index');
+});
+Route::get('favorite', function () {
+    return view('favorites.index');
 });
 
 

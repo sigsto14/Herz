@@ -30,7 +30,8 @@ class FavoriteController extends Controller
     public function index()
     {
         /* sammanbindningar så det går att hämta ut massa massa data från databasen med dessa variabler **/
-        $userID = Auth::user()->userID;
+        if(Auth::check()){
+        $userID = Auth::user()->userID; }
        $favorites = DB::table('favorites')->join('users', 'favorites.userID', '=', 'users.userID')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->get();
 
        return view('favorites.index', compact('favorite'), compact('channel'), compact('sound'), compact('user'));
@@ -56,10 +57,10 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
 /*hämta data från hidden form fieldet */
-        $favorite = new Favorite();
-         $favorite->soundID= $request->get('soundID');
-         $favorite->userID= $request->get('userID');
-        $favorite->save();
+$favorite = new Favorite();
+         $favorite->userID = $request->get('userID');
+       $favorite->soundID = $request->get('soundID');
+       $favorite->save();
     }
 
     /**
@@ -93,8 +94,8 @@ class FavoriteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $favorite = Favorite::where('soundID', '=', $id);
+       $favorite->delete();    }
 
     /**
      * Remove the specified resource from storage.
@@ -104,6 +105,9 @@ class FavoriteController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $favorite = Favorite::where('soundID', '=', $id);
+       $favorite->delete();
+        return back();
     }
 }

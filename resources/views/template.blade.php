@@ -115,7 +115,7 @@ else {
                 <li class="dropdown-header">Profil</li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}/edit">Redigera Profil</a></li>
-                <li><a href="#">Favoriter</a></li>
+                <li><a href="http://localhost/Herz/public/favorite">Favoriter</a></li>
                 <li><a href="#">Prenumerationer</a></li>
                 <br>
                 <li><a href="http://localhost/Herz/public/auth/logout">Logga ut</a></li>

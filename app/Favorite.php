@@ -32,7 +32,7 @@ class Favorite extends Model implements AuthenticatableContract,
     protected $table = 'favorites';
     /* genom att sätta userID som primary blir det lättare att hämta ut just den användarens favoriter. AVVAKTAR CONSTRAINTS  */
     
-    protected $primaryKey = 'userID';
+    protected $primaryKey = 'soundID';
 
     /**
      * The attributes that are mass assignable.
