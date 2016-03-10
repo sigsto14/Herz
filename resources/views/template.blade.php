@@ -65,7 +65,7 @@
             <!-- Sökfältet -->
                 <div id="search" >       
                 <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Sök">
                 <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></button>
                   <ul class="dropdown-menu dropdown-menu-right">
@@ -101,16 +101,18 @@ else {
             <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Profil</li>
+                <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}/edit">Redigera Profil</a></li>
-                <li><a href="#">Meny 2</a></li>
-                <li><a href="#">Meny 3</a></li>
+                <li><a href="#">Favoriter</a></li>
+                <li><a href="#">Prenumerationer</a></li>
                 <br>
                 <li><a href="http://localhost/Herz/public/auth/logout">Logga ut</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Kanal</li>
-                <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp</a></li>
-              
                 <li><a href="http://localhost/Herz/public/{{ $link }}">Min Kanal</a></li>
+              
+                <li><a href="#">Redigera Kanal</a></li>
+                <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
               </ul> 
             </li>
           
@@ -147,7 +149,7 @@ else {
       <div class="panel panel-default" id="panel1">
         <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Prenumerering</a>
+              <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Prenumerationer</a>
             </h4>
         </div>
 
