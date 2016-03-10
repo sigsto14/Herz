@@ -97,7 +97,15 @@ else {
           </ul>
           <ul class="nav navbar-nav navbar-right">
              @if(Auth::check())
-
+             <li class="knapp" id="nav-knapp">
+              <button type="button" class="btn btn-default btn-md">
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-md">
+              <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
+              </button> 
+             </li>
+              
             <li class="dropdown">  
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->
