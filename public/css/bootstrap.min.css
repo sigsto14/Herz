@@ -55,8 +55,9 @@ position: absolute;
  transform: translateX(145%);
  top: 55%;
 
-
 }
+
+/*Nav slut*/
 
 a.navbar-brand{
 	 transform: translateY(16%);
