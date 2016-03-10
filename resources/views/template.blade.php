@@ -35,24 +35,21 @@
   </head>
 
   <body>
- 
-
-    <!-- Fixed navbar -->
+    <!-- Fixed navbar Börjar här -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container" id="nav">      
+      <div class="container" id="nav"> 
+       <!-- Logo och Herz -->    
         <div class="navbar-header">          
           <a class="navbar-brand" id="logo" href="http://localhost/Herz/public/"><img src="http://localhost/Herz/public/images/navbrand.png"><p id="logo-text">Herz</p></a>
-
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <!-- Vänster delen av naven  -->
           <ul class="nav navbar-nav">
+          <!-- Dropdown meny vänster --> 
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="http://localhost/Herz/public/user">Användare</a></li>
-                 
-                
-                
+                <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
@@ -61,33 +58,36 @@
               </ul>
             </li>
             <!-- Sökfältet -->
-                <div id="search" >       
-                <div class="input-group">
+            <div id="search" >       
+              <div class="input-group">
                 <input type="text" class="form-control" placeholder="Sök">
                 <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></button>
-                  <ul class="dropdown-menu dropdown-menu-right">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right">
                   <!-- Kategorier i sökfältet -->
-                  <li><a href="#">Musik</a></li>
-                  <li><a href="#">History</a></li>
-                  <li><a href="#">Underhållning</a></li>
-                </ul>
-              </div><!-- /btn-group -->
+                      <li><a href="#">Musik</a></li>
+                      <li><a href="#">History</a></li>
+                      <li><a href="#">Underhållning</a></li>
+                    </ul>
+                  </div><!-- /btn-group -->
               </div><!-- /input-group -->
-              </div>
+            </div>
               <!-- Sökfältet slut -->
-          </ul>
+          </ul><!-- Vänster delen av naven slut -->
+
+          <!-- Höger delen av naven slut -->
           <ul class="nav navbar-nav navbar-right">
              @if(Auth::check())
-             <li class="knapp" id="nav-knapp">
+            <!-- Komment/Favorti Knappar -->
+            <li class="knapp" id="nav-knapp">
               <button type="button" class="btn btn-default btn-md">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-md">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
               </button> 
-             </li>
-              
+            </li>
+            <!-- Komment/Favorti Knappar Slut -->  
                             @if(Auth::check())
                             <?php
               $user = Auth::user()->userID;
@@ -102,16 +102,13 @@ else {
     $upload = 'sound/create';
 } 
               ?>
+          <!-- Användarens namn -->      
           <li id="user"><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">{{ Auth::user()->username }}</a></li>
-
+            <!-- Användarens meny -->  
             <li class="dropdown" id="user-menu">
-
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->
-
-
-              
-            <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
+              <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->              
+              <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Profil</li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
@@ -132,41 +129,41 @@ else {
                 @endif
                 <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
               </ul> 
-            </li>
+            </li><!-- Användarens meny slut--> 
           
-       <!--/.nav-collapse -->
+
 @endif
 
  @else
-     <li><a href="http://localhost/Herz/public/auth/register" id="reg-log">Registrera dig</a></li>    
-
-          <li class="divider-vertical"></li>
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="reg-log">Logga In <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              <!-- Login form here -->
-              <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
+          <!-- Höger meny när man är ej inloggad-->   
+            <li><a href="http://localhost/Herz/public/auth/register" id="reg-log">Registrera dig</a></li> 
+            <li class="divider-vertical"></li>
+              <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="reg-log">Logga In <strong class="caret"></strong></a>
+                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+              <!-- Logga In meny -->
+                  <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
                 {!! csrf_field() !!}
-              <p>E-mail</p>
-              <input id="user_username" style="margin-bottom: 15px;" type="text" name="email" size="30" />
-              <p>Lösenord</p>
-              <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
-              <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-              <label class="string optional" for="user_remember_me"> Kom ihåg mig</label>
+                    <p>E-mail</p>
+                    <input id="user_username" style="margin-bottom: 15px;" type="text" name="email" size="30" />
+                    <p>Lösenord</p>
+                    <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
+                    <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                    <label class="string optional" for="user_remember_me"> Kom ihåg mig</label>
  
-              <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
-              </form>
+                    <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                </form>
               @endif
-            </div>  
+            </div><!-- Logga In/Dropdown meny slut-->  
         
       </div>
       @if(Auth::check()) 
       <!--sidebar-->
       <div class="sidebar">
-  <div class="prenumerering">
-    <div class="panel-group" id="accordion">
-      <div class="panel panel-default" id="panel1">
-        <div class="panel-heading">
+        <div class="prenumerering">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default" id="panel1">
+              <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Prenumerationer</a>
             </h4>
@@ -270,7 +267,7 @@ else {
 @endif
 
     </nav>
-
+<!--Slut Nav-->
 
       @yield('container')
 
