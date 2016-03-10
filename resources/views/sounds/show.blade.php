@@ -17,7 +17,10 @@
   <source src="{{ $sound->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
-
+<?php
+$id = $sound->channelID;
+$channel = DB::table('channels')->where('channels.channelID', '=', $id)->first();
+?>
 <h1>Kanal:</h1>
 <a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}">{{ $channel->channelname }}</a>
 </div>

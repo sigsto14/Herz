@@ -66,7 +66,7 @@ else {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>
-                <li><a href="http://localhost/Herz/public/{{ $link }}">Ladda upp podcast</a></li>
+                <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
