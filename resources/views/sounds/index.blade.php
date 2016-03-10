@@ -21,6 +21,7 @@
 <th>Spelare</th>
 <th>Kanal</th>
 <th>Uppladdat av</th>
+<th>Skapa favorit</th>
 
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 			<?PHP
@@ -40,6 +41,22 @@ Your browser does not support the audio element.
 			<td><a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
 
 		<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
+<!-- ett formulär för att lägga till favorit, med hidden fields för att det ska vara att bara trycka på en knapp -->
+<!-- formuläret syns bra om man är inloggad -->
+
+		@if(Auth::check())
+		<td>{!! Form::open(array('route' => 'favorite.store')) !!}
+ {!! csrf_field() !!}
+<div>
+        <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
+</div>
+<div>
+        <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+</div>
+    {!! Form::submit('Lägg till favorit', '', array('class' => 'form-control')) !!}
+{!! Form::close() !!}
+
+@endif
 				@endforeach
 			
 			

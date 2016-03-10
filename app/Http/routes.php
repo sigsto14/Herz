@@ -26,6 +26,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::resource('user', 'UserController');
 Route::resource('channel', 'ChannelController');
 Route::resource('sound', 'SoundController');
+Route::resource('favorite', 'FavoriteController');
 
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');

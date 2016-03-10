@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Channel;
+use App\Sound;
+use App\Favorite;
+use Auth;
+use Fetch;
+use App\Picture;
+use Validator;
+use DB;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Symfony\Component\HttpFoundation\File;
+use Eloquent;
+use Storage;
 
 class FavoriteController extends Controller
 {
@@ -16,7 +29,12 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        /* sammanbindningar så det går att hämta ut massa massa data från databasen med dessa variabler **/
+        $userID = Auth::user()->userID;
+       $favorites = DB::table('favorites')->join('users', 'favorites.userID', '=', 'users.userID')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->get();
+
+       return view('favorites.index', compact('favorite'), compact('channel'), compact('sound'), compact('user'));
+    
     }
 
     /**
@@ -26,7 +44,7 @@ class FavoriteController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -37,7 +55,11 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+/*hämta data från hidden form fieldet */
+        $favorite = new Favorite();
+         $favorite->soundID= $request->get('soundID');
+         $favorite->userID= $request->get('userID');
+        $favorite->save();
     }
 
     /**
