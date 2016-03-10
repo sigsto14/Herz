@@ -113,7 +113,9 @@ $sound = new Sound();
      */
     public function show($id)
     {
-        //
+       $channel = Channel::find($id);
+$sound = Sound::find($id);
+return view('sounds.show', compact('channel'), compact('sound'));
     }
 
     /**

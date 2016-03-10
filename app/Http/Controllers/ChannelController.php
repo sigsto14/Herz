@@ -93,7 +93,7 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
     public function edit($id)
     {
 /* la till compact channel här också för säkerhets skull*/
-           $user = User::find($id);
+           $channel = Channel::find($id);
        return view('channels.edit', compact('user'), compact('channel'));
     }
 
@@ -109,7 +109,7 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
         /*validerar så man inte kan fylla i tomt */
          $validator = Validator::make($request->all(), [
                 'information' => 'required|max:255',
-            'channelname'=>'required|max:255',
+            'channelname'=>'required|max:255|unique:channels',
          
             ]);
 

@@ -1,23 +1,26 @@
-
+@extends('template')
+@section('container')
+@section('footer')
 <title>Edit Profile</title>
 <div class="container">
 <div class="col-md-12">
 
 <table class="table">
-@if(Auth::user()->id == $user->id)
+@if(Auth::user()->userID == $channel->userID)
+
 {{-- formulär som även visar den data som är i databasen --}}
-{!!     Form::model($user, array('route' => array('channel.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
+{!!     Form::model($channel, array('route' => array('channel.update', $channel->channelID), 'method' => 'PUT')) !!}
 
     {!! csrf_field() !!}<br>
 
-{!!     Form::label('information', 'Information:') !!}
-{!!     Form::text('information') !!}<br>
-
-
-
-
 {!!     Form::label('channelname', 'Kanalnamn:') !!}
 {!!     Form::text('channelname') !!}<br>
+{!!     Form::label('information', 'Information:') !!}
+{!!     Form::textarea('information') !!}<br>
+
+
+
+
 {!!     Form::submit('Ändra kontoinformation') !!}<br>
 
 {!!     Form::close() !!}<br><br><br>
@@ -52,3 +55,4 @@
 </div>
 
 
+@stop

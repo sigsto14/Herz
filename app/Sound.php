@@ -19,7 +19,7 @@ class Sound extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
- public function pictures()
+ public function sounds()
     {
       
     }
@@ -33,7 +33,7 @@ class Sound extends Model implements AuthenticatableContract,
     /* genom att sätta channelID som primaryKey blir det detta ID som söks upp i $id-requests, 
     detta för det blir lättare för att föra samman dom men det är egentligen inte primary */
     
-    protected $primaryKey = 'channelID';
+    protected $primaryKey = 'soundID';
 
     /**
      * The attributes that are mass assignable.

@@ -35,7 +35,19 @@
   </head>
 
   <body>
+<?php
+              $user = Auth::user()->userID;
+              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
 
+              if (is_null($channel)) {
+    $link = 'channel/create';
+    $upload = 'channel/create';
+} 
+else {
+    $link = 'channel/' . $channel->channelID . ' ';
+    $upload = 'sound/create';
+} 
+              ?>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -54,8 +66,8 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>
-                <li><a href="http://localhost/Herz/public/sound/create">Ladda upp podcast</a></li>
-                <li><a href="#">Meny 3</a></li>
+                <li><a href="http://localhost/Herz/public/{{ $link }}">Ladda upp podcast</a></li>
+                <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
                 <li><a href="#">Meny 1</a></li>
@@ -85,19 +97,7 @@
             <li class="dropdown">  
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->
-              <?php
-              $user = Auth::user()->userID;
-              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
-
-              if (is_null($channel)) {
-    $link = 'channel/create';
-    $upload = 'channel/create';
-} 
-else {
-    $link = 'channel/' . $channel->channelID . ' ';
-    $upload = 'sound/create';
-} 
-              ?>
+              
             <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Profil</li>

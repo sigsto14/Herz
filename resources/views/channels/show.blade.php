@@ -13,12 +13,13 @@
         <div class="channel_header">
         <img src="http://localhost/Herz/public/images/channel/default.png">
         </div><br>
+        
         <div class="podcast-box_channel">
         <!-- Första låda, här finns profil --> 
         <div class="col-lg-4">
           <div class="row">
             <h2>{{ $channel->channelname }}</h2>
-            <img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>    
+            <p>{{ $channel->information }}</p>    
           </div>
           <div class="row">
           </div>
@@ -28,7 +29,7 @@
           <div class="row"> 
           @if(Auth::user())
 @if(Auth::user()->userID == $user->userID)
-<a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+<a href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Redigera kanal</a><br>
 @endif
 @endif
           </div>
@@ -60,7 +61,7 @@ Your browser does not support the audio element.
 
 @endforeach
 
-
+<!--
           </div>
           <br>    
           <div class="row">
