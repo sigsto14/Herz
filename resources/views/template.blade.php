@@ -39,20 +39,15 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="http://localhost/Herz/public/">Herz</a>
+      <div class="container" id="nav">      
+        <div class="navbar-header">          
+          <a class="navbar-brand" id="logo" href="http://localhost/Herz/public/"><img src="http://localhost/Herz/public/images/navbrand.png"><p id="logo-text">Herz</p></a>
+
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>
                  @if(Auth::check())
@@ -106,9 +101,14 @@ else {
               </button> 
              </li>
               
-            <li class="dropdown">  
+                            @if(Auth::check())
+          <li id="user"><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">{{ Auth::user()->username }}</a></li>
+
+            <li class="dropdown" id="user-menu">
+
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->
+
               
             <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -130,14 +130,13 @@ else {
           
        <!--/.nav-collapse -->
 @endif
-          @if(Auth::check())
-          <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">{{ Auth::user()->username }}</a></li>
+
  @else
-     <li><a href="http://localhost/Herz/public/auth/register">Registrera dig</a></li>    
+     <li><a href="http://localhost/Herz/public/auth/register" id="reg-log">Registrera dig</a></li>    
 
           <li class="divider-vertical"></li>
           <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Logga In <strong class="caret"></strong></a>
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="reg-log">Logga In <strong class="caret"></strong></a>
             <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
               <!-- Login form here -->
               <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
