@@ -27,23 +27,21 @@
 
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 			<?PHP
-     
+   
               
               $userID = Auth::user()->userID;
-              $favorites = DB::table('favorites')->where('userID', '=', $userID)->get();
+             
 
              
-          ?>
-		@endif
-		<?php
+ 
+	
 		$sounds = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->join('users', 'sounds.channelID', '=', 'users.userID')->orderBy('sounds.created_at', 'desc')->get();
+
 		?>
+		@endif
 			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
 			@foreach($sounds as $sound)
-			<?PHP
-			$soundID = $sound->soundID;
-			 $favorite = DB::table('favorites')->where('favorites.soundID', '=', $soundID)->first();
-?>
+
 			<tr>	<td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title}}</h1>
 			<td><image src="{{ $sound->podpicture }}" width="80px" height="auto">
 			<td><audio controls>
@@ -54,11 +52,36 @@ Your browser does not support the audio element.
 			<td><a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
 
 		<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
-<!-- ett formulär för att lägga till favorit, med hidden fields för att det ska vara att bara trycka på en knapp -->
-<!-- formuläret syns bra om man är inloggad -->
+
 @if(Auth::check())
-@if(is_null($favorite))
-		<td>{!! Form::open(array('route' => 'favorite.store')) !!}
+<!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
+<?php
+$userID = Auth::user()->userID;
+$soundID = $sound->soundID;
+
+$mysqli = new mysqli("localhost","root","","herz");
+
+$query = <<<END
+SELECT * FROM favorites
+WHERE userID = '{$userID}'
+AND soundID = '{$soundID}'
+END;
+
+$res = $mysqli->query($query);
+if($res->num_rows > 0){
+	$state = 1;
+
+}
+else {
+
+$state = 0;
+}
+
+?>
+<!-- ett formulär för att lägga till favorit, med hidden fields för att det ska vara att bara trycka på en knapp (om state 0 alltså att den inte redan är favorit) -->
+@if($state == 0)
+
+<td>{!! Form::open(array('route' => 'favorite.store')) !!}
  {!! csrf_field() !!}
 <div>
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
@@ -68,10 +91,16 @@ Your browser does not support the audio element.
 </div>
     {!! Form::submit('Lägg till favorit', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}
+
 @else
-<td>Favorit!</td>
+<td><p>Favorit</p></td>
 @endif
-  @endif 
+
+
+
+@endif
+<!-- formuläret syns bra om man är inloggad -->
+
 				@endforeach
 			
 			
