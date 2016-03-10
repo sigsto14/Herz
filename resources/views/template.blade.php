@@ -50,22 +50,9 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>
-                 @if(Auth::check())
-<?php
-              $user = Auth::user()->userID;
-              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
-
-              if (is_null($channel)) {
-    $link = 'channel/create';
-    $upload = 'channel/create';
-} 
-else {
-    $link = 'channel/' . $channel->channelID . ' ';
-    $upload = 'sound/create';
-} 
-              ?>
-                <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
-                @endif
+                 
+                
+                
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
@@ -102,12 +89,26 @@ else {
              </li>
               
                             @if(Auth::check())
+                            <?php
+              $user = Auth::user()->userID;
+              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
+
+              if (is_null($channel)) {
+    $link = 'channel/create';
+    $upload = 'channel/create';
+} 
+else {
+    $link = 'channel/' . $channel->channelID . ' ';
+    $upload = 'sound/create';
+} 
+              ?>
           <li id="user"><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">{{ Auth::user()->username }}</a></li>
 
             <li class="dropdown" id="user-menu">
 
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->
+
 
               
             <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
@@ -122,8 +123,13 @@ else {
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Kanal</li>
                 <li><a href="http://localhost/Herz/public/{{ $link }}">Min Kanal</a></li>
-              
-                <li><a href="#">Redigera Kanal</a></li>
+                <!-- om man trycker redigera kanal gör denna kollen så man kommer till skapa kanal om man ej har någon, kommer till redigera sin kanal om man har en kanal -->
+              @if (is_null($channel)) 
+              <li><a href="http://localhost/Herz/public/channel/create">Redigera Kanal</a></li>
+                
+                @else
+                <li><a href="http://localhost/Herz/public/channel/{{ Auth::user()->userID }}/edit">Redigera Kanal</a></li>
+                @endif
                 <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
               </ul> 
             </li>
@@ -152,8 +158,10 @@ else {
               </form>
               @endif
             </div>  
-         
+        
       </div>
+      @if(Auth::check()) 
+      <!--sidebar-->
       <div class="sidebar">
   <div class="prenumerering">
     <div class="panel-group" id="accordion">
@@ -257,10 +265,11 @@ else {
     </div>
   </div>
   </div>
+
+    <!--Slut sidebar-->
+@endif
+
     </nav>
-
-
-
 
 
       @yield('container')

@@ -7,12 +7,13 @@
 <title>Users</title>
 
 <body>
+
 @yield('content')
 
 
 <div class="container">
 <div class="col-md-12" id="back"><br><br>
-<p class="titles">Users:</p>
+
 <table class="table">
 <br><br><br><br>
 <h2>Senaste uppladdningar</h2>
@@ -55,6 +56,7 @@ Your browser does not support the audio element.
 		<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
 <!-- ett formulär för att lägga till favorit, med hidden fields för att det ska vara att bara trycka på en knapp -->
 <!-- formuläret syns bra om man är inloggad -->
+@if(Auth::check())
 @if(is_null($favorite))
 		<td>{!! Form::open(array('route' => 'favorite.store')) !!}
  {!! csrf_field() !!}
@@ -69,7 +71,7 @@ Your browser does not support the audio element.
 @else
 <td>Favorit!</td>
 @endif
-   
+  @endif 
 				@endforeach
 			
 			
