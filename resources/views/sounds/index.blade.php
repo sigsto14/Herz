@@ -19,7 +19,8 @@
 <th>Titel</th>
 <th>Bild</th>
 <th>Spelare</th>
-<th>Uppladdat av</th><!-- kan bli kanal senare??-->
+<th>Kanal</th>
+<th>Uppladdat av</th>
 
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 			<?PHP
@@ -36,9 +37,9 @@
   <source src="{{ $sound->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio></td>
-			<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
+			<td><a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
 
-		
+		<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
 				@endforeach
 			
 			
