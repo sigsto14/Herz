@@ -9,7 +9,23 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="En svensk podcast plattform">
     <meta name="author" content="Herz">
-    <link rel="icon" href="../../favicon.ico">
+   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 
     <title>Herz</title>
 
@@ -217,6 +233,11 @@ else {
     <div class="panel panel-default" id="panel1">
         <div class="panel-heading">
              <h4 class="panel-title">
+             <!-- skapar variabler för att ta ut favoriter ur databasen -->
+             <?php
+             $userID = Auth::user()->userID;
+             $favorites = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'channels.channelID', '=','sounds.channelID')->where('favorites.userID', '=', $userID)->take(5)->get();
+             ?>
               <a data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">Favoriter</a>
             </h4>
         </div>
@@ -225,13 +246,18 @@ else {
             <div class="panel-body">
           <table class="pre-fav" style="width:100%">
           <tr>
-            <td>1</td>
-            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg"style="width:50%" ></td>    
-            <td><a href="#">Favorit 1</a></td>
-            <td>av</td>
-            <td><a href="#">Herz</a></td>
-          </tr>
-          <tr>
+
+            <!-- tar varje resultat (5 st) individuellt -->
+            @foreach($favorites as $favorite)  
+            <td><img src="{{ $favorite->podpicture }}"style="width:20px"></td>   
+            <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
+            <td>KANAL:</td>
+            <td><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></td></tr>
+            @endforeach
+            <tr>
+            <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td></tr>
+          
+          <!-- tillfällig utkommentering<tr>
             <td>2</td>
             <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>   
             <td><a href="#">Favorit 2</a></td>
@@ -258,7 +284,7 @@ else {
             <td><a href="#">Favorit 5</a></td>
             <td>av</td>
             <td><a href="#">Herz</a></td>
-          </tr>
+          </tr>-->
         </table>
             </div>
         </div>
