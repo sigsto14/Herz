@@ -35,19 +35,8 @@
   </head>
 
   <body>
-<?php
-              $user = Auth::user()->userID;
-              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
+ 
 
-              if (is_null($channel)) {
-    $link = 'channel/create';
-    $upload = 'channel/create';
-} 
-else {
-    $link = 'channel/' . $channel->channelID . ' ';
-    $upload = 'sound/create';
-} 
-              ?>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -66,7 +55,22 @@ else {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>
+                 @if(Auth::check())
+<?php
+              $user = Auth::user()->userID;
+              $channel = DB::table('channels')->where('channelID', '=', $user)->first();   
+
+              if (is_null($channel)) {
+    $link = 'channel/create';
+    $upload = 'channel/create';
+} 
+else {
+    $link = 'channel/' . $channel->channelID . ' ';
+    $upload = 'sound/create';
+} 
+              ?>
                 <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
+                @endif
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
