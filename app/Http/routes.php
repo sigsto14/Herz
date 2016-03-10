@@ -32,6 +32,7 @@ Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
 Route::post('user/edit', 'UserController@update');
 
+Route::get('favorite/destroy', 'FavoriteController@destroy');
 
 
 

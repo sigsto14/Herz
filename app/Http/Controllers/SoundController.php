@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Sound;
+use App\Favorite;
 use Auth;
 use Fetch;
 use App\Channel;

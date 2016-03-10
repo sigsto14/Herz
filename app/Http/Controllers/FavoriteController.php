@@ -57,6 +57,8 @@ class FavoriteController extends Controller
     public function store(Request $request)
     {
 /*hämta data från hidden form fieldet */
+
+
 $favorite = new Favorite();
          $favorite->userID = $request->get('userID');
        $favorite->soundID = $request->get('soundID');
@@ -95,7 +97,8 @@ $favorite = new Favorite();
     public function update(Request $request, $id)
     {
         $favorite = Favorite::where('soundID', '=', $id);
-       $favorite->delete();    }
+       $favorite->delete();  
+       return back();  }
 
     /**
      * Remove the specified resource from storage.
