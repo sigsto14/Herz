@@ -24,12 +24,12 @@
 <th>Uppladdat av</th>
 @if(Auth::check())
 <th>Skapa favorit</th>
-
+@endif
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 			<?PHP
    
               
-              $userID = Auth::user()->userID;
+              
              
 
              
@@ -38,7 +38,7 @@
 		$sounds = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->join('users', 'sounds.channelID', '=', 'users.userID')->orderBy('sounds.created_at', 'desc')->get();
 
 		?>
-		@endif
+	
 			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
 			@foreach($sounds as $sound)
 
