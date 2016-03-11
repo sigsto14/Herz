@@ -68,7 +68,19 @@
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
+                <!-- sätter o kollar om admin e inloggad så får man en fin meny -->
+                @if(Auth::check())
+                <?php
+                $username = Auth::user()->username;
+                ?>
+                
+
+                <li class="dropdown-header">Administrativt</li>
+                <li><a href="http://localhost/Herz/public/category">Administrera kategorier</a></li>
+                @else
                 <li class="dropdown-header">Om Herz</li>
+                @endif
+
                 <li><a href="#">Meny 1</a></li>
                 <li><a href="#">Meny 2</a></li>
               </ul>
