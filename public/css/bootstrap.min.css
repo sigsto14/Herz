@@ -191,19 +191,19 @@ transition:width 0.5s;
   transition:opacity 0.6s linear;
 }
 
-<<<<<<< HEAD
+
 
 /*Fav-knapparna slut*/
 
 #container{
 	background-color: white;
-	margin-top: 20%;
+	margin-top: 150px;
 
 }
 			
-=======
+
 .admin-feedback {
 	width: 15%;
 	background-color: #FFFFFF;
 }
->>>>>>> origin/master
+
