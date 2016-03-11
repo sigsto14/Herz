@@ -27,6 +27,7 @@ Route::resource('user', 'UserController');
 Route::resource('channel', 'ChannelController');
 Route::resource('sound', 'SoundController');
 Route::resource('favorite', 'FavoriteController');
+Route::resource('category', 'CategoryController');
 
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
