@@ -143,38 +143,42 @@ table.pre-fav td{
 }
 
 #fav-knapp:hover
-{ width:200px;
+{ width:150px;
 	color:#fff; }
 
 #fav-knapp:hover p
 { display: initial;
-	transition:width 2s;
--moz-transition:width 2s; /* Firefox 4 */
--webkit-transition:width 2s; /* Safari and Chrome */
--o-transition:width 2s;
+	margin: auto;
 }
 
 #fav-knapp {
 position: fixed;
-margin-top: 100px;
+margin-top: 7px;
 margin-left: 30px;
-width:70px;
+width:20px;
 height:50px;
 text-align: center;
 padding: 0px 50px 0px 0px;
-background:#b9dcdc;color:#fff;
-transition:width 2s;
--moz-transition:width 2s; /* Firefox 4 */
--webkit-transition:width 2s; /* Safari and Chrome */
--o-transition:width 2s; /* Opera */
+background:#26a09f;color:#fff;
+transition:width 1s;
+-moz-transition:width 1s; /* Firefox 4 */
+-webkit-transition:width 1s; /* Safari and Chrome */
+-o-transition:width 1s; /* Opera */
 }
 
 span.glyphicon-heart-empty{
-display: initial;
+margin-left: 17px;
 }
+
+span.glyphicon-heart{
+margin-left: 17px;
+}
+
 
 #fav-knapp p {
 display: none;
 }
+
+
 
 			
