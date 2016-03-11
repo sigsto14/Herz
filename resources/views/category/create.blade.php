@@ -38,15 +38,26 @@ $username = Auth::user()->username;
 {!! Form::submit('Lägg till kategori', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}</td><br>
 
-<td><h1>Nuvarande kategorier</h1><select name="categoryname">
+<td><h1>Nuvarande kategorier</h1>
 <?PHP
 $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
-@foreach($categories as $category)
-  <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
-  @endforeach
-</select></td>
 
+ {!!   Form::open(array('method' => 'DELETE', 'route' => array('category.destroy'))) !!}
+@foreach($categories as $category)
+
+   
+    @endforeach
+     <select name="categoryID">
+         @foreach($categories as $category)
+ <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
+
+@endforeach
+</select>
+</td>
+
+{!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort kategorin?");' )) !!}
+{!! Form::close() !!}
 @endif
 
 

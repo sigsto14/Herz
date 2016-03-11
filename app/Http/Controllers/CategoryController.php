@@ -102,7 +102,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+     
     }
 
     /**
@@ -111,8 +112,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $delete = $request->get('categoryID');
+            $category = Category::where('categoryID', '=', $delete);
+          $category->delete();
+        return back()->withMessage('Kategori raderad!');
     }
 }
