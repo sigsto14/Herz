@@ -22,6 +22,18 @@
 {!! Form::label('Tag:') !!}
 {!! Form::text('tag') !!}<br>
 
+<?php
+$categories = DB::table('category')->get();
+?>
+{!! Form::label('Kategori:') !!}
+ <select name="categoryID">
+         @foreach($categories as $category)
+ <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
+
+@endforeach
+</select>
+<br>
+
 {!! Form::label('Poddens bild:') !!}
 {!! Form::file('image', null) !!}<br>
 <div>

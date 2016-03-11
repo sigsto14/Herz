@@ -19,8 +19,10 @@ class CreateSoundsTable extends Migration
             $table->string('podpicture');
             $table->string('tag');
             $table->string('status');
+            $table->integer('categoryID')->unsigned();
              $table->integer('channelID')->unsigned();
             $table->foreign('channelID')->references('channelID')->on('channels');
+            $table->foreign('categoryID')->references('categoryID')->on('category');
             $table->timestamps();
         });
     }

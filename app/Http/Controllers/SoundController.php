@@ -61,6 +61,7 @@ $validator = Validator::make($request->all(), [
                 'title' => 'required|unique:sounds|max:255',
             'audio'=>'required|',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
+            'categoryID' => 'required|',
          
             ]);
 
@@ -89,12 +90,14 @@ $validator = Validator::make($request->all(), [
 /*skapar ny rad i tabellen med hjälp av modellen Sound */
 $sound = new Sound();
          $sound->title = $request->get('title');
+         $sound->categoryID = $request->get('categoryID');
          $sound->URL = "http://localhost/Herz/public/sounds/$soundName";
          $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/$imageName";
          $sound->tag = $request->get('tag');
          $sound->channelID= Auth::user()->userID;
         $sound->save();
-        return back();
+        return back()
+        ->withMessage('Din podcast är uppladdad!');
 
 
     }

@@ -64,6 +64,7 @@ class ChannelController extends Controller
          $channel->channelID= Auth::user()->userID;
          $channel->userID= Auth::user()->userID;
         $channel->save();
+        return view('index');
 
     }
 
