@@ -32,6 +32,7 @@ Route::resource('category', 'CategoryController');
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
 Route::post('user/edit', 'UserController@update');
+Route::post('category/show', 'CategoryController@show');
 
 Route::get('favorite/destroy', 'FavoriteController@destroy');
 
