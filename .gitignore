@@ -6,3 +6,6 @@ Homestead.json
 .env
 *.png
 *.wav
+*.mp3
+public/Podcastpictures/Sound.jpg
+*.ogg

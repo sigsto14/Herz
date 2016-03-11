@@ -59,7 +59,7 @@ class SoundController extends Controller
     {
 $validator = Validator::make($request->all(), [
                 'title' => 'required|unique:sounds|max:255',
-            'audio'=>'required|audio|mimes:mp3,mpeg,agg,wav,ogg',
+            'audio'=>'required|',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
          
             ]);
