@@ -89,13 +89,21 @@ $state = 0;
 <div>
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
 </div>
-    {!! Form::submit('Lägg till favorit', '', array('class' => 'form-control')) !!}
-{!! Form::close() !!}
+ 
 
+
+<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
+              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"><a href=""></a><div>Lägg till Favorit</div></span>
+              </button>
+{!! Form::close() !!}
 @else
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))	!!}
-			{!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
+			<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
+              <span class="  glyphicon glyphicon-heart" aria-hidden="true"><a href=""></a><div>Tabort från favorit</div</span>
+              </button>
 {!! Form::close() !!}</td>
+
+
 @endif
 
 

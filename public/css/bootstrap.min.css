@@ -141,3 +141,13 @@ table.pre-fav td{
 .cont{
 	position: static;
 }
+
+#fav-knapp a:hover + div {
+    			display: block;
+				} 
+
+			#fav-knapp div{
+			    display: none;
+    			border:1px solid #000;
+
+			}

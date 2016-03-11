@@ -59,7 +59,7 @@ class SoundController extends Controller
     {
 $validator = Validator::make($request->all(), [
                 'title' => 'required|unique:sounds|max:255',
-            'audio'=>'required|audio|mimes:mp3,wav,agg',
+            'audio'=>'required|audio|mimes:mp3,mpeg,agg,wav,ogg',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
          
             ]);
@@ -94,6 +94,7 @@ $sound = new Sound();
          $sound->tag = $request->get('tag');
          $sound->channelID= Auth::user()->userID;
         $sound->save();
+        return back();
 
 
     }
