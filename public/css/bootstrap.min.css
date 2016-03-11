@@ -6,7 +6,7 @@
 /*# sourceMappingURL=bootstrap.min.css.map */
 /*Body */
 
-/*Body Slut */
+/*Body */
 body{
 	background-image: url("http://localhost/Herz/public/images/bak.png"); 
 }
@@ -91,7 +91,6 @@ a.navbar-brand{
 .podcast-box {
 	position: relative;
 	margin-top: 20%;
-	background-color: white;
 }
 
 .podcast-box_channel {
@@ -117,17 +116,22 @@ a.navbar-brand{
 }
 
 
+/*Pre-Fav box*/
 
 #panel1{
 	width: 250px;
 	text-align: left;
+	background-color: #b9dcdc;
+
 }
+
 
 .panel-heading a:after {
     font-family:'Glyphicons Halflings';
     content:"\e113";
     float: center;
-    color: grey;    
+    color: grey; 
+
 }
 
 .panel-heading a.collapsed:after {
@@ -141,7 +145,10 @@ table.pre-fav td{
 .cont{
 	position: static;
 }
+/*Pre-Fav box slut*/
 
+
+/*Fav-knapparna*/
 #fav-knapp:hover
 { width:167px;
 	color:#fff; }
@@ -154,10 +161,7 @@ table.pre-fav td{
   opacity:1;
   margin-left: 5px;
   top: -17px;
- 
-}
-
-
+ }
 
 #fav-knapp {
 position: fixed;
@@ -180,10 +184,6 @@ transition:width 0.5s;
 		top: 11px;
 }
 
-
-
-
-
 #fav-knapp p {
  	display: block;
   visibility:hidden;
@@ -192,5 +192,9 @@ transition:width 0.5s;
 }
 
 
+/*Fav-knapparna slut*/
 
+#container{
+	background-color: white;
+}
 			

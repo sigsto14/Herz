@@ -7,7 +7,7 @@
 <title>Edit Profile</title>
 </head>
 <div class="container">
-<div class="col-md-12">
+<div class="col-md-12"id="container">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <table class="table">
 @if(Auth::user()->id == $user->id)

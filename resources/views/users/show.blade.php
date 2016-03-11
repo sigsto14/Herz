@@ -10,10 +10,11 @@
 <!-- Kanal innehåll --> 
     <div class="container">
     <!-- Kanal header --> 
+     <div class="col-md-12" id="container">
         <div class="channel_header">
         <img src="http://localhost/Herz/public/images/channel/default.png">
         </div><br>
-        <div class="podcast-box_channel">
+        <div class="podcast-box_channel" >
         <!-- Första låda, här finns profil --> 
         <div class="col-lg-4">
           <div class="row">
@@ -33,8 +34,8 @@
 @endif
           </div>
         </div>
-         <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8">
+                 <!-- Andra lådan, här fins podar -->
+        <div class="col-lg-8"id="container">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>
@@ -43,6 +44,8 @@
           </ul>
           <br>
           <div class="row">
+        </div>
+
           
      
 

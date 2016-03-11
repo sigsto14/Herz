@@ -9,6 +9,7 @@
 @yield('content')
 <!-- Kanal innehåll --> 
     <div class="container">
+    <div class="col-md-12" id="container">
     <!-- Kanal header --> 
             <h1>{{ $sound->title }}</h1>
             <img src="{{ $sound->podpicture }}" style="width:145px;height:159px;"/>    
@@ -34,6 +35,7 @@ $user = DB::table('users')->where('users.userID', '=', $id)->first();
 @endif
           </div>
         </div>
+        
          <!-- Andra lådan, här fins podar -->
    
 			

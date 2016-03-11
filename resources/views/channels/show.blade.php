@@ -9,6 +9,7 @@
 @yield('content')
 <!-- Kanal innehåll --> 
     <div class="container">
+    <div class="col-md-12" id="container">
     <!-- Kanal header --> 
         <div class="channel_header">
         <img src="http://localhost/Herz/public/images/channel/default.png">
@@ -35,7 +36,7 @@
           </div>
         </div>
          <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8">
+        <div class="col-lg-8"  id="container">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>

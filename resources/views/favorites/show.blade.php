@@ -12,6 +12,7 @@ $favorites = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 's
 @yield('content')
 <!-- Kanal innehåll --> 
     <div class="container">
+    <div class="col-md-12" id="container">
     <!-- Kanal header --> 
             
     
@@ -20,6 +21,7 @@ $favorites = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 's
 
 @endif
     
+        </div>
         </div>
          <!-- Andra lådan, här fins podar -->
    

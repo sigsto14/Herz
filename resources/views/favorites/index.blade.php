@@ -3,6 +3,7 @@
 @section('footer')
 <!DOCTYPE HTML>
   <div class="container">
+  <div class="col-md-12" id="container">
 
  @if(Auth::user())
 
@@ -22,7 +23,7 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
     @foreach($favorites as $favorite)
    
 <!--rad 1--><h1>{{ $favorite->title }}</h1>
-<!-- rad 2--><image src="{{ $favorite->podpicture }}" width="100px" height="auto"><br>
+<!-- rad 2--><image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
 <!--rad 3--><audio controls>
   <source src="{{ $favorite->URL }}" type="audio/ogg">
   <source src="{{ $favorite->URL }}" type="audio/mpeg">
@@ -40,6 +41,7 @@ Your browser does not support the audio element.
 
 
     
+        </div>
         </div>
      
    

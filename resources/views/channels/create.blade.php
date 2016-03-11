@@ -9,7 +9,7 @@
 
     <br><br><br><br><br><br>
     <div class="container">
-<div class="col-md-12">
+<div class="col-md-12" id="container">
     <h2> För att ladda upp ljudklipp får du först skapa en kanal! </h2>
 @if(Auth::check())
 <title>Skapa kanal</title>

@@ -9,7 +9,7 @@
         </div>
 
         <div class="container">
-          <div class="podcast-box">
+          <div class="podcast-box" id="container">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Populärt just nu</a></li>
             <li role="presentation"><a href="#">Veckans pod</a></li>
