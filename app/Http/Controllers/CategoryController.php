@@ -114,9 +114,20 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+/* gör en variabel så man inte kan radera någon kategori om något sound ligger på kategorin */
+        
         $delete = $request->get('categoryID');
+       
+        $check = DB::table('sounds')->where('categoryID', '=', $delete)->first();
+
+        if(is_null($check)){
             $category = Category::where('categoryID', '=', $delete);
           $category->delete();
         return back()->withMessage('Kategori raderad!');
+    }
+        else{
+            return back()->withMessage('Kategori i användning!');
+        }
+
     }
 }

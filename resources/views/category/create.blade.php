@@ -44,10 +44,7 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
 
  {!!   Form::open(array('method' => 'DELETE', 'route' => array('category.destroy'))) !!}
-@foreach($categories as $category)
 
-   
-    @endforeach
      <select name="categoryID">
          @foreach($categories as $category)
  <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
@@ -60,7 +57,11 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 {!! Form::close() !!}
 @endif
 
-
+@if(Session::has('message'))
+<div class="note">
+	{{ Session::get('message') }}
+</div>
+@endif
 
 @endif
 <!-- formuläret syns bra om man är inloggad -->
