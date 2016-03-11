@@ -28,7 +28,7 @@
 $username = Auth::user()->username;
 ?>
 <h2>Kategorier</h2>
-<h1>Nuvarande kategorier</h1>
+
 <!-- ett formulär för att lägga till kategori -->
 @if($username == 'Herzteam')
 <td>{!! Form::open(array('route' => 'category.store')) !!}
@@ -38,7 +38,7 @@ $username = Auth::user()->username;
 {!! Form::submit('Lägg till kategori', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}</td><br>
 
-<td><select name="categoryname">
+<td><h1>Nuvarande kategorier</h1><select name="categoryname">
 <?PHP
 $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
