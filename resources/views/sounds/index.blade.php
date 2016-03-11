@@ -99,7 +99,7 @@ $state = 0;
 @else
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))	!!}
 			<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class="  glyphicon glyphicon-heart" aria-hidden="true"><a href=""></a><div>Tabort från favorit</div</span>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"><a href=""></a><div>Tabort från favorit</div></span>
               </button>
 {!! Form::close() !!}</td>
 

@@ -142,12 +142,34 @@ table.pre-fav td{
 	position: static;
 }
 
-#fav-knapp a:hover + div {
-    			display: block;
-				} 
+#fav-knapp:hover
+{ width:200px;
+	color:#fff; }
 
-			#fav-knapp div{
-			    display: none;
-    			border:1px solid #000;
+#fav-knapp:hover div
+{ display: initial;}
 
-			}
+#fav-knapp {
+position: fixed;
+margin-top: 100px;
+margin-left: 30px;
+width:70px;
+height:50px;
+text-align: center;
+padding: 0px 50px 0px 0px;
+background:#b9dcdc;color:#fff;
+transition:width 2s;
+-moz-transition:width 2s; /* Firefox 4 */
+-webkit-transition:width 2s; /* Safari and Chrome */
+-o-transition:width 2s; /* Opera */
+}
+
+span.glyphicon-heart-empty{
+display: initial;
+}
+
+#fav-knapp div {
+display: none;
+}
+
+			
