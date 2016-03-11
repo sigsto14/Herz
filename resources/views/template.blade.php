@@ -93,9 +93,13 @@
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right">
                   <!-- Kategorier i sökfältet -->
-                      <li><a href="#">Musik</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Underhållning</a></li>
+                  <!-- gör php för att hämta ut kategorierna-->
+                  <?PHP
+$categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
+?>
+                     @foreach($categories as $category)
+                      <li><a href="#">{{$category->categoryname}}</a></li>
+                 @endforeach
                     </ul>
                   </div><!-- /btn-group -->
               </div><!-- /input-group -->
