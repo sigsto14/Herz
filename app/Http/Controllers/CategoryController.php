@@ -30,7 +30,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.create');
+
+             $users = DB::table('users')->orderBy('username')->get();
+        $channels = DB::table('channels')->join('users', 'users.userID', '=', 'channels.channelID')->get();
+        //Koden ovan binder samman users och channel så vi kan använda de i samma tabeller.
+        $sound = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->get();
+        $category = DB::table('category')->join('sounds', 'sounds.categoryID', '=', 'category.categoryID')->get();
+        //Koden ovan binder samman channels och sounds så vi kan använda de i samma tabeller.
+     
+        return view('category.index', compact('users'), compact('channel'), compact('sound'), compact('category'));
+       
     }
 
     /**
@@ -40,7 +49,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+       return view('category.create');
     }
 
     /**
@@ -79,7 +88,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+$category = Category::find($id);
+ 
+return view('category.show', compact('category'));
+      
+
     }
 
     /**

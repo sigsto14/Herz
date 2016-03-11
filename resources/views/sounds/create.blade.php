@@ -62,9 +62,9 @@ $categories = DB::table('category')->get();
 @endif
 
 @if(Session::has('message'))
-<h2>
+<div class="alert alert-success">
 	{{ Session::get('message') }}
-</h2>
+</div>
 @endif
 </div>
 </div>

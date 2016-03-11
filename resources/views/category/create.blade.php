@@ -58,8 +58,10 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 @endif
 
 @if(Session::has('message'))
-<div class="note">
+<div class="admin-feedback">
+<p>
 	{{ Session::get('message') }}
+	</p>
 </div>
 @endif
 

@@ -76,7 +76,7 @@
                 
 
                 <li class="dropdown-header">Administrativt</li>
-                <li><a href="http://localhost/Herz/public/category">Administrera kategorier</a></li>
+                <li><a href="http://localhost/Herz/public/category/create">Administrera kategorier</a></li>
                 @else
                 <li class="dropdown-header">Om Herz</li>
                 @endif
@@ -98,7 +98,7 @@
 $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
                      @foreach($categories as $category)
-                      <li><a href="#">{{$category->categoryname}}</a></li>
+                      <li><a href="http://localhost/Herz/public/category/{{$category->categoryID}}">{{$category->categoryname}}</a></li>
                  @endforeach
                     </ul>
                   </div><!-- /btn-group -->
