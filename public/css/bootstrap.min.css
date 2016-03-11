@@ -146,8 +146,13 @@ table.pre-fav td{
 { width:200px;
 	color:#fff; }
 
-#fav-knapp:hover div
-{ display: initial;}
+#fav-knapp:hover p
+{ display: initial;
+	transition:width 2s;
+-moz-transition:width 2s; /* Firefox 4 */
+-webkit-transition:width 2s; /* Safari and Chrome */
+-o-transition:width 2s;
+}
 
 #fav-knapp {
 position: fixed;
@@ -168,7 +173,7 @@ span.glyphicon-heart-empty{
 display: initial;
 }
 
-#fav-knapp div {
+#fav-knapp p {
 display: none;
 }
 
