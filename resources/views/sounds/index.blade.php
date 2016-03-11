@@ -93,13 +93,13 @@ $state = 0;
 
 
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"><a href=""></a><p>Lägg till Favorit</p></span>
+              <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" id="heart"><p>Lägg till Favorit</p></span>
               </button>
 {!! Form::close() !!}
 @else
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))	!!}
 			<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"><a href=""></a><p>Tabort från favorit</p></span>
+              <span class="glyphicon glyphicon-heart" aria-hidden="true" id="heart"><p>Tabort från favorit</p></span>
               </button>
 {!! Form::close() !!}</td>
 
