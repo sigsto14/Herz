@@ -191,5 +191,7 @@ transition:width 0.5s;
   transition:opacity 0.6s linear;
 }
 
-
-			
+.admin-feedback {
+	width: 15%;
+	background-color: #FFFFFF;
+}

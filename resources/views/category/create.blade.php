@@ -56,18 +56,12 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort kategorin?");' )) !!}
 {!! Form::close() !!}
 @endif
-@if (count($errors) > 0)
-	<div class="alert alert-danger">
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
+
 @if(Session::has('message'))
-<div class="note">
+<div class="admin-feedback">
+<p>
 	{{ Session::get('message') }}
+	</p>
 </div>
 @endif
 
