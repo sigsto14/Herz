@@ -150,6 +150,10 @@ return view('sounds.show', compact('channel'), compact('sound'));
      */
     public function destroy($id)
     {
-        //
+        $favorite = Favorite::where('soundID', '=', $id);
+          $sound = Sound::where('soundID', '=', $id);
+          $favorite->delete();
+       $sound->delete();
+        return back()->withMessage('Ljudklipp raderat!');
     }
 }
