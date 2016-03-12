@@ -63,28 +63,21 @@
           <ul class="nav navbar-nav">
           <!-- Dropdown meny vänster --> 
             <li class="dropdown">
-<<<<<<< HEAD
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                
-                <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>     
-=======
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><img src="http://localhost/Herz/public/images/menu4.png"><span class="caret"></span></a>
               <ul class="dropdown-menu" id="hmenu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
->>>>>>> 77675b27a65e9d7f1611e527ef7cc7289414e03f
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
-                <li><a href="http://localhost/Herz/public/user">Användare</a></li>  
                 <li role="separator" class="divider"></li>
                 <!-- sätter o kollar om admin e inloggad så får man en fin meny -->
                 @if(Auth::check())
                 <?php
                 $username = Auth::user()->username;
                 ?>
-                
                 @if($username == 'Herzteam')
+
                 <li class="dropdown-header">Administrativt</li>
                 <li><a href="http://localhost/Herz/public/category/create">Administrera kategorier</a></li>
+
                 @else
                 <li class="dropdown-header">Om Herz</li>
                 @endif
