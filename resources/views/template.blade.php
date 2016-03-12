@@ -74,13 +74,13 @@
                 $username = Auth::user()->username;
                 ?>
                 
-
+                @if($username == 'Herzteam')
                 <li class="dropdown-header">Administrativt</li>
                 <li><a href="http://localhost/Herz/public/category/create">Administrera kategorier</a></li>
                 @else
                 <li class="dropdown-header">Om Herz</li>
                 @endif
-
+                @endif
                 <li><a href="#">Meny 1</a></li>
                 <li><a href="#">Meny 2</a></li>
               </ul>
