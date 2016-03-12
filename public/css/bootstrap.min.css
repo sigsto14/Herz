@@ -13,6 +13,12 @@ body{
  
 }
 
+@font-face {
+  font-family: Museo;
+  src: url('http://localhost/Herz/public/fonts/LeagueGothic-Regular.otf') format("opentype");
+}
+
+
 /*Nav */
 #nav{
   position: relative;
@@ -38,7 +44,7 @@ body{
 
 #reg-log:hover{
   background-color: white;
-  
+
 }
 
 #menu{
@@ -77,11 +83,19 @@ background-color:white;
  transform: translateY(-10%);
 }
 
+
+
 #logo-text{
-position: absolute;
- transform: translateX(145%);
- top: 55%;
+	position: absolute;
+	margin-top: -30px;
+ 	transform: translateX(80%);
+ 	font-family: 'Museo';
+	font-size: 40px; text-transform: uppercase;
+	color: #26a09f;
+	letter-spacing: .05em;
+
 }
+
 
 
 .navbar-fixed-top{
