@@ -9,16 +9,19 @@
 /*Body */
 body{
 
-
   background: url('http://localhost/Herz/public/images/bak2.png') ;
-
  
 }
 
+@font-face {
+  font-family: Museo;
+  src: url('http://localhost/Herz/public/fonts/Museo300-Regular.otf') format("opentype");
+}
 
-
-
-
+@font-face {
+  font-family: League;
+  src: url('http://localhost/Herz/public/fonts/LeagueGothic-Regular.otf') format("opentype");
+}
 
 /*Nav */
 #nav{
@@ -39,38 +42,121 @@ body{
     transform: translateY(10%);
      }
 
+.input-group{
+    border-color:  #b9dcdc;
+    border-width: 2px;
+    border-style: solid;
+ }
+#search-button{
+	margin-top: 24px;
+	background-color: #b9dcdc;
+} 
+
+#kat{
+	background-color: #b9dcdc;
+	border-color:  #0c5150;
+    border-width: 2px;
+    border-style: solid;
+} 
+
+#searchf{
+	border-color:  #0c5150;
+    border-width: 2px;
+    border-style: solid;
+    height: 36px;
+}  
+
 #reg-log{
-  transform: translateY(20%);
+  	transform: translateY(20%);
+    font-family: 'Museo';
+	font-size: 20px; text-transform: uppercase;
+	color: #0c5150;
+	height: 73px;
 }
 
-#menu{
-  transform: translateY(20%);
-  left: 55%;
+#reg-log:hover{
+  background-color: white;
 
+
+}
+
+#menu{  
+  left: 70%;
+  height: 80px;
+}
+
+#menu:hover{
+background-color:white; 
+}
+
+#hmenu{
+  background-color: #b9dcdc;
 }
 
 #nav-knapp{
-  transform: translateY(60%);
+  transform: translateY(35%);
+
+}
+
+#nav-knapp button{
+  background-color:#b9dcdc;
+  color:#26a09f;
+  border-style: hidden;
+}
+
+#nav-knapp button:hover{
+	color:white;
 }
 
 #user{
-  transform: translateY(22%);
-  right: -2%;
+  	transform: translateY(22%);
+  	right: -5%;  
+   	font-family: 'Museo';
+	font-size: 20px; text-transform: uppercase;
+	color: #b9dcdc;
+	
+}
+
+#user a{	
+	color: #26a09f;
+}
+#user a:hover{	
+	color: white;
 }
 
 #user-menu{
   transform: translateY(-5%);
+   
+}
+
+#user-menu:hover{
+  background-color: white;
+   
+}
+
+#usermd{
+	 background-color: #b9dcdc;
 }
 
 #logo{
  transform: translateY(-10%);
 }
 
-#logo-text{
-position: absolute;
- transform: translateX(145%);
- top: 55%;
+#login-menu{
+	background-color: #b9dcdc;
+	height: 300%;
 }
+
+#logo-text{
+	position: absolute;
+	margin-top: -30px;
+ 	transform: translateX(80%);
+ 	font-family: 'League';
+	font-size: 40px; text-transform: uppercase;
+	color: #26a09f;
+	letter-spacing: .05em;
+}
+
 
 
 .navbar-fixed-top{
@@ -129,6 +215,15 @@ a.navbar-brand{
 	 transform: translateY(16%);
 
 }
+
+#user-img{
+		border-radius: 150px;
+		border-style: solid;
+		border-color: #0c5150;
+		border-width: 2px;
+}
+
+
 
 /*Nav slut*/
 
