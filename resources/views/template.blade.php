@@ -88,10 +88,10 @@
             <!-- Sökfältet -->
             <div id="search" >       
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Sök">
+                <input type="text" class="form-control" placeholder="Sök" id="searchf">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategorier <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">Kategorier <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" id="search-button">
                   <!-- Kategorier i sökfältet -->
                   <!-- gör php för att hämta ut kategorierna-->
                   <?PHP
@@ -112,10 +112,10 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
              @if(Auth::check())
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
-              <button type="button" class="btn btn-default btn-md">
+              <button type="button" class="btn btn-default btn-lg">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
               </button> 
             </li>
@@ -140,7 +140,7 @@ else {
             <li class="dropdown" id="user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->              
-              <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
+              <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px" id="user-img"><span class="caret"></span></a>
               <ul class="dropdown-menu" id="usermd">
                 <li class="dropdown-header">Profil</li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
@@ -187,10 +187,13 @@ else {
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
                 </form>
               @endif
-            </div><!-- Logga In/Dropdown meny slut-->           
+            </div><!-- Logga In/Dropdown meny slut-->                       
       </div>
-<div class="line"><hr></div> 
+
+
+
       @if(Auth::check())
+      <div class="line"><hr></div>
 
       <!--sidebar-->
       <div class="sidebar">
