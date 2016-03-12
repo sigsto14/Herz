@@ -65,8 +65,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
+                
+                <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>     
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
+                <li><a href="http://localhost/Herz/public/user">Användare</a></li>  
                 <li role="separator" class="divider"></li>
                 <!-- sätter o kollar om admin e inloggad så får man en fin meny -->
                 @if(Auth::check())

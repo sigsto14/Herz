@@ -16,8 +16,8 @@
 <table class="table">
 
 <th>Username</th>
-<th>Email</th>
 <th>Information</th></tr>
+
 
 
 <?php
