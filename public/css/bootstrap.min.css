@@ -8,8 +8,16 @@
 
 /*Body */
 body{
-	background-image: url("http://localhost/Herz/public/images/bak.png"); 
+
+
+  background: url('http://localhost/Herz/public/images/bak2.png') ;
+
+ 
 }
+
+
+
+
 
 
 /*Nav */
@@ -68,6 +76,53 @@ position: absolute;
 .navbar-fixed-top{
 	background-color:  #b9dcdc;
 	border-color:  #0c5150;
+}
+
+.line {
+  position: fixed;
+  width: 100%;
+  padding-bottom: 7px;
+  max-height: 5px;
+}
+
+.line hr{
+ display:none;
+}	
+
+.line:nth-of-type(1)  { animation: wave 17s   0.000s linear infinite; }
+.line:nth-of-type(2)  { animation: wave 17s -16.227s linear infinite; }
+.line:nth-of-type(3)  { animation: wave 17s -15.455s linear infinite; }
+.line:nth-of-type(4)  { animation: wave 17s -14.682s linear infinite; }
+.line:nth-of-type(5)  { animation: wave 17s -13.909s linear infinite; }
+.line:nth-of-type(6)  { animation: wave 17s -13.136s linear infinite; }
+.line:nth-of-type(7)  { animation: wave 17s -12.364s linear infinite; }
+.line:nth-of-type(8)  { animation: wave 17s -11.591s linear infinite; }
+.line:nth-of-type(9)  { animation: wave 17s -10.818s linear infinite; }
+.line:nth-of-type(10) { animation: wave 17s -10.045s linear infinite; }
+.line:nth-of-type(11) { animation: wave 17s  -9.273s linear infinite; }
+.line:nth-of-type(12) { animation: wave 17s  -8.500s linear infinite; }
+.line:nth-of-type(13) { animation: wave 17s  -7.727s linear infinite; }
+.line:nth-of-type(14) { animation: wave 17s  -6.955s linear infinite; }
+.line:nth-of-type(15) { animation: wave 17s  -6.182s linear infinite; }
+.line:nth-of-type(16) { animation: wave 17s  -5.409s linear infinite; }
+.line:nth-of-type(17) { animation: wave 17s  -4.636s linear infinite; }
+.line:nth-of-type(18) { animation: wave 17s  -3.864s linear infinite; }
+.line:nth-of-type(19) { animation: wave 17s  -3.091s linear infinite; }
+.line:nth-of-type(20) { animation: wave 17s  -2.318s linear infinite; }
+.line:nth-of-type(21) { animation: wave 17s  -1.545s linear infinite; }
+.line:nth-of-type(22) { animation: wave 17s  -0.773s linear infinite; }
+
+@keyframes wave {
+  5%   { background: #0c5150; }
+  15%  { background: #8dc3d2; } 
+  35%  { background: #39cfcd; }  
+  45%  { background: #b9eff1; }  
+  55%  { background: #42e1aa; } 
+  65%  { background: #b9eff1; }  
+  75%  { background: #39cfcd; }  
+  85%  { background: #8dc3d2; } 
+  95%  { background: #0c5150; }
+  
 }
 
 a.navbar-brand{

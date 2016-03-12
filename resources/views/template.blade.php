@@ -161,7 +161,8 @@ else {
                 @endif
                 <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
               </ul> 
-            </li><!-- Användarens meny slut--> 
+            </li><!-- Användarens meny slut-->
+
           
 
 @endif
@@ -186,10 +187,11 @@ else {
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
                 </form>
               @endif
-            </div><!-- Logga In/Dropdown meny slut-->  
-        
+            </div><!-- Logga In/Dropdown meny slut-->           
       </div>
-      @if(Auth::check()) 
+<div class="line"><hr></div> 
+      @if(Auth::check())
+
       <!--sidebar-->
       <div class="sidebar">
         <div class="prenumerering">
