@@ -9,16 +9,9 @@
 /*Body */
 body{
 
-
   background: url('http://localhost/Herz/public/images/bak2.png') ;
-
  
 }
-
-
-
-
-
 
 /*Nav */
 #nav{
@@ -43,10 +36,23 @@ body{
   transform: translateY(20%);
 }
 
-#menu{
-  transform: translateY(20%);
-  left: 55%;
+#reg-log:hover{
+  background-color: white;
+  
+}
 
+#menu{
+  transform: translateY(10%);
+  left: 55%;
+}
+
+#menu:hover{
+background-color:white; 
+}
+
+#hmenu{
+  margin-top: 20px;
+  background-color: #b9dcdc;
 }
 
 #nav-knapp{
@@ -60,6 +66,11 @@ body{
 
 #user-menu{
   transform: translateY(-5%);
+   
+}
+
+#usermd{
+	 background-color: #b9dcdc;
 }
 
 #logo{

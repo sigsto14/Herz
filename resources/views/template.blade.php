@@ -63,8 +63,8 @@
           <ul class="nav navbar-nav">
           <!-- Dropdown meny vänster --> 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu">Meny<span class="caret"></span></a>
-              <ul class="dropdown-menu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><img src="http://localhost/Herz/public/images/menu4.png"><span class="caret"></span></a>
+              <ul class="dropdown-menu" id="hmenu">
                 <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
@@ -141,7 +141,7 @@ else {
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <!-- gör variabler för att kunna hämta ut data, samt göra olika länkar beroende på om någon har kanal eller inte -->              
               <img src="{{ Auth::user()->profilePicture }}" width="50px" height="50px"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="usermd">
                 <li class="dropdown-header">Profil</li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}/edit">Redigera Profil</a></li>
@@ -173,7 +173,7 @@ else {
             <li class="divider-vertical"></li>
               <li class="dropdown">
               <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="reg-log">Logga In <strong class="caret"></strong></a>
-                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="login-menu">
               <!-- Logga In meny -->
                   <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
                 {!! csrf_field() !!}
@@ -323,7 +323,17 @@ else {
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+    // Add slideDown animation to dropdown
+$('.dropdown').on('show.bs.dropdown', function(e){
+  $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+});
+
+// Add slideUp animation to dropdown
+$('.dropdown').on('hide.bs.dropdown', function(e){
+  $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+});
+    </script>
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
