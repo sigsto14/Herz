@@ -82,8 +82,14 @@
                 <li class="dropdown-header">Om Herz</li>
                 @endif
                 @endif
-                <li><a href="#">Meny 1</a></li>
-                <li><a href="#">Meny 2</a></li>
+                <li><a href="#">Vad är Herz</a></li>
+                <li><a href="#">Bli Medlem</a></li>
+                <li class="dropdown-header">Stolt över</li>
+                <li><a href="#">Veckans Podare</a></li>
+                <li><a href="#">Veckans Podar</a></li>
+                <li><a href="#">Månadens Podar</a></li>
+                <li><a href="#">All-time Favorit Podar</a></li>
+                <li><a href="#">Favorit Nybörjare</a></li>
               </ul>
             </li>
             <!-- Sökfältet -->
@@ -183,11 +189,10 @@ else {
                     <p>Lösenord</p>
                     <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
                     <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-                    <label class="string optional" for="user_remember_me"> Kom ihåg mig</label>
- 
+                    <label class="string optional" for="user_remember_me"> Kom ihåg mig</label> 
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
                 </form>
-              @endif
+                @endif
             </div><!-- Logga In/Dropdown meny slut-->                       
       </div>
 

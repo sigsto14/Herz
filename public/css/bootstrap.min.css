@@ -349,6 +349,7 @@ transition:width 0.5s;
 #container{
 	margin-top: 150px;
 	background-color: white;
+	min-height: 660px;
 }
 
 #container2{
