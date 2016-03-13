@@ -11,7 +11,7 @@
 
 
 <div class="container">
-<div class="col-md-12" id="container"><br><br>
+<div class="col-md-12" id="container">
 <h3>Users:</h3>
 <table class="table">
 

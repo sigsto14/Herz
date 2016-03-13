@@ -13,7 +13,6 @@
 
 <div class="container">
 <div class="col-md-12" id="container">
-
 <table class="table">
 <h3>Senaste uppladdningar</h3>
 <th>Titel</th>
@@ -126,6 +125,7 @@ $state = 0;
 
 
 </div>
+
 
 
 </body>

@@ -4,7 +4,6 @@
 <!DOCTYPE HTML>
 
 <title>{{ $channel->channelname }}</title>
-<br><br><br><br><br><br>
 <body>
 @yield('content')
 <!-- Kanal innehåll --> 
@@ -13,9 +12,7 @@
     <!-- Kanal header --> 
         <div class="channel_header">
         <img src="http://localhost/Herz/public/images/channel/default.png">
-        </div><br>
-        
-        <div class="podcast-box_channel">
+        </div>
         <!-- Första låda, här finns profil --> 
         <div class="col-lg-4">
           <div class="row">
@@ -36,7 +33,7 @@
           </div>
         </div>
          <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8"  id="container">
+        <div class="col-lg-8"  id="tabus">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>
@@ -68,27 +65,7 @@ Your browser does not support the audio element.
 @endforeach
 
           </div>
-          <br>    
-          <div class="row">
-           <p>Herz Pod 2</p> 
-           <img src="http://localhost/Herz/public/images/podcast_av/pod_play.png">  
-          </div>
-          <br> 
-          <div class="row">
-           <p>Herz Pod 3</p> 
-           <img src="http://localhost/Herz/public/images/podcast_av/pod_play.png">  
-          </div>
-          <br> 
-          <div class="row">
-           <p>Herz Pod 4</p> 
-           <img src="http://localhost/Herz/public/images/podcast_av/pod_play.png">  
-          </div>
-          <br> 
-          <div class="row">
-           <p>Herz Pod 5</p> 
-           <img src="http://localhost/Herz/public/images/podcast_av/pod_play.png">  
-          </div>
-          <br>           
+     
           </div>   
           </div> 
          </div> 
