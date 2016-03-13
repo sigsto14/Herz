@@ -12,11 +12,10 @@
 
 
 <div class="container">
-<div class="col-md-12" id="container"><br><br>
+<div class="col-md-12" id="container">
 
 <table class="table">
-<br><br><br><br>
-<h2>Senaste uppladdningar</h2>
+<h3>Senaste uppladdningar</h3>
 <th>Titel</th>
 <th>Bild</th>
 <th>Spelare</th>
@@ -42,7 +41,7 @@
 			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
 			@foreach($sounds as $sound)
 
-			<tr>	<td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title}}</h1>
+			<tr>	<td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h3>{{ $sound->title}}</h3>
 			<td><image src="{{ $sound->podpicture }}" width="80px" height="auto">
 			<td><audio controls>
   <source src="{{ $sound->URL }}" type="audio/ogg">

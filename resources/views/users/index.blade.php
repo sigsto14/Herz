@@ -12,7 +12,7 @@
 
 <div class="container">
 <div class="col-md-12" id="container"><br><br>
-<p class="titles">Users:</p>
+<h3>Users:</h3>
 <table class="table">
 
 <th>Username</th>
