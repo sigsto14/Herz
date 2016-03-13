@@ -7,10 +7,11 @@
 </head>
 <body>
 
-    <br><br><br><br><br><br>
-    <div class="container">
+
+<div class="container">
 <div class="col-md-12" id="container">
-    <h2> För att ladda upp ljudklipp får du först skapa en kanal! </h2>
+<div class="redigering2">
+    <h3> För att ladda upp ljudklipp får du <br>först skapa en kanal! </h3>
 @if(Auth::check())
 <title>Skapa kanal</title>
 
@@ -50,6 +51,7 @@
 	{{ Session::get('message') }}
 </div>
 @endif
+</div>
 </div>
 </div>
 </body>

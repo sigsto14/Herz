@@ -9,11 +9,11 @@
 <!-- Kanal innehåll --> 
     <div class="container">
     <!-- Kanal header --> 
+    
      <div class="col-md-12" id="container">
-        <div class="channel_header">
+     <div class="channel_header">
         <img src="http://localhost/Herz/public/images/channel/default.png">
-        </div><br>
-        <div class="podcast-box_channel">
+        </div>
         <!-- Första låda, här finns profil --> 
         <div class="col-lg-4">
           <div class="row">
@@ -33,7 +33,7 @@
             @endif
           </div>
         </div>
-        <div class="col-lg-8"id="container">
+        <div class="col-lg-8"id="tabus">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>
@@ -41,7 +41,35 @@
             <li role="presentation"><a href="#">+</a></li>
           </ul>
           <br>
-          <div class="row"></div>
+          <div class="row">
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+          </div>
+          <br>    
+          <div class="row">
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>    
+          </div>
         </div>
       </div>
       </div>

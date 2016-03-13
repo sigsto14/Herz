@@ -252,10 +252,20 @@ a.navbar-brand{
 }
 
 .channel_header {
-	
+	margin-left: -16.5px;	
 	position: relative;
-	margin-top: 10%;
 	background-color: white;
+
+}
+
+.channel_header img {
+	border-width: 2px;
+	border-style: solid;
+}
+
+#tabus{
+  margin-top: 2%;
+
 }
 
 
@@ -373,6 +383,16 @@ transition:width 0.5s;
 	margin-left: 2%;
 }
 
+#tabus p{
+	margin-top: -5%;
+	margin-left: 15%;
+}
+
+#tabus h3{
+	margin-top: 1%;
+	margin-left: 2%;
+}
+
 .nav-tabs>li{
 	background-color: #42e1aa;
 }
@@ -399,5 +419,16 @@ transition:width 0.5s;
 .redigering{
 	padding-top: 70px;
 	margin-left: 40%;
+}
+
+.redigering2{
+	padding-top: 70px;
+	margin-left: 30%;
+}
+
+.redigering2 h3{
+	padding-bottom: 1%;
+text-align: center;
+margin-left: -25%;
 }
 
