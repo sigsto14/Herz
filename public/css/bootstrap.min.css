@@ -8,6 +8,9 @@
 /*Body */
 body{
   background: url('http://localhost/Herz/public/images/bak2.png') ;
+     background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
  }
  	/*Font*/
 @font-face {
@@ -355,6 +358,20 @@ transition:width 0.5s;
 	margin: auto;
 }
 
+#container2 .row{
+	margin-left: 10%;
+}
+
+#container2 p{
+	margin-top: -5%;
+	margin-left: 15%;
+}
+
+#container2 h3{
+	margin-top: 1%;
+	margin-left: 2%;
+}
+
 .nav-tabs>li{
 	background-color: #42e1aa;
 }
@@ -372,3 +389,8 @@ transition:width 0.5s;
 	background-color: #FFFFFF;
 }
 
+#footer{
+	background-color: #596365;
+	height: 70px;
+	color: white;
+}

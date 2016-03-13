@@ -320,8 +320,15 @@ else {
       @yield('container')
 
       @yield('footer')    
-
-
+<br>
+<br>
+<br>
+<div id="footer">
+      <div class="container">
+      <br>
+        <p class="muted credit">©Herz Projekt</p>
+      </div>
+</div>
 
 
 
