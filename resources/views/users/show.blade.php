@@ -4,7 +4,6 @@
 <!DOCTYPE HTML>
 
 <title>{{ $user->username }}</title>
->
 @yield('content')
 <!-- Kanal innehåll --> 
     <div class="container">
