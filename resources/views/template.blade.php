@@ -77,6 +77,7 @@
 
                 <li class="dropdown-header">Administrativt</li>
                 <li><a href="http://localhost/Herz/public/category/create">Administrera kategorier</a></li>
+                <li class="dropdown-header">Om Herz</li>
 
                 @else
                 <li class="dropdown-header">Om Herz</li>

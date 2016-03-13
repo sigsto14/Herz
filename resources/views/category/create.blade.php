@@ -12,10 +12,9 @@
 
 
 <div class="container">
-<div class="col-md-12" id="container"><br><br>
+<div class="col-md-12" id="container">
+<div class="redigering">
 
-
-<br><br><br><br>
 
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 		
@@ -75,6 +74,7 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 			
 </table>
 
+</div>
 </div>			 
 	
 
