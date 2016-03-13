@@ -67,7 +67,6 @@ Your browser does not support the audio element.
 @endif
 @endforeach
 
-<!--
           </div>
           <br>    
           <div class="row">

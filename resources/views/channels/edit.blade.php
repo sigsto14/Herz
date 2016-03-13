@@ -3,8 +3,8 @@
 @section('footer')
 <title>Edit Profile</title>
 <div class="container">
-<div class="col-md-12" id="container">
-<br><br><br><br><br>
+	<div class="col-md-12" id="container">
+	<div class="redigering">
 <!-- kör <br> sålänge för att kunna se -->
 
 <table class="table">
@@ -53,7 +53,9 @@
 
 </div>
 </div>
+</table>
 
+</div>
 </div>
 </div>
 

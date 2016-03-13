@@ -2,7 +2,8 @@
 @section('container')
 @section('footer')
 <div class="container">
-<br><br><br><br><br><br>
+<div class="col-md-12" id="container">
+<div class="redigering">
 @if(Auth::check())
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
     {!! csrf_field() !!}
@@ -79,4 +80,9 @@
 
 </div>
 </form>
+</div>
+</form>
+</div>
+</div>
+</div>
 @stop
