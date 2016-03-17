@@ -13,7 +13,7 @@
 @if(Auth::user()->id == $user->id)
 {{-- formulär som även visar den data som är i databasen, för ändringar i users och channels tabeller--}}
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
-
+{!! csrf_field() !!}
 {!!     Form::label('username', 'Username:') !!}
 {!!     Form::text('username') !!}<br>
 
