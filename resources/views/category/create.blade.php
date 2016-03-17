@@ -46,7 +46,7 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 
      <select name="categoryID">
          @foreach($categories as $category)
- <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
+ <option value="{{$category->categoryID}}"><p>{{ $category->categoryname }}</p></option>
 
 @endforeach
 </select>

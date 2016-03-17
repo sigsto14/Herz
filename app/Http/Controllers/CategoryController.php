@@ -77,7 +77,7 @@ class CategoryController extends Controller
        $category->save();
 
        return back()
-            ->withMessage('Kategori {{ $category->categoryname }} tillagd!');
+            ->withMessage('Kategori tillagd!');
     }
 
     /**

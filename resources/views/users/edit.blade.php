@@ -44,7 +44,7 @@ $('.button2').click(function(){
 </script>
 
 @else
-<a class="dropdown-toggle" href="http://localhost/TradeArt/public/auth/login" data-toggle="dropdown">Log in</a> or <a href="http://localhost/TradeArt/public/auth/register">Sign up</a> to upload pictures!
+<a class="dropdown-toggle" href="http://localhost/Herz/public/auth/login" data-toggle="dropdown">Log in</a> or <a href="http://localhost/Herz/public/auth/register">Sign up</a> to upload pictures!
 @endif
 
 @if (count($errors) > 0)

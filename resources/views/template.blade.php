@@ -192,6 +192,9 @@ else {
                     <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
                     <label class="string optional" for="user_remember_me"> Kom ihåg mig</label> 
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                         @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
                 </form>
                 @endif
             </div><!-- Logga In/Dropdown meny slut-->                       
