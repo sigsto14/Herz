@@ -69,11 +69,22 @@ body{
 }  
 
 #reg-log{
+	
   	transform: translateY(20%);
     font-family: 'Museo';
 	font-size: 20px; text-transform: uppercase;
 	color: #0c5150;
 	height: 73px;
+}
+
+/* boxen om loginuppgifter fel */
+#reg-log-fail{
+  	transform: translateY(20%);
+  	margin-top: -0.1%;
+    font-family: 'Museo';
+	font-size: 20px; text-transform: uppercase;
+	color: #0c5150;
+	height: 100px;
 }
 
 #reg-log:hover{
@@ -145,9 +156,20 @@ background-color:white;
 }
 
 #login-menu{
+	position: absolute;
+	background-color: #b9dcdc;
+	height: 303%;
+}
+
+/* boxen om login failar */
+#login-menu-fail{
+	position: absolute;
+	display: initial;
 	background-color: #b9dcdc;
 	height: 300%;
 }
+
+
 
 #logo-text{
 	position: absolute;

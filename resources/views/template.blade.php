@@ -65,7 +65,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><img src="http://localhost/Herz/public/images/menu4.png"><span class="caret"></span></a>
               <ul class="dropdown-menu" id="hmenu">
-                <li><a href="http://localhost/Herz/public/user">Användare</a></li>        
+                <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
                 <!-- sätter o kollar om admin e inloggad så får man en fin meny -->
@@ -93,24 +93,40 @@
                 <li><a href="#">Favorit Nybörjare</a></li>
               </ul>
             </li>
-            <!-- Sökfältet -->
-            <div id="search" >       
+            <!-- Sökfunktion -->
+
+            <div id="search" >  
+<form action="http://localhost/Herz/public/search/index">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Sök" id="searchf">
+            <!-- Sökfältet -->
+
+                <input type="text" class="form-control" placeholder="Sök" id="searchf" name="search" value="Sök">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">Kategorier <span class="caret"></span></button>
-                    <ul class="dropdown-menu dropdown-menu-right" id="search-button">
+
                   <!-- Kategorier i sökfältet -->
                   <!-- gör php för att hämta ut kategorierna-->
-                  <?PHP
+                <?PHP
 $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
+<div class="input-group-btn">
+<select name="categoryID" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">
+<option selected="selected" disabled="disabled">Kategorier</option>
                      @foreach($categories as $category)
-                      <li><a href="http://localhost/Herz/public/category/{{$category->categoryID}}">{{$category->categoryname}}</a></li>
+                     
+                      <option value="{{ $category->categoryID }}">{{$category->categoryname}}</option>
                  @endforeach
-                    </ul>
+              
+                 </select>
+      <input class="btn btn-primary" style="clear: left; width: 40%; height: 34px; font-size: 13px;" type="submit" value="Sök" />
+</form>
+                
+                 
+                    
+
                   </div><!-- /btn-group -->
+
               </div><!-- /input-group -->
+
             </div>
               <!-- Sökfältet slut -->
           </ul><!-- Vänster delen av naven slut -->
@@ -179,9 +195,27 @@ else {
           <!-- Höger meny när man är ej inloggad-->   
             <li><a href="http://localhost/Herz/public/auth/register" id="reg-log">Registrera dig</a></li> 
             <li class="divider-vertical"></li>
+            <!-- lägger variabel på class och id för att kunna ha olika om fel inloggningsuppgifter: FÖRSTA OM FAILAR ANDRA OM EJ-->
+             @if (count($errors) > 0)
+                   <?php
+                   $loginID = 'reg-log-fail';
+                   $loginID2 = 'login-menu-fail';
+                  
+                   ?>
+@else
+                <?php
+                   $loginID = 'reg-log';
+                   $loginID2 = 'login-menu';
+               
+                   ?>
+                   @endif
               <li class="dropdown">
-              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="reg-log">Logga In <strong class="caret"></strong></a>
-                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="login-menu">
+                
+              
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">Logga In <strong class="caret"></strong></a>
+      
+            
+                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">
               <!-- Logga In meny -->
                   <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
                 {!! csrf_field() !!}
@@ -191,10 +225,24 @@ else {
                     <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
                     <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
                     <label class="string optional" for="user_remember_me"> Kom ihåg mig</label> 
-                    <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
-                         @foreach ($errors->all() as $error)
+                    <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
+                      
+                   @if (count($errors) > 0)
+               
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
+        </ul>
+    </div>
+@endif
+
+        @if(Session::has('message'))
+<div class="alert alert-success">
+    {{ Session::get('message') }}
+   
+@endif
                 </form>
                 @endif
             </div><!-- Logga In/Dropdown meny slut-->                       
@@ -343,17 +391,24 @@ else {
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
+     
+   <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')
     // Add slideDown animation to dropdown
+
+
 $('.dropdown').on('show.bs.dropdown', function(e){
-  $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+  $(this).find('.dropdown-menu').first().stop().slideDown();
 });
 
 // Add slideUp animation to dropdown
 $('.dropdown').on('hide.bs.dropdown', function(e){
-  $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+  $(this).find('.dropdown-menu').first().stop().slideUp();
 });
+
+
+
     </script>
+      
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>

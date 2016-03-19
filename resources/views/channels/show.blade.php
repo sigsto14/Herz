@@ -56,11 +56,13 @@
   <source src="{{ $sound->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
+@if(Auth::check())
 @if(Auth::user()->userID == $user->userID)
 {!! csrf_field() !!}
 {!!   Form::open(array('method' => 'DELETE', 'route' => array('sound.destroy', $sound->soundID))) !!}
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort ljudklippet?");' )) !!}
 {!! Form::close() !!}
+@endif
 @endif
 @endforeach
 

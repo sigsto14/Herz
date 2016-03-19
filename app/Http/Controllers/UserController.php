@@ -61,15 +61,9 @@ class UserController extends Controller
     public function store(Request $request)
     {
         /* här skapas en ny rad i channels tabellen, med hjälp av modellen Channel */
-/* detta är för tilfället inaktuellt (det fungerar ej som tänkt) */
- 
-
+/* (flyttat till ChannelController) */
 
 }
-
-         
-    
-
     /**
      * Display the specified resource.
      *
