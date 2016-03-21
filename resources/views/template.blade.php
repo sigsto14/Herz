@@ -275,6 +275,10 @@ else {
             <div class="panel panel-default" id="panel1">
               <div class="panel-heading">
             <h4 class="panel-title">
+             <?php
+             $userID = Auth::user()->userID;
+             $subscribes = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'subscribe.channelID')->where('subscribe.userID', '=', $userID)->orderBy('sounds.created_at', 'ASC')->take(5)->get();
+             ?>
               <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Prenumerationer</a>
             </h4>
         </div>
@@ -283,13 +287,14 @@ else {
           <div class="panel-body">
             <table class="pre-fav" style="width:100%">
             <tr>
-              <td>1</td>
-              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
-              <td><a href="#">Prenumering 1</a></td>
-              <td>av</td>
-              <td><a href="#">Herz</a></td>
-            </tr>
+              @foreach($subscribes as $subscribe)  
+               
+            <td><a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}">{{ $subscribe->channelname}}</a></td>
+            <td><p>Senaste upladdning <a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}">{{ $subscribe->title }}</a></p></td></tr>
+            @endforeach
             <tr>
+            <td><p><a href="http://localhost/Herz/public/subscribe">Se alla...</a></p></td></tr>
+            <!--
               <td>2</td>
               <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>   
               <td><a href="#">Prenumering 2</a></td>
@@ -316,6 +321,7 @@ else {
               <td><a href="#">Prenumering 5</a></td>
               <td>av</td>
               <td><a href="#">Herz</a></td>
+              -->
             </tr>
           </table> 
         </div>
