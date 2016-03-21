@@ -224,7 +224,9 @@ else {
 
               <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">{{$text}} <strong class="caret"></strong></a>
 
-          
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">{{$text}} <strong class="caret"></strong></a>
+
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">Logga In <strong class="caret"></strong></a>
 
       
             
