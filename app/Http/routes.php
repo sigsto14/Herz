@@ -31,6 +31,7 @@ Route::resource('sound', 'SoundController');
 Route::resource('favorite', 'FavoriteController');
 Route::resource('category', 'CategoryController');
 Route::resource('query', 'QueryController');
+Route::resource('subscribe', 'SubscribeController');
 
 
 

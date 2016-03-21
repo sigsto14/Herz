@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Favorite extends Model implements AuthenticatableContract,
+class Subscribe extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 
@@ -19,7 +19,7 @@ class Favorite extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
- public function favorites()
+ public function subscribe()
     {
       
     }
@@ -29,15 +29,17 @@ class Favorite extends Model implements AuthenticatableContract,
      *
      * @var string
      */
-    protected $table = 'favorites';
-    protected $primaryKey = 'soundID';
+    protected $table = 'subscribe';
+    /* genom att sätta userID som primary blir det lättare att hämta ut just den användarens favoriter. AVVAKTAR CONSTRAINTS  */
+    
+    protected $primaryKey = 'userID';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['userID', 'soundID'];
+    protected $fillable = ['userID', 'channelID'];
 
     /**
      * The attributes excluded from the model's JSON form.
