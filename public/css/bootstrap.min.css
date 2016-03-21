@@ -69,7 +69,7 @@ body{
 }  
 
 #reg-log{
-	
+	position: relative;
   	transform: translateY(20%);
     font-family: 'Museo';
 	font-size: 20px; text-transform: uppercase;
@@ -79,8 +79,8 @@ body{
 
 /* boxen om loginuppgifter fel */
 #reg-log-fail{
+	position: relative;
   	transform: translateY(20%);
-  	margin-top: -0.1%;
     font-family: 'Museo';
 	font-size: 20px; text-transform: uppercase;
 	color: #0c5150;
@@ -164,6 +164,7 @@ background-color:white;
 /* boxen om login failar */
 #login-menu-fail{
 	position: absolute;
+	margin-top: -15px;
 	display: initial;
 	background-color: #b9dcdc;
 	height: 300%;

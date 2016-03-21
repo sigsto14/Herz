@@ -77,4 +77,3 @@ Route::get('sounds/create', function () {
     return view('sounds.create');
 });
 
-
