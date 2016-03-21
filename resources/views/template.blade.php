@@ -198,14 +198,21 @@ else {
             <!-- lägger variabel på class och id för att kunna ha olika om fel inloggningsuppgifter: FÖRSTA OM FAILAR ANDRA OM EJ-->
              @if (count($errors) > 0)
                    <?php
+
                    $text = "Försök Igen";
+
+                  
+
                    $loginID = 'reg-log-fail';
                    $loginID2 = 'login-menu-fail';
                   
                    ?>
 @else
                 <?php
+
                 $text = "Logga In";
+
+
                    $loginID = 'reg-log';
                    $loginID2 = 'login-menu';
                
@@ -214,7 +221,13 @@ else {
               <li class="dropdown">
                 
               
+
               <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">{{$text}} <strong class="caret"></strong></a>
+
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">{{$text}} <strong class="caret"></strong></a>
+
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">Logga In <strong class="caret"></strong></a>
+
       
             
                 <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">

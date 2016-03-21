@@ -25,13 +25,15 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('search/index', 'QueryController@search');
 Route::post('search/index', 'QueryController@search');
 
-
 Route::resource('user', 'UserController');
 Route::resource('channel', 'ChannelController');
 Route::resource('sound', 'SoundController');
 Route::resource('favorite', 'FavoriteController');
 Route::resource('category', 'CategoryController');
 Route::resource('query', 'QueryController');
+
+
+
 
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');

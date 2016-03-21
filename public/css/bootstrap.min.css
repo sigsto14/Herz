@@ -69,7 +69,15 @@ body{
 }  
 
 #reg-log{
+<<<<<<< HEAD
 	position: relative;
+=======
+<<<<<<< HEAD
+	position: relative;
+=======
+	
+>>>>>>> origin/master
+>>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
   	transform: translateY(20%);
     font-family: 'Museo';
 	font-size: 20px; text-transform: uppercase;
@@ -79,8 +87,18 @@ body{
 
 /* boxen om loginuppgifter fel */
 #reg-log-fail{
+<<<<<<< HEAD
 	position: relative;
   	transform: translateY(20%);
+=======
+<<<<<<< HEAD
+	position: relative;
+  	transform: translateY(20%);
+=======
+  	transform: translateY(20%);
+  	margin-top: -0.1%;
+>>>>>>> origin/master
+>>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
     font-family: 'Museo';
 	font-size: 20px; text-transform: uppercase;
 	color: #0c5150;
@@ -164,7 +182,14 @@ background-color:white;
 /* boxen om login failar */
 #login-menu-fail{
 	position: absolute;
+<<<<<<< HEAD
 	margin-top: -15px;
+=======
+<<<<<<< HEAD
+	margin-top: -15px;
+=======
+>>>>>>> origin/master
+>>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 	display: initial;
 	background-color: #b9dcdc;
 	height: 300%;
