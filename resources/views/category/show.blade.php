@@ -3,13 +3,9 @@
 @section('footer')
 
 <!DOCTYPE HTML>
-<<<<<<< HEAD
 
 <title>Users</title>
 
-=======
-<title>Users</title>
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 <body>
 
 @yield('content')
@@ -17,10 +13,6 @@
 
 <div class="container">
 <div class="col-md-12" id="container">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 <table class="table">
 <h3>Senaste uppladdningar</h3>
 <th>Titel</th>
@@ -31,21 +23,6 @@
 @if(Auth::check())
 <th>Skapa favorit</th>
 @endif
-<<<<<<< HEAD
-=======
-=======
-	<table class="table">
-	<h2>Senaste uppladdningar</h2>
-	<th>Titel</th>
-	<th>Bild</th>
-	<th>Spelare</th>
-	<th>Kanal</th>
-	<th>Uppladdat av</th>
-	@if(Auth::check())
-	<th>Skapa favorit</th>
-	@endif
->>>>>>> origin/master
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 <!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
 			<?PHP
    
@@ -62,7 +39,6 @@
 			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
 			@foreach($sounds as $sound)
 
-<<<<<<< HEAD
 			<tr>	<td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h3>{{ $sound->title}}</h3>
 			<td><image src="{{ $sound->podpicture }}" width="80px" height="auto">
 			<td><audio controls>
@@ -73,24 +49,6 @@ Your browser does not support the audio element.
 			<td><a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
 
 		<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
-=======
-<<<<<<< HEAD
-			<tr>	<td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h3>{{ $sound->title}}</h3>
-			<td><image src="{{ $sound->podpicture }}" width="80px" height="auto">
-=======
-	@foreach($sounds as $sound)
-
-			<tr><td><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title}}</h1></a></td></tr>
-			<td><image src="{{ $sound->podpicture }}" width="80px" height="auto"></td>
->>>>>>> origin/master
-			<td><audio controls>
-  				<source src="{{ $sound->URL }}" type="audio/ogg">
-  				<source src="{{ $sound->URL }}" type="audio/mpeg">
-					Your browser does not support the audio element.
-				</audio></td>
-			<td><a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a></td>
-			<td><a href="http://localhost/Herz/public/user/{{ $sound->channelID }}">{{ $sound->username }}</a></td>
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 
 @if(Auth::check())
 <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
@@ -121,7 +79,6 @@ $state = 0;
 @if($state == 0)
 
 <td>{!! Form::open(array('route' => 'favorite.store')) !!}
-<<<<<<< HEAD
  {!! csrf_field() !!}
 <div>
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
@@ -133,14 +90,6 @@ $state = 0;
 
 
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-=======
- {!! csrf_field() !!}</td>
-	<div><input type="hidden" name="userID" value="{{ Auth::user()->userID }}"></div>
-	<div><input type="hidden" name="soundID" value="{{ $sound->soundID }}"></div>
-
-
-				<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
               </button>
 {!! Form::close() !!}
@@ -151,10 +100,7 @@ $state = 0;
               </button>
 {!! Form::close() !!}</td>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 @endif
 
 
@@ -163,21 +109,10 @@ $state = 0;
 <!-- formuläret syns bra om man är inloggad -->
 
 				@endforeach
-<<<<<<< HEAD
 			
 			
 				
 				</tr>
-=======
-				</table>
-</div>
-</div>
-</div>
-			
-			
-				
-
->>>>>>> be75a3f2029a555486bfb809ade9a97bf0312eeb
 			
 </table>
 
