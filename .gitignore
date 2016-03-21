@@ -1,0 +1,14 @@
+/vendor
+vendor
+/node_modules
+Homestead.yaml
+Homestead.json
+.env
+*.png
+*.wav
+*.mp3
+public/Podcastpictures/Sound.jpg
+*.ogg
+*.jpg
+*.png
+*.png
