@@ -32,7 +32,7 @@ class Subscribe extends Model implements AuthenticatableContract,
     protected $table = 'subscribe';
     /* genom att sätta userID som primary blir det lättare att hämta ut just den användarens favoriter. AVVAKTAR CONSTRAINTS  */
     
-    protected $primaryKey = 'userID';
+    protected $primaryKey = 'channelID';
 
     /**
      * The attributes that are mass assignable.

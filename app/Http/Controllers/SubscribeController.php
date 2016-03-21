@@ -33,7 +33,7 @@ class SubscribeController extends Controller
         /* sammanbindningar så det går att hämta ut massa massa data från databasen med dessa variabler **/
         if(Auth::check()){
         $userID = Auth::user()->userID; }
-       $subs = DB::table('subscribe')->join('users', 'subscribe.userID', '=', 'users.userID')->join('channels', 'shannels.channelID', '=', 'subscribe.channelID')->get();
+       $subs = DB::table('subscribe')->join('users', 'subscribe.userID', '=', 'users.userID')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->get();
 
        return view('subscribe.index', compact('subscribe'), compact('channel'), compact('sound'), compact('user'));
     

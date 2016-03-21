@@ -25,6 +25,7 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
               <div class="col-md-4">
                 <h3>{{ $favorite->title }}</h3>
               <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
+              <audio controls>
               <source src="{{ $favorite->URL }}" type="audio/ogg">
               <source src="{{ $favorite->URL }}" type="audio/mpeg">
               Your browser does not support the audio element.
