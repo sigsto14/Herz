@@ -134,10 +134,22 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
      */
     public function destroy($id)
     {
+            $favorite = Favorite::where('userID', '=', $id);
+            $subsribe = Subscribe::where('userID', '=', $id);
+
+            $channel = Channel::where('userID', '=', $id);
+            $sound = Sound::where('channelID', '=', 'userID');
+
               $user = User::find($id);
-       $user->delete();
-        return back();
+                    $favorite->delete();
+                    $subscribe->delete();
+
+                    $sound->delete();
+                    $channel->delete();
+                    $user->delete();
+        return back()->withMessage('Ditt konto har nu tagits bort');
          
     }
     
 }
+

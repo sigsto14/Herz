@@ -29,13 +29,17 @@
 {!! Form::file('image', null) !!}
 
 
-
 </table>
 
 
-<input type="submit" class="button2" value="Submit">
+<input type="submit" class="button2" value="Uppdatera">
 
 {!!     Form::close() !!}<br><br><br>
+
+{!! Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->id))) !!}
+
+	{!! Form:submit('Delete', array('class' => 'btn btn-danger')) !!}
+{!!     Form::close() !!}
 
 <script>
 $('.button2').click(function(){
