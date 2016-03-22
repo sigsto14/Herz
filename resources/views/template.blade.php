@@ -51,6 +51,10 @@
   </head>
 
   <body>
+
+
+
+
     <!-- Fixed navbar Börjar här -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container" id="nav"> 
@@ -108,6 +112,7 @@
                 <?PHP
 $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
+
 <div class="input-group-btn">
 <select name="categoryID" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">
 <option selected="selected" disabled="disabled">Kategorier</option>
@@ -237,9 +242,12 @@ else {
                     <input id="user_username" style="margin-bottom: 15px;" type="text" name="email" size="30" />
                     <p>Lösenord</p>
                     <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
-                    <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-                    <label class="string optional" for="user_remember_me"> Kom ihåg mig</label> 
+                
+                     <div>
+        <input type="checkbox" name="remember"> Kom ihåg mig!
+    </div>
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
+                 
                       
                    @if (count($errors) > 0)
                
@@ -259,7 +267,12 @@ else {
 @endif
                 </form>
                 @endif
-            </div><!-- Logga In/Dropdown meny slut-->                       
+
+            </div><!-- Logga In/Dropdown meny slut-->      
+              
+
+<div id="status">
+</div>              
       </div>
 
 
@@ -434,7 +447,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
 
-  </body>
+
+
 </html>

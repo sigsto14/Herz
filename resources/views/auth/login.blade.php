@@ -1,7 +1,7 @@
 @extends('template')
 @section('container')
 @section('footer')
-
+<div class="container" id="container">
 <form method="POST" action="../auth/login">
     {!! csrf_field() !!}
 
@@ -39,4 +39,5 @@
 @endif
 
 </form>
+</div>
 @stop

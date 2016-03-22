@@ -94,6 +94,7 @@ $state = 0;
         </div>
          <!-- Andra lådan, här fins podar -->
         <div class="col-lg-8"  id="tabus">
+        
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>
