@@ -1,6 +1,6 @@
 @extends('template')
 @section('container')
-@section('footer')
+
 
 <!DOCTYPE HTML>
 
@@ -36,7 +36,5 @@ UPPLADDAT AV <a href="http://localhost/Herz/public/channel/{{ $channel->channelI
 @endif
 
 </table>
-    </div>
-    </div>
-
+@section('footer')
 @stop
