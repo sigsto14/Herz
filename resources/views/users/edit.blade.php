@@ -38,7 +38,7 @@
 
 {!! Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->id))) !!}
 
-	{!! Form:submit('Delete', array('class' => 'btn btn-danger')) !!}
+	{!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
 {!!     Form::close() !!}
 
 <script>
