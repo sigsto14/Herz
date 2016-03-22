@@ -73,6 +73,7 @@ $state = 0;
 @else
 
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('subscribe.destroy', $channel->channelID)))  !!}
+ {!! csrf_field() !!}
       <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Sluta prenumerera</p></span>
               </button>
