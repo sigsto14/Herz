@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Sound;
+use App\Favorite;
+use App\Subscribe;
 use Auth;
 use Fetch;
 use App\Channel;
@@ -34,9 +36,10 @@ class UserController extends Controller
         $channels = DB::table('channels')->join('users', 'users.userID', '=', 'channels.channelID')->get();
         //Koden ovan binder samman users och channel så vi kan använda de i samma tabeller.
         $sound = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->get();
+        $subscribe = DB::table('subscrube')->join('users', 'users.userID', '=', 'subscribe.userID')->get();
         //Koden ovan binder samman channels och sounds så vi kan använda de i samma tabeller.
      
-        return view('users.index', compact('users'), compact('channel'), compact('sound'));
+        return view('users.index', compact('users'), compact('channel'), compact('sound'), compact('subscribe'));
     }
 
     /**
@@ -135,9 +138,8 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
     public function destroy($id)
     {
             $favorite = Favorite::where('userID', '=', $id);
-            $subsribe = Subscribe::where('userID', '=', $id);
-
-            $channel = Channel::where('userID', '=', $id);
+            $subscribe = Subscribe::where('userID', '=', $id);
+$channel = Channel::where('userID', '=', $id);
             $sound = Sound::where('channelID', '=', 'userID');
 
               $user = User::find($id);
