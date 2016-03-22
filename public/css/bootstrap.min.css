@@ -374,7 +374,7 @@ table.pre-fav td{
  }
 
 #fav-knapp {
-position: fixed;
+position: absolute;
 margin-top: 7px;
 margin-left: 30px;
 width:20px;

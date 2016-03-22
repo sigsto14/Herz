@@ -66,16 +66,16 @@ $state = 0;
  
 
 
-<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Prenumerera </p></span>
+<button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"  id="heart"></a><p> Prenumerera </p></span>
               </button>
 {!! Form::close() !!}
 @else
 
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('subscribe.destroy', $channel->channelID)))  !!}
  {!! csrf_field() !!}
-      <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Sluta prenumerera</p></span>
+      <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"id="heart"></a><p> Sluta prenumerera</p></span>
               </button>
 {!! Form::close() !!}</td>
 
