@@ -32,7 +32,7 @@ Route::resource('favorite', 'FavoriteController');
 Route::resource('category', 'CategoryController');
 Route::resource('query', 'QueryController');
 Route::resource('subscribe', 'SubscribeController');
-
+Route::resource('notification', 'NotificationController');
 
 
 

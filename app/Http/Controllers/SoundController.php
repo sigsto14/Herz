@@ -108,6 +108,15 @@ $sound = new Sound();
       return back()
                         ->withMessage('Du måste välja en fil att ladda upp!');
 }
+$subs = DB::table('subscribe')->where('subscribe.channelID', '=', Auth::user()->userID)->get();
+if(is_null($subs)){}
+else {
+foreach($subs as $sub) {
+$user = DB::table('users')->where('userID', '=', $sub->userID); }
+
+}
+
+
 
     }
 

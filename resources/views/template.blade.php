@@ -52,6 +52,8 @@
 
   <body>
 
+ 
+
 
 
 
@@ -141,13 +143,24 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
              @if(Auth::check())
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
-              <button type="button" class="btn btn-default btn-lg">
+            <!-- php för att hämta ut notifikationer -->
+     
+
+            <!-- sätter antalet notiser i knappen -->
+@include('notification')
+
+ 
+
+
+
+             <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
               </button> 
             </li>
+
             <!-- Komment/Favorti Knappar Slut -->  
                             @if(Auth::check())
                             <?php
@@ -163,6 +176,7 @@ else {
     $upload = 'sound/create';
 } 
               ?>
+
           <!-- Användarens namn -->      
           <li id="user"><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">{{ Auth::user()->username }}</a></li>
             <!-- Användarens meny -->  
@@ -177,7 +191,7 @@ else {
                 <li><a href="http://localhost/Herz/public/favorite">Favoriter</a></li>
                 <li><a href="#">Prenumerationer</a></li>
                 <br>
-                <li><a href="http://localhost/Herz/public/auth/logout">Logga ut</a></li>
+                <li><a href="http://localhost/Herz/public/auth/logout" action="auth.logout">Logga ut</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Kanal</li>
                 <li><a href="http://localhost/Herz/public/{{ $link }}">Min Kanal</a></li>
@@ -191,7 +205,6 @@ else {
                 <li><a href="http://localhost/Herz/public/{{ $upload }}">Ladda upp podcast</a></li>
               </ul> 
             </li><!-- Användarens meny slut-->
-
           
 
 @endif
@@ -269,7 +282,6 @@ else {
                 @endif
 
             </div><!-- Logga In/Dropdown meny slut-->      
-              
 
 <div id="status">
 </div>              
@@ -448,6 +460,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <!-- Bootstrap core JavaScript
     ================================================== -->
 
+</body>
 
 
 </html>

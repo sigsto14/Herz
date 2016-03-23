@@ -139,17 +139,18 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
     {
             $favorite = Favorite::where('userID', '=', $id);
             $subscribe = Subscribe::where('userID', '=', $id);
-$channel = Channel::where('userID', '=', $id);
-            $sound = Sound::where('channelID', '=', 'userID');
+            $channel = Channel::where('userID', '=', $id);
+            $subscribers = Subscribe::where('channelID', '=', $id);
+            $sound = Sound::where('channelID', '=', $id);
 
               $user = User::find($id);
                     $favorite->delete();
                     $subscribe->delete();
-
+                    $subscribers->delete();
                     $sound->delete();
                     $channel->delete();
                     $user->delete();
-        return back()->withMessage('Ditt konto har nu tagits bort');
+        return view ('index')->withMessage('Ditt konto har nu tagits bort');
          
     }
     

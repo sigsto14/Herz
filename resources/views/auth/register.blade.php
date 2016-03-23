@@ -31,6 +31,7 @@
 <div>
         <input type="hidden" name="profilePicture" value="http://localhost/Herz/public/images/profilepictures/none.png">
     </div>
+   
 
     <div>
         Username

@@ -31,7 +31,7 @@ class QueryController extends Controller
     {
          $query = $request->get('Search');
    
-    $results = 'Bajs';
+  
 
     return view('search.index', compact('channels', $results), compact('sounds'), compact('users'));
     }

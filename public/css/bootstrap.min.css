@@ -480,3 +480,17 @@ text-align: center;
 margin-left: -25%;
 }
 
+#notification_count
+{
+padding: 0px 3px 3px 7px;
+background: #cc0000;
+color: #ffffff;
+font-weight: bold;
+margin-left: 77px;
+border-radius: 9px;
+-moz-border-radius: 9px;
+-webkit-border-radius: 9px;
+position: absolute;
+margin-top: -1px;
+font-size: 10px;
+}

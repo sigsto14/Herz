@@ -1,4 +1,4 @@
-<?php
+          <?php
             /* först hämta ut userID och last_logout-value */
 $userID = Auth::user()->userID;
 $LastLogout = Auth::user()->last_logout;

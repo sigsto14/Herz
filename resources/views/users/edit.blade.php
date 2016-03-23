@@ -8,7 +8,7 @@
 </head>
 <div class="container">
 <div class="col-md-12"id="container">
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
 <table class="table">
 @if(Auth::user()->id == $user->id)
 {{-- formulär som även visar den data som är i databasen, för ändringar i users och channels tabeller--}}
@@ -38,7 +38,7 @@
 
 {!! Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->userID))) !!}
 
-	{!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+	{!! Form::submit('Ta bort konto', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Är du säker på att du vill ta bort ditt konto?");')) !!}
 {!!     Form::close() !!}
 
 <script>

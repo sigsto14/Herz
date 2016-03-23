@@ -13,7 +13,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use DateTime;
 
 
 class AuthController extends Controller
@@ -69,15 +69,13 @@ protected $loginPath = '/';
      */
     protected function create(array $data)
     {
-
+$dateTime = new DateTime;
      return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'profilePicture' => $data['profilePicture'],
-
-          ]);   
-             
+          ]);                
 
        return back();
 
