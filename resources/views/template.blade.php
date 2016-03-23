@@ -3,6 +3,7 @@
 
 <html lang="sv">
   <head>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -147,13 +148,13 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
      
 
             <!-- sätter antalet notiser i knappen -->
+
 @include('notification')
-
- 
-
-
-
-             <button type="button" class="btn btn-default btn-lg">
+<button type="button" class="btn btn-default btn-lg">
+              <span id="noti" class="glyphicon glyphicon-eye-open" aria-hidden="true" onclick="refreshdiv()"><div id="notifications" class="notifications"></div></span>
+              </button>
+    
+<button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
@@ -455,6 +456,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     </script>
       
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript

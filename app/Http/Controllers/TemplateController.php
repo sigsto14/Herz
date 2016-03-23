@@ -21,7 +21,8 @@ class TemplateController extends Controller
          $user = Auth::user()->userID;
          $channel = $channels->where('channelID', '=', $user)->get();
    
-         
+         $view = view('notification');
+    
 
        
          return view('template', compact('users'), compact('channels'));
