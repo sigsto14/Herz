@@ -54,23 +54,31 @@
             <h1> Ljudklipp för dig:</h1>
           @foreach($favoriteIDs as $favoriteID)
           <?php
+
+        
           $userID = Auth::user()->userID;
           $soundID = $favoriteID->soundID;
           $tag = $favoriteID->tag;
 
-         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('sounds.tag', 'LIKE', '%' . $tag . '%')->where('sounds.soundID', '!=', $soundID)->orderBy('sounds.created_at', 'ASC')->take(5)->get();
+         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('sounds.soundID', '!=', $soundID)
+         ->where(function($query) use($tag) {
+             $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
+         ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
+         })->orderBy('sounds.created_at', 'ASC')->take(5)->get();
          ?>
              @foreach($results as $result)
   
-            
+          
              <div class="row">
               <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
-               <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/>
+               <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
+               <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
                 <audio controls>
   <source src="{{ $result->URL }}" type="audio/ogg">
   <source src="{{ $result->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
-</audio>    
+</audio>    <br>
+
             
               
               </div>
