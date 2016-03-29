@@ -37,7 +37,7 @@ $user = DB::table('users')->where('users.userID', '=', $id)->first();
         </div>
         </div>
         
-         <!-- Andra lådan, här fins podar -->
+
    
 			
 
