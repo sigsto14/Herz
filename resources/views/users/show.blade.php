@@ -25,13 +25,18 @@
           </div>
           <hr>
           <div class="row"> 
+          <!-- kollar om user inloggad -->
           @if(Auth::user())
+          <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
             <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+            <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
             <?php
+$userID = Auth::user()->userID;
 
             $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->join('channels', 'channels.channelID', '=', 'sounds.channelID')->get();
-           
+            /* vilka channels subbar användaren på */
+            $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->get();
             ?>
 
             @endif
@@ -49,50 +54,93 @@
             <li role="presentation"><a href="#">+</a></li>
           </ul>
           <br>
+             <!-- kollar om user inloggad -->
            @if(Auth::check())
+               <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
             <h1> Ljudklipp för dig:</h1>
+            <!-- gör loopar av tidigare variabler -->
           @foreach($favoriteIDs as $favoriteID)
           <?php
-
+/* fixar lite variabler så vi kan testa mot dem */
         
           $userID = Auth::user()->userID;
           $soundID = $favoriteID->soundID;
           $tag = $favoriteID->tag;
-
+/* hämtar ut från channels och sounds som INTE finns i favorites redan för användaren */
+/* gör en query för att "or where" inte ska krocka med where */
+/* variablen hämtar ut ljudklipp där titel eller tagg liknar de som användaren har i sina favoriter */
          $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('sounds.soundID', '!=', $soundID)
          ->where(function($query) use($tag) {
              $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
-         })->orderBy('sounds.created_at', 'ASC')->take(5)->get();
+         })->orderBy('sounds.created_at', 'ASC')->paginate(5);
          ?>
+         <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
-  
-          
-             <div class="row">
-              <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
+  <div class="row">
+              <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br></div>
                <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
-               <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
+               
                 <audio controls>
   <source src="{{ $result->URL }}" type="audio/ogg">
   <source src="{{ $result->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
-</audio>    <br>
+</audio>    <br><br><br><br>
 
-            
+            <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               
-              </div>
+              
              
              @endforeach
-           
- @endforeach
-            
+             @endforeach
+
+<!-- slut på ljudklipprekommendationer -->
+<!-- rekommenderade kanaler -->
+
+             <h1> Kanaler för dig: </h1>
+             @foreach($channels as $channel)
+             <?php
+/* fixar lite variabler så vi kan testa mot dem */
+
+          $userID = Auth::user()->userID;
+          $info = $channel->information;
+
+/* sök efter de kanaler med liknande info som de som är subbade */
+         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('channels.information', 'LIKE', '%' . $info . '%')->orderBy('sounds.created_at', 'DESC')->take(2)->get();
+
+         ?>
+         @endforeach
+         <!-- foreachloop för resultaten -->
+         @foreach($results as $result)
+     <?php
+     /*variabler för inloggad user*/
+     $userID = Auth::user()->userID;
+     /* hämta ut vilket channelID detta resultat har */
+     $chanID = $result->channelID;
+     /*jämföra detta med användares subscribtion */
+     $subID = DB::table('subscribe')->where('channelID', '=', $chanID)->where('userID', '=', $userID)->get();
+
+     ?>
+
+     <!-- om resultatet redan finns i användares subscribes händer inget -->
+@if($chanID = $subID)
+<!-- om det passar men inte finns i subs kommer förslag -->
+@else
+<br><br><br><br>
+<p>{{ $result->channelname }}</p>
+@endif
+
+
+             @endforeach
+
               @endif
               @endif
 
+</div>
+<!-- slut på rekommendationer -->
 
-
-              <!--
+              <!-- tillfällig utkommentering
               <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
               <h3>Herz Podcast</h3>
               <p>av Herz</p>
