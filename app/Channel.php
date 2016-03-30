@@ -10,7 +10,8 @@ class Channel extends Model {
 
  public function users()
     {
-       return $this->belongsTo('user');
+       return $this->belongsTo('User');
+       return $this->hasMany('Sound');
     }
 
     /**

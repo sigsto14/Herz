@@ -137,22 +137,55 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
      */
     public function destroy($id)
     {
-            $favorite = Favorite::where('userID', '=', $id);
+            
             $subscribe = Subscribe::where('userID', '=', $id);
-            $channel = Channel::where('userID', '=', $id);
+            
             $subscribers = Subscribe::where('channelID', '=', $id);
-            $sound = Sound::where('channelID', '=', $id);
+         
+            $sounds = Sound::where('channelID', '=', $id)->get();
+          
+            foreach($sounds as $sound){
+                $favorite = DB::table('favorites')->where('soundID', '=', $sound->soundID);
+              
+$favorite->delete();
+ }
 
-              $user = User::find($id);
-                    $favorite->delete();
+if(is_null($sounds))
+{
+
+    $channel = Channel::find($id);
+    $channel->delete();
+}
+else {
+
+    $sound = Sound::where('channelID', '=', $id);
+    $sound->delete();
+    $channel = Channel::find($id);
+    if(!is_null($channel)){
+        $subscribers = Subscribe::where('channelID', '=', $id);
+        if(!is_null($subscribers)){
+            $subscribers->delete();
+        }
+    $channel->delete();
+
+
+}
+}
+
+
+
+ 
+              $user = User::find($id);                
                     $subscribe->delete();
                     $subscribers->delete();
-                    $sound->delete();
-                    $channel->delete();
-                    $user->delete();
-        return view ('index')->withMessage('Ditt konto har nu tagits bort');
+ $user->delete();
+
+ return view('index');
+}
+
+        
          
-    }
+    
     
 }
 

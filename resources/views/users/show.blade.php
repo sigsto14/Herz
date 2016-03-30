@@ -35,8 +35,8 @@
 $userID = Auth::user()->userID;
 
             $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->join('channels', 'channels.channelID', '=', 'sounds.channelID')->get();
-            /* vilka channels subbar användaren på */
-            $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->get();
+            /* vilka channels subbar användaren på, group by så det bara blir en av var */
+            $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->groupBy('channels.channelID')->get();
             ?>
 
             @endif
@@ -99,6 +99,8 @@ Your browser does not support the audio element.
 <!-- rekommenderade kanaler -->
 
              <h1> Kanaler för dig: </h1>
+             <!-- kör bara om det INTE ÄR null i channels -->
+
              @foreach($channels as $channel)
              <?php
 /* fixar lite variabler så vi kan testa mot dem */
@@ -107,13 +109,19 @@ Your browser does not support the audio element.
           $info = $channel->information;
 
 /* sök efter de kanaler med liknande info som de som är subbade */
-         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('channels.information', 'LIKE', '%' . $info . '%')->orderBy('sounds.created_at', 'DESC')->take(2)->get();
+
+         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('channels.information', 'LIKE', '%' . $info . '%')->groupBy('channels.channelID')->take(2)->get();
+ 
 
          ?>
-         @endforeach
+         
          <!-- foreachloop för resultaten -->
          @foreach($results as $result)
+
      <?php
+
+$times = DB::table('sounds')->where('sounds.channelID', '=', $result->channelID)->orderBy('sounds.created_at', 'ASC')->first();
+
      /*variabler för inloggad user*/
      $userID = Auth::user()->userID;
      /* hämta ut vilket channelID detta resultat har */
@@ -121,19 +129,25 @@ Your browser does not support the audio element.
      /*jämföra detta med användares subscribtion */
      $subID = DB::table('subscribe')->where('channelID', '=', $chanID)->where('userID', '=', $userID)->get();
 
+
      ?>
-
+ @endforeach
      <!-- om resultatet redan finns i användares subscribes händer inget -->
-@if($chanID = $subID)
-<!-- om det passar men inte finns i subs kommer förslag -->
+@if($chanID != $subID & $result->soundID = $times->soundID)
+<!-- om det passar men inte finns i subs kommer förslag --><br><br><br><br>
+<a href="http://localhost/Herz/public/channel/{{$result->channelID}}"><p>{{ $result->channelname }}</p></a>
+{{ $result->created_at }}
+{{ $result->title }}
+{{ $result->soundID }}
+
 @else
-<br><br><br><br>
-<p>{{ $result->channelname }}</p>
-@endif
 
 
-             @endforeach
+    @endif
 
+        
+@endforeach
+            
               @endif
               @endif
 
