@@ -200,16 +200,29 @@ $LastLogout = Auth::user()->last_logout;
        ->orderBy('sounds.created_at', 'DESC')->count();
 if($notiNr == 0) {
   $notiNr = '';
-}
-$notification = '<button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true" id="noti2">' . $notiNr . '</p></span>
-              </button>';
+};
 ?>
 
 
-              @include('notification')
-               
-<div id="noti2"><?php echo $notification; ?></div>
+@include('notification')
+               <script type="text/javascript">
+
+
+
+$(document).ready(function(){ 
+
+    var auto= $('#noti2'), refreshed_content;  
+    refreshed_content = setInterval(function(){
+    auto.fadeOut('fast').load('#noti2').fadeIn("fast");}, 
+    3000);                    
+    console.log(refreshed_content);                    
+    return false; 
+});
+
+</script>
+<button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><div id="noti2">{{ $notiNr }}</div></p></span>
+              </button>
 
               <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
