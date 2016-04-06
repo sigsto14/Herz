@@ -144,38 +144,31 @@ $titleNr = '';
             <!-- Sökfunktion -->
 
             <div id="search" >  
-<form action="http://localhost/Herz/public/search/index">
-              <div class="input-group">
-            <!-- Sökfältet -->
-
-                <input type="text" class="form-control" placeholder="Sök" id="searchf" name="search" value="Sök">
-                <div class="input-group-btn">
-
-                  <!-- Kategorier i sökfältet -->
+              <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
+                <div class="input-group">
+                  <!-- Sökfältet -->
+                  <input type="text" class="form-control" placeholder="Sök" name="search"> 
+                  <button type="submit" value="Sök">Sök</button>
+                  <div class="input-group-btn">
+                                  <!-- Kategorier i sökfältet -->
                   <!-- gör php för att hämta ut kategorierna-->
-                <?PHP
-$categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
-?>
-
-<div class="input-group-btn">
-<select name="categoryID" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">
-<option selected="selected" disabled="disabled">Kategorier</option>
-                     @foreach($categories as $category)
+                  <?PHP
+                  $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
+                  ?>
+                  <div class="blabla">
+                  <div class="test">
+                  <select name="categoryID" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">
+                  <option selected="selected" disabled="disabled">Kategorier</option>                     @foreach($categories as $category)
                      
-                      <option value="{{ $category->categoryID }}">{{$category->categoryname}}</option>
+                  <option value="{{ $category->categoryID }}">{{$category->categoryname}}</option>
                  @endforeach
               
-                 </select>
-      <input class="btn btn-primary" style="clear: left; width: 40%; height: 34px; font-size: 13px;" type="submit" value="Sök" />
-</form>
-                
-                 
-                    
-
-                  </div><!-- /btn-group -->
+                </select></div>      
+                </div><!-- /btn-group -->
 
               </div><!-- /input-group -->
 
+            </form>
             </div>
               <!-- Sökfältet slut -->
           </ul><!-- Vänster delen av naven slut -->
@@ -189,10 +182,10 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
      
 
             <!-- sätter antalet notiser i knappen -->
-            @if(Auth::check())
+           
 
             <div id="noti2">
-
+               @if(Auth::check())
          <?php
             /* först hämta ut userID och last_logout-value */
 $userID = Auth::user()->userID;
@@ -219,26 +212,18 @@ $notification = '<button type="button" class="btn btn-default btn-lg">
 <?php
 echo $notification
 ?>
-</div>
-
-              
-<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/
-libs/jquery/1.3.0/jquery.min.js"></script>
-<script type="text/javascript">
-var auto_refresh = setInterval(
-function ()
-{
-$("#noti2").load("http://localhost/Herz/resources/views/template.blade.php/{{ Auth::user()->userID }}");
-}, 1000); // refresh every 10000 milliseconds
-
-</script>
-              
               <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
-              </button>
+              </button>              
+</div>
+
+              
+
+              
+
 
 @endif
 
