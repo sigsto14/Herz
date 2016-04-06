@@ -17,9 +17,7 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
    
         <title>Herz</title>
 
-            </div>
-        </div>
-
+       
         <div class="container">
           <div class="podcast-box">
           <ul class="nav nav-tabs" role="tablist">
@@ -28,7 +26,7 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
             <li role="presentation"><a href="#">Senast uppladat</a></li>
           </ul>
           <div class="col-md-12" id="container2">
-            <h1>Senast uppladdat</h1>
+            <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns -->
           @foreach($senaste as $senast)
 
           
@@ -41,7 +39,8 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
                         </div>
 
 @endforeach
-<h1>Populärt</h1>
+<!-- här tar första boxen slut -->
+<h1>Populärt</h1><!-- här börjar andra rubriken -->
 @foreach($favorites as $favorite)
 
 <?php
@@ -71,7 +70,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 @endif
 
 @endforeach
-
+<!-- här slutar andra -->
 
 
 </div>

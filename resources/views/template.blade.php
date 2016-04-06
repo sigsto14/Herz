@@ -184,8 +184,7 @@ $titleNr = '';
             <!-- sätter antalet notiser i knappen -->
            
 
-            <div id="noti2">
-               @if(Auth::check())
+            
          <?php
             /* först hämta ut userID och last_logout-value */
 $userID = Auth::user()->userID;
@@ -208,17 +207,17 @@ $notification = '<button type="button" class="btn btn-default btn-lg">
 ?>
 
 
+              @include('notification')
+               
+<div id="noti2"><?php echo $notification; ?></div>
 
-<?php
-echo $notification
-?>
               <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
               </button>              
-</div>
+
 
               
 
@@ -276,7 +275,7 @@ else {
             </li><!-- Användarens meny slut-->
           
 
-@endif
+
 
  @else
           <!-- Höger meny när man är ej inloggad-->   
