@@ -45,9 +45,7 @@ $LastLogout = Auth::user()->last_logout;
        ->orderBy('sounds.created_at', 'DESC')->take(5)->count();
    
             
-}
-else {
-}
+
 return view('notification.index', compact('subscribe'), compact('user'), compact('channel'));
     }
 

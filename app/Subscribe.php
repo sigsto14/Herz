@@ -21,7 +21,7 @@ class Subscribe extends Model implements AuthenticatableContract,
 
  public function subscribe()
     {
-      
+     return $this->hasMany('Channel');
     }
 
     /**

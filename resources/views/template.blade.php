@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="En svensk podcast plattform">
+    
     <meta name="author" content="Herz">
    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -189,7 +190,8 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 
             <!-- sätter antalet notiser i knappen -->
             @if(Auth::check())
- <div id="noti">
+
+            <div id="noti2">
 
          <?php
             /* först hämta ut userID och last_logout-value */
@@ -208,7 +210,7 @@ if($notiNr == 0) {
   $notiNr = '';
 }
 $notification = '<button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true">' . $notiNr . '</p></span>
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true" id="noti2">' . $notiNr . '</p></span>
               </button>';
 ?>
 
@@ -218,7 +220,20 @@ $notification = '<button type="button" class="btn btn-default btn-lg">
 echo $notification
 ?>
 </div>
-<button type="button" class="btn btn-default btn-lg">
+
+              
+<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/
+libs/jquery/1.3.0/jquery.min.js"></script>
+<script type="text/javascript">
+var auto_refresh = setInterval(
+function ()
+{
+$("#noti2").load("http://localhost/Herz/resources/views/template.blade.php/{{ Auth::user()->userID }}");
+}, 1000); // refresh every 10000 milliseconds
+
+</script>
+              
+              <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
@@ -540,7 +555,7 @@ $(document).ready(function(){
     auto.fadeOut('fast').load('#noti').fadeIn("fast");}, 
     3000);                    
     console.log(refreshed_content);                    
-    return false; 
+    return true; 
 });
 
 

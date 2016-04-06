@@ -8,6 +8,7 @@
 <!-- kör <br> sålänge för att kunna se -->
 
 <table class="table">
+@if(Auth::check())
 @if(Auth::user()->userID == $channel->userID)
 
 {{-- formulär som även visar den data som är i databasen --}}
@@ -48,7 +49,7 @@
 </div>
 @endif
 
-
+@endif
 
 
 </div>

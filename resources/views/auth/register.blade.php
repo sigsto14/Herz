@@ -34,7 +34,7 @@
    
 
     <div>
-        Username
+        Användarnamn
         <input type="text" name="username" value="{{ old('username') }}">
     </div>
 
@@ -46,19 +46,19 @@
 
 
  <div>
-        <label>Password:</label>
+        <label>Lösenord:</label>
         <input type="password" name="password">
     </div>
 
     <div>
-        <label>Confirm Password:</label>
+        <label>Bekräfta lösenordet:</label>
         <input type="password" name="password_confirmation">
 
 
 
 
     <div>
-        <button type="submit">Register</button>
+        <button type="submit">Registrera dig</button>
     </div>
 
 @endif
