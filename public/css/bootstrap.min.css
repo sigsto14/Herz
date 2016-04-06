@@ -258,6 +258,7 @@ background-color:white;
 
 #user-menu{
   transform: translateY(-5%);
+  z-index: 1;
    
 }
 
@@ -268,6 +269,7 @@ background-color:white;
 
 #usermd{
 	 background-color: #b9dcdc;
+
 }
 
 #logo{
@@ -385,7 +387,7 @@ a.navbar-brand{
 	position: fixed;
 	margin-top: 5%;
 	margin-left: 85%;
-	
+	z-index: -1;
 }
 
 
