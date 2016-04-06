@@ -44,7 +44,7 @@ $categories = DB::table('category')->get();
  <!-- uppladdningen tillåter bara ljudfiler -->
 <input type="file" name="audio" accept="audio/*"><br>
 
-{!! Form::submit('Save', '', array('class' => 'form-control')) !!}
+{!! Form::submit('Ladda upp!', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}
 
 

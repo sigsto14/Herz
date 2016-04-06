@@ -26,6 +26,12 @@ body{
 /*Body slut */
 
 /*Nav */
+
+#podbox {
+border: 1px black solid;
+}
+
+
 #nav{
   position: relative;
   top: 25%;
@@ -33,6 +39,9 @@ body{
   min-height: 80px;
 }
 
+.hidden {
+	display: none;
+}
 
 #search { 
     position: absolute;
@@ -494,3 +503,4 @@ position: absolute;
 margin-top: -1px;
 font-size: 10px;
 }
+

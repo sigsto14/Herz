@@ -19,9 +19,9 @@ class Sound extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
- public function sounds()
+ public function comment()
     {
-      
+      return $this->hasMany('comment');
     }
 
     /**

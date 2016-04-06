@@ -40,6 +40,9 @@ Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
 Route::post('user/edit', 'UserController@update');
 Route::post('category/show', 'CategoryController@show');
+Route::post('noty', 'NotificationController@index');
+Route::resource('comment', 'CommentController');	
+
 
 Route::get('favorite/destroy', 'FavoriteController@destroy');
 
@@ -67,6 +70,7 @@ Route::get('register', function () {
 Route::get('home', function () {
     return view('index');
 });
+
 Route::get('favorite', function () {
     return view('favorites.index');
 });
@@ -79,4 +83,9 @@ Route::get('channels/create', function () {
 Route::get('sounds/create', function () {
     return view('sounds.create');
 });
+
+Route::get('noty', function () {
+    return response()->json(['html' => $html]);
+});
+
 

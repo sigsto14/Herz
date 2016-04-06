@@ -25,11 +25,51 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
 <meta name="msapplication-TileColor" content="#ffffff">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-    <title>Herz</title>
 
+@if(Auth::check())
+ <div id="noti" class="hidden">
+         <?php
+            /* först hämta ut userID och last_logout-value */
+$userID = Auth::user()->userID;
+$LastLogout = Auth::user()->last_logout;
+/* om last logout inte finns (när man precis registrerat sig) ska vi inte söka efter det heller */
+  if(is_null($LastLogout)){
+    /* sätter variabel för hur många notiser man har */
+        $LastLogout = Auth::user()->created_at;
+       }
+      
+        /*hämtar ut notiserna och räknar antalet, sätter variabel av antalet */
+              $notiNr = DB::table('subscribe')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('subscribe.userID', '=', $userID)->where('sounds.created_at', '>', $LastLogout)
+       ->orderBy('sounds.created_at', 'DESC')->count();
+if($notiNr == 0) {
+  $notiNr = '';
+}
+if($notiNr > 0){
+$titleNr = '(' . $notiNr . ')';
+}
+else {
+$titleNr = '';
+
+
+}       
+
+?>
+
+</div>
+<?php
+
+?>
+<title>Herz {{$titleNr}} </title>
+
+
+
+@else
+<title>Herz</title>
+    @endif
 
     <!-- Bootstrap core CSS -->
     <link href="http://localhost/Herz/public/css/bootstrap.min.css" rel="stylesheet">
@@ -148,8 +188,10 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
      
 
             <!-- sätter antalet notiser i knappen -->
+            @if(Auth::check())
+ <div id="noti">
 
-       <?php
+         <?php
             /* först hämta ut userID och last_logout-value */
 $userID = Auth::user()->userID;
 $LastLogout = Auth::user()->last_logout;
@@ -162,22 +204,30 @@ $LastLogout = Auth::user()->last_logout;
         /*hämtar ut notiserna och räknar antalet, sätter variabel av antalet */
               $notiNr = DB::table('subscribe')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('subscribe.userID', '=', $userID)->where('sounds.created_at', '>', $LastLogout)
        ->orderBy('sounds.created_at', 'DESC')->count();
-  
-         if($notiNr < 1) {
-          $notiNr = '';
-         }
-    
-     ?>   
-<button type="button" class="btn btn-default btn-lg">
-              <span id="noti" class="glyphicon glyphicon-eye-open" aria-hidden="true" onclick="refreshdiv()"></span>{{$notiNr}}
-              </button>
-    
+if($notiNr == 0) {
+  $notiNr = '';
+}
+$notification = '<button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true">' . $notiNr . '</p></span>
+              </button>';
+?>
+
+
+
+<?php
+echo $notification
+?>
+</div>
 <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
               </button>
               <button type="button" class="btn btn-default btn-lg">
               <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
-              </button> 
+              </button>
+
+@endif
+
+
             </li>
 
             <!-- Komment/Favorti Knappar Slut -->  
@@ -479,7 +529,23 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
+              <script type="text/javascript">
 
+
+
+$(document).ready(function(){ 
+
+    var auto= $('#noti'), refreshed_content;  
+    refreshed_content = setInterval(function(){
+    auto.fadeOut('fast').load('#noti').fadeIn("fast");}, 
+    3000);                    
+    console.log(refreshed_content);                    
+    return false; 
+});
+
+
+</script>
+                         
 </body>
 
 

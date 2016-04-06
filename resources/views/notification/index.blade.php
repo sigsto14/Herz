@@ -34,7 +34,7 @@ $userID = Auth::user()->userID;
 ?>
 	
 			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
-@yield('notis')
+
          @foreach($subscribeNotes as $subscribe)
 
  <a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}"><h1>{{ $subscribe->title }}</h1></a>
@@ -48,7 +48,7 @@ $userID = Auth::user()->userID;
               </audio>
 
 @endforeach
-@show
+
 			
 </table>
 

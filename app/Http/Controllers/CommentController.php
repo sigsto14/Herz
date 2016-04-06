@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Comment;
 
-class TemplateController extends Controller
+
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +18,7 @@ class TemplateController extends Controller
      */
     public function index()
     {
-       $users = DB::table('users');
-         $channels = DB::table('channels')->join('users', 'users.userID', '=', 'channels.channelID')->get();
-         $user = Auth::user()->userID;
-         $channel = $channels->where('channelID', '=', $user)->get();
-   
-         
-
-       
-         return view('template', compact('users'), compact('channels'));
-     }
-
+      
     }
 
     /**
@@ -47,7 +39,9 @@ class TemplateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Comment::create($input);
+        return back();
     }
 
     /**

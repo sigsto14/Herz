@@ -107,10 +107,11 @@ $favorite = new Favorite();
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
 
-        $favorite = Favorite::where('soundID', '=', $id);
+$user = Auth::user();
+        $favorite = DB::table('favorites')->where('soundID', '=', $id)->where('userID', '=', $user->userID);
        $favorite->delete();
         return back();
     }
