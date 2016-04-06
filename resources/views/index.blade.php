@@ -21,27 +21,33 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
         <div class="container">
           <div class="podcast-box">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#">Senaste</a></li>
-            <li role="presentation"><a href="#">Populärt</a></li>
-            <li role="presentation"><a href="#">Senast uppladat</a></li>
+            <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Senaste</a></li>
+            <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
+            <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Senast uppladat</a></li>
           </ul>
+          <script>
+$('#btnReview').click(function(){
+  $(".tab-content").removeClass("active");
+  $(".tab-content:first-child").addClass("active");
+});
+</script>
           <div class="col-md-12" id="container2">
+            <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns -->
-          @foreach($senaste as $senast)
-
-          
-          <div class="row">
+          @foreach($senaste as $senast)          
+            <div class="row">
               <div class="col-md-4" id="podbox"><a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="150px"></a>
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
               <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
-              </div>
-           
-                        </div>
-
+              </div>           
+            </div>       
 @endforeach
+            </div>
 <!-- här tar första boxen slut -->
-<h1>Populärt</h1><!-- här börjar andra rubriken -->
-@foreach($favorites as $favorite)
+<div role="tabpanel" class="tab-pane" id="pop">
+    <h1>Populärt</h1><!-- här börjar andra rubriken -->
+    @foreach($favorites as $favorite)
 
 <?php
 
@@ -71,7 +77,11 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 @endforeach
 <!-- här slutar andra -->
-
+</div>
+<div role="tabpanel" class="tab-pane" id="sen">
+  <h1>Panel</h1>
+</div>
+</div>
 
 </div>
 </div>

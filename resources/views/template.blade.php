@@ -29,6 +29,7 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+ <script src="http://localhost/Herz/public/js/functions.js"></script>
 
 
 @if(Auth::check())
@@ -51,6 +52,7 @@ if($notiNr == 0) {
 }
 if($notiNr > 0){
 $titleNr = '(' . $notiNr . ')';
+
 }
 else {
 $titleNr = '';
@@ -59,11 +61,10 @@ $titleNr = '';
 }       
 
 ?>
+<p id="notif">{{ $notiNr }}</p>
+</div>
 
 </div>
-<?php
-
-?>
 <title>Herz {{$titleNr}} </title>
 
 
@@ -185,43 +186,26 @@ $titleNr = '';
            
 
             
-         <?php
-            /* först hämta ut userID och last_logout-value */
-$userID = Auth::user()->userID;
-$LastLogout = Auth::user()->last_logout;
-/* om last logout inte finns (när man precis registrerat sig) ska vi inte söka efter det heller */
-  if(is_null($LastLogout)){
-    /* sätter variabel för hur många notiser man har */
-        $LastLogout = Auth::user()->created_at;
-       }
-      
-        /*hämtar ut notiserna och räknar antalet, sätter variabel av antalet */
-              $notiNr = DB::table('subscribe')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('subscribe.userID', '=', $userID)->where('sounds.created_at', '>', $LastLogout)
-       ->orderBy('sounds.created_at', 'DESC')->count();
-if($notiNr == 0) {
-  $notiNr = '';
-};
-?>
 
 
-@include('notification')
+
+
+<!--
                <script type="text/javascript">
-
-
-
 $(document).ready(function(){ 
 
     var auto= $('#noti2'), refreshed_content;  
     refreshed_content = setInterval(function(){
-    auto.fadeOut('fast').load('#noti2').fadeIn("fast");}, 
+    auto.fadeOut('fast').load('#noti3').fadeIn("fast");}, 
     3000);                    
     console.log(refreshed_content);                    
     return false; 
 });
 
-</script>
+</script>--><p id="variable2" class="hidden">prutt</p>
+
 <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><div id="noti2">{{ $notiNr }}</div></p></span>
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><p id="variable"></p></span>
               </button>
 
               <button type="button" class="btn btn-default btn-lg">
@@ -541,24 +525,8 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
-              <script type="text/javascript">
 
-
-
-$(document).ready(function(){ 
-
-    var auto= $('#noti'), refreshed_content;  
-    refreshed_content = setInterval(function(){
-    auto.fadeOut('fast').load('#noti').fadeIn("fast");}, 
-    3000);                    
-    console.log(refreshed_content);                    
-    return true; 
-});
-
-
-</script>
-                         
-</body>
+   
 
 
 </html>
