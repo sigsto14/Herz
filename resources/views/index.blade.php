@@ -25,11 +25,17 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
             <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
             <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Senast uppladat</a></li>
           </ul>
+  
           <script>
+
 $('#btnReview').click(function(){
   $(".tab-content").removeClass("active");
   $(".tab-content:first-child").addClass("active");
+
+
 });
+
+
 </script>
           <div class="col-md-12" id="container2">
             <div class="tab-content">

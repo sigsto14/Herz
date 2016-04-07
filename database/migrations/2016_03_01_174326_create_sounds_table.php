@@ -15,6 +15,7 @@ class CreateSoundsTable extends Migration
          Schema::create('sounds', function (Blueprint $table) {
             $table->increments('soundID');
             $table->string('title')->unique();
+            $table->string('description');
             $table->string('URL');
             $table->string('podpicture');
             $table->string('tag');

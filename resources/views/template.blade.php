@@ -29,8 +29,7 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<!--
- <script src="http://localhost/Herz/public/js/functions.js"></script>-->
+
 
 
 @if(Auth::check())
@@ -527,7 +526,17 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <!-- Bootstrap core JavaScript
     ================================================== -->
 
-   
+   <script>
+
+function load(){
+    var auto= $('#noti'), refreshed_content;  
+    refreshed_content = setInterval(function(){
+    auto.fadeOut('fast').load('#noti').fadeIn("fast");}, 
+    3000);                    
+    console.log(refreshed_content);                    
+    return true; 
+}
+   </script>
 
 
 </html>
