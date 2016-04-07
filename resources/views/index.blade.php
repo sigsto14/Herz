@@ -113,7 +113,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 
   @foreach($results as $result) <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
-            
+              
                <img src="{{ $result->podpicture }}" style="width:150px;height:120px;"/><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
