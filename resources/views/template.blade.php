@@ -371,14 +371,17 @@ else {
         <div id="collapseOne" class="panel-collapse collapse in">
           <div class="panel-body">
             <table class="pre-fav" style="width:100%">
+            <p>Senaste uppladdningar:</p>
             <tr>
               @foreach($subscribes as $subscribe)  
                
+            <td><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}">{{ $subscribe->title }}</a></td>
+            <td>av</td>
             <td><a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}">{{ $subscribe->channelname}}</a></td>
-            <td><p>Senaste upladdning <a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}">{{ $subscribe->title }}</a></p></td></tr>
-            @endforeach
+            </tr>
+            @endforeach            
             <tr>
-            <td><p><a href="http://localhost/Herz/public/subscribe">Se alla...</a></p></td></tr>
+            <td><a href="http://localhost/Herz/public/subscribe">Se alla...</a></td></tr>
             <!--
               <td>2</td>
               <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>   
@@ -427,17 +430,18 @@ else {
         <div id="collapseTwo" class="panel-collapse collapse in">
             <div class="panel-body">
           <table class="pre-fav" style="width:100%">
+          <p>Senaste favoriter:</p>
           <tr>
-
             <!-- tar varje resultat (5 st) individuellt -->
             @foreach($favorites as $favorite)  
             <td><img src="{{ $favorite->podpicture }}"style="width:20px"></td>   
             <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
-            <td>KANAL:</td>
+            <td>Kanal:</td>
             <td><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></td></tr>
             @endforeach
             <tr>
-            <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td></tr>
+            <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td>
+            </tr>
           
           <!-- tillfällig utkommentering<tr>
             <td>2</td>
