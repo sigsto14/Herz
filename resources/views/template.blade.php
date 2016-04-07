@@ -29,7 +29,8 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
- <script src="http://localhost/Herz/public/js/functions.js"></script>
+<!--
+ <script src="http://localhost/Herz/public/js/functions.js"></script>-->
 
 
 @if(Auth::check())

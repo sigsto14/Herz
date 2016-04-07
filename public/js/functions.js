@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+
 
     var auto= $('#noti'), refreshed_content;  
     refreshed_content = setInterval(function(){
@@ -6,4 +6,3 @@ $(document).ready(function(){
     3000);                    
     console.log(refreshed_content);                    
     return true; 
-});
