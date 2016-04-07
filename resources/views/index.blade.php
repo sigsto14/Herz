@@ -73,7 +73,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"><p>{{$favNr}}</span>
               </button><br><br>
-              <p>av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a></p>
+              <p>av </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
               </div>
             
                         </div>
@@ -82,6 +82,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 @endforeach
 <!-- här slutar andra -->
+</div>
 </div>
 <!-- denna ska vara i rubrik 3 -->
 <div role="tabpanel" class="tab-pane" id="sen">
@@ -117,7 +118,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
              @endforeach
              @endforeach
-
+</div>
 
 <!-- rubrik 4-->
 <div role="tabpanel" class="tab-pane" id="pre">

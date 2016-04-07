@@ -78,7 +78,7 @@ $state = 0;
 ?>
 @if($sound->channelID == $userID)
 <td><button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ditt klipp :)</p></span>
+              <span class="glyphicon glyphicon-star" aria-hidden="true" id="heart"></a><p> Ditt klipp :)</p></span>
               </button></td>
               @else
 <!-- ett formulär för att lägga till favorit, med hidden fields för att det ska vara att bara trycka på en knapp (om state 0 alltså att den inte redan är favorit) -->
