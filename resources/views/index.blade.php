@@ -56,6 +56,8 @@ $('#btnReview').click(function(){
                       
             </div>       
 @endforeach
+<br>
+<img src="http://localhost/Herz/public/images/podcast_av/pod.png"/><br>
 <a href="http://localhost/Herz/public/sound" id="SeeMore">Se fler...</a>
             </div>
 <!-- här tar första boxen slut -->
