@@ -7,7 +7,7 @@
 
 $user = Auth::user();
 /* variabel för senaste uppladdningar */
-$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->paginate(6);
+$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(6)->get();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
 
@@ -18,7 +18,7 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
              
 
 ?>
-   
+
         <title>Herz</title>
 
        
@@ -41,13 +41,14 @@ $('#btnReview').click(function(){
             <div role="tabpanel" class="tab-pane active" id="home">
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns -->
           @foreach($senaste as $senast)          
-            <div class="row">
-              <div class="col-md-4" id="podbox"><a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="150px"></a>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="indexBox">
+              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="150px"></a>
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
               <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
-              </div>           
+                      
             </div>       
 @endforeach
+<a href="http://localhost/Herz/public/sound" >Se fler...</a>
             </div>
 <!-- här tar första boxen slut -->
 <div role="tabpanel" class="tab-pane" id="pop">
@@ -66,15 +67,15 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 @if($favNr >= 2)
 
-<div class="col-md-12">
-          <div class="row">
-              <div class="col-md-4" id="podbox"><a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px"></a>
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="indexBox">
+              <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px"></a>
               <a href="http://localhost/Herz/public/sound/"><h3>{{ $favorite->title }}</h3></a>
               <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"><p>{{$favNr}}</span>
               </button><br><br>
               <p>av </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
-              </div>
+             
             
                         </div>
 
@@ -82,7 +83,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 @endforeach
 <!-- här slutar andra -->
-</div>
+
 </div>
 <!-- denna ska vara i rubrik 3 -->
 <div role="tabpanel" class="tab-pane" id="sen">
@@ -107,7 +108,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 
   @foreach($results as $result)
-  <div class="row">
+   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="indexBox">
               
                <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
@@ -124,17 +125,18 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 <div role="tabpanel" class="tab-pane" id="pre">
   <h1>Prenumerationer</h1>
 @foreach($subscribe as $sub)
-<div class="row">
-              <div class="col-md-4" id="podbox"><a href="http://localhost/Herz/public/sound/{{ $sub->soundID }}"><img src="{{ $sub->podpicture }}" width="150px"></a>
-              <a href="http://localhost/Herz/public/sound/{{ $sub->soundID }}"><h3>{{ $sub->title }} </h3></a>
-              <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $sub->channelname }}</a></p>
-              </div>           
-            </div>       
+ <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id="indexBox">
+              
+               <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><img src="{{ $sub->podpicture }}" style="width:145px;height:159px;"/></a><br>
+               <h3><a href="http://localhost/Herz/public/sound/{{$sub->soundID}}">{{ $sub->title }}</a></h3><br>
+ <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $sub->channelID }}">{{$sub->channelname}}</a></p>
+              
+              
+             </div>
 @endforeach
-</div>
-</div>
-</div>
-</div>
+
+
+
 @endif
           <!--
           <br>    
@@ -173,6 +175,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
     </div>
     </div>
     </div> 
+    </div>
 
     </body>
 
