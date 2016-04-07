@@ -28,7 +28,7 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
             <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Senaste</a></li>
             <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
             <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Rekommendationer</a></li>
-            <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Prenumerationer</a></li>
+            <li role="presentation"><a href="#pre" role="tab" data-toggle="tab">Prenumerationer</a></li>
           </ul>
           <script>
 $('#btnReview').click(function(){
@@ -119,7 +119,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 </div>
 </div>
 <!-- rubrik 4-->
-<div role="tabpanel" class="tab-pane" id="sen">
+<div role="tabpanel" class="tab-pane" id="pre">
   <h1>Prenumerationer</h1>
 @foreach($subscribe as $sub)
 <div class="row">
@@ -166,8 +166,10 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
           </div> 
          </div>  
         </div>-->
+    </div>
+    </div>
+    </div>
     </div> 
-
 
     </body>
 
