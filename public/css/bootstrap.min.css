@@ -520,6 +520,7 @@ transition:width 0.5s;
 	padding-top: 50px;
 	padding-bottom: 50px;
 	margin: auto;
+	min-height: 660px;
 }
 
 #container2 .row{
