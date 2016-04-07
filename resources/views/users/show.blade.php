@@ -75,7 +75,7 @@ $userID = Auth::user()->userID;
              $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
          })->orderBy('sounds.created_at', 'ASC')->paginate(5);
-       
+
          ?>
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
@@ -99,57 +99,8 @@ Your browser does not support the audio element.
 <!-- slut på ljudklipprekommendationer -->
 <!-- rekommenderade kanaler -->
 
-             <h1> Kanaler för dig: </h1>
-             <!-- kör bara om det INTE ÄR null i channels -->
-
-             @foreach($channels as $channel)
-
-             <?php
-/* fixar lite variabler så vi kan testa mot dem */
-
-          $userID = Auth::user()->userID;
-          $info = $channel->information;
-
-/* sök efter de kanaler med liknande info som de som är subbade */
-
-         $results = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('channels.information', 'LIKE', '%' . $info . '%')->groupBy('channels.channelID')->take(2)->get();
- 
-
-         ?>
-         
-         <!-- foreachloop för resultaten -->
-         @foreach($results as $result)
-
-     <?php
-
-$times = DB::table('sounds')->where('sounds.channelID', '=', $result->channelID)->orderBy('sounds.created_at', 'ASC')->first();
-
-     /*variabler för inloggad user*/
-     $userID = Auth::user()->userID;
-     /* hämta ut vilket channelID detta resultat har */
-     $chanID = $result->channelID;
-     /*jämföra detta med användares subscribtion */
-     $subID = DB::table('subscribe')->where('channelID', '=', $chanID)->where('userID', '=', $userID)->get();
-
-
-     ?>
- @endforeach
-
-     <!-- om resultatet redan finns i användares subscribes händer inget -->
-@if($chanID != $subID & $result->soundID = $times->soundID)
-<!-- om det passar men inte finns i subs kommer förslag --><br><br><br><br>
-<a href="http://localhost/Herz/public/channel/{{$result->channelID}}"><p>{{ $result->channelname }}</p></a>
-{{ $result->created_at }}
-{{ $result->title }}
-{{ $result->soundID }}
-
-@else
-
-
-    @endif
-
-        
-@endforeach
+            
+             
             
               @endif
               @endif
