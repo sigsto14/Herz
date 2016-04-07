@@ -196,20 +196,14 @@ $titleNr = '';
 
 <!--
                <script type="text/javascript">
-$(document).ready(function(){ 
 
-    var auto= $('#noti2'), refreshed_content;  
-    refreshed_content = setInterval(function(){
-    auto.fadeOut('fast').load('#noti3').fadeIn("fast");}, 
-    3000);                    
-    console.log(refreshed_content);                    
-    return false; 
-});
+
+  
 
 </script>--><p id="variable2" class="hidden"></p>
 
 <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><p id="variable"></p></span>
+              <span class="glyphicon glyphicon-eye-open" aria-hidden="true">{{ $notiNr }}</span>
               </button>
 
               <button type="button" class="btn btn-default btn-lg">
@@ -517,6 +511,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
 
 
 
+
     </script>
       
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
@@ -526,10 +521,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <!-- Bootstrap core JavaScript
     ================================================== -->
 
-   <script>
 
-
-   </script>
 
 
 </html>

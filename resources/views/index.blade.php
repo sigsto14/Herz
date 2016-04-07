@@ -51,7 +51,13 @@ $('#btnReview').click(function(){
            <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
             <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="180px" height="120px"></a><br><br>
+                @if(Auth::check())
+              @if($senast->channelID == Auth::user()->userID)
+<p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+@else
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              @endif
+              @endif
               <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
                       
             </div>       
@@ -81,7 +87,13 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
              <div class="col-md-3 col-sm-1 col-xs-1 col-lg-1" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" heigh="120px"></a>
               <a href="http://localhost/Herz/public/sound/"><h3>{{ $favorite->title }}</h3></a>
+              @if(Auth::check())
+              @if($favorite->channelID == Auth::user()->userID)
+<p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+@else
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              @endif
+              @endif
               <p>Kanal </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
              
             
@@ -123,7 +135,13 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               ?>
                <img src="{{ $result->podpicture }}" style="width:150px;height:120px;"/><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
-                <p><span class="glyphicon glyphicon-heart">{{ $favNr}}</span></p>
+            @if(Auth::check())
+              @if($result->channelID == Auth::user()->userID)
+<p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+@else
+              <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              @endif
+              @endif
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               
               
@@ -145,7 +163,13 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               
                <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><img src="{{ $sub->podpicture }}" style="width:150px;height:120px;"/></a><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$sub->soundID}}">{{ $sub->title }}</a></h3><br>
-                <span class="glyphicon glyphicon-heart">{{ $favNr}}</span>
+                 @if(Auth::check())
+              @if($sub->channelID == Auth::user()->userID)
+<p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+@else
+              <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              @endif
+              @endif
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $sub->channelID }}">{{$sub->channelname}}</a></p>
               
               
