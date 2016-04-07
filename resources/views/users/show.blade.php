@@ -75,6 +75,7 @@ $userID = Auth::user()->userID;
              $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
          })->orderBy('sounds.created_at', 'ASC')->paginate(5);
+       
          ?>
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
@@ -102,6 +103,7 @@ Your browser does not support the audio element.
              <!-- kör bara om det INTE ÄR null i channels -->
 
              @foreach($channels as $channel)
+
              <?php
 /* fixar lite variabler så vi kan testa mot dem */
 
@@ -132,6 +134,7 @@ $times = DB::table('sounds')->where('sounds.channelID', '=', $result->channelID)
 
      ?>
  @endforeach
+
      <!-- om resultatet redan finns i användares subscribes händer inget -->
 @if($chanID != $subID & $result->soundID = $times->soundID)
 <!-- om det passar men inte finns i subs kommer förslag --><br><br><br><br>
