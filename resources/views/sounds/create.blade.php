@@ -22,6 +22,9 @@
 
 {!! Form::label('Tag:') !!}
 {!! Form::text('tag') !!}<br>
+{!! Form::label('Beskrivning:') !!}
+{!! Form::textarea('description') !!}<br>
+
 
 <?php
 $categories = DB::table('category')->get();

@@ -39,7 +39,7 @@ class Sound extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['title', 'URL', 'tag', 'status', 'channelID', 'categoryID'];
+    protected $fillable = ['title', 'URL', 'tag', 'status', 'channelID', 'categoryID', 'description'];
 
     /**
      * The attributes excluded from the model's JSON form.

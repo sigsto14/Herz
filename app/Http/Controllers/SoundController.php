@@ -62,6 +62,7 @@ $validator = Validator::make($request->all(), [
             'audio'=>'required|',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
             'categoryID' => 'required|',
+            'description' => 'required|',
          
             ]);
 
@@ -94,6 +95,7 @@ $sound = new Sound();
          $sound->URL = "http://localhost/Herz/public/sounds/$soundName";
          $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/$imageName";
          $sound->tag = $request->get('tag');
+           $sound->description = $request->get('description');
          $sound->channelID= Auth::user()->userID;
         $sound->save();
         return back()
