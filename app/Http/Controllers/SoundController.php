@@ -58,7 +58,7 @@ class SoundController extends Controller
     public function store(Request $request)
     {
 $validator = Validator::make($request->all(), [
-                'title' => 'required|unique:sounds|max:255',
+                'title' => 'required|unique:sounds|max:255|',
             'audio'=>'required|',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
             'categoryID' => 'required|',
@@ -74,26 +74,32 @@ $validator = Validator::make($request->all(), [
           }
 
     if($request->hasFile('audio')) {
+$soundVar = $request->title;
       /* sätter namn och får fram om det är ex jpg eller wav-filer så vi kan länka till ljud/bild */      
-            $soundName = $request->title . '.' .
+            $soundName = utf8_decode($soundVar) . '.' .
             $request->file('audio')->getClientOriginalExtension();
 /*lägger filen där vi ska spara den*/
             $request->file('audio')->move(
             base_path() . '/public/sounds', $soundName
             );
 /* samma med bild som ljud*/
-            $imageName = $request->title . '.' .
+$imageVar = $request->title;
+            $imageName = utf8_decode($imageVar) . '.' .
             $request->file('image')->getClientOriginalExtension();
 
             $request->file('image')->move(
             base_path() . '/public/Podcastpictures', $imageName
             );
 /*skapar ny rad i tabellen med hjälp av modellen Sound */
+
+
 $sound = new Sound();
+
+
          $sound->title = $request->get('title');
          $sound->categoryID = $request->get('categoryID');
-         $sound->URL = "http://localhost/Herz/public/sounds/$soundName";
-         $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/$imageName";
+         $sound->URL = "http://localhost/Herz/public/sounds/" . utf8_encode($soundName);
+         $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/" . utf8_encode($imageName);
          $sound->tag = $request->get('tag');
            $sound->description = $request->get('description');
          $sound->channelID= Auth::user()->userID;

@@ -76,7 +76,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 @if($favNr >= 2)
 
 
-             <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+             <div class="col-md-3 col-sm-1 col-xs-1 col-lg-1" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" heigh="120px"></a>
               <a href="http://localhost/Herz/public/sound/"><h3>{{ $favorite->title }}</h3></a>
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
