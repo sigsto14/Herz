@@ -25,12 +25,23 @@ body{
 
 /*Body slut */
 
+#indexBox {
+	padding-left: 8%;
+
+}
+
 /*Nav */
 #nav{
   position: relative;
   top: 25%;
   transform: translateY(5%);
   min-height: 80px;
+}
+
+/* see fler indexpage */
+#SeeMore {
+
+
 }
 
 #search { 
@@ -41,7 +52,12 @@ body{
     margin: auto;
     padding: 1%;
     transform: translateY(-55%);
+
      }
+
+ #searchfield {
+ 	 background: glyphicon-icon-search;
+ }
 
 /*Clearing Floats*/
 .cf:before, .cf:after{

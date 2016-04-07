@@ -3,7 +3,6 @@
 @section('footer')
 <!DOCTYPE HTML>
 
-<!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
 
 
 <title>{{ $sound->title }}</title>
@@ -23,6 +22,7 @@
 Your browser does not support the audio element.
 </audio>
 @if(Auth::check())
+<!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
 <?php
 $userID = Auth::user()->userID;
 $soundID = $sound->soundID;

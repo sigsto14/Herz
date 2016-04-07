@@ -149,7 +149,9 @@ $titleNr = '';
               <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
                 <div class="input-group">
                   <!-- Sökfältet -->
-                  <input type="text" class="form-control" placeholder="Sök" name="search" value="Sök" onfocus="if(this.value  == 'Sök') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Sök'; } "> 
+                  <div class="left-inner-addon ">
+    <i class="icon-search"></i>
+                  <input type="search" class="form-control" placeholder="Sök" name="search" value="Sök" onfocus="if(this.value  == 'Sök') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Sök'; } "> </div>
       
                   <button type="submit" value="Sök">Sök</button>
                   <div class="input-group-btn">
