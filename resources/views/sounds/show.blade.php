@@ -12,10 +12,14 @@
     <div class="container">
     <div class="col-md-12" id="container">
     <div class="channel_header">
-    <!-- Kanal header --> 
+      <div class="podbox">
+          <div class="titlepod">
             <h1>{{ $sound->title }}</h1>
-            <p>{{ $sound->description }}</p>
-            <img src="{{ $sound->podpicture }}" style="width:145px;height:159px;"/>    
+            <p>Beskrivning:</p><p>{{ $sound->description }}</p>
+          </div>
+          <div class="pic">  
+            <img src="{{ $sound->podpicture }}" style="width:145px;height:159px;"></div>
+          <div class="spela">     
                  <audio controls>
   <source src="{{ $sound->URL }}" type="audio/ogg">
   <source src="{{ $sound->URL }}" type="audio/mpeg">
@@ -56,7 +60,9 @@ $state = 0;
 <div>
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
 </div>
- 
+</div> 
+</div>
+<div class="podfavk">
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
               </button>
@@ -72,21 +78,28 @@ $state = 0;
 @endif
 
 @endif
-
+</div>
 <?php
 $id = $sound->channelID;
 $channel = DB::table('channels')->where('channels.channelID', '=', $id)->first();
 $user = DB::table('users')->where('users.userID', '=', $id)->first();
 $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->get();
 ?>
-
-<h2>Tillhör kanal:</h2>
-<a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}">{{ $channel->channelname }}</a><br>
-<p>Användare:</p>
-<a href="http://localhost/Herz/public/user/{{ $channel->channelID }}">{{ $user->username }}</a>
+<div class="podbox2">
+<br>
+<table style="width:25%">
+<tr>
+<td><p>Tillhör kanal:</p></td>
+<td><p>Användare:</p></td>
+</tr>
+<tr>
+<td><a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}" id="pbi">{{ $channel->channelname }}</a></td>
+<td><a href="http://localhost/Herz/public/user/{{ $channel->channelID }}" id="pbi">{{ $user->username }}</a></td>
+</tr>
+</table>
 </div>
 
-
+<div class="komment">
 <!-- Kommentarer -->
 <h3>Kommentarer:</h3>    
 
@@ -96,7 +109,7 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 @endforeach
 
 <!-- Kommentarsfält -->
-<div class="col-md-12" id="container">
+
 
   @if(Auth::user()) <!-- Ser om användaren är inloggad -->
 
