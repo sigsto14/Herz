@@ -148,7 +148,7 @@ $titleNr = '';
               <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
                 <div class="input-group">
                   <!-- Sökfältet -->
-                  <input type="text" class="form-control" placeholder="Sök" name="search"> 
+                  <input type="text" class="form-control" placeholder="Sök" name="search" value="Sök"> 
                   <button type="submit" value="Sök">Sök</button>
                   <div class="input-group-btn">
                                   <!-- Kategorier i sökfältet -->
