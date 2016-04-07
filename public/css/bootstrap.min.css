@@ -622,3 +622,13 @@ position: absolute;
 margin-top: -1px;
 font-size: 10px;
 }
+
+.spod{
+	margin-left: 5%;
+}
+
+.fvbox{
+	position: absolute;
+	margin-top: -27%;
+	margin-left: 30%;
+}

@@ -93,8 +93,7 @@ $state = 0;
           </div>
         </div>
          <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8"  id="tabus">
-        
+        <div class="col-lg-8"  id="tabus">        
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#">Sparade podcasts</a></li>
             <li role="presentation"><a href="#">Favoriter</a></li>
@@ -102,15 +101,14 @@ $state = 0;
             <li role="presentation"><a href="#">+</a></li>
           </ul>
           <br>
-          <div class="row">
-          
-          <?php
+          <div class="spod">
+            <?php
            $id = $user->userID;
               $sounds = DB::table('sounds')->where('channelID', '=', $id)->orderBy('sounds.created_at', 'desc')->get();  
           ?>
-          @foreach($sounds as $sound)
+           @foreach($sounds as $sound)
           @if(Auth::check())
-<?php
+        <?php
 $userID = Auth::user()->userID;
 $soundID = $sound->soundID;
 
@@ -145,7 +143,7 @@ Your browser does not support the audio element.
 @if($sound->channelID != Auth::user()->userID)
 @if($state == 3)
 <td>{!! Form::open(array('route' => 'favorite.store')) !!}
- {!! csrf_field() !!}
+ {!! csrf_field() !!}</td>
 <div>
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
 </div>
@@ -154,7 +152,7 @@ Your browser does not support the audio element.
 </div>
  
 
-
+<div class="fvbox">
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
               </button>
@@ -176,15 +174,17 @@ Your browser does not support the audio element.
 {!! Form::close() !!}
 @endif
 @endif
+</div>
+
 @endforeach
 
+
           </div>
-     
+          </div>
+          </div>
           </div>   
           </div> 
-         </div> 
-        </div>
-    </div> --><!-- /container -->
+<!-- /container -->
    
 			
 			
