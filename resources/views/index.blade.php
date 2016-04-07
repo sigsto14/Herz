@@ -7,7 +7,7 @@
 
 $user = Auth::user();
 /* variabel för senaste uppladdningar */
-$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(6)->get();
+$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(5)->get();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
 
@@ -57,7 +57,7 @@ $('#btnReview').click(function(){
             </div>       
 @endforeach
 <br>
-<img src="http://localhost/Herz/public/images/podcast_av/pod.png"/><br>
+<a href="http://localhost/Herz/public/sound"><img src="http://localhost/Herz/public/images/podcast_av/pod.png"/></a><br>
 <a href="http://localhost/Herz/public/sound" id="SeeMore">Se fler...</a>
             </div>
 <!-- här tar första boxen slut -->
