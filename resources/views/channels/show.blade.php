@@ -109,6 +109,7 @@ $state = 0;
               $sounds = DB::table('sounds')->where('channelID', '=', $id)->orderBy('sounds.created_at', 'desc')->get();  
           ?>
           @foreach($sounds as $sound)
+          @if(Auth::check())
 <?php
 $userID = Auth::user()->userID;
 $soundID = $sound->soundID;
@@ -132,6 +133,7 @@ $state = 3;
 }
 
 ?>
+@endif
            <h1>{{ $sound->title }}</h1> 
            <img src=" {{ $sound->podpicture }}" width="200px" height="auto"><br>
            <audio controls>
@@ -140,6 +142,7 @@ $state = 3;
 Your browser does not support the audio element.
 </audio>
 @if(Auth::check())
+@if($sound->channelID != Auth::user()->userID)
 @if($state == 3)
 <td>{!! Form::open(array('route' => 'favorite.store')) !!}
  {!! csrf_field() !!}
@@ -163,6 +166,7 @@ Your browser does not support the audio element.
               <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
               </button>
 {!! Form::close() !!}</td>
+@endif
 @endif
 @if(Auth::user()->userID == $user->userID)
 
