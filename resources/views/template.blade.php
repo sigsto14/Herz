@@ -290,8 +290,8 @@ else {
 
                   
 
-                   $loginID = 'reg-log-fail';
-                   $loginID2 = 'login-menu-fail';
+                   $loginID = 'reglogfail';
+                   $loginID2 = 'login-menu.fail';
                   
                    ?>
 @else
@@ -300,34 +300,24 @@ else {
                 $text = "Logga In";
 
 
-                   $loginID = 'reg-log';
+                   $loginID = 'reglog';
                    $loginID2 = 'login-menu';
                
                    ?>
                    @endif
-              <li class="dropdown">
-                
-              
-
-            
-              <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="{{ $loginID }}">{{$text}} <strong class="caret"></strong></a>
-
-            
-
-      
-            
-                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">
-              <!-- Logga In meny -->
+              <li class="dropdown" id="user-menu">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="{{ $loginID }}">{{$text}}<span class="caret"></span></a>
+              <!-- Logga In meny -->                   
+                <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">
                   <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
                 {!! csrf_field() !!}
                     <p>E-mail</p>
                     <input id="user_username" style="margin-bottom: 15px;" type="text" name="email" size="30" />
                     <p>Lösenord</p>
                     <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
-                
-                     <div>
-        <input type="checkbox" name="remember"> Kom ihåg mig!
-    </div>
+  
+                  <input type="checkbox" name="remember"> Kom ihåg mig!
+
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
                  
                       
@@ -345,16 +335,18 @@ else {
         @if(Session::has('message'))
 <div class="alert alert-success">
     {{ Session::get('message') }}
-   
+   </div>
 @endif
                 </form>
                 @endif
 
-            </div><!-- Logga In/Dropdown meny slut-->      
+            </ul><!-- Logga In/Dropdown meny slut-->      
+            </li> 
 
-<div id="status">
-</div>              
-      </div>
+            </div>
+            </div> 
+              
+
 
 
 
