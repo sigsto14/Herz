@@ -6,6 +6,7 @@
 
 <title>Sökresultat</title>
 <div class="container" id="container">
+
 <!-- kollar om sökningen hittat något -->
 @if (count($channels) === 0)
 Inga sökresultat

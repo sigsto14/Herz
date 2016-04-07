@@ -113,11 +113,12 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               
               
-             
+             </div>
+
              @endforeach
              @endforeach
-</div>
-</div>
+
+
 <!-- rubrik 4-->
 <div role="tabpanel" class="tab-pane" id="pre">
   <h1>Prenumerationer</h1>
@@ -129,6 +130,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               </div>           
             </div>       
 @endforeach
+</div>
 </div>
 </div>
 </div>

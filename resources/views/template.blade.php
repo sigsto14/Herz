@@ -144,11 +144,13 @@ $titleNr = '';
             </li>
             <!-- Sökfunktion -->
 
+
             <div id="search" >  
               <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
                 <div class="input-group">
                   <!-- Sökfältet -->
-                  <input type="text" class="form-control" placeholder="Sök" name="search" value="Sök"> 
+                  <input type="text" class="form-control" placeholder="Sök" name="search" value="Sök" onfocus="if(this.value  == 'Sök') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Sök'; } "> 
+      
                   <button type="submit" value="Sök">Sök</button>
                   <div class="input-group-btn">
                                   <!-- Kategorier i sökfältet -->
@@ -202,7 +204,7 @@ $(document).ready(function(){
     return false; 
 });
 
-</script>--><p id="variable2" class="hidden">prutt</p>
+</script>--><p id="variable2" class="hidden"></p>
 
 <button type="button" class="btn btn-default btn-lg">
               <span class="glyphicon glyphicon-eye-open" aria-hidden="true"><p id="variable"></p></span>
