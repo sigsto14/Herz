@@ -109,7 +109,29 @@ $state = 0;
               $sounds = DB::table('sounds')->where('channelID', '=', $id)->orderBy('sounds.created_at', 'desc')->get();  
           ?>
           @foreach($sounds as $sound)
+<?php
+$userID = Auth::user()->userID;
+$soundID = $sound->soundID;
 
+$mysqli = new mysqli("localhost","root","","herz");
+
+$query = <<<END
+SELECT * FROM favorites
+WHERE userID = '{$userID}'
+AND soundID = '{$soundID}'
+END;
+
+$res = $mysqli->query($query);
+if($res->num_rows > 0){
+  $state = 2;
+
+}
+else {
+
+$state = 3;
+}
+
+?>
            <h1>{{ $sound->title }}</h1> 
            <img src=" {{ $sound->podpicture }}" width="200px" height="auto"><br>
            <audio controls>
@@ -118,6 +140,30 @@ $state = 0;
 Your browser does not support the audio element.
 </audio>
 @if(Auth::check())
+@if($state == 3)
+<td>{!! Form::open(array('route' => 'favorite.store')) !!}
+ {!! csrf_field() !!}
+<div>
+        <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
+</div>
+<div>
+        <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+</div>
+ 
+
+
+<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
+              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
+              </button>
+{!! Form::close() !!}
+@else
+<td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
+
+      <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
+              <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
+              </button>
+{!! Form::close() !!}</td>
+@endif
 @if(Auth::user()->userID == $user->userID)
 
 {!!   Form::open(array('method' => 'DELETE', 'route' => array('sound.destroy', $sound->soundID))) !!}
