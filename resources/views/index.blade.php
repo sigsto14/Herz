@@ -7,7 +7,7 @@
 
 $user = Auth::user();
 /* variabel för senaste uppladdningar */
-$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(10)->get();
+$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(6)->get();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
 
@@ -43,11 +43,15 @@ $('#btnReview').click(function(){
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
-          @foreach($senaste as $senast)          
+          @foreach($senaste as $senast) 
+          <?php
+          /* kolla hur många som har klippet som favorit */
+          $favNr = DB::table('favorites')->where('soundID', '=', $senast->soundID)->count();
+          ?>         
            <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
             <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="180px" height="120px"></a><br><br>
-              
+              <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
               <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
                       
             </div>       
@@ -75,10 +79,8 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
              <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" heigh="120px"></a>
               <a href="http://localhost/Herz/public/sound/"><h3>{{ $favorite->title }}</h3></a>
-              <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"><p>{{$favNr}}</span>
-              </button><br><br>
-              <p>av </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
+              <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              <p>Kanal </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
              
             
                         </div>
@@ -113,9 +115,13 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 
   @foreach($results as $result) <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
-              
+              <?php
+
+              $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count();
+              ?>
                <img src="{{ $result->podpicture }}" style="width:150px;height:120px;"/><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
+                <p><span class="glyphicon glyphicon-heart">{{ $favNr}}</span></p>
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               
               
@@ -129,10 +135,15 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 <div role="tabpanel" class="tab-pane" id="pre">
   <h1>Prenumerationer</h1>
 @foreach($subscribe as $sub)
+<?php
+
+              $favNr = DB::table('favorites')->where('soundID', '=', $sub->soundID)->count();
+              ?>
  <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
               
                <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><img src="{{ $sub->podpicture }}" style="width:150px;height:120px;"/></a><br>
                <h3><a href="http://localhost/Herz/public/sound/{{$sub->soundID}}">{{ $sub->title }}</a></h3><br>
+                <span class="glyphicon glyphicon-heart">{{ $favNr}}</span>
  <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $sub->channelID }}">{{$sub->channelname}}</a></p>
               
               
