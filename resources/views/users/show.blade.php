@@ -74,11 +74,12 @@ $userID = Auth::user()->userID;
          ->where(function($query) use($tag) {
              $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
-         })->orderBy('sounds.created_at', 'ASC')->paginate(5);
+         })->orderBy('sounds.created_at', 'ASC')->paginate(2);
 
          ?>
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
+@if($result->channelID != $userID)
   <div class="row">
               <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br></div>
                <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
@@ -91,7 +92,7 @@ Your browser does not support the audio element.
 
             <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               
-              
+              @endif
              
              @endforeach
              @endforeach
