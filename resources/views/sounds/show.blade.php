@@ -65,18 +65,17 @@ $state = 0;
 <div class="podfavk">
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
-              </button>
+              </button></div>
 {!! Form::close() !!}
 @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
-
+<div class="podfavk2">
       <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
               </button>
 {!! Form::close() !!}</td>
 
 @endif
-
 @endif
 </div>
 <?php

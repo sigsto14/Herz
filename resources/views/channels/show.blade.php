@@ -132,6 +132,7 @@ $state = 3;
 
 ?>
 @endif
+          <div class="sb">
            <h1>{{ $sound->title }}</h1> 
            <img src=" {{ $sound->podpicture }}" width="200px" height="auto"><br>
            <audio controls>
@@ -155,14 +156,16 @@ Your browser does not support the audio element.
 <div class="fvbox">
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
-              </button>
+              </button></div>
 {!! Form::close() !!}
 @else
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
 
+<div class="fvbox2">
       <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
-              </button>
+              </button></div>
+
 {!! Form::close() !!}</td>
 @endif
 @endif
@@ -175,6 +178,7 @@ Your browser does not support the audio element.
 @endif
 @endif
 </div>
+
 
 @endforeach
 

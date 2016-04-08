@@ -428,10 +428,9 @@ else {
           <tr>
             <!-- tar varje resultat (5 st) individuellt -->
             @foreach($favorites as $favorite)  
-            <td><img src="{{ $favorite->podpicture }}"style="width:20px"></td>   
-            <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
-            <td>Kanal:</td>
-            <td><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></td></tr>
+            <td style="width: 50%; "><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
+            <td style="position: absolute; margin-left: -12%;">Kanal:</td>
+            <td ><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}" style="position: relative; ">{{ $favorite->channelname}}</a></td></tr>
             @endforeach
             <tr>
             <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td>
