@@ -19,7 +19,7 @@ use DateTime;
 class AuthController extends Controller
 {
 
- 
+ protected $edirectPath = '';
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -33,6 +33,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 protected $loginPath = '/';
+
 
     /**
      * Create a new authentication controller instance.
@@ -98,7 +99,7 @@ public function postRegister(Request $request)
   
   Auth::login($this->create($request->all()));
 
-   return redirect()->route('index');
+   return redirect()->intended();
 }
 
 }
