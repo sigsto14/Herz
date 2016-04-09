@@ -55,6 +55,9 @@ Route::resource('channel', 'ChannelController');
 Route::get('login', function () {
     return view('login');
 });
+Route::get('back', function () {
+    return back();
+});
 
 Route::get('logout', function () {
     return back('index');

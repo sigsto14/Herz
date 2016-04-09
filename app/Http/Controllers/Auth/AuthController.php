@@ -19,7 +19,7 @@ use DateTime;
 class AuthController extends Controller
 {
 
- protected $edirectPath = '';
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -32,9 +32,10 @@ class AuthController extends Controller
     */
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-protected $loginPath = '/';
 
+protected $loginPath = '';
 
+ protected $redirectPath = 'back';
     /**
      * Create a new authentication controller instance.
      *
