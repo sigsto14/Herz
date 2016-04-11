@@ -122,10 +122,11 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
           }
 
 $channel = Channel::find($id);
+/* variabel för inputen, för namnet på id't, och en för att kolla om värdet redan finns id atabasen */
 $channelname3 = $request->channelname;
 $channelname = $channel->channelname;
 $channelname2 = Channel::where('channelname', '=', $channelname3)->where('channelID', '!=', $userID)->first();
-
+/* kollar om inputen är samma som nuvarande kanalnamn och uppdaterar därefter */
 if($channelname3 == $channelname){
 
     $channel->information;
@@ -135,6 +136,8 @@ $channel->save();
     return back()->withMessage('Ditt konto har uppdaterats');
  
 }
+
+/* kollar så att det "nya" kanalnamnet från inputen inte finns i databasen än med hjäl av variabel channel2  och uppdaterar därefter */
 else if (is_null($channelname2))
     {
 $channel = Channel::find($id);
@@ -144,7 +147,7 @@ $channel->save();
     
 }
 
-  
+  /*annars är kanalnamnet uppdaget serru */
 else {
     return back()->withMessage1('Kanalnamnet upptaget!');
 }
