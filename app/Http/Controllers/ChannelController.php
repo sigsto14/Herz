@@ -107,12 +107,12 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
      */
     public function update(Request $request, $id)
     {
+        $userID = Auth::user()->userID;
         /*validerar så man inte kan fylla i tomt */
          $validator = Validator::make($request->all(), [
-                'information' => 'required|max:255',
-            'channelname'=>'required|max:255|unique:channels',
-         
+                'information' => 'required|max:255', 
             ]);
+
 
           if ($validator->fails()) {
             return back()
@@ -121,29 +121,32 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
 
           }
 
-          if($request->hasFile('image')) {
-            $imageName = Auth::user()->username . '.' .
-            $request->file('image')->getClientOriginalExtension();
-
-            $request->file('image')->move(
-            base_path() . '/public/images/Profilepictures', $imageName
-            );
-
-            $channel = Channel::find($id);
-            $channel->profilepicture = "http://localhost/Herz/public/images/Profilepictures/$imageName";
-        $channel->fill($request->all());
-        $channel->save();
-        return back()->withMessage('Ditt konto har uppdaterats');
-    }
-
-    /** uppdaterar där id't finns med den input användaren gjort */
-
-    else {
 $channel = Channel::find($id);
-        $channel->fill($request->all());
-        $channel->save();
-        return back()->withMessage('Ditt konto har uppdaterats');
+$channelname3 = $request->channelname;
+$channelname = $channel->channelname;
+$channelname2 = Channel::where('channelname', '=', $channelname3)->where('channelID', '!=', $userID)->first();
+
+if($channelname3 == $channelname){
+
+    $channel->information;
+$channel->fill($request->all());
+$channel->save();
+
+    return back()->withMessage('Ditt konto har uppdaterats');
+ 
+}
+else if (is_null($channelname2))
+    {
+$channel = Channel::find($id);
+$channel->fill($request->all());
+$channel->save();
+ return back()->withMessage('Ditt konto har uppdaterats');
     
+}
+
+  
+else {
+    return back()->withMessage1('Kanalnamnet upptaget!');
 }
     }
 
