@@ -26,15 +26,48 @@
 
 <img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/><br>
 {!! Form::label('Profilbild') !!}
-{!! Form::file('image', null) !!}
+{!! Form::file('image', null) !!}<br>
 
 
 </table>
 
 
-<input type="submit" class="button2" value="Uppdatera">
 
-{!!     Form::close() !!}<br><br><br>
+<button type="button" id="changePass" class="btn btn-success">Byt Lösenord</button>
+
+<div id="newPass" class="hidden">
+{!!     Form::label('newPass', 'Nytt Lösenord:') !!}
+{!!     Form::password('newPass') !!}<br>
+
+{!!     Form::label('newPassConfirm', 'Upprepa Nytt Lösenord:') !!}
+{!!     Form::password('newPassConfirm') !!}<br>
+
+{!!     Form::label('activeConfirm', 'Nuvarande Lösenord:') !!}
+{!!     Form::password('activeConfirm') !!}<br>
+
+</div>
+ <script>
+$('#changePass').click(function(){
+  $("#newPass").removeClass("hidden");
+  $('#changePass').addClass("clicked");
+
+ 
+
+});
+</script>
+<br><br>
+<input type="submit" class="button2" value="Uppdatera"><br>
+{!!     Form::close() !!}<br><br>
+@if(Session::has('message'))
+<div class="alert alert-success">
+	{{ Session::get('message') }}
+</div>
+@endif
+@if(Session::has('message1'))
+<div class="alert alert-danger">
+	{{ Session::get('message1') }}
+</div>
+@endif
 
 {!! Form::open(array('method' => 'DELETE', 'route' => array('user.destroy', $user->userID))) !!}
 
@@ -47,26 +80,9 @@
 <a class="dropdown-toggle" href="http://localhost/Herz/public/auth/login" data-toggle="dropdown">Log in</a> or <a href="http://localhost/Herz/public/auth/register">Sign up</a> to upload pictures!
 @endif
 
-@if (count($errors) > 0)
-	<div class="alert alert-danger">
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
 
-@if(Session::has('message'))
-<div class="alert alert-success">
-	{{ Session::get('message') }}
-</div>
-@endif
-@if(Session::has('message1'))
-<div class="alert alert-danger">
-	{{ Session::get('message1') }}
-</div>
-@endif
+
+
 
 
 

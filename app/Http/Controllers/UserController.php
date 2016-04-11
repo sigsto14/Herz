@@ -20,6 +20,8 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Symfony\Component\HttpFoundation\File;
 use Eloquent;
 use Storage;
+use Crypt;
+use Hash;
 class UserController extends Controller
 {
     /**
@@ -113,31 +115,69 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
      $activeID = Auth::user()->userID;
 /* declarerar user */
 $user = User::find($id);
+
 /* sätter variabler för att kunna sätta constraints */
       $emailInput = $request->email;
       $usernameInput = $request->username;
       $activeEmail = $user->email;
       $activeUsername = $user->username;
+      $activePass = $user->password;
+
+      $inputPass = $request->activeConfirm;
+      /* kollar det inskrivna lösenordet mot det hashade i databasen */
+        $passwordCheck = Hash::check($inputPass, $activePass);
+
+$newPass = $request->newPass;
+$newPassConf = $request->newPassConfirm;
 
 /*gör lite kollar i databasen så det är fritt */
 $usernameFree = DB::table('users')->where('username', '=', $usernameInput)->first();
 $emailFree = DB::table('users')->where('email', '=', $emailInput)->first();
 
 
+/* kör om man har skrivit in nytt lösen */
+if(isset($request->newPass)){
+    /* om konfirmationslösen inte matchar användarens lösen */
+   
+    /* om det nya lösenordet matchar confirmation på nya lösen */
+  if($newPass == $newPassConf){
+    /* och konfirmationslösen matchar användarens lösen */
+        if($passwordCheck == true){
+            /* så ändras lösenord */
+$user->password = bcrypt($request->newPass);
+$user->save();
+        }
+        /* om "nuvarande lösen" INTE matchar lösen */
+        else if($passwordCheck == false){
+        return back()->withMessage1('Fel lösenord');
+    }
 
+    }
+/*ifall nya lösen och confirmationslösen ej matchar */
+    if($newPass != $newPassConf){
+        return back()->withMessage1('Lösenorden matchar inte!');
+    }
+  
+    
+}
+
+/* ifall emailen INTE är fri */
 if(!is_null($emailFree)){
     if($activeEmail != $emailInput){
     return back()->withMessage1('Email upptagen!');
 }
 }
+/* ifall användarnamnet INTE är fritt */
 if(!is_null($usernameFree)){
     if($activeUsername != $usernameInput){
     return back()->withMessage1('Användarnamn upptaget!');
 }
 }
-/* gör if sats för att inte få problem */
+/* ifall email matchar den man redan har*/
 if($emailInput = $activeEmail){
+    /* ifall användarnamn matchar */
     if($usernameInput = $activeUsername){
+        /* om man laddar upp fil*/
  if($request->hasFile('image')) {
             $imageName = Auth::user()->username . '.' .
             $request->file('image')->getClientOriginalExtension();
@@ -156,6 +196,7 @@ if($emailInput = $activeEmail){
 }
 
 else{
+    /* else ALLT!!!!!!!! */
              $user = User::find($id);
         $user->fill($request->all());
         $user->save();
@@ -163,12 +204,15 @@ else{
     
 
 }
-
-
     }
 }
 
+
+
+
+
     }
+/* gör funktion för att byta lösenord */
 
 
     /**
