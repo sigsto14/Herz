@@ -48,6 +48,7 @@
 	{{ Session::get('message') }}
 </div>
 @endif
+
 @if(Session::has('message1'))
 <div class="alert alert-danger">
 	{{ Session::get('message1') }}
