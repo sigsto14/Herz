@@ -109,7 +109,35 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
      */
     public function update(Request $request, $id)
     {
-        /* här uppdateras users vid det identifierade ID't */
+        /* hämtar ut ID för inloggad anv */
+     $activeID = Auth::user()->userID;
+/* declarerar user */
+$user = User::find($id);
+/* sätter variabler för att kunna sätta constraints */
+      $emailInput = $request->email;
+      $usernameInput = $request->username;
+      $activeEmail = $user->email;
+      $activeUsername = $user->username;
+
+/*gör lite kollar i databasen så det är fritt */
+$usernameFree = DB::table('users')->where('username', '=', $usernameInput)->first();
+$emailFree = DB::table('users')->where('email', '=', $emailInput)->first();
+
+
+
+if(!is_null($emailFree)){
+    if($activeEmail != $emailInput){
+    return back()->withMessage1('Email upptagen!');
+}
+}
+if(!is_null($usernameFree)){
+    if($activeUsername != $usernameInput){
+    return back()->withMessage1('Användarnamn upptaget!');
+}
+}
+/* gör if sats för att inte få problem */
+if($emailInput = $activeEmail){
+    if($usernameInput = $activeUsername){
  if($request->hasFile('image')) {
             $imageName = Auth::user()->username . '.' .
             $request->file('image')->getClientOriginalExtension();
@@ -126,6 +154,20 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
 
 
 }
+
+else{
+             $user = User::find($id);
+        $user->fill($request->all());
+        $user->save();
+        return back()->withMessage('Ditt konto har uppdaterats'); 
+    
+
+}
+
+
+    }
+}
+
     }
 
 

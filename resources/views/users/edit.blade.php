@@ -41,11 +41,7 @@
 	{!! Form::submit('Ta bort konto', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Är du säker på att du vill ta bort ditt konto?");')) !!}
 {!!     Form::close() !!}
 
-<script>
-$('.button2').click(function(){
-    $('.button1').trigger('click');
-})
-</script>
+
 
 @else
 <a class="dropdown-toggle" href="http://localhost/Herz/public/auth/login" data-toggle="dropdown">Log in</a> or <a href="http://localhost/Herz/public/auth/register">Sign up</a> to upload pictures!
@@ -64,6 +60,11 @@ $('.button2').click(function(){
 @if(Session::has('message'))
 <div class="alert alert-success">
 	{{ Session::get('message') }}
+</div>
+@endif
+@if(Session::has('message1'))
+<div class="alert alert-danger">
+	{{ Session::get('message1') }}
 </div>
 @endif
 
