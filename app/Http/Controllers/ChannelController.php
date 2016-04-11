@@ -122,7 +122,7 @@ return view('channels.show', compact('user'), compact('channel'), compact('sound
           }
 
 $channel = Channel::find($id);
-/* variabel för inputen, för namnet på id't, och en för att kolla om värdet redan finns id atabasen */
+/* variabel för inputen, för namnet på id't, och en för att kolla om värdet redan finns i databasen */
 $channelname3 = $request->channelname;
 $channelname = $channel->channelname;
 $channelname2 = Channel::where('channelname', '=', $channelname3)->where('channelID', '!=', $userID)->first();
