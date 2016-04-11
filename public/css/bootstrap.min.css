@@ -295,9 +295,10 @@ background-color:white;
 }
 
 /* boxen om login failar */
-#login-menu.fail{
+#login-menu-fail{
 	position: absolute;
-	min-height: 500%;
+	background-color: #b9dcdc;
+	min-height: 400%;
 }
 
 

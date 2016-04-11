@@ -285,7 +285,7 @@ else {
                   
 
                    $loginID = 'reglogfail';
-                   $loginID2 = 'login-menu.fail';
+                   $loginID2 = 'login-menu-fail';
                   
                    ?>
 @else
@@ -310,7 +310,7 @@ else {
                     <p>Lösenord</p>
                     <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
   
-                  <input type="checkbox" name="remember"> Kom ihåg mig!
+                  
 
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
                  
