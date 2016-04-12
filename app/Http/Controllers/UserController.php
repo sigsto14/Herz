@@ -22,6 +22,8 @@ use Eloquent;
 use Storage;
 use Crypt;
 use Hash;
+use Mail;
+
 class UserController extends Controller
 {
     /**
@@ -270,7 +272,7 @@ else {
 }
 
         
-         
+          
     
     
 }

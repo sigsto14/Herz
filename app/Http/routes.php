@@ -26,7 +26,10 @@ Route::get('search/index', 'QueryController@search');
 Route::post('search/index', 'QueryController@search');
 
 Route::resource('user', 'UserController');
+
 Route::resource('channel', 'ChannelController');
+Route::resource('resetPassword', 'resetpasswordController@index');
+Route::resource('resetPassword/reset', 'resetpasswordController@reset');
 Route::resource('sound', 'SoundController');
 Route::resource('favorite', 'FavoriteController');
 Route::resource('category', 'CategoryController');

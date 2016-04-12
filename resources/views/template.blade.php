@@ -313,8 +313,11 @@ else {
                   
 
                     <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
-                 
-                      
+</form>
+ <form action="http://localhost/Herz/public/resetPassword" method="post" accept-charset="UTF-8">
+   {!! csrf_field() !!}
+                 <button type="submit" id="changePass" class="btn btn-success">Glömt Lösenord</button>
+                      {!! Form::close() !!}
                    @if (count($errors) > 0)
                
     <div class="alert alert-danger">
@@ -331,7 +334,7 @@ else {
     {{ Session::get('message') }}
    </div>
 @endif
-                </form>
+                
                 @endif
 
             </ul><!-- Logga In/Dropdown meny slut-->      
@@ -519,8 +522,5 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
-
-
 
 </html>
