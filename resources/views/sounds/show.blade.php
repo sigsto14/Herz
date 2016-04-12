@@ -25,6 +25,10 @@
   <source src="{{ $sound->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" id="pleyer" align="center">
+   <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" quality="high" name="player" align="center" type="application/x-shockwave-flash" plug inspage="http://www.macromedia.com/go/getflashplayer" />
+   <param name="player" value="http://localhost/Herz/public/mp3_player/mp3_player.swf" /> 
+</object>
 @if(Auth::check())
 <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
 <?php
