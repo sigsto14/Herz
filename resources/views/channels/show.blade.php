@@ -1,6 +1,12 @@
 @extends('template')
 @section('container')
 @section('footer')
+
+<?php
+/* variabel för se hur många gånger ID förekommer i subscribetabell 
+$favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
+?> */
+
 <!DOCTYPE HTML>
 
 <title>{{ $channel->channelname }}</title>
