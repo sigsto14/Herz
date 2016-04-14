@@ -1,6 +1,12 @@
 @extends('template')
 @section('container')
 @section('footer')
+
+<?php
+/* gör variabel som kollar hur många gånger de förekommer i favorites */
+$favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
+?>
+
 <!DOCTYPE HTML>
 
 
@@ -20,11 +26,25 @@
           <div class="pic">  
             <img src="{{ $sound->podpicture }}" style="width:145px;height:159px;"></div>
           <div class="spela">     
-                 <audio controls>
-  <source src="{{ $sound->URL }}" type="audio/ogg">
-  <source src="{{ $sound->URL }}" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
+                <audio controls>
+                  <source src="{{ $sound->URL }}" type="audio/ogg">
+                  <source src="{{ $sound->URL }}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+
+          <!--Visar hur många som har klippet som favorit-->
+              <?php
+                /* kolla hur många som har klippet som favorit */
+                $favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
+              ?>
+              <!--Väljer vilken symbol som ska användas beroende på användare-->
+              @if(Auth::check())
+                @if($sound->channelID == Auth::user()->userID)
+                  <p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+                @else
+                  <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+                @endif
+              @endif
 
 @if(Auth::check())
 <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
@@ -129,8 +149,6 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 @endif
 
         </div>
- <object><embed src="http://localhost/public/mp3_player/mp3_player.swf"> </object>       
- 
         </div>
         </div>
         
