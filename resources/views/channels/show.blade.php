@@ -3,9 +3,9 @@
 @section('footer')
 
 <?php
-/* variabel för se hur många gånger ID förekommer i subscribetabell 
-$favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
-?> */
+/* variabel för se hur många gånger ID förekommer i subscribetabell */
+$subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)->count();        
+?> 
 
 <!DOCTYPE HTML>
 
@@ -23,6 +23,7 @@ $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'cha
         <div class="col-lg-4">
           <div class="row">
             <h2>{{ $channel->channelname }}</h2>
+            <p>Prenumeranter:{{ $subscrNr }}</p> 
             <p>{{ $channel->information }}</p>    
           </div>
           <div class="row">
