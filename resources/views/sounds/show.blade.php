@@ -48,7 +48,7 @@ chmod($file_name,0777);
 Your browser does not support the audio element.
 </audio> -->
   <div id="flashContent">
-<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf">
+<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
 </div>
 @if(Auth::check())
 <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
@@ -196,7 +196,8 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
  
         </div>
         </div>
-        
+        </div>
+        </div>
 
 
 
