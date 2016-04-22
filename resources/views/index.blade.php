@@ -42,6 +42,7 @@ $('#btnReview').click(function(){
           
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
+    
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
           @foreach($senaste as $senast) 
           <?php
@@ -179,39 +180,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 
 @endif
-          <!--
-          <br>    
-          <div class="row">
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>    
-          </div>
-          <br>    
-          <div class="row">
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>
-              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
-              <h3>Herz Podcast</h3>
-              <p>av Herz</p>
-              </div>    
-          </div> 
-         </div>  
-        </div>-->
+
     </div>
     </div>
     </div>
