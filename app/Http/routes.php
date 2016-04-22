@@ -36,8 +36,10 @@ Route::resource('category', 'CategoryController');
 Route::resource('query', 'QueryController');
 Route::resource('subscribe', 'SubscribeController');
 Route::resource('notification', 'NotificationController');
-
-
+Route::resource('playlist', 'PlaylistController');
+Route::resource('exist', 'PlaylistController@exists');
+Route::resource('playlist/edit', 'PlaylistController@update');
+Route::resource('playlist/show', 'PlaylistController@show');
 
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
@@ -58,6 +60,12 @@ Route::resource('channel', 'ChannelController');
 Route::get('login', function () {
     return view('login');
 });
+
+
+Route::get('playlist', function () {
+    return view('playlist.index');
+});
+
 Route::get('back', function () {
     return back();
 });

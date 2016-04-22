@@ -42,11 +42,11 @@ chmod($file_name,0777);
           <div class="pic">  
             <img src="{{ $sound->podpicture }}" style="width:145px;height:159px;"></div>
           <div class="spela">     
-                 <audio controls>
+               <!--  <audio controls>
   <source src="{{ $sound->URL }}" type="audio/ogg">
   <source src="{{ $sound->URL }}" type="audio/mpeg">
 Your browser does not support the audio element.
-</audio>
+</audio> -->
   <div id="flashContent">
 <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf">
 </div>
@@ -91,7 +91,10 @@ $state = 0;
 <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
               </button></div>
+              <div class="podfavk">
+
 {!! Form::close() !!}
+
 @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
 <div class="podfavk2">
@@ -101,6 +104,42 @@ $state = 0;
 {!! Form::close() !!}</td>
 
 @endif
+<br><br><br><br><br>
+<td>{!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
+<div>
+        <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+</div>
+
+          
+               <button type="button" class="btn btn-default btn-md" id="addList">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></a><p> Lägg i spellista</p></span>
+              </button>
+              <div class="hidden" id="playlistEdit">
+
+              @if(!is_null($lists))
+<!-- script för att ta fram lista spellistor -->
+ <script>
+$('#addList').click(function(){
+  $("#playlistEdit").removeClass("hidden"); 
+
+});
+</script>
+          <select name="listID">
+         @foreach($lists as $list)
+ <option value="{{$list->listID}}">{{ $list->listTitle }}</option>
+
+@endforeach
+</select>
+<button type="submit">Lägg till!</button>
+@else 
+<p> du har inga spellistor, skapa spellistor på <a href="http://localhost/public/user/{{ Auth::user()->userID }}">Din profil</a></p>
+
+@endif
+</div>
+
+
+{!! Form::close() !!}
+
 @endif
 </div>
 <?php
@@ -131,7 +170,7 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 {{$comment->username}}<br>
 {{$comment->comment}}
 @endforeach
-
+<br><br><br><br><br><br>
 <!-- Kommentarsfält -->
 
 
