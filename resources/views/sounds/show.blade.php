@@ -115,6 +115,9 @@ $state = 0;
               <span class="glyphicon glyphicon-star" aria-hidden="true"></a><p> Lägg i spellista</p></span>
               </button>
               <div class="hidden" id="playlistEdit">
+              <?php
+              $lists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->get();
+              ?>
 
               @if(!is_null($lists))
 <!-- script för att ta fram lista spellistor -->
@@ -131,7 +134,7 @@ $('#addList').click(function(){
 @endforeach
 </select>
 <button type="submit">Lägg till!</button>
-@else 
+@elseif(is_null($lists))
 <p> du har inga spellistor, skapa spellistor på <a href="http://localhost/public/user/{{ Auth::user()->userID }}">Din profil</a></p>
 
 @endif

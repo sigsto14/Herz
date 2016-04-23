@@ -156,7 +156,7 @@ $state = 3;
 @endif
 <!-- visar upp alla ljud -->
           <div class="sb">
-           <h1>{{ $sound->title }}</h1> 
+           <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title }}</h1> </a>
            <img src=" {{ $sound->podpicture }}" width="200px" height="auto"><br>
            <audio controls>
   <source src="{{ $sound->URL }}" type="audio/ogg">
