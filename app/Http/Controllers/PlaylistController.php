@@ -81,9 +81,8 @@ class PlaylistController extends Controller
      */
     public function show($id)
     {
-         $user = User::find($id);
 $playlist = Playlist::find($id);
-return view('playlist.show', compact('user'), compact('playlists'));
+return view('playlist.show', compact('playlist'));
     }
 
     /**

@@ -37,9 +37,6 @@ if($res2->num_rows > 0){
 	$ADD .= '<song url="' . $URLS->URL .'"/>
 	';
 
-
-
-
 }
 }
 

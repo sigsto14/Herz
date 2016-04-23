@@ -128,93 +128,83 @@ Your browser does not support the audio element.
   <h1>Spellista</h1>
   <!-- lite kod för att hämta ut användarens spellistor -->
   <?php
-$playlists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
-$playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
-
+  /* kollar listor hos användaren */
+  $listsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
 
   ?>
-  @if(is_null($playlistsCheck))
-  @else
 
-  @foreach($playlists as $playlist)
-    
+
+  <!-- om användaren ej har spellista -->
+  
+  <!-- om användaren har spellista -->
+   @if(!is_null($listsCheck))
+  <!-- för var resultat -->
   <?php
-   $listItems = array_values(explode(',',$playlist->soundIDs,13));
-
+  $lists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
   ?>
+  @foreach($lists as $list)
+  <br>
+  <h3>{{ $list->listTitle }}</h3><br>
 
-  <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"><h3>{{ $playlist->listTitle}}</h3></a><br>
-    <div id="box1">
-    <form action="" method="put" name="play" id="play">
-<input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
-<input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
-    <button type="submit" class="btn btn-default btn-lg" id="play" onClick="play()" />
-  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-</button>
-   </form>
-    @foreach($listItems as $listItem)
+@endforeach
+  <?php
+  /* genererar en list.xml */
+  foreach($lists as $list){
+  $listID = $list->listID;
+  $sounds = DB::table('playlists')->where('listID', '=', $listID)->get(); 
+  }
+  $arr = array();
+             
+dd($sounds);
+
+   
+             
+  ?>
 
 <?php
-$sounds = DB::table('sounds')->where('soundID', '=', $listItem)->take(5)->get();
+
+$ADD = '';
+
+$str ='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<music>';
+
+$listItems = array_values(explode(',',$sounds->soundIDs,13));
+
+foreach($listItems as $listItem){
+  $GET = DB::table('sounds')->where('soundID', '=', $listItem)->get();
+  foreach($GET as $GE){
+    $URL = $GE->URL;
+      $ADD .= '<song url="' . $URL .'"/>
+      ';
+  }
+
+}
+
+$str .= $ADD;
+$str .='</music>';
+
+echo $str;
+
+$file_name="list.xml"; // file name
+$fp = fopen ($file_name, "w"); 
+
+fwrite ($fp,$str); 
+fclose ($fp); 
+chmod($file_name,0777); 
+?>
+
+@foreach($listItems as $listItem)
+<?php
+/* hämtar ut data för foreach loopen */
+$sounds2 = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 
 ?>
-@foreach($sounds as $sound)
-<div class="row">
 
-
-              <a href="http://localhost/Herz/public/sound/{{$sound->soundID}}">{{ $sound->title }}</a></div>
-               <img src="{{ $sound->podpicture }}" style="width:30px;height:30px;"/><br>
-               
-               
 
 @endforeach
-
-@endforeach
-
-
-
-
- 
-{!! Form::close() !!}
-</div>
- <div id="box2" class="hidden">
-    <div id="flashContent">
-<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;"></div>
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-</button>
-
-
-  </div>
-  @endforeach
- <script>
-$('#play').submit(function(e){
-  e.preventDefault();
-$("#box1").load( "http://localhost/Herz/public/player.html" );
-var listID = $('#listID').val();
-   var listID = $.trim(listID);
-     var userID = $('#userID').val();
-   var userID = $.trim(userID);
- 
-$.ajax({
-
-       url: 'http://localhost/Herz/public/list.php',
-       data: { listID: listID, userID: userID},
-       dataType: 'json',
-       success: function(data){
-            //data returned from php
-       }
-    });
- 
-
-});
-</script>
-
-
-
-
-
-  @endif
+@else
+<p>Den här användaren har inga spellistor än!</p>
+@endif
   <!-- Innehåll här (List) -->
   </div>
 
@@ -223,8 +213,32 @@ $.ajax({
 <!-- Innehåll här (plus flik ) -->
   </div>
 <!-- slut på rekommendationer -->
-   
+
+              <!-- tillfällig utkommentering
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
           </div>
+          <br>    
+          <div class="row">
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>
+              <div class="col-md-4"><img src="http://localhost/Herz/public/images/podcast_av/pod.png">
+              <h3>Herz Podcast</h3>
+              <p>av Herz</p>
+              </div>    
+          </div>-->
         </div>
 
       </div>
@@ -232,6 +246,13 @@ $.ajax({
       </div>
       </div>
       </div>
+
+          
+     
+
+			
+
+
 
 
 @stop
