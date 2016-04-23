@@ -34,9 +34,6 @@ class EventServiceProvider extends ServiceProvider
  $user->save();
     });
 
-
-
-        //
     }    
 
 }

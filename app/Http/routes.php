@@ -41,6 +41,7 @@ Route::resource('exist', 'PlaylistController@exists');
 Route::resource('playlist/edit', 'PlaylistController@update');
 Route::resource('playlist/show', 'PlaylistController@show');
 
+Route::post('playlist/create', 'PlaylistController@create');
 Route::post('channel/edit', 'ChannelController@update');
 Route::post('channel/create', 'ChannelController@create');
 Route::post('user/edit', 'UserController@update');

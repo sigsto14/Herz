@@ -38,10 +38,11 @@ class PlaylistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+  
     }
+        
 
     /**
      * Store a newly created resource in storage.
@@ -149,4 +150,6 @@ DB::table('playlists')->where('userID', '=', $id)->get();
 
 
           }
+
+     
 }

@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class Playlist extends Model
 {
+
     
      protected $table = 'playlists';
     /* genom att sätta soundID som primary key här blir det det som blir ID i laravels $id-funktioner */

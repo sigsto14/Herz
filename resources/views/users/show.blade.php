@@ -30,6 +30,9 @@
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
             <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+            @endif
+            @endif
+             @if(Auth::user())
             <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
             <?php
 $userID = Auth::user()->userID;
@@ -39,7 +42,7 @@ $userID = Auth::user()->userID;
             $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->groupBy('channels.channelID')->get();
             ?>
 
-            @endif
+
             @endif
           </div>
         </div>
@@ -47,8 +50,12 @@ $userID = Auth::user()->userID;
           <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Sparade podcasts</a></li>
             <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Markerad lista</a></li>
+            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Spellista</a></li>
+            @if(Auth::check())
+            @if(Auth::user()->userID = $user->userID)
             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
+            @endif
+            @endif
           </ul>
           <script>
 $('#btnReview').click(function(){
@@ -117,8 +124,104 @@ Your browser does not support the audio element.
   <h1>Favoriter</h1>
   <!-- Innehåll här (Favoriter) -->
   </div>
-  <div role="tabpanel" class="tab-pane" id="list">
-  <h1>List</h1>
+   <div role="tabpanel" class="tab-pane" id="list">
+  <h1>Spellista</h1>
+  <!-- lite kod för att hämta ut användarens spellistor -->
+  <?php
+$playlists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
+$playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
+
+
+  ?>
+  @if(is_null($playlistsCheck))
+  @else
+
+  @foreach($playlists as $playlist)
+    
+  <?php
+   $listItems = array_values(explode(',',$playlist->soundIDs,13));
+
+  ?>
+
+  <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"><h3>{{ $playlist->listTitle}}</h3></a><br>
+    <div id="box1">
+    <form action="" method="put" name="play" id="play">
+<input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
+<input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
+    <button type="submit" class="btn btn-default btn-lg" id="play" onClick="play()" />
+  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+</button>
+   </form>
+    @foreach($listItems as $listItem)
+
+<?php
+$sounds = DB::table('sounds')->where('soundID', '=', $listItem)->take(5)->get();
+
+?>
+@foreach($sounds as $sound)
+<div class="row">
+
+
+              <a href="http://localhost/Herz/public/sound/{{$sound->soundID}}">{{ $sound->title }}</a></div>
+               <img src="{{ $sound->podpicture }}" style="width:30px;height:30px;"/><br>
+               
+               
+
+@endforeach
+
+@endforeach
+
+
+
+
+ 
+{!! Form::close() !!}
+</div>
+ <div id="box2" class="hidden">
+    <div id="flashContent">
+<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+</button>
+
+</div>
+  </div>
+  @endforeach
+ <script>
+$('#play').submit(function(e){
+  e.preventDefault();
+  $("#box1").addClass("hidden");
+  $('#box2').removeClass("hidden");
+   var listID = $('#listID').val();
+   var listID = $.trim(listID);
+     var userID = $('#userID').val();
+   var userID = $.trim(userID);
+ 
+$.ajax({
+
+       url: 'http://localhost/Herz/public/list.php',
+       data: { listID: listID, userID: userID},
+       dataType: 'json',
+       success: function(data){
+            //data returned from php
+       }
+    });
+ 
+
+});
+</script>
+
+<?php
+
+
+?>
+
+
+
+
+
+
+  @endif
   <!-- Innehåll här (List) -->
   </div>
 

@@ -7,7 +7,7 @@
  <?php
               /* ska ta fram existerande spellistor för användaren */
 
-               $listID= '1';
+               $listID= $playlist->listID;
              $arr = array();
              $lists = DB::table('playlists')->where('listID', '=', $listID)->first(); 
 
