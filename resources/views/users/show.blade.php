@@ -43,17 +43,23 @@ $userID = Auth::user()->userID;
             @endif
           </div>
         </div>
-        <div class="col-lg-8"id="tabus">
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#">Rekommendationer</a></li>
-
-
-            
-            <li role="presentation"><a href="#">Favoriter</a></li>
-            <li role="presentation"><a href="#">Markerad lista</a></li>
-            <li role="presentation"><a href="#">+</a></li>
+        <div class="col-lg-8"  id="tabus">        
+          <ul class="nav nav-tabs" role="tablist" >
+            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Sparade podcasts</a></li>
+            <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
+            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Markerad lista</a></li>
+            <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
           </ul>
+          <script>
+$('#btnReview').click(function(){
+  $(".tab-content").removeClass("active");
+  $(".tab-content:first-child").addClass("active");
+});
+</script>
           <br>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
+            <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="chome">
              <!-- kollar om user inloggad -->
            @if(Auth::check())
                <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
@@ -107,6 +113,19 @@ Your browser does not support the audio element.
               @endif
 
 </div>
+                <div role="tabpanel" class="tab-pane" id="fav">
+  <h1>Favoriter</h1>
+  <!-- Innehåll här (Favoriter) -->
+  </div>
+  <div role="tabpanel" class="tab-pane" id="list">
+  <h1>List</h1>
+  <!-- Innehåll här (List) -->
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="add">
+  <h1>Namnlös</h1>
+<!-- Innehåll här (plus flik ) -->
+  </div>
 <!-- slut på rekommendationer -->
 
               <!-- tillfällig utkommentering
@@ -135,6 +154,9 @@ Your browser does not support the audio element.
               </div>    
           </div>-->
         </div>
+
+      </div>
+
       </div>
       </div>
       </div>
