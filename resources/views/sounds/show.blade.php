@@ -134,6 +134,8 @@ $('#addList').click(function(){
 @endforeach
 </select>
 <button type="submit">Lägg till!</button>
+
+<button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
 @elseif(is_null($lists))
 <p> du har inga spellistor, skapa spellistor på <a href="http://localhost/public/user/{{ Auth::user()->userID }}">Din profil</a></p>
 
