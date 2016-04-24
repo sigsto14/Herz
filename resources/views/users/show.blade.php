@@ -128,6 +128,8 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list">
   <h1>Spellista</h1>
   <!-- lite kod för att hämta ut användarens spellistor -->
+ <!-- utkommenterad box
+
   <?php
 $playlists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
 $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
@@ -169,7 +171,7 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 <script>
 
 $('#play').submit(function(e){
-  e.preventDefault();
+e.preventDefault();
 $("#box1").load( "http://localhost/Herz/public/player.html" );
 var listID = $('#listID').val();
    var listID = $.trim(listID);
@@ -191,7 +193,6 @@ $.ajax({
 </script>
 </div>
 
-</div>
 
 
 
