@@ -1,27 +1,6 @@
+
+
     <div id="flashContent">
 <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;"></div>
 
-      <script>
-
-$('.play').submit(function(e){
-e.preventDefault();
-$("div.box1").load( "http://localhost/Herz/public/player.html" );
-
-var listID = $('#listID').val();
-   var listID = $.trim(listID);
-     var userID = $('#userID').val();
-   var userID = $.trim(userID);
- 
-$.ajax({
-
-       url: 'http://localhost/Herz/public/list.php',
-       data: { listID: listID, userID: userID},
-       dataType: 'json',
-       success: function(data){
-            //data returned from php
-       }
-    });
- 
-
-});
-</script>
+      

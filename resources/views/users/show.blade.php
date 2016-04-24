@@ -201,15 +201,19 @@ $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list1->listID }}">{{ $list1->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list1->listDescription }}</p>
+     <div class="hidden" id="closePlayer"><button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+</button></div>
 <!-- en box som vi ska ladda in värden i senare -->
-   <div id="box1">
+
+   
 
     <form action="" method="put" name="play1" id="play">
 <input type="hidden" name="listID" value="{{ $list1->listID }}" id="listID">
     <button type="submit" class="btn btn-default btn-lg" id="play">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
- </form>  </div>
+ </form>  <div id="box1"></div>
 <!-- om man äger spellistan kan man radera den -->
 @if(Auth::check())
 @if(Auth::user()->userID == $user->userID )
@@ -219,12 +223,25 @@ $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
 {!! Form::close() !!}
 @endif
 @endif
+<!-- ett script så man kan stänga spelaren -->
+<script>
+$(document).ready(function() {
+$('#closePlayer').on( "click", function( event ) {
+$('#box1').toggleClass("hidden");
+$('#play').addClass("hidden");
+
+
+});
+});
+</script>
 <!-- ett script som laddar in spelare i box1 och skickar värden med ajax till en php-funktion som gör xml-fil så att värdena i spelaren blir rätt -->
 <script>
 
 $('#play').submit(function(e){
 e.preventDefault();
 $("#box1").load( "http://localhost/Herz/public/player.html" );
+  $('#closePlayer').removeClass("hidden");
+    $('#play').addClass("hidden");
 var listID = $('#listID').val();
    var listID = $.trim(listID);
      var userID = $('#userID').val();
