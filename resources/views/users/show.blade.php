@@ -136,6 +136,7 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
 
   ?>
   @if(is_null($playlistsCheck))
+  <p>Oj oj, här var det tomt! {{ $user->username }} har inga spellistor än</p>
   @else
 <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation2" class="active"><a href="#senaste" role="tab" data-toggle="tab">Senaste</a></li>
