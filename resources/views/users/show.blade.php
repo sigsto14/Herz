@@ -30,6 +30,15 @@
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
             <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+            <?php
+            /* kod för att kolla om användaren har kanal */
+            $channelCheck = DB::table('channels')->where('channelID', '=', $user->userID)->first();
+            ?>
+            
+            @if(is_null($channelCheck))
+            <!-- om användaren ej har kanal -->
+<a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
+            @endif
             @endif
             @endif
              @if(Auth::user())
