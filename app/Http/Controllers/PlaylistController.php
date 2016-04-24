@@ -71,6 +71,7 @@ class PlaylistController extends Controller
        $playlist->listDescription = $request->get('listDescription');
        $playlist->userID = $request->get('userID');
        $playlist->save();
+       return back();
     }
 
     /**
@@ -96,7 +97,7 @@ return view('playlist.show', compact('playlist'));
        
    $playlist = Playlist::find($id);
        
-  
+  return view('playlist.index', compact('playlist'));
 
     }
 
@@ -144,15 +145,40 @@ return back();
         return back();
     }
 
-        public function exist($id)
+        public function taBort(Request $request)
     {
-        /* funktion för att hämta ut användarens existerande spellistor */
-       $id = Auth::user()->userID; 
-DB::table('playlists')->where('userID', '=', $id)->get();
+        /* funktion för att radera bara ett värde ur arrayen soundIDs i playlists */
+        $listID = $request->listID;
+        $soundID = $request->soundID;
 
+        $playlist = Playlist::where('listID', '=', $listID)->first();
 
+        $array = array_values(explode(',',$playlist->soundIDs,13));
+if (in_array($soundID, $array)) 
+{
+    unset($array[array_search($soundID ,$array)]);
+}
 
+$array2 = implode(',', $array);
+$playlist->soundIDs = $array2;
+$playlist->save();
+     return back()->
+     withMessage('Klipp borttaget från spellista');
           }
 
-     
+
+        public function redigera(Request $request){
+            /* funktion för att redigera titel och beskrivning */
+        $listID = $request->listID;
+/* gör variabel av listan som stämmer överens med det inmatade listID't */
+        $playlist = Playlist::where('listID', '=', $listID)->first();
+        /* ändrar värdena i tabellen till de inmatade och sparar */
+        $playlist->listTitle = $request->listTitle;
+        $playlist->listDescription = $request->listDescription;
+        $playlist->save();
+
+        /* skickar tillbaka med meddelande */
+         return back()->
+     withMessage('Ändringar sparade');
+        }
 }

@@ -40,7 +40,8 @@ Route::resource('playlist', 'PlaylistController');
 Route::resource('exist', 'PlaylistController@exists');
 Route::resource('playlist/edit', 'PlaylistController@update');
 Route::resource('playlist/show', 'PlaylistController@show');
-
+Route::resource('playlist/redigera', 'PlaylistController@redigera');
+Route::resource('playlist/taBort', 'PlaylistController@taBort');
 
 Route::post('playlist/create', 'PlaylistController@create');
 Route::post('channel/edit', 'ChannelController@update');

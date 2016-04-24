@@ -154,29 +154,28 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
      <li class="nav nav-tabs" role="tablist"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
         
 
+
+
   @endforeach
-    </ul>
-
-
-
+</ul>
       @foreach($playlists as $playlist)
-  @if(!is_null($playlist->soundIDs))
+
   <div class="tab-content">
 <div role="tabpanel" class="tab-pane" id="{{ $playlist->listID }}">
          
-
-
-   <div id="box1">
-   <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"></a>
+  <h2><a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}">{{ $playlist->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $playlist->listDescription }}</p>
+
+   <div id="box1">
+
     <form action="" method="put" name="play" id="play">
 <input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
     <button type="submit" class="btn btn-default btn-lg" id="play">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
- </form>
- @endif
+ </form>  </div>
+
 @if(Auth::check())
 @if(Auth::user()->userID == $user->userID )
 {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $playlist->listID))) !!}
@@ -186,12 +185,12 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
 @endif
 @endif
 
-  
-</div>
-   </div>
+  </div>
+  </div>
+
+ 
    @endforeach
    
-  </div>
   
 <script>
 
