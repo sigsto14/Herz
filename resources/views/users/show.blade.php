@@ -62,6 +62,7 @@ $('#btnReview').click(function(){
   $(".tab-content").removeClass("active");
   $(".tab-content:first-child").addClass("active");
 });
+
 </script>
           <br>
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
@@ -144,50 +145,29 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
   ?>
 
   <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"><h3>{{ $playlist->listTitle}}</h3></a><br>
+  <p>{{ $playlist->listDescription }}</p>
     <div id="box1">
     <form action="" method="put" name="play" id="play">
 <input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
 <input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
-    <button type="submit" class="btn btn-default btn-lg" id="play" onClick="play()" />
+    <button type="submit" class="btn btn-default btn-lg" id="play">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
    </form>
+   </div>
     @foreach($listItems as $listItem)
 
 <?php
-$sounds = DB::table('sounds')->where('soundID', '=', $listItem)->take(5)->get();
+$sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 
 ?>
-@foreach($sounds as $sound)
-<div class="row">
 
-
-              <a href="http://localhost/Herz/public/sound/{{$sound->soundID}}">{{ $sound->title }}</a></div>
-               <img src="{{ $sound->podpicture }}" style="width:30px;height:30px;"/><br>
-               
-               
 
 @endforeach
-
-@endforeach
-
-
-
-
- 
-{!! Form::close() !!}
-</div>
- <div id="box2" class="hidden">
-    <div id="flashContent">
-<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;"></div>
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-</button>
-
-
-  </div>
   @endforeach
- <script>
+
+<script>
+
 $('#play').submit(function(e){
   e.preventDefault();
 $("#box1").load( "http://localhost/Herz/public/player.html" );
@@ -209,6 +189,11 @@ $.ajax({
 
 });
 </script>
+</div>
+
+</div>
+
+
 
 
 
