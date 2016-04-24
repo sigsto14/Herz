@@ -192,29 +192,7 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
    @endforeach
    
   
-<script>
 
-$('#play').submit(function(e){
-e.preventDefault();
-$("#box1").load( "http://localhost/Herz/public/player.html" );
-var listID = $('#listID').val();
-   var listID = $.trim(listID);
-     var userID = $('#userID').val();
-   var userID = $.trim(userID);
- 
-$.ajax({
-
-       url: 'http://localhost/Herz/public/list.php',
-       data: { listID: listID, userID: userID},
-       dataType: 'json',
-       success: function(data){
-            //data returned from php
-       }
-    });
- 
-
-});
-</script>
   @endif
   <!-- Innehåll här (List) -->
   </div>
