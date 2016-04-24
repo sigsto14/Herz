@@ -33,13 +33,16 @@ if($res2->num_rows > 0){
 	
 	$URLS = $res2->fetch_object(); 
 }
+if($URLS->URL == ''){
 
+}
+else{
 	$ADD .= '<song url="' . $URLS->URL .'"/>
 	';
+}
 
 }
 }
-
 
 $str .= $ADD;
 $str .= '</music>';
