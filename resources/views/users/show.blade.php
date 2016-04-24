@@ -148,30 +148,36 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
   <p>Oj oj, här var det tomt! {{ $user->username }} har inga spellistor än</p>
   @else
 <ul class="nav nav-tabs" role="tablist" >
-            <li role="presentation2" class="active"><a href="#senaste" role="tab" data-toggle="tab">Senaste</a></li>
+            <li role="presentation" class="active"><a href="#senaste" role="tab" data-toggle="tab">Senaste</a></li>
  
   @foreach($playlists as $playlist)
-               <li role="presentation2"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
+            <li role="presentation"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
           
   <?php
    $listItems = array_values(explode(',',$playlist->soundIDs,13));
 
   ?>
+  </ul>
+<div class="tab-content">
 <div role="tabpanel" class="tab-pane" id="{{ $playlist->listID }}">
-<a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"></a><br>
-  <p>{{ $playlist->listDescription }}</p>
+
+<br>
    <div id="box1">
+   <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"></a>
+   <br>
+      <p>{{ $playlist->listDescription }}</p>
     <form action="" method="put" name="play" id="play">
 <input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
 <input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
     <button type="submit" class="btn btn-default btn-lg" id="play">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
+@endforeach
    </form>
    </div>
+
   </div>
-  @endforeach
-</ul>
+  
 <script>
 
 $('#play').submit(function(e){
