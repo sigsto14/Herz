@@ -126,10 +126,9 @@ Your browser does not support the audio element.
   <!-- Innehåll här (Favoriter) -->
   </div>
    <div role="tabpanel" class="tab-pane" id="list">
-  <h1>Spellista</h1>
-  <!-- lite kod för att hämta ut användarens spellistor -->
- <!-- utkommenterad box
 
+  <!-- lite kod för att hämta ut användarens spellistor -->
+  <h1>Spellistor</h1>
   <?php
 $playlists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
 $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
@@ -138,17 +137,20 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
   ?>
   @if(is_null($playlistsCheck))
   @else
-
+<ul class="nav nav-tabs" role="tablist" >
+            <li role="presentation2" class="active"><a href="#senaste" role="tab" data-toggle="tab">Senaste</a></li>
+ 
   @foreach($playlists as $playlist)
-    
+               <li role="presentation2"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
+          
   <?php
    $listItems = array_values(explode(',',$playlist->soundIDs,13));
 
   ?>
-
-  <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"><h3>{{ $playlist->listTitle}}</h3></a><br>
+<div role="tabpanel" class="tab-pane" id="{{ $playlist->listID }}">
+<a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"></a><br>
   <p>{{ $playlist->listDescription }}</p>
-    <div id="box1">
+   <div id="box1">
     <form action="" method="put" name="play" id="play">
 <input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
 <input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
@@ -157,17 +159,9 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
 </button>
    </form>
    </div>
-    @foreach($listItems as $listItem)
-
-<?php
-$sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
-
-?>
-
-
-@endforeach
+  </div>
   @endforeach
-
+</ul>
 <script>
 
 $('#play').submit(function(e){
@@ -199,15 +193,13 @@ $.ajax({
 
 
 
-
   @endif
   <!-- Innehåll här (List) -->
   </div>
+</div>
 
-  <div role="tabpanel" class="tab-pane" id="add">
-  <h1>Namnlös</h1>
-<!-- Innehåll här (plus flik ) -->
   </div>
+</div>
 <!-- slut på rekommendationer -->
    
           </div>
