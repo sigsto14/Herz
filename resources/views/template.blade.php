@@ -252,7 +252,8 @@ else {
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}">Min Profil</a></li>
                 <li><a href="http://localhost/Herz/public/user/{{ Auth::user()->userID }}/edit">Redigera Profil</a></li>
                 <li><a href="http://localhost/Herz/public/favorite">Favoriter</a></li>
-                <li><a href="#">Prenumerationer</a></li>
+                <li><a href="http://localhost/Herz/public/subscribe">Prenumerationer</a></li>
+                <li><a href="http://localhost/Herz/public/playlist">Mina Spellistor</a></li>
                 <br>
                 <li><a href="http://localhost/Herz/public/auth/logout" action="auth.logout">Logga ut</a></li>
                 <li role="separator" class="divider"></li>

@@ -91,10 +91,12 @@ return view('playlist.show', compact('playlist'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
        
-
+   $playlist = Playlist::find($id);
+       
+  
 
     }
 
@@ -137,7 +139,9 @@ return back();
      */
     public function destroy($id)
     {
-        //
+        $playlist = Playlist::find($id);
+        $playlist->delete();
+        return back();
     }
 
         public function exist($id)

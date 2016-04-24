@@ -139,7 +139,7 @@ Your browser does not support the audio element.
   <!-- lite kod för att hämta ut användarens spellistor -->
   <h1>Spellistor</h1>
   <?php
-$playlists = DB::table('playlists')->where('userID', '=', $user->userID)->get();
+$playlists = DB::table('playlists')->where('userID', '=', $user->userID)->orderBy('created_at', 'ASC')->take(5)->get();
 $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->first();
 
 
@@ -151,31 +151,46 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
             <li role="presentation" class="active"><a href="#senaste" role="tab" data-toggle="tab">Senaste</a></li>
  
   @foreach($playlists as $playlist)
-            <li role="presentation"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
-          
-  <?php
-   $listItems = array_values(explode(',',$playlist->soundIDs,13));
+     <li class="nav nav-tabs" role="tablist"><a href="#{{ $playlist->listID }}" role="tab" data-toggle="tab">{{ $playlist->listTitle }}</a></li>
+        
 
-  ?>
-  </ul>
-<div class="tab-content">
+  @endforeach
+    </ul>
+
+
+
+      @foreach($playlists as $playlist)
+  @if(!is_null($playlist->soundIDs))
+  <div class="tab-content">
 <div role="tabpanel" class="tab-pane" id="{{ $playlist->listID }}">
+         
 
-<br>
+
    <div id="box1">
    <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"></a>
    <br>
-      <p>{{ $playlist->listDescription }}</p>
+     <h4>Beskrivning</h4><br><p>{{ $playlist->listDescription }}</p>
     <form action="" method="put" name="play" id="play">
 <input type="hidden" name="listID" value="{{ $playlist->listID }}" id="listID">
-<input type="hidden" name="userID" value="{{ $user->userID }}" id="userID">
     <button type="submit" class="btn btn-default btn-lg" id="play">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
-@endforeach
-   </form>
-   </div>
+ </form>
+ @endif
+@if(Auth::check())
+@if(Auth::user()->userID == $user->userID )
+{!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $playlist->listID))) !!}
+{!! csrf_field() !!}
+{!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
+{!! Form::close() !!}
+@endif
+@endif
 
+  
+</div>
+   </div>
+   @endforeach
+   
   </div>
   
 <script>
@@ -201,24 +216,15 @@ $.ajax({
 
 });
 </script>
-</div>
-
-
-
-
-
-
-
   @endif
   <!-- Innehåll här (List) -->
   </div>
 </div>
 
-  </div>
 </div>
 <!-- slut på rekommendationer -->
    
-          </div>
+       
         </div>
 
       </div>
