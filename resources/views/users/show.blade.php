@@ -228,10 +228,14 @@ $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
 $(document).ready(function() {
 $('#closePlayer').on( "click", function( event ) {
 $('#box1').toggleClass("hidden");
-$('#play').addClass("hidden");
+$('#closePlayer').toggleClass("click");
 
 
 });
+$('.click').on( "click", function() {
+
+ $( "#play" ).click();
+  });
 });
 </script>
 <!-- ett script som laddar in spelare i box1 och skickar värden med ajax till en php-funktion som gör xml-fil så att värdena i spelaren blir rätt -->
