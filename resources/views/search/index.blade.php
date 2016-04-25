@@ -9,17 +9,17 @@
  <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#klipp" role="tab" data-toggle="tab">Klipp</a></li>
             <li role="presentation"><a href="#kanal" role="tab" data-toggle="tab">Kanaler</a></li>
-            <li role="presentation"><a href="#users" role="tab" data-toggle="tab">Användare</a></li>
+            <li role="presentation"><a href="#anvandare" role="tab" data-toggle="tab">Användare</a></li>
  </ul>
-
+<div class="tab-content">
       <script>
 $('#btnReview').click(function(){
   $(".tab-content").removeClass("active");
   $(".tab-content:first-child").addClass("active");
 });
 </script>
-<div class="tab-content">
-<span class="glyphicon glyphicon-search"><p>Du sökte "{{ $query }}"</p></span>
+
+<span class="glyphicon glyphicon-search"></span><p>Du sökte "{{ $query }}"</p>
 <!-- kollar om sökningen hittat något klipp -->
 <!-- box för klipp -->
 
@@ -57,6 +57,7 @@ Your browser does not support the audio element.
 Uppladdat av <a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a><br><br>
    @endif
     @endforeach
+
 @endif
 </div>
 
@@ -66,10 +67,10 @@ Uppladdat av <a href="http://localhost/Herz/public/channel/{{ $sound->channelID 
 <h1>Kanaler</h1>
 <!-- kollar om sökningen hittat några kanaler -->
 @if (count($channels) === 0)
-Inga kanaler matchar din sökning</div>
+Inga kanaler matchar din sökning
 <!-- om det finns kanaler visar dom -->
 @else
-<table>
+
     @foreach($channels as $channel)
 
 <?php
@@ -94,18 +95,34 @@ Antal uppladdningar: {{ $soundCount }}<br>
   
 
     @endforeach
-    </div></div>
+  
  @endif   
+  </div>
+<!-- eftersom det av nån anledning inte gick att definiera en variabel för users i querycontroller görs det här istället -->
+<?php
+$users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take(5)->get();
 
+?>
+   <div role="tabpanel" class="tab-pane" id="anvandare">
+<h1>Användare</h1>
+@if (count($users) === 0)
+Inga användare matchar din sökning
+@else
+@foreach($users as $user)
+<h2>Sökresultat</h2>
+   <a href="http://localhost/Herz/public/user/{{ $user->userID }}"><img src="{{ $user->profilePicture }}" width="30px" height="auto"></a><a href="http://localhost/Herz/public/user/{{ $user->userID }}"><h4>{{ $user->username }}</h4></a>
+   <h6>Medlem sedan: {{ $user->created_at }}</h6>
 
-    </div>
+@endforeach
 
-
-
+  
+    
+@endif
+  </div>
+    
 <!-- kollar om hittat några users -->
 
 </div>
-    </div>
     </div>
 
 @stop
