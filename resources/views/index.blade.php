@@ -15,6 +15,8 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
 
              $userID = Auth::user()->userID;
              $subscribe = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'subscribe.channelID')->where('subscribe.userID', '=', $userID)->orderBy('sounds.created_at', 'ASC')->take(12)->get();
+
+
              
 
 ?>
@@ -39,12 +41,20 @@ $('#btnReview').click(function(){
   $(".tab-content:first-child").addClass("active");
 });
 </script>
+
+
           
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">
     
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
           @foreach($senaste as $senast) 
+          <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
+          <?php
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $senast->channelID)->count();
+          ?>
+          <!-- klipp skall bara synas om de inte är privata -->
+          @if($senast->status != 'privat' or $sub > 0)
           <?php
           /* kolla hur många som har klippet som favorit */
           $favNr = DB::table('favorites')->where('soundID', '=', $senast->soundID)->count();
@@ -61,8 +71,9 @@ $('#btnReview').click(function(){
               @endif
               <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
                       
-            </div>       
+       </div>          @endif  
 @endforeach
+
 <br>
 <a href="http://localhost/Herz/public/sound"><img src="http://localhost/Herz/public/images/podcast_av/pod.png"/></a><br>
 <a href="http://localhost/Herz/public/sound" id="SeeMore">Se fler...</a>
@@ -71,8 +82,10 @@ $('#btnReview').click(function(){
 <div role="tabpanel" class="tab-pane" id="pop">
     <h1>Populärt</h1><!-- här börjar andra rubriken -->
     @foreach($favorites as $favorite)
-
-<?php
+      <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
+          <?php
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $favorite->channelID)->count();
+        /* hämtar ut hur många som har gjort klippet till favorit */
 
 $favNr = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->count();
 
@@ -81,9 +94,9 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
 
 ?>
-
+    <!-- klipp skall bara synas om de inte är privata -->
 @if($favNr >= 2)
-
+@if($favorite->status != 'privat' or $sub > 0)
 
              <div class="col-md-3 col-sm-1 col-xs-1 col-lg-1" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" heigh="120px"></a>
@@ -92,6 +105,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               @if($favorite->channelID == Auth::user()->userID)
 <p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
 @else
+
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
               @endif
               @endif
@@ -100,8 +114,8 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
             
                         </div>
 
+     @endif
 @endif
-
 @endforeach
 
 <!-- här slutar andra -->
@@ -111,6 +125,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 <div role="tabpanel" class="tab-pane" id="sen">
   <h1>Rekommendationer</h1>
 @foreach($favoriteIDs as $favoriteID)
+
           <?php
 /* fixar lite variabler så vi kan testa mot dem */
         
@@ -124,12 +139,22 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
          ->where(function($query) use($tag) {
              $query ->where('sounds.tag', 'LIKE', '%' . $tag . '%')
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
-         })->orderBy('sounds.created_at', 'ASC')->paginate(5);
-       
+         })->orderBy('sounds.created_at', 'ASC')->take(5)->get();
          ?>
+ @endforeach
 
+  @foreach($results as $result)
 
-  @foreach($results as $result) <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+   <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
+          <?php
+    
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $result->channelID)->count();
+          ?>
+      <!-- klipp skall bara synas om de inte är privata -->
+@if($result->status != 'privat' or $sub > 0)
+   <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+         
+
               <?php
 
               $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count();
@@ -147,9 +172,10 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               
               
              </div>
+@endif
+             @endforeach
+            
 
-             @endforeach
-             @endforeach
 </div>
 
 <!-- rubrik 4-->

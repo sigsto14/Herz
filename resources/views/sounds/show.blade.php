@@ -48,8 +48,10 @@ chmod($file_name,0777);
          
 
           }
+          /* variabel för att se om man subscribar */
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
           ?>
-          @if($sound->status != 'privat' or $channel->channelID == $userID)
+          @if($sound->status != 'privat' or $channel->channelID == $userID or $sub > 0)
             <h1>{{ $sound->title }}</h1>
             <p>Beskrivning:</p><p>{{ $sound->description }}</p>
           </div>
