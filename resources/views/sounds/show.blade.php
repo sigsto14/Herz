@@ -27,6 +27,7 @@ chmod($file_name,0777);
 
 
 ?>
+
 <title>{{ $sound->title }}</title>
 <body>
 @yield('content')
@@ -36,6 +37,19 @@ chmod($file_name,0777);
     <div class="channel_header">
       <div class="podbox">
           <div class="titlepod">
+          <!-- gör variabel för att kunna se om det är den inloggade användarens klipp -->
+          <?php
+          $channel = DB::table('channels')->where('channelID', '=', $sound->channelID)->first();
+          if(Auth::check()){
+            $userID = Auth::user()->userID;
+          }
+          else {
+            $userID = '';
+         
+
+          }
+          ?>
+          @if($sound->status != 'privat' or $channel->channelID == $userID)
             <h1>{{ $sound->title }}</h1>
             <p>Beskrivning:</p><p>{{ $sound->description }}</p>
           </div>
@@ -215,12 +229,17 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 
 </div>
 <!-- Kommentarsfält slut-->
+ 
 
 @endif
-
-        </div>
-  
+<!-- om det är privat klipp -->
+  @else
  
+<h3>Du har ej behörighet att se detta ljudklipp :( </h3>
+<p>Kanal <a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $channel->channelname }}</a> har gjort detta klipp otillgängligt för icke -prenumeranter</p>
+@endif
+        </div>
+
         </div>
         </div>
         </div>

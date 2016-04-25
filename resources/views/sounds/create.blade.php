@@ -25,6 +25,10 @@
 {!! Form::label('Beskrivning:') !!}
 {!! Form::textarea('description') !!}<br>
 
+{!! Form::label('Synlighet:') !!}<br>
+
+  <input type="radio" name="status" value="publik" checked>Publik<br>
+  <input type="radio" name="status" value="privat">Endast för prenumeranter<br><br>
 
 <?php
 $categories = DB::table('category')->get();

@@ -59,6 +59,7 @@ class SoundController extends Controller
     {
 $validator = Validator::make($request->all(), [
                 'title' => 'required|unique:sounds|max:255|',
+                'status'=>'required|',
             'audio'=>'required|',
             'image'=>'required|image|mimes:jpg,jpeg,png,bmp',
             'categoryID' => 'required|',
@@ -74,6 +75,7 @@ $validator = Validator::make($request->all(), [
           }
 
     if($request->hasFile('audio')) {
+    
 $soundVar = $request->title;
       /* sätter namn och får fram om det är ex jpg eller wav-filer så vi kan länka till ljud/bild */      
             $soundName = utf8_decode($soundVar) . '.' .
@@ -102,6 +104,7 @@ $sound = new Sound();
          $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/" . utf8_encode($imageName);
          $sound->tag = $request->get('tag');
            $sound->description = $request->get('description');
+           $sound->status = $request->status;
          $sound->channelID= Auth::user()->userID;
         $sound->save();
         return back()
