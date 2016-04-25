@@ -107,7 +107,7 @@ $state = 0;
 <!-- knapp för att anmäla klipp -->
  <button type="button" class="btn btn-default" id="report"><span class="glyphicon glyphicon-alert"></span></button> 
 <div class="hidden" id="reportOpen">
- <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post">
+ <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
  {!! csrf_field() !!} 
 <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
 <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">

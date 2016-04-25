@@ -675,3 +675,9 @@ font-size: 10px;
 	position: absolute;
 	margin-left: 34%;
 }
+/* report klipp knapp */
+#report {
+	position: relative;
+	margin-left: 80%;
+	background-color: yellow;
+}

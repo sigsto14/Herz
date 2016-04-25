@@ -65,6 +65,11 @@ Route::resource('channel', 'ChannelController');
 Route::get('login', function () {
     return view('login');
 });
+
+
+Route::get('report', function () {
+    return view('report');
+});
 Route::get('send', function () {
     return view('reset.send');
 });
