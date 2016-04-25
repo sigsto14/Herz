@@ -153,7 +153,18 @@ $state = 3;
 
 ?>
 <!-- ^state 2 om det är favorit och state 3 om ej -->
+@else
+<?php
+$userID = '';
+?>
 @endif
+   <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
+          <?php
+    
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
+          ?>
+          <!-- om det ej är privat eller man subbar -->
+           @if($sound->status != 'privat' or $sub > 0 or $channel->channelID == $userID)
 <!-- visar upp alla ljud -->
           <div class="sb">
            <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title }}</h1> </a>
@@ -208,7 +219,7 @@ Your browser does not support the audio element.
 @endif
 </div>
 
-
+@endif
 
 @endforeach
 
