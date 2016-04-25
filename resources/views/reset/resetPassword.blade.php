@@ -23,7 +23,7 @@ Du kan byta detta lösenordet i "Redigera Profil" efter att du loggat in med det
  <input name="emailConfirm" class="form-control" id="emailConfirm">
  </div> 
 
- <button type="submit" class="btn btn-default">Skicka</button> 
+ <button type="submit" class="btn btn-default">Skicka nytt lösenord</button> 
 </form> 
 @if(Session::has('message'))
 <div class="alert alert-danger">
