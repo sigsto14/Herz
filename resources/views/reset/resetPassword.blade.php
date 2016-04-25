@@ -5,6 +5,7 @@
 </head>
 
 <body>
+<!-- formulär för att kunna återställa lösenord med hjälp av emailadress -->
 <div class="container">
 <div class="col-md-12" id="container">
 

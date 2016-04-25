@@ -4,6 +4,8 @@
 <head>
 </head>
 <body>
+<!-- ett hemligt formulär för att skicka nytt lösenord till användare -->
+<!-- just nu skickas till sigsto14 på hh.se, men kommer att kunna ändras till e-mail om någonsin finns server för det -->
 <div class="hidden">
  <form action="http://ideweb2.hh.se/~sigsto14/Test/send.php" method="post">
  {!! csrf_field() !!} 
@@ -16,6 +18,7 @@
 
 
 </div>
+<!-- script som triggar skicka-knappen på document ready så att formuläret skickas -->
 <script>
 $(document).ready(function() {
 $('#send').trigger('click');

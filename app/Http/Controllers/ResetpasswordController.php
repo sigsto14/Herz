@@ -18,18 +18,18 @@ class ResetpasswordController extends Controller
      */
 public function reset(Request $request)
 {
-    $thing = false;
+    /* tar fram slumpat lösenord */
     $str = str_random(12);
+    /*definierar användarens e-mail*/
     $email = $request->email;
+    /* kollar om användaren finns */
    $user = User::where('email', '=', $email)->first();
 if(!is_null($user)){
+    /* om användaren finns ändrar dess lösenord */
     $user->password = bcrypt($str);
 $user->save();
 
-$to = "sigsto14@student.hh.se";
-$subject = utf8_decode("Lösenordsåterställning");
-$msg = $str;
-$headers = "From: Herzteam";
+/* skickar med dessa variabler till en "osynlig" view med ett formulär som skickar dessa variabler automatiskt */
 return view('send', compact('str'), compact('user'));
 
 }
