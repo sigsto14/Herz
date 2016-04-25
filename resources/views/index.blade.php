@@ -10,7 +10,7 @@ $user = Auth::user();
 $senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(5)->get();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
-
+ $favoriteCheck = DB::table('favorites')->first();
 $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->join('channels', 'channels.channelID', '=', 'sounds.channelID')->get();
 
              $userID = Auth::user()->userID;
@@ -124,7 +124,9 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 <!-- denna ska vara i rubrik 3 -->
 <div role="tabpanel" class="tab-pane" id="sen">
   <h1>Rekommendationer</h1>
-
+@if(is_null($favoriteCheck))
+           <p>Inga rekommendationer</p>
+           @else
 
 @foreach($favoriteIDs as $favoriteID)
 
@@ -145,9 +147,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
          ?>
 
 @endforeach
-  @if(is_null($favoriteIDs))
-  <p>Inga favoriter</p>
-  @else
+
 
   @foreach($results as $result)
 
