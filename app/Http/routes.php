@@ -29,7 +29,9 @@ Route::resource('user', 'UserController');
 
 Route::resource('channel', 'ChannelController');
 Route::resource('resetPassword', 'resetpasswordController@index');
+
 Route::resource('resetPassword/reset', 'resetpasswordController@reset');
+Route::resource('resetPassword/send', 'resetpasswordController@send');
 Route::resource('sound', 'SoundController');
 Route::resource('favorite', 'FavoriteController');
 Route::resource('category', 'CategoryController');
@@ -63,15 +65,22 @@ Route::resource('channel', 'ChannelController');
 Route::get('login', function () {
     return view('login');
 });
-
+Route::get('send', function () {
+    return view('reset.send');
+});
 
 Route::get('playlist', function () {
     return view('playlist.index');
 });
 
+
+
+
 Route::get('back', function () {
     return back();
 });
+
+
 
 Route::get('logout', function () {
     return back('index');

@@ -1,36 +1,36 @@
 <!DOCTYPE HTML>
-@include('template');
+@extends('template');
 <html>
 <head>
 </head>
 
 <body>
 <div class="container">
-<div class="col-md-12"id="container">
+<div class="col-md-12" id="container">
 
 <p> Skriv din registrerade email i fälten nedan så skickar Herz ett nytt lösenord till dig.<br>
 Du kan byta detta lösenordet i "Redigera Profil" efter att du loggat in med det. </p>
-<form action="http://localhost/Herz/public/resetPassword/reset" method="post" accept-charset="UTF-8">
-{!! csrf_field() !!}
-{!!     Form::label('email', 'Email:') !!}
-{!!     Form::text('email') !!}<br>
 
-{!!     Form::label('emailConfirm', 'Upprepa Email:') !!}
-{!!     Form::text('emailConfirm') !!}<br>
+ <form action="http://localhost/Herz/public/resetPassword/reset" method="post">
+ {!! csrf_field() !!} 
+ <div class="form-group">
+ <label for="email">Email:</label> 
+<input type="email" class="form-control" name="email">
+ </div>
+ 
+ <div class="form-group"> <label for="emailConfirm">Återge email:</label>
+ <input name="emailConfirm" class="form-control" id="emailConfirm">
+ </div> 
 
-
-
- <input type="submit" id="changePass" class="btn btn-success" value="Skicka">
-{!! Form::close() !!}
-@if(Session::has('message1'))
+ <button type="submit" class="btn btn-default">Skicka</button> 
+</form> 
+@if(Session::has('message'))
 <div class="alert alert-danger">
-	{{ Session::get('message1') }}
+	{{ Session::get('message') }}
 </div>
 @endif
-
 </div>
-
-
+</div> 
 
 </body>
 

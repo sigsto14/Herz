@@ -18,16 +18,23 @@ class ResetpasswordController extends Controller
      */
 public function reset(Request $request)
 {
+    $thing = false;
     $str = str_random(12);
     $email = $request->email;
    $user = User::where('email', '=', $email)->first();
 if(!is_null($user)){
     $user->password = bcrypt($str);
 $user->save();
-dd($str);
+
+$to = "sigsto14@student.hh.se";
+$subject = utf8_decode("Lösenordsåterställning");
+$msg = $str;
+$headers = "From: Herzteam";
+return view('send', compact('str'), compact('user'));
+
 }
 else if(is_null($user)){
-    return back()->withMessage1('Email ej registrerad');
+    return back()->withMessage('Email ej registrerad');
 }
 
 
