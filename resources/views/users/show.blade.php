@@ -106,7 +106,7 @@ $('#btnReview').click(function(){
          })->orderBy('sounds.created_at', 'ASC')->paginate(2);
 
          ?>
-         @endforeach
+         
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
 
@@ -132,7 +132,7 @@ Your browser does not support the audio element.
              
              
              @endforeach
-
+@endforeach
 <!-- slut på ljudklipprekommendationer -->
 <!-- rekommenderade kanaler -->
 
