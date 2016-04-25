@@ -52,6 +52,10 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
+        if(Auth::check()){
+$playlists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->count();
+}
+if($playlists < 5){
    $validator = Validator::make($request->all(), [
                 'listTitle' => 'required|max:255|',
             'listDescription' => 'required|',
@@ -72,6 +76,13 @@ class PlaylistController extends Controller
        $playlist->userID = $request->get('userID');
        $playlist->save();
        return back();
+
+   }
+   else {
+return back()->
+withError('Du har redan fem spellistor! Radera spellistor och försök igen.');
+
+   }
     }
 
     /**

@@ -59,7 +59,7 @@ $userID = Auth::user()->userID;
           <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Sparade podcasts</a></li>
             <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Spellista</a></li>
+            <li role="presentation" id="spellistor"><a href="#list" role="tab" data-toggle="tab">Spellista</a></li>
             @if(Auth::check())
             @if(Auth::user()->userID = $user->userID)
             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
@@ -137,8 +137,12 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list">
 
   <!-- lite kod för att hämta ut användarens spellistor -->
-  <h1>Spellistor</h1>
- <?php
+
+
+ <h1>Spellistor</h1>
+
+<?php
+
 /* behöver fylla en array senare */
   $array = '';
   /* hämtar playlists*/
@@ -169,48 +173,45 @@ $li = '';
 if($count > 0){
 $listID1 = $lists[0]; 
 $list1 = DB::table('playlists')->where('listID', '=', $listID1)->first();
-$li .= '<li role="presentation" class="active"><a href="#' . $list1->listTitle . '" role="tab" data-toggle="tab">' .$list1->listTitle . '</a></li>';
+$li .= '<li role="presentation" class="active"><a href="#' . $list1->listTitle . '" role="tab" data-toggle="tab" id="' . $list1->listTitle .'">' . $list1->listTitle . '</a></li>';
 }
 if($count > 1){
 $listID2 = $lists[1];
 $list2 = DB::table('playlists')->where('listID', '=', $listID2)->first();
-$li .= '<li role="presentation"><a href="#' . $list2->listTitle . '" role="tab" data-toggle="tab">' .$list2->listTitle . '</a></li>';
+$li .= '<li role="presentation"><a href="#' . $list2->listTitle . '" role="tab" data-toggle="tab" id="' . $listID2 . '">' . $list2->listTitle . '</a></li>';
 }
 if($count > 2){
 $listID3 = $lists[2];
 $list3 = DB::table('playlists')->where('listID', '=', $listID3)->first();
-$li .= '<li role="presentation"><a href="#' . $list3->listTitle . '" role="tab" data-toggle="tab">' .$list3->listTitle . '</a></li>';
+$li .= '<li role="presentation"><a href="#' . $list3->listTitle . '" role="tab" data-toggle="tab" id="' . $listID3 . '">' . $list3->listTitle . '</a></li>';
 }
 if($count > 3){
 $listID4 = $lists[3];
 $list4 = DB::table('playlists')->where('listID', '=', $listID4)->first();
-$li .= '<li role="presentation"><a href="#' . $list4->listTitle . '" role="tab" data-toggle="tab">' .$list4->listTitle . '</a></li>';
+$li .= '<li role="presentation"><a href="#' . $list4->listTitle . '" role="tab" data-toggle="tab" id="' . $listID4 . '">' . $list4->listTitle . '</a></li>';
 }
 if($count > 4){
 $listID5 = $lists[4];
 $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
-$li .= '<li role="presentation"><a href="#' . $list5->listTitle . '" role="tab" data-toggle="tab">' .$list5->listTitle . '</a></li>';
+$li .= '<li role="presentation"><a href="#' . $list5->listTitle . '" role="tab" data-toggle="tab" id="' . $listID5 . '">' . $list5->listTitle . '</a></li>';
 }
 
 $lo = html_entity_decode($li, ENT_QUOTES);
 
+
  ?>
- <!-- om det är tomt ska det stå -->
-  @if(is_null($playlistsCheck))
+
+ @if(is_null($playlistsCheck))
   <p>Oj oj, här var det tomt! {{ $user->username }} har inga spellistor än</p>
   @else
-
-           
-          
-<!-- annars kör samma if-satser som när variablerna gjordes och skriva ut varje värde för sig -->
-
-    @if($count > 0)
-    <div class="col-lg-8"  id="tabus"> 
+   <div class="col-lg-12"  id="tabus"> 
     <ul class="nav nav-tabs" role="tablist" >       <?php echo $lo  ?>
             </ul>
-<!-- första resultatet -->
-<div role="tabpanel" class="tab-pane" id="{{ $listID1 }}">
-<div class="row" id="list1">
+
+ @if($count > 0)
+ <div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="{{ $list1->listTitle }}">
+
 <!-- lite länkar o lista -->
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list1->listID }}">{{ $list1->listTitle }}</a></h2>
    <br>
@@ -235,12 +236,9 @@ $lo = html_entity_decode($li, ENT_QUOTES);
 {!! csrf_field() !!}
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
 {!! Form::close() !!}
+
 @endif
 @endif
-<!-- ett script så man kan stänga spelaren -->
-
-
-<!-- ett script som laddar in spelare i box1 och skickar värden med ajax till en php-funktion som gör xml-fil så att värdena i spelaren blir rätt -->
 <script>
 
 $('#play').submit(function(e){
@@ -265,14 +263,14 @@ $.ajax({
  
 
 });
-</script>
-</div></div>
-@endif
-  <!-- repeat -->
- @if($count > 1)
-<div role="tabpanel" class="tab-pane" id="{{ $listID2 }}">
-<div class="row" id="list2">
- <li role="presentation"><a href="#{{ $list2->listTitle }}" role="tab" data-toggle="tab">{{ $list2->listTitle }}</a></li>
+</script></div></div></div>
+<!-- slut första result-->
+   @endif
+
+@if($count > 1)
+ <div class="tab-content">
+<div role="tabpanel" class="tab-pane" id="{{ $list2->listTitle }}">
+
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list2->listID }}">{{ $list2->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list2->listDescription }}</p>
@@ -316,16 +314,14 @@ $.ajax({
  
 
 });
-</script>
-</div>
- 
-@endif
+</script></div></div></div>
 
 
-<!-- repeat -->
+  @endif
+
 @if($count > 2)
-
-<div class="row" id="list3">
+ <div class="tab-content">
+<div role="tabpanel" class="tab-pane" id="{{ $list3->listTitle }}">
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list3->listID }}">{{ $list3->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list2->listDescription }}</p>
@@ -370,25 +366,26 @@ $.ajax({
 
 });
 </script>
-</div></div>
+</div></div></div>
  
 @endif
 <!-- repeat -->
 @if($count > 3)
+ <div class="tab-content">
 
-<div class="row" id="list4">
+<div role="tabpanel" class="tab-pane" id="{{ $list4->listTitle }}">
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list4->listID }}">{{ $list4->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list4->listDescription }}</p>
 
-   <div id="box4">
+   
 
     <form action="" method="put" name="play4" id="play4">
 <input type="hidden" name="listID4" value="{{ $list4->listID }}" id="listID4">
     <button type="submit" class="btn btn-default btn-lg" id="play4">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
- </form>  </div>
+ </form>  <div id="box4"></div>
 
 @if(Auth::check())
 @if(Auth::user()->userID == $user->userID )
@@ -421,77 +418,23 @@ $.ajax({
 
 });
 </script>
-</div>
- 
-@endif
-<!-- repeat -->
-@if($count > 4)
-
-<div class="row" id="list5">
-  <h2><a href="http://localhost/Herz/public/playlist/{{ $list5->listID }}">{{ $list5->listTitle }}</a></h2>
-   <br>
-     <h4>Beskrivning</h4><br><p>{{ $list5->listDescription }}</p>
-
-   <div id="box5">
-
-    <form action="" method="put" name="play5" id="play5">
-<input type="hidden" name="listID5" value="{{ $list5->listID }}" id="listID5">
-    <button type="submit" class="btn btn-default btn-lg" id="play5">
-  <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-</button>
- </form>  </div>
-
-@if(Auth::check())
-@if(Auth::user()->userID == $user->userID )
-{!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID5))) !!}
-{!! csrf_field() !!}
-{!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-{!! Form::close() !!}
-@endif
-@endif
-<script>
-
-$('#play5').submit(function(e){
-e.preventDefault();
-$("#box5").load( "http://localhost/Herz/public/player.html" );
-var listID5 = $('#listID5').val();
-   var listID5 = $.trim(listID5);
-     var userID5 = $('#userID5').val();
-   var userID5 = $.trim(userID5);
- 
-$.ajax({
-
-       url: 'http://localhost/Herz/public/list5.php',
-       data: { listID5: listID5, userID5: userID5},
-       dataType: 'json',
-       success: function(data){
-            
-       }
-    });
- 
-
-});
-</script>
-</div>
+</div></div></div>
  
 @endif
 
   @endif
 
-  </div>
-</div>
+
+ </div>
+
 
 </div>
 
-   
-       
-        </div>
-
-      </div>
-
-      </div>
-      </div>
-      </div>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 @stop
