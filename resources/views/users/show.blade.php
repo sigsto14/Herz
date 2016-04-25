@@ -57,13 +57,19 @@ $userID = Auth::user()->userID;
         </div>
         <div class="col-lg-8"  id="tabus">        
           <ul class="nav nav-tabs" role="tablist" >
-            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Sparade podcasts</a></li>
+                   @if(Auth::check())
+            @if(Auth::user()->userID == $user->userID)
+            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Rekommendationer</a></li>
             <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            <li role="presentation" id="spellistor"><a href="#list" role="tab" data-toggle="tab">Spellista</a></li>
-            @if(Auth::check())
-            @if(Auth::user()->userID = $user->userID)
-            <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
-            @endif
+             <li role="presentation" id="spellistor"><a href="#list" role="tab" data-toggle="tab">Spellistor</a></li>
+             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
+                 @else
+            
+            <li role="presentation" class="active"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
+            <li role="presentation" id="spellistor"><a href="#list" role="tab" data-toggle="tab">Spellistor</a></li>
+
+            
+          @endif
             @endif
           </ul>
           <script>
@@ -100,9 +106,16 @@ $('#btnReview').click(function(){
          })->orderBy('sounds.created_at', 'ASC')->paginate(2);
 
          ?>
+         @endforeach
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
-@if($result->channelID != $userID)
+
+          <?php
+    
+          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $result->channelID)->count();
+          ?>
+          <!-- om det ej är privat eller man subbar -->
+           @if($result->status != 'privat' or $sub > 0 or $result->channelID == $userID)
   <div class="row">
               <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br></div>
                <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
@@ -117,7 +130,7 @@ Your browser does not support the audio element.
               
               @endif
              
-             @endforeach
+             
              @endforeach
 
 <!-- slut på ljudklipprekommendationer -->
