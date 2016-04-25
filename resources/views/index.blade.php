@@ -124,6 +124,8 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 <!-- denna ska vara i rubrik 3 -->
 <div role="tabpanel" class="tab-pane" id="sen">
   <h1>Rekommendationer</h1>
+
+
 @foreach($favoriteIDs as $favoriteID)
 
           <?php
@@ -141,9 +143,11 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
          ->orWhere('sounds.title', 'LIKE', '%' . $tag . '%');
          })->orderBy('sounds.created_at', 'ASC')->take(5)->get();
          ?>
-        
 
-
+@endforeach
+  @if(is_null($favoriteIDs))
+  <p>Inga favoriter</p>
+  @else
 
   @foreach($results as $result)
 
@@ -176,7 +180,8 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
              </div>
 @endif
              @endforeach
-   @endforeach
+             @endif
+ 
 
 </div>
 
