@@ -109,12 +109,17 @@ public function search(Request $request)
     //för att kolla kategorier
 $categoryID = $request->get('categoryID');
 
-//sätter ihop channel och sounds för att kunna generera resultat ur båda
 
-    $channels = DB::table('channels')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->join('category', 'category.categoryID', '=', 'sounds.categoryID')->where('title', 'LIKE', '%' . $query . '%')
-    ->orwhere('channels.channelname', 'LIKE', '%' . $query . '%')->orwhere('sounds.categoryID', '=', $categoryID)->orwhere('sounds.tag', 'LIKE', '%' . $query . '%')->paginate(10);
+// söker kanaler som matchar sökningen
+    $channels = DB::table('channels')
+    ->where('channels.channelname', 'LIKE', '%' . $query . '%')->take(5)->get();
+//söker ljudklipp som matchar sökningen
+ $sounds = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->join('category', 'category.categoryID', '=', 'sounds.categoryID')->where('sounds.title', 'LIKE', '%' . $query . '%')
+   ->orwhere('sounds.categoryID', '=', $categoryID)->orwhere('sounds.tag', 'LIKE', '%' . $query . '%')->paginate(10);
+// söker användare som matchar sökningen
+$users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take(5)->get();
 
-    return view('search.index', compact('sounds', 'query'), compact('channels', 'query'), compact('category', 'query'));
+    return view('search.index', compact('sounds', 'query'), compact('channels', 'query'), compact('category', 'query'), compact('users', 'query'));
  }
 
 }

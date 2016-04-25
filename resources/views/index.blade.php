@@ -142,6 +142,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
          })->orderBy('sounds.created_at', 'ASC')->take(5)->get();
          ?>
  @endforeach
+ @if(!is_null($results))
 
   @foreach($results as $result)
 
@@ -174,7 +175,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
              </div>
 @endif
              @endforeach
-            
+            @endif
 
 </div>
 
