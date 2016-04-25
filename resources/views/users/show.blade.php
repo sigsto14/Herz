@@ -162,40 +162,54 @@ $array .= ',' . $playlist->listID;
 }
 /* gör en array av värdena vi satt in i variabeln för arrayen */
 $lists = array_values(explode(',',$array,10));
-
+$li = '';
 /* med hjälp av att kolla hur många resultat vi fick gör vi variabler av värdena i arrayen */
 /* variabler för var resultat (max 5) */
 /* detta för att javascript och ny xml ej fungerar med foreach loop och id'n */
 if($count > 0){
 $listID1 = $lists[0]; 
 $list1 = DB::table('playlists')->where('listID', '=', $listID1)->first();
+$li .= '<li role="presentation" class="active"><a href="#' . $list1->listTitle . '" role="tab" data-toggle="tab">' .$list1->listTitle . '</a></li>';
 }
 if($count > 1){
 $listID2 = $lists[1];
 $list2 = DB::table('playlists')->where('listID', '=', $listID2)->first();
+$li .= '<li role="presentation"><a href="#' . $list2->listTitle . '" role="tab" data-toggle="tab">' .$list2->listTitle . '</a></li>';
 }
 if($count > 2){
 $listID3 = $lists[2];
 $list3 = DB::table('playlists')->where('listID', '=', $listID3)->first();
+$li .= '<li role="presentation"><a href="#' . $list3->listTitle . '" role="tab" data-toggle="tab">' .$list3->listTitle . '</a></li>';
 }
 if($count > 3){
 $listID4 = $lists[3];
 $list4 = DB::table('playlists')->where('listID', '=', $listID4)->first();
+$li .= '<li role="presentation"><a href="#' . $list4->listTitle . '" role="tab" data-toggle="tab">' .$list4->listTitle . '</a></li>';
 }
 if($count > 4){
 $listID5 = $lists[4];
 $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
+$li .= '<li role="presentation"><a href="#' . $list5->listTitle . '" role="tab" data-toggle="tab">' .$list5->listTitle . '</a></li>';
 }
+
+$lo = html_entity_decode($li, ENT_QUOTES);
+
  ?>
  <!-- om det är tomt ska det stå -->
   @if(is_null($playlistsCheck))
   <p>Oj oj, här var det tomt! {{ $user->username }} har inga spellistor än</p>
   @else
 
+           
+          
 <!-- annars kör samma if-satser som när variablerna gjordes och skriva ut varje värde för sig -->
 
     @if($count > 0)
+    <div class="col-lg-8"  id="tabus"> 
+    <ul class="nav nav-tabs" role="tablist" >       <?php echo $lo  ?>
+            </ul>
 <!-- första resultatet -->
+<div role="tabpanel" class="tab-pane" id="{{ $listID1 }}">
 <div class="row" id="list1">
 <!-- lite länkar o lista -->
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list1->listID }}">{{ $list1->listTitle }}</a></h2>
@@ -224,20 +238,8 @@ $list5 = DB::table('playlists')->where('listID', '=', $listID5)->first();
 @endif
 @endif
 <!-- ett script så man kan stänga spelaren -->
-<script>
-$(document).ready(function() {
-$('#closePlayer').on( "click", function( event ) {
-$('#box1').toggleClass("hidden");
-$('#closePlayer').toggleClass("click");
 
 
-});
-$('.click').on( "click", function() {
-
- $( "#play" ).click();
-  });
-});
-</script>
 <!-- ett script som laddar in spelare i box1 och skickar värden med ajax till en php-funktion som gör xml-fil så att värdena i spelaren blir rätt -->
 <script>
 
@@ -264,25 +266,25 @@ $.ajax({
 
 });
 </script>
-</div>
- 
+</div></div>
 @endif
   <!-- repeat -->
  @if($count > 1)
-
+<div role="tabpanel" class="tab-pane" id="{{ $listID2 }}">
 <div class="row" id="list2">
+ <li role="presentation"><a href="#{{ $list2->listTitle }}" role="tab" data-toggle="tab">{{ $list2->listTitle }}</a></li>
   <h2><a href="http://localhost/Herz/public/playlist/{{ $list2->listID }}">{{ $list2->listTitle }}</a></h2>
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list2->listDescription }}</p>
 
-   <div id="box2">
+  
 
     <form action="" method="put" name="play2" id="play2">
 <input type="hidden" name="listID2" value="{{ $list2->listID }}" id="listID2">
     <button type="submit" class="btn btn-default btn-lg" id="play2">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
- </form>  </div>
+ </form>  <div id="box2"> </div>
 
 @if(Auth::check())
 @if(Auth::user()->userID == $user->userID )
@@ -328,14 +330,14 @@ $.ajax({
    <br>
      <h4>Beskrivning</h4><br><p>{{ $list2->listDescription }}</p>
 
-   <div id="box3">
+   
 
     <form action="" method="put" name="play3" id="play3">
 <input type="hidden" name="listID3" value="{{ $list3->listID }}" id="listID3">
     <button type="submit" class="btn btn-default btn-lg" id="play3">
   <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
 </button>
- </form>  </div>
+ </form>  <div id="box3"></div>
 
 @if(Auth::check())
 @if(Auth::user()->userID == $user->userID )
@@ -368,7 +370,7 @@ $.ajax({
 
 });
 </script>
-</div>
+</div></div>
  
 @endif
 <!-- repeat -->
