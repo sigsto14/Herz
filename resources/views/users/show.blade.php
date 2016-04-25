@@ -87,6 +87,9 @@ $('#btnReview').click(function(){
            @if(Auth::check())
                <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
+            @if(is_null($favoriteIDs))
+           <p>Inga rekommendationer</p>
+           @else
             <h1> Ljudklipp för dig:</h1>
             <!-- gör loopar av tidigare variabler -->
           @foreach($favoriteIDs as $favoriteID)
@@ -107,9 +110,7 @@ $('#btnReview').click(function(){
 
          ?>
            @endforeach
-           @if(is_null($favoriteIDs))
-           <p>Inga rekommendationer</p>
-           @else
+           
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
 
@@ -139,11 +140,7 @@ Your browser does not support the audio element.
 @endif
 <!-- slut på ljudklipprekommendationer -->
 <!-- rekommenderade kanaler -->
-
-            
-             
-            
-              @endif
+         @endif
               @endif
 
 </div>
