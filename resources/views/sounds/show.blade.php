@@ -102,8 +102,30 @@ $state = 0;
               <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
               </button>
 {!! Form::close() !!}</td>
-
+</div>
 @endif
+<!-- knapp för att anmäla klipp -->
+ <button type="button" class="btn btn-default" id="report"><span class="glyphicon glyphicon-alert"></span></button> 
+<div class="hidden" id="reportOpen">
+ <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post">
+ {!! csrf_field() !!} 
+<input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
+<input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
+<input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
+ <button type="submit" class="btn btn-default">Anmäl</button>
+
+
+</form> 
+</div>
+
+ <script>
+$('#report').click(function(){
+  $("#reportOpen").toggleClass("hidden");
+
+});
+</script>
+
+
 <br><br><br><br><br>
 <td>{!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
 <div>
