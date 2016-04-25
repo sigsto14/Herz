@@ -12,10 +12,10 @@
 
 <div class="container">
 <div class="col-md-12" id="container"><br><br>
-<p class="titles">Users:</p>
+<p class="titles">Kanaler:</p>
 <table class="table">
 
-<th>Username</th>
+<th>Kanalnamn</th>
 <th>Information</th></tr>
 
 

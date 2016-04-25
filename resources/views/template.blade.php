@@ -117,7 +117,13 @@ $titleNr = '';
                 <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
                 <li role="separator" class="divider"></li>
-                <!-- sätter o kollar om admin e inloggad så får man en fin meny -->
+                 <li class="dropdown-header">Upptäck</li>
+                <li><a href="#">Senast uppladdat</a></li>
+                <li><a href="#">Populärt</a></li>
+                <li><a href="#">Rekomendationer</a></li>
+                <li><a href="#">Veckans pod</a></li>
+                <li role="separator" class="divider"></li>
+                <!-- Kollar om admin är inloggad och lägger till administration i menyn -->
                 @if(Auth::check())
                 <?php
                 $username = Auth::user()->username;
@@ -126,20 +132,16 @@ $titleNr = '';
 
                 <li class="dropdown-header">Administrativt</li>
                 <li><a href="http://localhost/Herz/public/category/create">Administrera kategorier</a></li>
+                <li><a href ="#">Ta bort användare</a></li>
+                <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Om Herz</li>
 
                 @else
                 <li class="dropdown-header">Om Herz</li>
                 @endif
                 @endif
-                <li><a href="http://localhost/Herz/public/playlist/1">Vad är Herz</a></li>
-                <li><a href="#">Bli Medlem</a></li>
-                <li class="dropdown-header">Stolt över</li>
-                <li><a href="#">Veckans Podare</a></li>
-                <li><a href="#">Veckans Podar</a></li>
-                <li><a href="#">Månadens Podar</a></li>
-                <li><a href="#">All-time Favorit Podar</a></li>
-                <li><a href="#">Favorit Nybörjare</a></li>
+                <li><a href="#">Vad är Herz</a></li>
+                <li><a href = "#">Support</a></li>
               </ul>
             </li>
             <!-- Sökfunktion -->
@@ -224,7 +226,7 @@ $titleNr = '';
 
             </li>
 
-            <!-- Komment/Favorti Knappar Slut -->  
+            <!-- Komment/Favorit Knappar Slut -->  
                             @if(Auth::check())
                             <?php
               $user = Auth::user()->userID;
