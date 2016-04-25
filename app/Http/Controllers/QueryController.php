@@ -117,9 +117,9 @@ $categoryID = $request->get('categoryID');
  $sounds = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->join('category', 'category.categoryID', '=', 'sounds.categoryID')->where('sounds.title', 'LIKE', '%' . $query . '%')
    ->orwhere('sounds.categoryID', '=', $categoryID)->orwhere('sounds.tag', 'LIKE', '%' . $query . '%')->paginate(10);
 // söker användare som matchar sökningen
-$users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take(5)->get();
 
-    return view('search.index', compact('sounds', 'query'), compact('channels', 'query'), compact('category', 'query'), compact('users', 'query'));
+
+    return view('search.index', compact('sounds', 'query'), compact('channels', 'query'), compact('category', 'query'));
  }
 
 }

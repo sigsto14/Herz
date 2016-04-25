@@ -106,7 +106,10 @@ $('#btnReview').click(function(){
          })->orderBy('sounds.created_at', 'ASC')->paginate(2);
 
          ?>
-         
+           @endforeach
+           @if(is_null($favoriteIDs))
+           <p>Inga rekommendationer</p>
+           @else
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
 
@@ -131,8 +134,9 @@ Your browser does not support the audio element.
               @endif
              
              
-             @endforeach
+           
 @endforeach
+@endif
 <!-- slut på ljudklipprekommendationer -->
 <!-- rekommenderade kanaler -->
 
