@@ -45,7 +45,7 @@
             <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
             <?php
 $userID = Auth::user()->userID;
-
+  $favoriteCheck = DB::table('favorites')->first();
             $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'favorites.soundID')->join('channels', 'channels.channelID', '=', 'sounds.channelID')->get();
             /* vilka channels subbar användaren på, group by så det bara blir en av var */
             $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->groupBy('channels.channelID')->get();
@@ -87,7 +87,7 @@ $('#btnReview').click(function(){
            @if(Auth::check())
                <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
-            @if(is_null($favoriteIDs))
+            @if(is_null($favoriteCheck))
            <p>Inga rekommendationer</p>
            @else
             <h1> Ljudklipp för dig:</h1>
