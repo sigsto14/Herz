@@ -66,6 +66,10 @@ Route::get('login', function () {
     return view('login');
 });
 
+Route::get('home', function () {
+    return view('home');
+});
+
 
 Route::get('report', function () {
     return view('report');
@@ -98,9 +102,6 @@ Route::get('register', function () {
 });
 
 
-Route::get('home', function () {
-    return view('index');
-});
 
 Route::get('favorite', function () {
     return view('favorites.index');
