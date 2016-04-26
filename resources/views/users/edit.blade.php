@@ -36,8 +36,7 @@
 <button type="button" id="changePass" class="btn btn-success">Byt Lösenord</button>
 
 <div id="newPass" class="hidden">
-{!!     Form::label('newPass', 'Nytt Lösenord:') !!}
-{!!     Form::password('newPass') !!}<br>
+<label>Nytt lösenord</label><input type="password" id="newPass" placeholder="Nytt lösenord" name="newPass"><br>
 
 {!!     Form::label('newPassConfirm', 'Upprepa Nytt Lösenord:') !!}
 {!!     Form::password('newPassConfirm') !!}<br>
@@ -48,10 +47,8 @@
 </div>
  <script>
 $('#changePass').click(function(){
-  $("#newPass").removeClass("hidden");
-  $('#changePass').addClass("clicked");
-
- 
+  $("#newPass").toggleClass("hidden");
+  
 
 });
 </script>
