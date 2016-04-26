@@ -113,57 +113,22 @@ return view('users.show', compact('user'), compact('channel'), compact('sound'))
      */
     public function update(Request $request, $id)
     {
-        /* hämtar ut ID för inloggad anv */
-     $activeID = Auth::user()->userID;
-/* declarerar user */
-$user = User::find($id);
 
-/* sätter variabler för att kunna sätta constraints */
-      $emailInput = $request->email;
+$user = User::find($id);
+          $emailInput = $request->email;
       $usernameInput = $request->username;
       $activeEmail = $user->email;
       $activeUsername = $user->username;
-      $activePass = $user->password;
+       
+       
 
-      $inputPass = $request->activeConfirm;
-      /* kollar det inskrivna lösenordet mot det hashade i databasen */
-        $passwordCheck = Hash::check($inputPass, $activePass);
 
-$newPass = $request->newPass;
-$newPassConf = $request->newPassConfirm;
 
-/*gör lite kollar i databasen så det är fritt */
-$usernameFree = DB::table('users')->where('username', '=', $usernameInput)->first();
+
+        $usernameFree = DB::table('users')->where('username', '=', $usernameInput)->first();
 $emailFree = DB::table('users')->where('email', '=', $emailInput)->first();
 
 
-/* kör om man har skrivit in nytt lösen */
-if(isset($request->newPass)){
-    /* om konfirmationslösen inte matchar användarens lösen */
-   
-    /* om det nya lösenordet matchar confirmation på nya lösen */
-  if($newPass == $newPassConf){
-    /* och konfirmationslösen matchar användarens lösen */
-        if($passwordCheck == true){
-            /* så ändras lösenord */
-$user->password = bcrypt($request->newPass);
-$user->save();
-        }
-        /* om "nuvarande lösen" INTE matchar lösen */
-        else if($passwordCheck == false){
-        return back()->withMessage1('Fel lösenord');
-    }
-
-    }
-/*ifall nya lösen och confirmationslösen ej matchar */
-    if($newPass != $newPassConf){
-        return back()->withMessage1('Lösenorden matchar inte!');
-    }
-  
-    
-}
-
-/* ifall emailen INTE är fri */
 if(!is_null($emailFree)){
     if($activeEmail != $emailInput){
     return back()->withMessage1('Email upptagen!');
@@ -206,15 +171,60 @@ else{
     
 
 }
-    }
+  }
+    
 }
 
 
 
 
+}
+/* ifall emailen INTE är fri */
+
+   public function resetPass(Request $request)
+{
+
+if(Auth::check()){
+$user = User::where('userID', '=', Auth::user()->userID)->first();
+   $activePass = $user->password;
+    $inputPass = $request->activeConfirm;
+      /* kollar det inskrivna lösenordet mot det hashade i databasen */
+        $passwordCheck = Hash::check($inputPass, $activePass);
+
+$newPass = $request->newPass;
+$newPassConf = $request->newPassConfirm;
+
+
+ if($newPass == $newPassConf){
+    /* och konfirmationslösen matchar användarens lösen */
+        if($passwordCheck == true){
+            /* så ändras lösenord */
+$user->password = bcrypt($request->newPass);
+$user->save();
+return back()->withMessage3('Lösenord uppdaterat!');
+        }
+        /* om "nuvarande lösen" INTE matchar lösen */
+        else if($passwordCheck == false){
+        return back()->withMessage4('Fel lösenord');
+    }
 
     }
-/* gör funktion för att byta lösenord */
+/*ifall nya lösen och confirmationslösen ej matchar */
+    if($newPass != $newPassConf){
+        return back()->withMessage4('Lösenorden matchar inte!');
+    }
+  
+    
+
+
+
+
+}
+}
+
+
+
+
 
 
     /**

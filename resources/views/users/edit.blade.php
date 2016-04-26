@@ -10,7 +10,8 @@
 <div class="col-md-12"id="container">
 <br><br><br><br><br><br><br><br><br><br><br>
 <table class="table">
-@if(Auth::user()->id == $user->id)
+@if(Auth::check())
+@if(Auth::user()->userID == $user->userID)
 {{-- formulär som även visar den data som är i databasen, för ändringar i users och channels tabeller--}}
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
 {!! csrf_field() !!}
@@ -31,32 +32,13 @@
 
 </table>
 
+<input type="submit" class="btn" value="Uppdatera">
 
-
-<button type="button" id="changePass" class="btn btn-success">Byt Lösenord</button>
-
-<div id="newPass" class="hidden">
-<label>Nytt lösenord</label><input type="password" id="newPass" name="newPass"><br>
-
-{!!     Form::label('newPassConfirm', 'Upprepa Nytt Lösenord:') !!}
-{!!     Form::password('newPassConfirm') !!}<br>
-
-
-
-</div>
- <script>
-$('#changePass').click(function(){
-  $("#newPass").toggleClass("hidden");
-  
-
-});
-</script>
 <br>
-{!!     Form::label('activeConfirm', 'Nuvarande Lösenord:') !!}
-{!!     Form::password('') !!}<br>
-<br><br>
-<input type="submit" class="button2" value="Uppdatera"><br>
 {!!     Form::close() !!}<br><br>
+<br>
+<br>
+
 @if(Session::has('message'))
 <div class="alert alert-success">
 	{{ Session::get('message') }}
@@ -65,6 +47,38 @@ $('#changePass').click(function(){
 @if(Session::has('message1'))
 <div class="alert alert-danger">
 	{{ Session::get('message1') }}
+</div>
+@endif
+<button type="button" id="changePass" class="btn btn-success">Byt Lösenord</button>
+<form action="http://localhost/Herz/public/user/resetPass" method="POST">
+{!! csrf_field() !!}
+<div id="newPass" class="hidden">
+<label>Nytt lösenord</label><input type="password" id="newPass" name="newPass"><br>
+
+{!!     Form::label('newPassConfirm', 'Upprepa Nytt Lösenord:') !!}
+{!!     Form::password('newPassConfirm') !!}<br>
+
+{!!     Form::label('activeConfirm', 'Nuvarande Lösenord:') !!}
+{!!     Form::password('activeConfirm') !!}<br>
+<input type="submit" class="btn" value="Byt lösenord">
+</div>
+
+{!!     Form::close() !!}
+ <script>
+$('#changePass').click(function(){
+  $("#newPass").toggleClass("hidden");
+  
+
+});
+</script>
+@if(Session::has('message3'))
+<div class="alert alert-success">
+	{{ Session::get('message3') }}
+</div>
+@endif
+@if(Session::has('message4'))
+<div class="alert alert-danger">
+	{{ Session::get('message4') }}
 </div>
 @endif
 
@@ -76,9 +90,9 @@ $('#changePass').click(function(){
 
 
 @else
-<a class="dropdown-toggle" href="http://localhost/Herz/public/auth/login" data-toggle="dropdown">Log in</a> or <a href="http://localhost/Herz/public/auth/register">Sign up</a> to upload pictures!
+<h4>Du har ej behörighet att vara här!!</h4>
 @endif
-
+@endif
 
 
 
