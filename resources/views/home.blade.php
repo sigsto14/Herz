@@ -38,15 +38,20 @@
 	<div class="fields" >
     	<div class="register_field">
             <h1>Registrera dig</h1>
-            <form>    
+            <form action="http://localhost/Herz/public/auth/register" method="POST">    
+            {!! csrf_field() !!}
+            <div>
+        <input type="hidden" name="profilePicture" value="http://localhost/Herz/public/images/profilepictures/none.png">
+    </div>
+   
                 <div>
         	       <label>Användarnamn:</label>
-        	       <input type="text" name="username" value="{{ old('username') }}">
+        	       <input type="text" name="username">
                 </div>
 
                 <div>
         	       <label>Email:</label>
-        	       <input type="email" name="email" value="{{ old('email') }}">
+        	       <input type="email" name="email">
                 </div>
 
                 <div>
@@ -58,12 +63,16 @@
         	       <label>Bekräfta lösenordet:</label>
         	       <input type="password" name="password_confirmation">
                 </div>
+                  <div id="register_button" class="submit_button_style">
+                   <button type="submit" class="submit_button"><span>Registrera dig</span></button>
+                </div>
             </form>
 		</div>
 
 		<div class="login_field">
             <h1>Logga in</h1>
-            <form>
+            <form action="http://localhost/Herz/public/auth/login" method="POST">
+            {!! csrf_field() !!}
                 <div>
         	       <label>Email:</label>
         	       <input type="email" name="email" value="{{ old('email') }}">
@@ -73,16 +82,15 @@
         	       <label>Password:</label>
         	       <input type="password" name="password" id="password">
                 </div>
+                       <div id="login_button" class="submit_button_style">
+                   <button type="submit" class="submit_button"><span>Login</span></button>
+                </div>     
             </form>
     	</div>
         <div id="field_buttons">
-                <div id="register_button" class="submit_button_style">
-                   <button type="submit" class="submit_button"><span>Registrera dig</span></button>
-                </div>
+              
 
-                <div id="login_button" class="submit_button_style">
-                   <button type="submit" class="submit_button"><span>Login</span></button>
-                </div>               
+                   
         </div>
     </div>    
 	</div>

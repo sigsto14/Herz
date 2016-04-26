@@ -24,8 +24,13 @@ class IndexController extends Controller
 
   
         $users = User::all();
-
+if(Auth::check()){
 
          return view('index', compact('users'));  
+
+     }
+     else{
+        return view('home', compact('users'));  
+     }
     }
 }
