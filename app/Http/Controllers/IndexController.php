@@ -25,11 +25,12 @@ class IndexController extends Controller
   
         $users = User::all();
 if(Auth::check()){
-
+/* denna startsida om användare inloggad */
          return view('index', compact('users'));  
 
      }
      else{
+        /* denna startsida om användare EJ inloggad */
         return view('home', compact('users'));  
      }
     }
