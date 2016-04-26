@@ -120,4 +120,6 @@ Route::get('noty', function () {
     return response()->json(['html' => $html]);
 });
 
-
+Route::get('about', function () {
+    return view('about');
+});

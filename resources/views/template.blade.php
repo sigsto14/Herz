@@ -140,7 +140,7 @@ $titleNr = '';
                 <li class="dropdown-header">Om Herz</li>
                 @endif
                 @endif
-                <li><a href="#">Vad är Herz</a></li>
+                <li><a href="http://localhost/Herz/public/about">Vad är Herz</a></li>
                 <li><a href = "#">Support</a></li>
               </ul>
             </li>
