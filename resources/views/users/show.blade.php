@@ -60,10 +60,13 @@ $userID = Auth::user()->userID;
           <ul class="nav nav-tabs" role="tablist" >
             @if(Auth::check())
             @if(Auth::user()->userID == $user->userID)
+
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Rekommendationer</a></li>
-            <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            
-            <li class="dropdown">         
+
+
+ @endif
+                 @endif 
+                         <li class="dropdown"> 
             <!-- php för att hämta ut spellistor så vi kan presentera dessa i meny -->
                 <?php
               /* behöver fylla en array senare */
@@ -118,27 +121,18 @@ $userID = Auth::user()->userID;
               }
               $lo = html_entity_decode($li, ENT_QUOTES);
               ?>
-            <a href="#" data-toggle="dropdown">Spellista<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                   <?php echo $lo ?>
-                               
-                                </ul>
-                            </li>
-            <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
-            @else
-                        <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">+</a></li>
-            <li class="dropdown">
-   
-                @if($count > 0)
+             @if($count >0)
             <a href="#" data-toggle="dropdown" id="pil">Spellista<span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <?php echo $lo ?>
                                 </ul>
-                            </li>
-                                     @endif
-            @endif
-            @endif
+                                @endif
+                                           <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
+                                     <li role="presentation"><a href="#fav" role="add" data-toggle="tab">+</a></li>
+            <li class="dropdown">
+   
+ 
+           
           </ul>
           <script>
 $('#btnReview').click(function(){
