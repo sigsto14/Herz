@@ -1,3 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<music><song url="http://localhost/Herz/public/sounds/Statustest.mp3"/>
-	</music>
+<music>
+<song url="http://localhost/Herz/public/sounds/Tyst.mp3"/>
+</music>

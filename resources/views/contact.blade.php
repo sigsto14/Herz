@@ -1,3 +1,9 @@
+<!DOCTYPE HTML>
+@include('template');
+<html>
+<head>
+</head>
+<body>
 <?php
 
 if(isset($_POST))
@@ -18,3 +24,6 @@ mail($to,$subject,$msg,$headers);
 }
 header("Location: http://localhost/Herz/public/");
 ?>
+
+</body>
+</html>

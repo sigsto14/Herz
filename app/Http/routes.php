@@ -125,3 +125,4 @@ Route::get('about', function () {
 Route::get('support', function () {
     return view('support');
 });
+
