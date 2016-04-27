@@ -121,3 +121,7 @@ Route::get('noty', function () {
 Route::get('about', function () {
     return view('about');
 });
+
+Route::get('support', function () {
+    return view('support');
+});

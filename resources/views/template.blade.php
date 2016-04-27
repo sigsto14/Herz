@@ -141,7 +141,7 @@ $titleNr = '';
                 @endif
                 @endif
                 <li><a href="http://localhost/Herz/public/about">Vad är Herz</a></li>
-                <li><a href = "#">Support</a></li>
+                <li><a href = "http://localhost/Herz/public/support">Support</a></li>
               </ul>
             </li>
             <!-- Sökfunktion -->
