@@ -11,7 +11,7 @@
         	<h1>Kontakta oss</h1>
         	<p>Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din e-post adress så kan vi återkomma till dig. Eller så kanske du hittar svaret på frågan längre ner på sidan.</p>
 		<div>
-			<form action="contact.php" method="post" id="contact">
+			<form action="http://ideweb2.hh.se/~sigsto14/Test/contact.php" method="post" id="contact">
 			{!! csrf_field() !!} 
 			<input type="text" name="email" class="form-controll" placeholder="Din epost"><br>
 			<textarea rows="4" cols="50" name="msg" placeholder="Ditt meddelande"></textarea><br><br>

@@ -11,7 +11,7 @@ if(isset($_POST))
 
 	$content = <<<END
 	<h3>Ditt meddelande har skickats</h3>
-	Från: {$_POST["name"]}
+	Från: {$_POST["email"]}
 	<br>
 	Meddelande: {$_POST["msg"]}
 END;
