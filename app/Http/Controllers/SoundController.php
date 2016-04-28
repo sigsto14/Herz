@@ -19,6 +19,9 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Symfony\Component\HttpFoundation\File;
 use Eloquent;
 use Storage;
+use Intervention;
+use Intervention\Image\ImageManagerStatic as Image;
+use Input;
 
 
 class SoundController extends Controller
@@ -85,13 +88,14 @@ $soundVar = $request->title;
             base_path() . '/public/sounds', $soundName
             );
 /* samma med bild som ljud*/
-$imageVar = $request->title;
-            $imageName = utf8_decode($imageVar) . '.' .
-            $request->file('image')->getClientOriginalExtension();
 
-            $request->file('image')->move(
-            base_path() . '/public/Podcastpictures', $imageName
-            );
+          $image = Input::file('image');
+            $filename  = $request->title . '.' . $image->getClientOriginalExtension();
+
+            $path = public_path('Podcastpictures/' . $filename);
+ /* ändrar storlek på bilden */
+                Image::make($image->getRealPath())->resize(150, 150)->save($path);
+        
 /*skapar ny rad i tabellen med hjälp av modellen Sound */
 
 
@@ -101,7 +105,7 @@ $sound = new Sound();
          $sound->title = $request->get('title');
          $sound->categoryID = $request->get('categoryID');
          $sound->URL = "http://localhost/Herz/public/sounds/" . utf8_encode($soundName);
-         $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/" . utf8_encode($imageName);
+         $sound->podpicture = "http://localhost/Herz/public/Podcastpictures/" . utf8_encode($filename);
          $sound->tag = $request->get('tag');
            $sound->description = $request->get('description');
            $sound->status = $request->status;
