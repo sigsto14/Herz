@@ -107,9 +107,9 @@ $state = 0;
          <!-- Andra lådan, här fins podar -->
         <div class="col-lg-8"  id="tabus">        
           <ul class="nav nav-tabs" role="tablist" >
-            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Sparade podcasts</a></li>
-            <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
-            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Markerad lista</a></li>
+            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">{{ $channel->channelname }}</a></li>
+            <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Serier</a></li>
+            <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Liknande</a></li>
             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
           </ul>
           <script>
