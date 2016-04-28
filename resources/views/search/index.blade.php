@@ -80,7 +80,8 @@ $sound = DB::table('sounds')->where('channelID', '=', $channel->channelID)->orde
 $soundCount = DB::table('sounds')->where('channelID', '=', $channel->channelID)->count();
 
 ?>
-
+@if(is_null($sound))
+@else
    <a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}"><h1>{{ $channel->channelname }}</h1></a>
   
 
@@ -92,7 +93,7 @@ Antal uppladdningar: {{ $soundCount }}<br>
 
 
 </p>
-  
+  @endif
 
     @endforeach
   
