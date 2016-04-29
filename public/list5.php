@@ -4,9 +4,12 @@
 $mysqli = new mysqli("localhost","root","","herz");
 
 $ADD = '';
-
+$PICADD = '';
 $str ='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <music>';
+$picStr = '<?xml version="1.0" encoding="utf-8"?>
+<GALLERY COLUMNS="1" XPOSITION="30" YPOSITION="30" WIDTH="150" HEIGHT="150">
+';
 
 $listID = $_GET['listID5'];
 $userID = $_GET['userID5'];
@@ -14,7 +17,6 @@ $userID = $_GET['userID5'];
 $query = <<<END
 SELECT * FROM playlists
 WHERE listID = '{$listID}'
-
 
 END;
 $res = $mysqli->query($query);
@@ -40,6 +42,13 @@ else{
 	$ADD .= '<song url="' . $URLS->URL .'"/>
 	';
 }
+if($URLS->podpicture == ''){
+
+}
+else{
+	$PIC .= '<IMAGE THUMB="' . $URLS->podpicture .'"/>
+	';
+}
 
 }
 }
@@ -47,7 +56,8 @@ else{
 
 $str .= $ADD;
 $str .= '</music>';
-
+$picStr .= $PIC;
+$picStr .='</GALLERY>';
 
 
 echo $str;
@@ -58,5 +68,13 @@ $fp = fopen ($file_name, "w");
 fwrite ($fp,$str); 
 fclose ($fp); 
 chmod($file_name,0777); 
+
+$file_name2="gallery.xml"; // file name
+$fp2 = fopen ($file_name2, "w"); 
+
+fwrite ($fp2,$picStr); 
+fclose ($fp2); 
+chmod($file_name2,0777); 
+
 
 ?>

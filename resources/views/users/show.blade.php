@@ -219,7 +219,7 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list1">
 
 
-  <h1>{{ $list1->listTitle}}</h1>
+ <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1>{{ $list1->listTitle}}</h1></a>
  <h6>{{ $list1->listDescription }}</h6>
   
                  
@@ -265,7 +265,7 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list2">
 
 
-  <h1>{{ $list2->listTitle}}</h1>
+  <a href="http://localhost/Herz/public/playlist/{{ $listID2 }}"> <h1>{{ $list2->listTitle}}</h1></a>
      <h6>{{ $list2->listDescription }}</h6>
   <form action="" method="put" name="play2" id="play2">
                       <input type="hidden" name="listID2" value="{{ $list2->listID }}" id="listID2">
@@ -306,7 +306,7 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list3">
 
   
-  <h1>{{ $list3->listTitle}}</h1>
+  <a href="http://localhost/Herz/public/playlist/{{ $listID3 }}">   <h1>{{ $list3->listTitle}}</h1></a>
     <h6>{{ $list3->listDescription }}</h6>
     <form action="" method="put" name="play3" id="play3">
                       <input type="hidden" name="listID3" value="{{ $list3->listID }}" id="listID3">
@@ -347,7 +347,7 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list4">
 
  
-  <h1>{{$list4->listTitle}}</h1>
+    <a href="http://localhost/Herz/public/playlist/{{ $listID4 }}"> <h1>{{$list4->listTitle}}</h1></a>
    <h6>{{ $list4->listDescription }}</h6>
    <form action="" method="put" name="play4" id="play4">
                       <input type="hidden" name="listID4" value="{{ $list4->listID }}" id="listID4">
@@ -388,7 +388,7 @@ Your browser does not support the audio element.
    <div role="tabpanel" class="tab-pane" id="list5">
 
 
-  <h1> {{ $list5->listTitle }}</h1>
+    <a href="http://localhost/Herz/public/playlist/{{ $listID5 }}"> <h1> {{ $list5->listTitle }}</h1></a>
 
    <h6>{{ $list5->listDescription }}</h6>
    <form action="" method="put" name="play5" id="play5">
