@@ -55,7 +55,7 @@ protected $loginPath = '';
    protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|max:50|unique:users',
+            'username' => 'required|max:15|unique:users',
             'email' => 'required|email|max:50|unique:users',
             'password' => 'required|confirmed|min:6',
                     ]);
