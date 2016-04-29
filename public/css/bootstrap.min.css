@@ -764,9 +764,77 @@ font-size: 10px;
 
 #bildspel1 {
 	margin-top: 50px;
-}/* report klipp knapp */
+}
+
+/* report klipp knapp */
 #report {
 	position: relative;
 	margin-left: 80%;
 	background-color: yellow;
+}
+
+/* Support sida*/
+.contact{
+	width: 70%;
+}
+.contact h1{
+	font-family: 'museo';
+}
+.contact input{
+	width: 60%;
+	padding: 10px;
+	border: 1px solid #b3b3b3;
+}
+.contact textarea{
+	width: 60%;
+	padding: 10px;
+	border: 1px solid #b3b3b3;
+}
+
+/* Frågeboxar*/
+.faq{
+	margin: 20px 0;
+	padding: 10px;
+}
+
+.faq h2{
+	font-family: 'museo';
+}
+
+.faqbtn {
+	border: 1px solid #b3b3b3;
+	padding: 15px;
+	background-color: #cccccc;
+	width: 50%;
+}
+
+/* Svarsboxar*/
+#faq1{
+	border: 1px solid #b3b3b3;
+	padding: 10px;
+	width: 50%;
+}
+#faq2{
+	border: 1px solid #b3b3b3;
+	padding: 10px;
+	width: 50%;
+}
+#faq3{
+	border: 1px solid #b3b3b3;
+	padding: 10px;
+	width: 50%;
+}
+#faq4{
+	border: 1px solid #b3b3b3;
+	padding: 10px;
+	width: 50%;
+}
+#faq5{
+	border: 1px solid #b3b3b3;
+	padding: 10px;
+	width: 50%;
+}
+/* About sida */
+#about{
+
 }
