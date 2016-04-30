@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<music>
-<song url="http://localhost/Herz/public/sounds/Fyra elefanter balanserade.mp3"/>
-
-</music>
+<music><song url="http://localhost/Herz/public/sounds/Statustest.mp3"/>
+	<song url="http://localhost/Herz/public/sounds/Fiskifisk.mp3"/>
+	</music>
