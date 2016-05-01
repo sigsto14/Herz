@@ -221,7 +221,8 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 <h3>Kommentarer:</h3>    
 
 @foreach($comments as $comment)
-{{$comment->username}}<br>
+<img src="{{$comment->profilePicture}}" style="width:90px; height: 90px;"><br>
+<a href="http://localhost/Herz/public/user/{{ $comment->userID}}">{{$comment->username}}</a><br>
 {{$comment->comment}}
 @endforeach
 <br><br><br><br><br><br>
