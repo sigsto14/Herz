@@ -161,6 +161,15 @@ END;
             </tr>
             <tr>
             <td><a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}" id="pbi">{{ $channel->channelname }}</a></td>
+            <?php
+            $favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
+            if($favNr > 1){
+
+            }
+            else {
+              $favNr = '0';
+            }
+            ?>
             <td><p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p></td>
             </tr>
             </table>
