@@ -207,11 +207,11 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 <table style="width:25%">
 <tr>
 <td><p>Tillhör kanal:</p></td>
-<td><p>Användare:</p></td>
+
 </tr>
 <tr>
 <td><a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}" id="pbi">{{ $channel->channelname }}</a></td>
-<td><a href="http://localhost/Herz/public/user/{{ $channel->channelID }}" id="pbi">{{ $user->username }}</a></td>
+
 </tr>
 </table>
 </div>
