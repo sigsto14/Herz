@@ -100,7 +100,7 @@ else {
 
 $state = 0;
 }
-
+$favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
 ?>
 @if($state == 0)
 
@@ -207,11 +207,11 @@ $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.
 <table style="width:25%">
 <tr>
 <td><p>Tillhör kanal:</p></td>
-
+<td><p>Favorit:</p></td>
 </tr>
 <tr>
 <td><a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}" id="pbi">{{ $channel->channelname }}</a></td>
-
+<td><p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p></td>
 </tr>
 </table>
 </div>
