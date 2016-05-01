@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<music><song url="http://localhost/Herz/public/sounds/Statustest.mp3"/>
-  <song url="http://localhost/Herz/public/sounds/Fiskifisk.mp3"/>
-  </music>
+<music>
+<song url="http://localhost/Herz/public/sounds/Svinalång.mp3">
+	<songTitle>Svinalång</songTitle>
+    <songArtist>Herz</songArtist>
+	</song>
+	<song url="http://localhost/Herz/public/sounds/Fiskifisk.mp3">
+	<songTitle>Fiskifisk</songTitle>
+    <songArtist>Herz</songArtist>
+	</song>
+	<song url="http://localhost/Herz/public/sounds/Frihet.mp3">
+	<songTitle>Frihet</songTitle>
+    <songArtist>adfadfa</songArtist>
+	</song>
+	</music>

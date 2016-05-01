@@ -88,9 +88,9 @@ $soundVar = $request->title;
             base_path() . '/public/sounds', $soundName
             );
 /* samma med bild som ljud*/
-
+$imageVar = $request->title;
           $image = Input::file('image');
-            $filename  = $request->title . '.' . $image->getClientOriginalExtension();
+            $filename = utf8_decode($imageVar) . '.' . $image->getClientOriginalExtension();
 
             $path = public_path('Podcastpictures/' . $filename);
  /* ändrar storlek på bilden */

@@ -39,7 +39,18 @@ if($URLS->URL == ''){
 
 }
 else{
-	$ADD .= '<song url="' . $URLS->URL .'"/>
+	$channelID = $URLS->channelID;
+	$channelGet = <<<END
+SELECT * FROM channels
+where channelID = '{$channelID}'
+END;
+$channelGet2 = $mysqli->query($channelGet);
+$channel = $channelGet2->fetch_object();
+
+	$ADD .= '<song url="' . $URLS->URL .'">
+	<songTitle>' . $URLS->title . '</songTitle>
+    <songArtist>' . $channel->channelname . '</songArtist>
+	</song>
 	';
 }
 if($URLS->podpicture == ''){

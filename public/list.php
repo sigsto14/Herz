@@ -6,7 +6,8 @@ $mysqli = new mysqli("localhost","root","","herz");
 $ADD = '';
 $PICADD = '';
 $str ='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<music>';
+<music>
+';
 $picStr = '<?xml version="1.0" encoding="utf-8"?>
 <GALLERY COLUMNS="1" XPOSITION="30" YPOSITION="30" WIDTH="150" HEIGHT="150">
 ';
@@ -39,7 +40,18 @@ if($URLS->URL == ''){
 
 }
 else{
-	$ADD .= '<song url="' . $URLS->URL .'"/>
+	$channelID = $URLS->channelID;
+	$channelGet = <<<END
+SELECT * FROM channels
+where channelID = '{$channelID}'
+END;
+$channelGet2 = $mysqli->query($channelGet);
+$channel = $channelGet2->fetch_object();
+
+	$ADD .= '<song url="' . $URLS->URL .'">
+	<songTitle>' . $URLS->title . '</songTitle>
+    <songArtist>' . $channel->channelname . '</songArtist>
+	</song>
 	';
 }
 if($URLS->podpicture == ''){

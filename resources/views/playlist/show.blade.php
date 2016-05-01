@@ -44,8 +44,20 @@ if($URLS->URL == ''){
 
 }
 else{
-  $ADD .= '<song url="' . $URLS->URL .'"/>
+    $channelID = $URLS->channelID;
+  $channelGet = <<<END
+SELECT * FROM channels
+where channelID = '{$channelID}'
+END;
+$channelGet2 = $mysqli->query($channelGet);
+$channel = $channelGet2->fetch_object();
+
+  $ADD .= '<song url="' . $URLS->URL .'">
+  <songTitle>' . $URLS->title . '</songTitle>
+    <songArtist>' . $channel->channelname . '</songArtist>
+  </song>
   ';
+
 }
 if($URLS->podpicture == ''){
 
@@ -107,7 +119,7 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 @endforeach
 
   <div id="flashContent">
-<embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
+<embed src="http://localhost/Herz/public/playlistPlayer/mp3_player.swf" style="width:600px;height:350px;">
 </div>
 </div>
 </div>
