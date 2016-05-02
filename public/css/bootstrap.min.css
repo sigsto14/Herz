@@ -17,6 +17,11 @@
   		font-family: Museo;
   		src: url('http://localhost/Herz/public/fonts/Museo300-Regular.otf') format("opentype");
 	}
+
+	@font-face {
+  font-family: Museo-b;
+  src: url('http://localhost/Herz/public/fonts//museo-bold.otf') format("opentype");
+}
 	/*Font*/
 	@font-face {
   		font-family: League;
@@ -710,13 +715,62 @@
 		background-color: #f2f2f2;
 		width: 63%;
 			}
+	.podinfo-header h3{
+		font-family: 'Museo-b';
+		margin-left: 5%;
+		padding-top: 2%;
+			}
 
+	.podinfo-kat{
+		margin-left: 75%;
+		margin-top: -4.5%;
+	}		
 	.addcomment-box{
 		margin-top: 3%;
 	margin-left: 20%;
 	width: 65%;
 	}
 
+	.info{
+		margin-left: 5%;
+		border-top: 1px solid black;
+		width: 87%;
+
+	}
+
+	.infobox{
+    background: #56c4c2;
+    border: 1px solid #b6e8de;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+     margin: 20px auto;
+    padding: 12px;
+    position: relative;
+    width: 100%;
+    min-height: 70px;
+
+	}
+
+	.podtaggar{
+		background: #9fe6da;
+		color: #00a5bb;
+	}
+	.podtaggar h5{
+		margin-left: 5%;
+		padding-top: 2%;
+	}
+	.podtaggar p{
+		margin-left: 5%;
+		margin-top: -1%;
+		padding-bottom: 1%;
+	}
+
+	.poddatum{
+		margin-left: 72%;
+		margin-bottom: -1%;
+		position: relative;
+	}
 .addcomment-box input{
 	height: 50px;
 	}
@@ -746,7 +800,7 @@ li.well{
 	padding-right: 0%;
 	color: white;
 	width: 25%;
-	height: 50px;	 
+	height: 150%;	 
 }
 
 li.well li{
@@ -778,9 +832,7 @@ list-style: none;
 }
 
 .well2 {
-  height: 50px;
-  padding-top: 2%;
-  padding-left: 2%;
+  min-height: 50px;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
@@ -790,6 +842,11 @@ list-style: none;
   margin-left: 25.5%;  
   margin-top: -10.2%;      
 }
+
+.well2 p{
+	padding: 2%;    
+}
+
 
 .well2 blockquote {
   border-color: #ddd;

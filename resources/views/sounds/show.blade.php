@@ -85,9 +85,11 @@ chmod($file_name2,0777);
           <p>Info om Podden</p>
           </div>
         </div>
-        <hr>
+        <div class="poddatum">
+          <p>Uppladat: 2016-05-02</p>
+        </div>
         <div class="podtaggar">
-          <p>Taggar:</p>
+          <h5>Taggar:</h5>
           <p>pod, herz, etc, </p>
         </div>
       </div>
@@ -112,11 +114,10 @@ chmod($file_name2,0777);
                   <li id="well-left">Användernamn</li>
                 </ul>
                </li> 
-              <div class="well2">
-                <p>Komment</p>
+              <div class="well2"><p>Komment jdkslajdkasjk kdjaksljdkljaskd kdjaksjdkjaskjk kdjsakjdksajkld kdjsakdjk kdjk kdjaksdj djakjdklaj jdkajdkasjklds jdaksjdkjkslaj jdkslajdkasjk kdjaksljdkljaskd kdjaksjdkjaskjk kdjsakjdksajkld kdjsakdjk kdjk kdjaksdj djakjdklaj jdkajdkasjklds jdaksjdkjkslaj</p>
               </div>
           </ul>
-          </div> 
+          </div>
                       <div class="commentbox2">
                 <ul>
                   <li class="well">
@@ -125,8 +126,7 @@ chmod($file_name2,0777);
                   <li id="well-left">Användernamn</li>
                 </ul>
                </li> 
-              <div class="well2">
-                <p>Komment</p>
+              <div class="well2"><p>Komment</p>
               </div>
           </ul>
           </div>
@@ -138,12 +138,10 @@ chmod($file_name2,0777);
                   <li id="well-left">Användernamn</li>
                 </ul>
                </li> 
-              <div class="well2">
-                <p>Komment</p>
+              <div class="well2"><p>Komment</p>
               </div>
           </ul>
-          </div>   
-
+          </div> 
       </div>
       </div>
 
