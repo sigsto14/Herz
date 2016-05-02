@@ -50,15 +50,106 @@ chmod($file_name2,0777);
           <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
         </div>
       </div>
-      <div class="podmenu">
+      <div class="podmenu" >
+       <ul>
+          <li>
+            <button name="submit" type="submit" class="btn btn-default btn-md">
+            <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"></a></span>          
+            </button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-default btn-md">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></a></span>
+            </button>
+          </li>    
+          <li id="podmenu-right">
+            <button type="button" class="btn btn-default">
+              <span class="glyphicon glyphicon-alert"></span>
+            </button>        
+          </li>        
+          <li id="podmenu-right2">
+            <td><p><span class="glyphicon glyphicon-heart">:000</span></p></td>
+          </li>         
+      </ul>
       </div>
       <div class="podinfo">
+        <div class="podinfo-header">
+          <h3>Podnamn - av Herz</h3>
+        </div>
+         <div class="podinfo-kat">
+          <p>Kategori: Nyheter</p>
+        </div>
+        <div class="info">
+          <h3>Beskrivning</h3>
+          <div class="infobox">
+          <p>Info om Podden</p>
+          </div>
+        </div>
+        <hr>
+        <div class="podtaggar">
+          <p>Taggar:</p>
+          <p>pod, herz, etc, </p>
+        </div>
       </div>
-      <div class="addkomment">
+      <div class="addcomment">
+        <div class="addcomment-box">
+          <input type="comment" class="form-control" placeholder="Lägg till komment" name="comment"/>
+        </div>
+        <div class="addcomment-btn">
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+          Lägg till
+          </button>
       </div>
-      <div class="kommentarer">
+      <div class="comment">
+        <div class="panel panel-primary">
+          <div class="panel-heading">Kommentarer</div>
+          <div class="panel-body">
+            <div class="commentbox">
+                <ul>
+                  <li class="well">
+                <ul>
+                  <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
+                  <li id="well-left">Användernamn</li>
+                </ul>
+               </li> 
+              <div class="well2">
+                <p>Komment</p>
+              </div>
+          </ul>
+          </div> 
+                      <div class="commentbox2">
+                <ul>
+                  <li class="well">
+                <ul>
+                  <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
+                  <li id="well-left">Användernamn</li>
+                </ul>
+               </li> 
+              <div class="well2">
+                <p>Komment</p>
+              </div>
+          </ul>
+          </div>
+                      <div class="commentbox3">
+                <ul>
+                  <li class="well">
+                <ul>
+                  <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
+                  <li id="well-left">Användernamn</li>
+                </ul>
+               </li> 
+              <div class="well2">
+                <p>Komment</p>
+              </div>
+          </ul>
+          </div>   
+
       </div>
+      </div>
+
     </div>
-  </div> 
+  </div>
+  </div>
+  </div>
 </body>
 @stop
