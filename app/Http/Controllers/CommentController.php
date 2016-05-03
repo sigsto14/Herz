@@ -39,20 +39,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-                'comment' => 'required|unique:sounds|max:255|',
-         
-            ]);
+    
 
-          if ($validator->fails()) {
+          if ($request->comment == '') {
             return back()
                         ->withMessage('Fyll i kommentarsfältet för att kommentera!')
                         ->withInput();
 
           }
+          else {
         $input = $request->all();
         Comment::create($input);
         return back();
+    }
     }
 
     /**
