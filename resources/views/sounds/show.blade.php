@@ -43,6 +43,7 @@ chmod($file_name2,0777);
         /*kanalinfo*/  $channel = DB::table('channels')->where('channels.channelID', '=', $id)->first();
         /* user som gjort klippet */  $user = DB::table('users')->where('users.userID', '=', $id)->first();
     /* kommentarerna på klippet */      $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->get();
+     /* för att kolla om nulll */      $commentsCheck = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->first();
       /*för att hämta kategorinamn */    $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
       /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
        /* hur många som har klippet som favorit*/       $favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
@@ -260,6 +261,9 @@ END;
             <div class="panel-heading">Kommentarer:</div>          <!--  komment header -->
           <div class="panel-body"> <!--  boxen som innehåller kommentarer --> 
            <!--  1 st komment -->
+           @if(is_null($commentsCheck))
+           <P>Denna pod har inga kommentarer</P>
+           @else
            @foreach($comments as $comment)
            <!-- för att hämta ut rätt "created_at" då det finns i flertalet tabeller -->
            <?php
@@ -282,7 +286,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
                 </ul>
               </div>
               @endforeach
-
+@endif
 
                                                                      
             </div><!--  Panel-body slut-->
