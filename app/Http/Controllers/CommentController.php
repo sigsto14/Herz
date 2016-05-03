@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Comment;
-
+use Validator;
 
 class CommentController extends Controller
 {
@@ -39,6 +39,17 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+                'comment' => 'required|unique:sounds|max:255|',
+         
+            ]);
+
+          if ($validator->fails()) {
+            return back()
+                        ->withMessage('Fyll i kommentarsfältet för att kommentera!')
+                        ->withInput();
+
+          }
         $input = $request->all();
         Comment::create($input);
         return back();

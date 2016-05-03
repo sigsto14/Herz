@@ -37,6 +37,15 @@ fwrite ($fp2,$picStr);
 fclose ($fp2); 
 chmod($file_name2,0777); 
 
+
+        
+        /* id för kanalen så att det kan hämtas mer info */  $id = $sound->channelID;
+        /*kanalinfo*/  $channel = DB::table('channels')->where('channels.channelID', '=', $id)->first();
+        /* user som gjort klippet */  $user = DB::table('users')->where('users.userID', '=', $id)->first();
+    /* kommentarerna på klippet */      $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->get();
+      /*för att hämta kategorinamn */    $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
+      /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
+       /* hur många som har klippet som favorit*/       $favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
 ?>
 
 <title>{{ $sound->title }}</title>
@@ -61,9 +70,46 @@ chmod($file_name2,0777);
         <div class="podmenu" >
           <ul>
             <li>
-              <button name="submit" type="submit" class="btn btn-default btn-md">
+       
+        <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
+        @if(Auth::check())
+        <?php
+        
+        $userID = Auth::user()->userID;
+        $soundID = $sound->soundID;
+        $mysqli = new mysqli("localhost","root","","herz");
+        $query = <<<END
+        SELECT * FROM favorites
+        WHERE userID = '{$userID}'
+        AND soundID = '{$soundID}'
+END;
+        $res = $mysqli->query($query);
+        if($res->num_rows > 0){
+        $state = 1;
+        }
+        else {
+        $state = 0;
+        }
+
+        ?>
+         @if($state == 0)
+         {!! Form::open(array('route' => 'favorite.store')) !!}
+        {!! csrf_field() !!}
+         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
+           <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+            <button name="submit" type="submit" class="btn btn-default btn-md">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"></a></span>        
               </button>
+              {!! Form::close() !!}
+         @else
+{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
+  <button name="submit" type="submit" class="btn btn-default btn-md">
+              <span class=" glyphicon glyphicon-heart" aria-hidden="true"></a></span>        
+              </button>
+              {!! Form::close() !!}
+         @endif
+         @endif
+             
             </li>
             <li>
               <button type="button" class="btn btn-default btn-md">
@@ -78,14 +124,28 @@ chmod($file_name2,0777);
                 </button>
                 <div class="dropdown-menu">
                     <p>Anmäla</p>
-                    <input type="anmal" class="form-control" placeholder="Värför vill du anmäla poden" name="anmal"/>
+                    <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
+            {!! csrf_field() !!} 
+              <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
+              <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
+              <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
+              <button type="submit" class="btn btn-default">Anmäl</button>
+            </form> 
+            
                 </div>
               </div>
                <!--  Anmälning knappen slut -->      
              </li>
               <!--  Favorit mätare? den som visa hur måna favorit har poden -->         
              <li id="podmenu-right2">
+             @if(is_null($favNr))
+
                 <td><p><span class="glyphicon glyphicon-heart">:000</span></p></td>
+             
+             @else
+
+                <td><p><span class="glyphicon glyphicon-heart">{{$favNr}}</span></p></td>
+                @endif
               </li>
               <!--  Favorit mätare slut -->            
             </ul>
@@ -94,23 +154,23 @@ chmod($file_name2,0777);
             <!--  Podinfo box --> 
           <div class="podinfo">
             <div class="podinfo-header">
-              <h3>Podnamn - av Herz</h3>
+              <h3>{{ $sound->title }}- av {{ $channel->channelname}}</h3>
             </div>
             <div class="podinfo-kat">
-              <p>Kategori: Nyheter</p>
+              <p>Kategori: {{ $category->categoryname }}</p>
             </div>
             <div class="info">
               <h4>Beskrivning:</h4>
             <div class="infobox">
-              <p>Info om Podden</p>
+              <p>{{ $sound->description }}</p>
             </div>
           </div>
           <div class="poddatum">
-            <p>Uppladat: 2016-05-02</p>
+            <p>Uppladat: {{ $uploaded }}</p>
           </div>
           <div class="podtaggar">
               <h5>Taggar:</h5>
-              <p>pod, herz, etc, </p>
+              <p>{{ $sound->tag }}</p>
           </div>
         </div>
          <!--  Podinfo box slut --> 
@@ -119,99 +179,73 @@ chmod($file_name2,0777);
           <!--  Här börjar andra kolumnen -->  
       <div class="col-md-6" id="cmt-box">
       <!--  hela komment input boxen, med ram osv -->
-        <div class="addcomment">
+     <!-- om användare inloggad kan kommentera -->  
+  @if(Auth::user()) <div class="addcomment">
           <!--  input boxen -->
           <div class="addcomment-box">
-            <input type="comment" class="form-control" placeholder="Lägg till komment" name="comment"/>
+<!-- feedback från formuläret nedan -->
+   @if(Session::has('message'))
+<div class="alert alert-danger">
+  {{ Session::get('message') }}
+</div>
+@endif    
+    {!! Form::open(array('route' => 'comment.store', 'files' => 'true')) !!}
+    {!! csrf_field() !!}
+        <input type="hidden" name="userID" value="{{ Auth::user()->userID }}"><!-- Dolt fält som hämtar Användarid -->
+        <input type="hidden" name="soundID" value="{{ $sound->soundID }}"><!-- Dolt fält som hämtar ljudid -->
+            <input type="text" class="form-control" placeholder="Lägg till komment" name="comment"/>
           </div>
           <!--  komment knappen -->
           <div class="addcomment-btn">
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">Lägg till</button>
+            <button type="submit" class="btn btn-primary">Lägg till</button>
+         
+            
           </div>
+          {!! Form::close() !!}
+
         </div>
+        @else
+        <!-- om användaren inte är inloggad kan ej kommentera -->
+        <div class="addcomment">
+          <!--  input boxen -->
+          <div class="addcomment-box">
+ <input type="text" class="form-control" placeholder="Logga in för att kommentera" name="comment"/>
+</div>
+</div>
+        @endif
       <!--  komment input boxen slut -->
-      <!--  Kommantarer börjar här -->
+
+      <!--  Kommentarer börjar här -->
         <div class="comment">
           <div class="panel panel-primary">
-            <div class="panel-heading">Kommentarer</div>          <!--  komment header -->
+            <div class="panel-heading">Kommentarer:</div>          <!--  komment header -->
           <div class="panel-body"> <!--  boxen som innehåller kommentarer --> 
            <!--  1 st komment -->
+           @foreach($comments as $comment)
+           <!-- för att hämta ut rätt "created_at" då det finns i flertalet tabeller -->
+           <?php
+$commentUpload = DB::table('comments')->where('commentID', '=', $comment->commentID)->first();
+
+           ?>
             <div class="commentbox">
                 <ul>
                   <li class="well">
                     <ul>
                               <!--  Använder information-->
                       <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
-                      <li id="well-left">Användernamn</li>
-                      <li id="well-left-right">2016-05-03</li>
+                      <li id="well-left">{{ $comment->username }}</li>
+                      <li id="well-left-right">{{ $commentUpload->created_at}}</li>
                     </ul>
                   </li> 
                   <!--  Komment -->
-                  <div class="well2"><p>Komment jdkslajdkasjk kdjaksljdkljaskd kdjaksjdkjaskjk kdjsakjdksajkld kdjsakdjk kdjk kdjaksdj djakjdklaj jdkajdkasjklds jdaksjdkjkslaj jdkslajdkasjk kdjaksljdkljaskd kdjaksjdkjaskjk kdjsakjdksajkld kdjsakdjk kdjk kdjaksdj djakjdklaj jdkajdkasjklds jdaksjdkjkslaj</p>
+                  <div class="well2"><p>{{ $comment->comment}}</p>
                   </div>
                 </ul>
               </div>
-              <!--  1 st komment slut -->
-            <div class="commentbox2">
-                <ul>
-                  <li class="well">
-                    <ul>
-                              <!--  Använder information-->
-                      <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
-                      <li id="well-left">Användernamn</li>
-                      <li id="well-left-right">2016-05-03</li>
-                    </ul>
-                  </li> 
-                  <!--  Komment -->
-                  <div class="well2"><p>Komment </p>
-                  </div>
-                </ul>
-              </div> 
-            <div class="commentbox3">
-                <ul>
-                  <li class="well">
-                    <ul>
-                              <!--  Använder information-->
-                      <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
-                      <li id="well-left">Användernamn</li>
-                      <li id="well-left-right">2016-05-03</li>
-                    </ul>
-                  </li> 
-                  <!--  Komment -->
-                  <div class="well2"><p>Komment </p>
-                  </div>
-                </ul>
-              </div>
-            <div class="commentbox4">
-                <ul>
-                  <li class="well">
-                    <ul>
-                              <!--  Använder information-->
-                      <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
-                      <li id="well-left">Användernamn</li>
-                      <li id="well-left-right">2016-05-03</li>
-                    </ul>
-                  </li> 
-                  <!--  Komment -->
-                  <div class="well2"><p>Komment</p>
-                  </div>
-                </ul>
-              </div>
-            <div class="commentbox5">
-                <ul>
-                  <li class="well">
-                    <ul>
-                              <!--  Använder information-->
-                      <li id="well-left" ><img src="http://localhost/Herz/public/images/Profilepictures/none.png"></li>
-                      <li id="well-left">Användernamn</li>
-                      <li id="well-left-right">2016-05-03</li>
-                    </ul>
-                  </li> 
-                  <!--  Komment -->
-                  <div class="well2"><p>Komment</p>
-                  </div>
-                </ul>
-              </div><!--  commentbox 5 slut -->                                                                  
+              @endforeach
+
+
+                                                                     
             </div><!--  Panel-body slut-->
           </div><!--  div comment slut -->
       </div><!--  Andra Kolumnen slut -->
