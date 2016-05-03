@@ -74,7 +74,8 @@ chmod($file_name2,0777);
         <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
         @if(Auth::check())
         <?php
-        
+        $lists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->get();
+        $listCheck = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->first();
         $userID = Auth::user()->userID;
         $soundID = $sound->soundID;
         $mysqli = new mysqli("localhost","root","","herz");
@@ -108,14 +109,49 @@ END;
               </button>
               {!! Form::close() !!}
          @endif
-         @endif
+   
              
             </li>
             <li>
-              <button type="button" class="btn btn-default btn-md">
+            <!-- formulär för att skapa spellista -->
+            <!-- om man ej har listor -->
+    
+          
+   <!-- stjärnknappen öppnar formuläret -->     
+              <button type="button" id="addList" class="btn btn-default btn-md">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></a></span>
               </button>
+
             </li>    
+            <!-- script för att öppna formuläret -->
+  <script>
+              $('#addList').click(function(){
+              $("#playlistEdit").toggleClass("hidden"); 
+              });
+            </script>
+            <!-- det gömda formuläret -->
+
+ <div class="hidden" id="playlistEdit">
+         @if(is_null($listCheck))
+         <p>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+         @else
+ {!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
+          <div>
+          <!-- hidden fields -->
+            <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+          </div>  
+   <select name="listID">
+              @foreach($lists as $list)
+              <option value="{{$list->listID}}">{{ $list->listTitle }}</option>
+              @endforeach
+            </select>
+    <button type="submit">Lägg till!</button> 
+            <button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+ </div>
+@endif
+
+      @endif
+
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
