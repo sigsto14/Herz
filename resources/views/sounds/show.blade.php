@@ -124,6 +124,7 @@ END;
                 </button>
                 <div class="dropdown-menu">
                     <p>Anmäla</p>
+                  @if(Auth::check())
                     <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
             {!! csrf_field() !!} 
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
@@ -131,7 +132,9 @@ END;
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
               <button type="submit" class="btn btn-default">Anmäl</button>
             </form> 
-            
+            @else
+            <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
+            @endif
                 </div>
               </div>
                <!--  Anmälning knappen slut -->      
