@@ -856,7 +856,7 @@
 }
 
 
-.panel-body{
+.comment .panel-body{
 	  max-height: 450px;
   overflow-y: scroll;
 }
@@ -868,12 +868,12 @@
 	}
 
 
-.panel-heading {background-color: #26a09f!important}
+.comment .panel-heading {background-color: #26a09f!important}
 
-.panel-primary{
+.comment .panel-primary{
 	background-color: #9fdecd;
 }	
-.panel-body ul
+.comment .panel-body ul
 {
 margin-left: -5%;
 
@@ -944,93 +944,6 @@ list-style: none;
   border-color: #ddd;
   border-color: rgba(0, 0, 0, .15);
 }
-
-/* vet ej än */
-	#indexBox {
-		padding-left: 8%;
-	}
-	.prenumerering {
-		position: fixed;
-		margin-top: 5%;
-		margin-left: 85%;
-		z-index: -1;
-	}
-	.podcast-box {
-		position: relative;
-		margin-top: 20%;
-	}
-	.podcast-box_channel {	
-		position: relative;
-		margin-top: 5%;
-	}
-	.channel_header {
-		margin-left: -16.5px;	
-		position: relative;
-		background-color: white;
-	}
-	.channel_header img {
-		border-width: 2px;
-		border-style: solid;
-	}
-
-	#tabus{
-  		margin-top: 2%;
-	}
-	.page-header {	
-		position: relative;
-		margin-top: 20%;
-		background-color: white;
-	}
-	#tabus p{
-		margin-top: -5%;
-		margin-left: 15%;
-	}	
-	#tabus h3{
-		margin-top: 1%;
-		margin-left: 2%;
-	}
-	.nav-tabs>li{
-		background-color: #42e1aa;
-	}
-	.nav-tabs>li> a:hover{
-		background-color: white;
-	}
-	.nav-tabs>li:active{
-		background-color: white;
-	}	
-
-	.admin-feedback {
-		width: 15%;
-		background-color: #FFFFFF;
-	}
-	.redigering{
-		padding-top: 70px;
-		margin-left: 40%;
-	}
-	.redigering2{
-		padding-top: 70px;
-		margin-left: 30%;
-	}
-
-	.redigering2 h3{
-		padding-bottom: 1%;
-		text-align: center;
-		margin-left: -25%;
-	}
-
-	#notification_count{
-		padding: 0px 3px 3px 7px;
-		background: #cc0000;
-		color: #ffffff;
-		font-weight: bold;
-		margin-left: 77px;
-		border-radius: 9px;
-        -moz-border-radius: 9px;
-        -webkit-border-radius: 9px;
-		position: absolute;
-		margin-top: -1px;
-		font-size: 10px;
-	}
 
 /* knappar */
 /* General button style (reset) */
@@ -1346,6 +1259,114 @@ font-family: 'Museo';
     margin-left: 4%;
     width: 92%;
    
+}
+
+/* vet ej än */
+	#indexBox {
+		padding-left: 8%;
+	}
+
+	.podcast-box {
+		position: relative;
+		margin-top: 20%;
+	}
+	.podcast-box_channel {	
+		position: relative;
+		margin-top: 5%;
+	}
+	.channel_header {
+		margin-left: -16.5px;	
+		position: relative;
+		background-color: white;
+	}
+	.channel_header img {
+		border-width: 2px;
+		border-style: solid;
+	}
+
+	#tabus{
+  		margin-top: 2%;
+	}
+	.page-header {	
+		position: relative;
+		margin-top: 20%;
+		background-color: white;
+	}
+	#tabus p{
+		margin-top: -5%;
+		margin-left: 15%;
+	}	
+	#tabus h3{
+		margin-top: 1%;
+		margin-left: 2%;
+	}
+	.nav-tabs>li{
+		background-color: #42e1aa;
+	}
+	.nav-tabs>li> a:hover{
+		background-color: white;
+	}
+	.nav-tabs>li:active{
+		background-color: white;
+	}	
+
+	.admin-feedback {
+		width: 15%;
+		background-color: #FFFFFF;
+	}
+	.redigering{
+		padding-top: 70px;
+		margin-left: 40%;
+	}
+	.redigering2{
+		padding-top: 70px;
+		margin-left: 30%;
+	}
+
+	.redigering2 h3{
+		padding-bottom: 1%;
+		text-align: center;
+		margin-left: -25%;
+	}
+
+	#notification_count{
+		padding: 0px 3px 3px 7px;
+		background: #cc0000;
+		color: #ffffff;
+		font-weight: bold;
+		margin-left: 77px;
+		border-radius: 9px;
+        -moz-border-radius: 9px;
+        -webkit-border-radius: 9px;
+		position: absolute;
+		margin-top: -1px;
+		font-size: 10px;
+	}
+
+
+
+/* Index.blade */
+ #accordion .panel {
+ background-color: #cee5d0 ;
+border-color: #cee5d0 ;
+border-style: solid;
+
+height: 317.5px;
+
+ }
+
+#panel1 .panel-heading{
+	background-color: #26a09f;
+	color: white;
+	border-color: #26a09f;
+	width: 114%;
+	margin-left: -7%;
+	margin-top: -1%;
+}
+
+#darkerbox{
+	background-color: #cee5d0 ;
+
 }
 
 

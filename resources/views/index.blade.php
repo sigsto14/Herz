@@ -210,7 +210,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
     </div>
     </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" id="darkerbox">
           <div class="panel-group" id="accordion">
             <div class="panel panel-default" id="panel1">
               <div class="panel-heading">
@@ -269,6 +269,8 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
           </table> 
         </div>
       </div>
+      </div>
+
 
     <div class="panel panel-default" id="panel1">
         <div class="panel-heading">
