@@ -39,7 +39,7 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
         </script>          
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">    
-            <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
+            <h1 id="home-title">Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
           @foreach($senaste as $senast) 
           <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
           <?php
@@ -52,23 +52,38 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
           $favNr = DB::table('favorites')->where('soundID', '=', $senast->soundID)->count();
           ?>         
            <div class="col-md-4" id="indexBox">
-            <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
-              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="180px" height="120px"></a><br><br>
+            
+              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
+              <div class="podtitle-box">
+              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h4>{{ $senast->title }} </h4></a>
+              <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
                 @if(Auth::check())
               @if($senast->channelID == Auth::user()->userID)
-<p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
+              
+<p><span class="glyphicon glyphicon-star"></span>{{ $favNr }}</p>
 @else
-              <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
+              <p><span class="glyphicon glyphicon-heart"></span>{{ $favNr }}</p>
+              
               @endif
               @endif
-              <p>av<a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
-                      
-       </div>          @endif  
-@endforeach
+              </div>
+              <div class="podchanneltitle">
+              <p>av <a href="http://localhost/Herz/public/channel/{{ $senast->channelID }}">{{ $senast->channelname }}</a></p>
 
-<br>
+               </div>       
+       </div> 
+       </div> 
+       </div>        @endif 
+
+
+@endforeach
+<div class="SeeMore">
 <a href="http://localhost/Herz/public/sound"><img src="http://localhost/Herz/public/images/podcast_av/pod.png"/></a><br>
 <a href="http://localhost/Herz/public/sound" id="SeeMore">Se fler...</a>
+</div>
+
             </div>
 <!-- här tar första boxen slut -->
 <div role="tabpanel" class="tab-pane" id="pop">

@@ -1367,6 +1367,140 @@ height: 317.5px;
 }
 
 
-	#indexBox {
-		padding-left: 0%;
+#indexBox  {
+
+
 	}
+
+#pod-mini-img{
+
+	background-color: #9fdecd;
+    border: 10px solid #b6e8de;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    margin-top: 10%;
+
+}
+
+.col-md-9{
+		  max-height: 450px;
+  overflow-y: scroll;
+}
+
+.podtitle-box{
+	background-color: #b6e8de;
+    border: 1px solid #b6e8de;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    width: 65%;
+    height: 50px;
+    margin-top: 3%;
+
+}
+
+.podtitle-box h4{
+	font-family: 'Museo-b';
+	text-align: center;
+	color: #26a09f;
+	font-size: 15px;
+	margin-top: 2px;
+
+}
+
+.podtitle-box p{
+	font-family: 'Museo-b';
+	text-align: left;
+	color: #9fdecd;
+	font-size: 12px;
+
+}
+
+.podtitle-box a{
+	font-family: 'Museo-b';
+	color: #9fdecd;
+	font-size: 12px;
+
+}
+
+.podchanneltitle{
+	position: absolute;
+	margin-left: -4px;
+	transform: translateY(35%);
+	width: 100px;
+
+}
+
+.podfavicon{
+	position: absolute;
+	margin-left: 100px;
+transform: translateY(35%);
+width: 100px;
+
+
+
+}
+
+.podtitledownbox{
+	background-color: #26a09f;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #26a09f;
+	height: 25px;
+	margin-top: -5px;
+}
+
+.vertical-line{
+	position: absolute;
+	border-left: 1px solid #9fdecd;
+	height: 20px;
+	transform: translateY(-35%);
+
+}
+
+#home h1{
+		font-family: 'Museo-b';
+	text-align: left;
+	color: #9fdecd;
+	font-size: 30px;
+
+}
+
+#home-title{
+	position: absolute;
+	margin-top:-5px;
+	margin-left: -25px;
+	background-color: #26a09f;
+	width: 300px;
+	padding-left: 30px;
+	    border: 2px solid #26a09f;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+
+}
+
+.SeeMore img{
+	position: relative;
+	margin-left: 2%;
+	margin-top: 3%;
+
+}
+
+#SeeMore {
+	position: absolute;
+	margin-left: 7%;
+	margin-top: 15px;
+			font-family: 'Museo-b';
+	
+	color: #9fdecd;
+	font-size: 15px;
+	background-color: #26a09f;
+		    border: 5px solid #26a09f;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+
+
+}
