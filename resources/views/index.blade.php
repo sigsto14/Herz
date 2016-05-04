@@ -20,33 +20,25 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
              
 
 ?>
-
-        <title>Herz</title>
-
-       
-        <div class="container">
-
-          <div class="podcast-box">
-
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Senaste</a></li>
-            <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
-            <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Rekommendationer</a></li>
-            <li role="presentation"><a href="#pre" role="tab" data-toggle="tab">Prenumerationer</a></li>
-          </ul>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="container2">
-          <script>
-$('#btnReview').click(function(){
-  $(".tab-content").removeClass("active");
-  $(".tab-content:first-child").addClass("active");
-});
-</script>
-
-
-          
-            <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="home">
-    
+<title>Herz</title>       
+  <div class="container">
+    <div class="col-md-12">
+      <div class="podcast-box">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Senaste</a></li>
+          <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
+          <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Rekommendationer</a></li>
+          <li role="presentation"><a href="#pre" role="tab" data-toggle="tab">Prenumerationer</a></li>
+        </ul>
+        <div class="col-md-9" id="container2">
+        <script>
+          $('#btnReview').click(function(){
+          $(".tab-content").removeClass("active");
+          $(".tab-content:first-child").addClass("active");
+          });
+        </script>          
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">    
             <h1>Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
           @foreach($senaste as $senast) 
           <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
@@ -208,6 +200,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               
               
              </div>
+
 @endforeach
 
 
@@ -216,6 +209,131 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 
     </div>
     </div>
+    </div>
+    <div class="col-md-3">
+          <div class="panel-group" id="accordion">
+            <div class="panel panel-default" id="panel1">
+              <div class="panel-heading">
+            <h4 class="panel-title">
+             <?php
+             $userID = Auth::user()->userID;
+             $subscribes = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'subscribe.channelID')->where('subscribe.userID', '=', $userID)->orderBy('sounds.created_at', 'ASC')->take(5)->get();
+             ?>
+              <a data-toggle="collapse" data-target="#collapseOne" href="#collapseOne">Prenumerationer</a>
+            </h4>
+        </div>
+
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <table class="pre-fav" style="width:100%">
+            <p>Senaste uppladdningar:</p>
+            <tr>
+              @foreach($subscribes as $subscribe)  
+               
+            <td><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}">{{ $subscribe->title }}</a></td>
+            <td>av</td>
+            <td><a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}">{{ $subscribe->channelname}}</a></td>
+            </tr>
+            @endforeach            
+            <tr>
+            <td><a href="http://localhost/Herz/public/subscribe">Se alla...</a></td></tr>
+            <!--
+              <td>2</td>
+              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>   
+              <td><a href="#">Prenumering 2</a></td>
+              <td>av</td>
+              <td><a href="#">Herz</a></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
+              <td><a href="#">Prenumering 3</a></td>
+              <td>av</td>
+              <td><a href="#">Herz</a></td>          
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
+              <td><a href="#">Prenumering 4</a></td>
+              <td>av</td>
+              <td><a href="#">Herz</a></td>
+            </tr>
+            <tr>
+              <td>5</a></td>
+              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
+              <td><a href="#">Prenumering 5</a></td>
+              <td>av</td>
+              <td><a href="#">Herz</a></td>
+              -->
+            </tr>
+          </table> 
+        </div>
+      </div>
+
+    <div class="panel panel-default" id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+             <!-- skapar variabler för att ta ut favoriter ur databasen -->
+             <?php
+             $userID = Auth::user()->userID;
+             $favorites = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'channels.channelID', '=','sounds.channelID')->where('favorites.userID', '=', $userID)->take(5)->get();
+             ?>
+              <a data-toggle="collapse" data-target="#collapseTwo" href="#collapseTwo">Favoriter</a>
+            </h4>
+        </div>
+        
+        <div id="collapseTwo" class="panel-collapse collapse in">
+            <div class="panel-body">
+          <table class="pre-fav" style="width:100%">
+          <p>Senaste favoriter:</p>
+          <tr>
+            <!-- tar varje resultat (5 st) individuellt -->
+            @foreach($favorites as $favorite)  
+            <td style="width: 50%; "><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
+            <td style="position: absolute; margin-left: -12%;">Kanal:</td>
+            <td ><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}" style="position: relative; ">{{ $favorite->channelname}}</a></td></tr>
+            @endforeach
+            <tr>
+            <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td>
+            </tr>
+          
+          <!-- tillfällig utkommentering<tr>
+            <td>2</td>
+            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>   
+            <td><a href="#">Favorit 2</a></td>
+            <td>av</td>
+            <td><a href="#">Herz</a></td>
+          </tr>
+          <tr>
+          <td>3</td>
+          <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>    
+          <td><a href="#">Favorit 3</a></td>
+          <td>av</td>
+          <td><a href="#">Herz</a></td>          
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%" ></td>    
+            <td><a href="#">Favorit 4</a></td>
+            <td>av</td>
+            <td><a href="#">Herz</a></td>
+          </tr>
+           <tr>
+            <td>5</a></td>
+            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>    
+            <td><a href="#">Favorit 5</a></td>
+            <td>av</td>
+            <td><a href="#">Herz</a></td>
+          </tr>-->
+        </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+    </div>
+
     </div>
     </div> 
     </div>

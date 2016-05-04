@@ -148,7 +148,7 @@ END;
     </div>
 
     <div class="podmenudropdown-btn2"> 
-            <button type="button" class="btn btn-primary"><a href="http://localhost/Herz/public/playlist"></a>Skapa ny spellista</button>
+            <a href="http://localhost/Herz/public/playlist"><button type="button" class="btn btn-primary">Skapa ny spellista</button></a>
             </div>
  </div>
  </li> 

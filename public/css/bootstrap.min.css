@@ -414,31 +414,7 @@
 	}
 /*Nav slut*/
 
-/*Pre-Fav box*/
-	#panel1{
-		width: 250px;
-		text-align: left;
-		background-color: #b9dcdc;
-	}
-	.panel-heading a:after {
-    	font-family:'Glyphicons Halflings';
-    	content:"\e113";
-    	float: center;
-    	color: grey;
-	}
 
-	.panel-heading a.collapsed:after {
-    	content:"\e114";
-	}
-
-	table.pre-fav td{
-		padding-top: 2px;
-	}
-
-	.cont{
-		position: static;
-	}
-/*Pre-Fav box slut*/
 
 
 /*Fav-knapparna*/
