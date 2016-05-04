@@ -1131,13 +1131,13 @@ list-style: none;
 }
 
 .icon-star:before {
-	content: "\e9d7";
+	content: "\ea0a";
 }
 
 /* Filled star */
 .icon-star:after,
 .icon-star-2:before {
-	content: "\e00c";
+	content: "\e9d9";
 }
 
 

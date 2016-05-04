@@ -122,7 +122,7 @@ END;
               <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
               </button>
 
-<div class="dropdown-menu">
+<div class="dropdown-menu" id="podmenudropdown">
          @if(is_null($listCheck))
          <p>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
          @else
@@ -139,18 +139,19 @@ END;
     <button type="submit">Lägg till!</button> 
             <button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
  </div>
- </li>
+ </li> 
 @endif
-
       @endif
+
+
 
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
                 <button type="button" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
-                <div class="dropdown-menu">
-                    <p>Anmäla</p>
+                <div class="dropdown-menu" id="podmenudropdown2">
+                    <p>Tycker du att poden är kränkade? Här kan du anmäla den.</p>
                   @if(Auth::check())
                     <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
             {!! csrf_field() !!} 
