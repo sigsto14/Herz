@@ -483,94 +483,81 @@
 
 /*Home Blade -första sida ej inloggad-*/
 
-	.register_field {
-		padding-left: 10px;
-		display: inline-block;
-		width: 300px;
-		clear: both;
-	}
-	.register_field input{
-    	width: 100%;
-    	clear: both;	
-	}
-	.login_field {
-		padding-right: 10px;
-		display: inline-block;
-		width: 300px;
-		clear: both;
-		float: right;
-	}
+.register_field input{
+    width: 100%;
+    clear: both;	
+}
 
-	.login_field input{
-    	width: 100%;
-    	clear: both;	
-	}
 
-	.fields {
-		border: 3px solid #596365;
-		margin: auto;
-		margin-top: 60px;
-		width: 70%;
-		padding-bottom: 80px;
-		margin-bottom: 20px;
-	}
+.login_field input{
+    width: 100%;
+    clear: both;	
+}
 
-	#field_buttons {
-		margin-top: 15px;
-	}
+.fields {
+	float: right;
+	margin: auto;
+	margin-top: 60px;
+	width: 35%;
+	padding: 0px 20px 20px 20px;
+	margin-bottom: 20px;
+	color: #000;
+}
 
-	#register_button {
-		display: inline-block;
-		margin-left: 40px;
-		margin-right: 227px;	
-	}
 
-	#login_button {
-		display: inline-block;
-	}
+#register_button {
+	text-align: center;	
+}
 
-	.submit_button {
-		width: 230px;
-		margin-top: 8px;
-		background-color: #26a09f;
-		border: 1px solid #596365;
-		color: #fff;
-		text-decoration: none;
-		font-size: 20px;
-		padding: 15px 32px;
-		border-radius: 2px;
-		transition: all 0.5s;
-  		cursor: pointer;
-	}
+#login_button {
+	text-align: center;	
+}
 
-	.submit_button span {
-  		cursor: pointer;
-  		display: inline-block;
-  		position: relative;
-  		transition: 0.5s;
-	}
+.submit_button {
+	width: 230px;
+	margin-top: 8px;
+	background-color: #26a09f;
+	border: 1px solid #596365;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 15px 32px;
+	border-radius: 2px;
+	transition: all 0.5s;
+  	cursor: pointer;
+}
 
-	.submit_button span:after {
-  		content: '»';
-  		position: absolute;
-  		opacity: 0;
-  		top: 0;
-  		right: -20px;
-  		transition: 0.5s;
-	}
+.submit_button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
 
-	.submit_button:hover span {
-  		padding-right: 25px;
-	}
+.submit_button span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
 
-	.submit_button:hover span:after {
-  		opacity: 1;
-  		right: 0;
-	}
+.submit_button:hover span {
+  padding-right: 25px;
+}
 
-	#bildspel1 {
-		margin-top: 50px;
-	}
+.submit_button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#bildspel1 {
+	float: left;
+	margin-top: 80px;
+	width: 55%;
+	padding: 20px 20px 20px 20px;
+}
 
 /* Support sida*/
 	.contact{
