@@ -99,14 +99,14 @@ END;
         {!! csrf_field() !!}
          <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
            <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
-            <button class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+            <button title="Lägg till favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
 
               </li>
               <li>
               {!! Form::close() !!}
          @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
-            <button class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
+            <button title="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
 
               {!! Form::close() !!}
          @endif
@@ -119,7 +119,7 @@ END;
           
    <!-- stjärnknappen öppnar formuläret -->  
             <div class="btn-group">   
-              <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
+              <button type="button" title="Lägg till i spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
               </button>
 
 <div class="dropdown-menu" id="podmenudropdown">
@@ -148,7 +148,7 @@ END;
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
-                <button type="button" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" title="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
                     <p>Tycker du att poden är kränkade? Här kan du anmäla den.</p>
@@ -158,7 +158,7 @@ END;
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-              <button type="submit" class="btn btn-default">Anmäl</button>
+              <button type="submit"  class="btn btn-default">Anmäl</button>
             </form> 
             @else
             <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
