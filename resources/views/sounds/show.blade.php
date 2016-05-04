@@ -99,15 +99,14 @@ END;
         {!! csrf_field() !!}
          <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
            <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
-            <button name="submit" type="submit" class="btn btn-default btn-md">
-              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"></a></span>        
-              </button>
+            <button class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+
               </li>
               <li>
               {!! Form::close() !!}
          @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
-            <button class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+            <button class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
 
               {!! Form::close() !!}
          @endif
@@ -117,23 +116,13 @@ END;
             <li>
             <!-- formulär för att skapa spellista -->
             <!-- om man ej har listor -->
-    
           
-   <!-- stjärnknappen öppnar formuläret -->     
-              <button type="button" id="addList" class="btn btn-default btn-md">
-                <span class="glyphicon glyphicon-star" aria-hidden="true"></a></span>
+   <!-- stjärnknappen öppnar formuläret -->  
+            <div class="btn-group">   
+              <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
               </button>
 
-            </li>    
-            <!-- script för att öppna formuläret -->
-  <script>
-              $('#addList').click(function(){
-              $("#playlistEdit").toggleClass("hidden"); 
-              });
-            </script>
-            <!-- det gömda formuläret -->
-<li>
- <div class="hidden" id="playlistEdit">
+<div class="dropdown-menu">
          @if(is_null($listCheck))
          <p>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
          @else
@@ -158,8 +147,7 @@ END;
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-alert"></span>
+                <button type="button" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu">
                     <p>Anmäla</p>
@@ -182,11 +170,11 @@ END;
              <li id="podmenu-right2">
              @if(is_null($favNr))
 
-                <td><p><span class="glyphicon glyphicon-heart">:000</span></p></td>
+                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f;  margin-top: 6px; margin-left: 18%;">:000</span></p></td>
              
              @else
 
-                <td><p><span class="glyphicon glyphicon-heart">{{$favNr}}</span></p></td>
+                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f; margin-top: 6px; margin-left: 18%;">{{$favNr}}</span></p></td>
                 @endif
               </li>
               <!--  Favorit mätare slut -->            

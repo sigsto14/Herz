@@ -30,14 +30,23 @@
 
 	@font-face {
 	font-family: 'icomoon';
+	src:url('http://localhost/Herz/public/fonts/IcoMoon-Free.ttf');
+	src:url('http://localhost/Herz/public/fonts/IcoMoon-Free.ttf') format('truetype'),
+		font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon2';
 	src:url('http://localhost/Herz/public/fonts/icomoon.eot');
 	src:url('http://localhost/Herz/public/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
 		url('http://localhost/Herz/public/fonts/icomoon.woff') format('woff'),
-		url('http://localhost/Herz/public/fonts/icomoon.ttf') format('truetype'),
-		url('http://localhost/Herz/public/fonts/icomoon.svg#icomoon') format('svg');
+		url('http://localhost/Herz/public/fonts/fonts/icomoon/icomoon.ttf') format('truetype'),
+		url('.http://localhost/Herz/public/fonts/fonts/icomoon/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
+
 
 	#container{
 		margin-top: 150px;
@@ -717,7 +726,7 @@
 }
 
 .podmenu ul{
-	margin-left: 7%;
+	margin-left: 2%;
 }
 
 #podmenu-right{
@@ -725,7 +734,19 @@
 }
 
 #podmenu-right2{
-	margin-top: 1.5%;
+	margin-top: 0.5%;
+	margin-left: 1%;
+	min-width:  8%;
+	border: 1px solid #9fdecd;
+	background-color: #9fdecd; 
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    font-size: 16px;
+    padding-bottom: 0px;
+    height: 35px;
+
+
 }
 .podmenu.align-center > ul {
   font-size: 0;
@@ -1057,9 +1078,9 @@ list-style: none;
 	color: inherit;
 	background: none;
 	cursor: pointer;
-	padding: 25px 80px;
+	padding: 25px 25px;
 	display: inline-block;
-	margin: 15px 30px;
+
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 700;
@@ -1084,7 +1105,8 @@ list-style: none;
 .icon-heart:after,
 .icon-star:after,
 .icon-plus:after,
-.icon-file:before {
+.icon-file:before,
+.icon-alert:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -1096,30 +1118,20 @@ list-style: none;
 	-webkit-font-smoothing: antialiased;
 }
 
-.icon-envelope:before {
-	content: "\e000";
-}
-
-.icon-cart:before {
-	content: "\e007";
-}
-
-.icon-cart-2:before {
-	content: "\e008";
-}
 
 .icon-heart:before {
+	font-family: 'icomoon2';
 	content: "\e009";
 }
 
 /* Filled heart */
 .icon-heart:after,
 .icon-heart-2:before {
-	content: "\e00a";
+	content: "\e9da";
 }
 
 .icon-star:before {
-	content: "\e00b";
+	content: "\e9d7";
 }
 
 /* Filled star */
@@ -1128,17 +1140,6 @@ list-style: none;
 	content: "\e00c";
 }
 
-.icon-arrow-right:before {
-	content: "\e00d";
-}
-
-.icon-arrow-left:before {
-	content: "\e003";
-}
-
-.icon-truck:before {
-	content: "\e00e";
-}
 
 .icon-remove:before {
 	content: "\e00f";
@@ -1173,28 +1174,31 @@ list-style: none;
 	content: "\e005";
 }
 
+.icon-alert:before {
+	content: "\ea08";
+}
 /* Button 7 */
 .knp-7 {
 	background: #17aa56;
 	color: #fff;
 	border-radius: 7px;
 	box-shadow: 0 5px #119e4d;
-	padding: 25px 60px 25px 90px;
+
 }
 
 /* Icon only style */
 .knp-icon-only {
 	font-size: 0;
-	padding: 25px 30px;
+	padding: 15px 20px;
 }
 
 .knp-icon-only:before {
 	position: absolute;
-	top: 0;
+	top: -10px;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	font-size: 26px;
+	font-size: 20px;
 	line-height: 54px;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -1208,7 +1212,7 @@ list-style: none;
 	left: 0;
 	top: 0;
 	z-index: 1;
-	font-size: 26px;
+	font-size: 20px;
 	line-height: 54px;
 	color: #ea515e;
 	-webkit-transform: scale(0);
@@ -1221,41 +1225,4 @@ list-style: none;
 	transition: none;
 }
 
-.knp-7e.knp-activated:after {
-	-webkit-animation: scaleFade 0.5s forwards;
-	-moz-animation: scaleFade 0.5s forwards;
-	animation: scaleFade 0.5s forwards;
-} 
 
-@-webkit-keyframes scaleFade {
-	50% { 
-		opacity: 1;
-		-webkit-transform: scale(1);
-	}
-	100% {
-		opacity: 0;
-		-webkit-transform: scale(2.5);
-	}
-}
-
-@-moz-keyframes scaleFade {
-	50% { 
-		opacity: 1;
-		-moz-transform: scale(1);
-	}
-	100% {
-		opacity: 0;
-		-moz-transform: scale(2.5);
-	}
-}
-
-@keyframes scaleFade {
-	50% { 
-		opacity: 1;
-		transform: scale(1);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(2.5);
-	}
-}
