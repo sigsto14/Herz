@@ -148,7 +148,7 @@ END;
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
-                <button type="button" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" title="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
                     <p>Tycker du att poden är kränkade? Här kan du anmäla den.</p>
@@ -158,10 +158,10 @@ END;
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-               <button type="submit" class="btn btn-default">Anmäl</button>
+              <button type="submit"  class="btn btn-default">Anmäl</button>
             </form> 
             @else
-            <input type="text" placeholder="Logga in för att anmäla">
+            <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
             @endif
                 </div>
               </div>
