@@ -1459,7 +1459,8 @@ width: 100px;
 
 }
 
-#home h1{
+#home h1,
+#pop h1, #sen h1, #pre h1{
 		font-family: 'Museo-b';
 	text-align: left;
 	color: #9fdecd;
@@ -1472,7 +1473,7 @@ width: 100px;
 	margin-top:-5px;
 	margin-left: -25px;
 	background-color: #26a09f;
-	width: 300px;
+	width: 320px;
 	padding-left: 30px;
 	    border: 2px solid #26a09f;
     -moz-border-radius: 6px 6px 6px 6px;
@@ -1491,7 +1492,7 @@ width: 100px;
 #SeeMore {
 	position: absolute;
 	margin-left: 7%;
-	margin-top: 15px;
+	margin-top: 5px;
 			font-family: 'Museo-b';
 	
 	color: #9fdecd;

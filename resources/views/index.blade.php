@@ -87,7 +87,7 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
             </div>
 <!-- här tar första boxen slut -->
 <div role="tabpanel" class="tab-pane" id="pop">
-    <h1>Populärt</h1><!-- här börjar andra rubriken -->
+    <h1 id="home-title">Populärt</h1><!-- här börjar andra rubriken -->
     @foreach($favorites as $favorite)
       <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
           <?php
@@ -105,9 +105,13 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 @if($favNr >= 2)
 @if($favorite->status != 'privat' or $sub > 0)
 
-             <div class="col-md-3 col-sm-1 col-xs-1 col-lg-1" id="indexBox">
-              <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" heigh="120px"></a>
-              <a href="http://localhost/Herz/public/sound/"><h3>{{ $favorite->title }}</h3></a>
+             <div class="col-md-4" id="indexBox">
+              <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
+              <div class="podtitle-box">
+              <a href="http://localhost/Herz/public/sound/"><h4>{{ $favorite->title }}</h4></a>
+                          <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
               @if(Auth::check())
               @if($favorite->channelID == Auth::user()->userID)
 <p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
@@ -116,8 +120,12 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
               @endif
               @endif
-              <p>Kanal </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
-             
+              </div>
+              <div class="podchanneltitle">
+              <p>av </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
+                      </div>       
+       </div> 
+       </div>
             
                         </div>
 
@@ -130,7 +138,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
 </div>
 <!-- denna ska vara i rubrik 3 -->
 <div role="tabpanel" class="tab-pane" id="sen">
-  <h1>Rekommendationer</h1>
+  <h1 id="home-title">Rekommendationer</h1><br>
 @if(is_null($favoriteCheck))
            <p>Inga rekommendationer</p>
            @else
@@ -165,15 +173,19 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
           ?>
       <!-- klipp skall bara synas om de inte är privata -->
 @if($result->status != 'privat' or $sub > 0)
-   <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+   <div class="col-md-4" id="indexBox">
          
 
               <?php
 
               $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count();
               ?>
-               <img src="{{ $result->podpicture }}" style="width:150px;height:120px;"/><br>
-               <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br>
+               <img src="{{ $result->podpicture }}" width="150px" height="150px" id="pod-mini-img"/>
+               <div class="podtitle-box">
+               <a href="http://localhost/Herz/public/sound/{{$result->soundID}}"><h4>{{ $result->title }}</h4></a>
+                             <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
             @if(Auth::check())
               @if($result->channelID == Auth::user()->userID)
 <p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
@@ -181,29 +193,39 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
               @endif
               @endif
- <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
-              
-              
-             </div>
+              </div>
+              <div class="podchanneltitle">
+ <p>av <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
+
+        </div>       
+       </div> 
+       </div>              
+        </div>
 @endif
              @endforeach
              @endif
  
 
+
 </div>
+
 
 <!-- rubrik 4-->
 <div role="tabpanel" class="tab-pane" id="pre">
-  <h1>Prenumerationer</h1>
+  <h1 id="home-title">Prenumerationer</h1><br>
 @foreach($subscribe as $sub)
 <?php
 
               $favNr = DB::table('favorites')->where('soundID', '=', $sub->soundID)->count();
               ?>
- <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+ <div class="col-md-4" id="indexBox">
               
-               <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><img src="{{ $sub->podpicture }}" style="width:150px;height:120px;"/></a><br>
-               <h3><a href="http://localhost/Herz/public/sound/{{$sub->soundID}}">{{ $sub->title }}</a></h3><br>
+               <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><img src="{{ $sub->podpicture }}" width="150px" height="150px" id="pod-mini-img"/></a>
+               <div class="podtitle-box">
+               <a href="http://localhost/Herz/public/sound/{{$sub->soundID}}"><h4>{{ $sub->title }}</h4></a>
+                      <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
                  @if(Auth::check())
               @if($sub->channelID == Auth::user()->userID)
 <p><span class="glyphicon glyphicon-star">{{ $favNr }}</span></p>
@@ -211,10 +233,14 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               <p><span class="glyphicon glyphicon-heart">{{ $favNr }}</span></p>
               @endif
               @endif
- <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $sub->channelID }}">{{$sub->channelname}}</a></p>
-              
-              
-             </div>
+              </div>
+              <div class="podchanneltitle">
+ <p>av <a href="http://localhost/Herz/public/channel/{{ $sub->channelID }}">{{$sub->channelname}}</a></p>
+                      </div>       
+       </div> 
+       </div> 
+       </div>
+
 
 @endforeach
 
