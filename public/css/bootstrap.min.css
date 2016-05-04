@@ -901,11 +901,11 @@ li.well li{
 }
 
 li.well img{
-		border-radius: 150px;
+		border-radius: 250px;
 		border-style: solid;
 		border-color: #0c5150;
 		border-width: 2px;
-		width: 10%;
+
 
 }
 .well{
