@@ -102,12 +102,13 @@ END;
             <button name="submit" type="submit" class="btn btn-default btn-md">
               <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"></a></span>        
               </button>
+              </li>
+              <li>
               {!! Form::close() !!}
          @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
-  <button name="submit" type="submit" class="btn btn-default btn-md">
-              <span class=" glyphicon glyphicon-heart" aria-hidden="true"></a></span>        
-              </button>
+            <button class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+
               {!! Form::close() !!}
          @endif
    
@@ -131,7 +132,7 @@ END;
               });
             </script>
             <!-- det gömda formuläret -->
-
+<li>
  <div class="hidden" id="playlistEdit">
          @if(is_null($listCheck))
          <p>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
@@ -149,6 +150,7 @@ END;
     <button type="submit">Lägg till!</button> 
             <button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
  </div>
+ </li>
 @endif
 
       @endif

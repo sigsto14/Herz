@@ -28,6 +28,17 @@
   		src: url('http://localhost/Herz/public/fonts/LeagueGothic-Regular.otf') format("opentype");
 	}
 
+	@font-face {
+	font-family: 'icomoon';
+	src:url('http://localhost/Herz/public/fonts/icomoon.eot');
+	src:url('http://localhost/Herz/public/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('http://localhost/Herz/public/fonts/icomoon.woff') format('woff'),
+		url('http://localhost/Herz/public/fonts/icomoon.ttf') format('truetype'),
+		url('http://localhost/Herz/public/fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 	#container{
 		margin-top: 150px;
 		background-color: white;
@@ -736,6 +747,7 @@
 .podmenu > ul > li {
   float: left;
 }
+
 	
 .podinfo{
 		margin-top: -3%;
@@ -1035,3 +1047,215 @@ list-style: none;
 		margin-top: -1px;
 		font-size: 10px;
 	}
+
+/* knappar */
+/* General button style (reset) */
+.knp {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: 15px 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.knp:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+/* Pseudo elements for icons */
+.knp:before,
+.icon-heart:after,
+.icon-star:after,
+.icon-plus:after,
+.icon-file:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+}
+
+.icon-envelope:before {
+	content: "\e000";
+}
+
+.icon-cart:before {
+	content: "\e007";
+}
+
+.icon-cart-2:before {
+	content: "\e008";
+}
+
+.icon-heart:before {
+	content: "\e009";
+}
+
+/* Filled heart */
+.icon-heart:after,
+.icon-heart-2:before {
+	content: "\e00a";
+}
+
+.icon-star:before {
+	content: "\e00b";
+}
+
+/* Filled star */
+.icon-star:after,
+.icon-star-2:before {
+	content: "\e00c";
+}
+
+.icon-arrow-right:before {
+	content: "\e00d";
+}
+
+.icon-arrow-left:before {
+	content: "\e003";
+}
+
+.icon-truck:before {
+	content: "\e00e";
+}
+
+.icon-remove:before {
+	content: "\e00f";
+}
+
+.icon-cog:before {
+	content: "\e010";
+}
+
+.icon-plus:before,
+.icon-plus:after {
+	content: "\e011";
+}
+
+.icon-minus:before {
+	content: "\e012";
+}
+
+.bh-icon-smiley:before {
+	content: "\e001";
+}
+
+.bh-icon-sad:before {
+	content: "\e002";
+}
+
+.icon-file:before {
+	content: "\e004";
+}
+
+.icon-remove-2:before {
+	content: "\e005";
+}
+
+/* Button 7 */
+.knp-7 {
+	background: #17aa56;
+	color: #fff;
+	border-radius: 7px;
+	box-shadow: 0 5px #119e4d;
+	padding: 25px 60px 25px 90px;
+}
+
+/* Icon only style */
+.knp-icon-only {
+	font-size: 0;
+	padding: 25px 30px;
+}
+
+.knp-icon-only:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 26px;
+	line-height: 54px;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+/* Button 7e */
+.knp-7e:after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	font-size: 26px;
+	line-height: 54px;
+	color: #ea515e;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	opacity: 0;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+
+.knp-7e.knp-activated:after {
+	-webkit-animation: scaleFade 0.5s forwards;
+	-moz-animation: scaleFade 0.5s forwards;
+	animation: scaleFade 0.5s forwards;
+} 
+
+@-webkit-keyframes scaleFade {
+	50% { 
+		opacity: 1;
+		-webkit-transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		-webkit-transform: scale(2.5);
+	}
+}
+
+@-moz-keyframes scaleFade {
+	50% { 
+		opacity: 1;
+		-moz-transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		-moz-transform: scale(2.5);
+	}
+}
+
+@keyframes scaleFade {
+	50% { 
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(2.5);
+	}
+}
