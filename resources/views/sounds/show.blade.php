@@ -99,14 +99,14 @@ END;
         {!! csrf_field() !!}
          <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
            <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
-            <button title="Lägg till favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+            <button tooltip="Lägg till favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
 
               </li>
               <li>
               {!! Form::close() !!}
          @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
-            <button title="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
+            <button tooltip="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
 
               {!! Form::close() !!}
          @endif
@@ -119,7 +119,7 @@ END;
           
    <!-- stjärnknappen öppnar formuläret -->  
             <div class="btn-group">   
-              <button type="button" title="Lägg till i spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
+              <button type="button" tooltip="Lägg till i spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
               </button>
 
 <div class="dropdown-menu" id="podmenudropdown">
@@ -148,7 +148,7 @@ END;
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
               <div class="btn-group">
-                <button type="button" title="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
                     <p>Tycker du att poden är kränkade? Här kan du anmäla den.</p>
