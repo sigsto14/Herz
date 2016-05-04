@@ -124,20 +124,32 @@ END;
 
 <div class="dropdown-menu" id="podmenudropdown">
          @if(is_null($listCheck))
-         <p>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+         <p style="margin-left: 10%; color: #26a09f; font-size: 13px;>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
          @else
  {!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
           <div>
           <!-- hidden fields -->
+
             <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
-          </div>  
-   <select name="listID">
+          </div>
+          <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Välj lista:</p>
+          <div class="podmenudropdown-list">  
+              <label>
+              <select name="listID">
               @foreach($lists as $list)
               <option value="{{$list->listID}}">{{ $list->listTitle }}</option>
               @endforeach
             </select>
-    <button type="submit">Lägg till!</button> 
-            <button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+            </label>
+            </div>
+            <div class="podmenudropdown-btn">  
+
+    <button type="submit" class="btn btn-primary">Lägg till!</button>
+    </div>
+
+    <div class="podmenudropdown-btn2"> 
+            <button type="button" class="btn btn-primary"><a href="http://localhost/Herz/public/playlist"></a>Skapa ny spellista</button>
+            </div>
  </div>
  </li> 
 @endif
@@ -151,14 +163,14 @@ END;
                 <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
-                    <p>Tycker du att poden är kränkade? Här kan du anmäla den.</p>
+                    <p style="margin-left: 10%; color: #26a09f; font-size: 13px; text-align: center;">Tycker du att poden är kränkade? Här kan du anmäla den.</p>
                   @if(Auth::check())
                     <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
             {!! csrf_field() !!} 
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-              <button type="submit"  class="btn btn-default">Anmäl</button>
+              <button type="submit"  class="btn btn-primary">Anmäl</button>
             </form> 
             @else
             <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
