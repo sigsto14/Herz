@@ -901,11 +901,10 @@ li.well li{
 }
 
 li.well img{
-		border-radius: 250px;
+		border-radius: 150px;
 		border-style: solid;
 		border-color: #0c5150;
 		border-width: 2px;
-
 
 }
 .well{
@@ -1262,9 +1261,7 @@ font-family: 'Museo';
 }
 
 /* vet ej än */
-	#indexBox {
-		padding-left: 8%;
-	}
+
 
 	.podcast-box {
 		position: relative;
@@ -1370,3 +1367,6 @@ height: 317.5px;
 }
 
 
+	#indexBox {
+		padding-left: 0%;
+	}

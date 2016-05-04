@@ -51,7 +51,7 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
           /* kolla hur många som har klippet som favorit */
           $favNr = DB::table('favorites')->where('soundID', '=', $senast->soundID)->count();
           ?>         
-           <div class="col-md-3 col-sm-4 col-xs-3 col-lg-4" id="indexBox">
+           <div class="col-md-4" id="indexBox">
             <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h3>{{ $senast->title }} </h3></a>
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="180px" height="120px"></a><br><br>
                 @if(Auth::check())
