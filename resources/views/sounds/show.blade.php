@@ -278,7 +278,8 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
                   <li class="well">
                     <ul>
                               <!--  Använder information-->
-                      <li id="well-left" ><img src="{{ Auth::user()->profilePicture }}"></li>
+
+                      <li id="well-left" ><img src="{{ $comment->profilePicture }}"></li>
                       <li id="well-left">{{ $comment->username }}</li>
                       <li id="well-left-right">{{ $commentUpload->created_at}}</li>
                     </ul>
