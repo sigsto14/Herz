@@ -1404,6 +1404,13 @@ height: 317.5px;
 
 }
 
+.podtitle-box:hover{
+	background-color: #b7e165;
+
+
+}
+
+
 .podtitle-box h4{
 	font-family: 'Museo-b';
 	text-align: center;
