@@ -40,12 +40,16 @@
 $categories = DB::table('category')->get();
 ?>
 {!! Form::label('Kategori:') !!}
- <select name="categoryID" class="catlabel">
+<div class="catlabel">
+<label>
+ <select name="categoryID">
          @foreach($categories as $category)
  <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
 
 @endforeach
+</label>
 </select>
+</div>
 
 
 {!! Form::label('Poddens bild:') !!}
