@@ -17,7 +17,7 @@
 
 <h1>Ladda Upp Podcast</h1>
 
-<div class="section">Redigera Info</div>
+
     <div class="inner-wrap">
 
 {!! Form::open(array('route' => 'sound.store', 'files' => 'true')) !!}
@@ -40,7 +40,7 @@
 $categories = DB::table('category')->get();
 ?>
 {!! Form::label('Kategori:') !!}
- <select name="categoryID">
+ <select name="categoryID" class="catlabel">
          @foreach($categories as $category)
  <option value="{{$category->categoryID}}">{{ $category->categoryname }}</option>
 
