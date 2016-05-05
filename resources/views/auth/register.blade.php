@@ -2,13 +2,17 @@
 @section('container')
 @section('footer')
 <div class="container">
-<div class="col-md-12" id="container">
-<div class="redigering">
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+
+<h1>Registera Dig</h1>
+
 @if(Auth::check())
+
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
     {!! csrf_field() !!}
 {!! Form::label('Profilbild:') !!}
-{!! Form::file('image', null) !!}<br>
+{!! Form::file('image', null) !!}
 
 {!! Form::submit('Save', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}
@@ -25,6 +29,7 @@
 @else
 
 
+    <div class="inner-wrap">
 <form method="POST" action="../auth/register">
 
     {!! csrf_field() !!}
@@ -34,12 +39,12 @@
    
 
     <div>
-        Användarnamn
+        <label>Användarnamn:</label>
         <input type="text" name="username" value="{{ old('username') }}">
     </div>
 
     <div>
-        Email
+        <label>Email:</label>
         <input type="email" name="email" value="{{ old('email') }}">
     </div>
 
@@ -57,9 +62,16 @@
 
 
 
-    <div>
-        <button type="submit">Registrera dig</button>
-    </div>
+        <button type="submit" class="btn" style="  
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+   margin-bottom: 30px;">Registrera dig</button>
+
 
 @endif
     @if (count($errors) > 0)
