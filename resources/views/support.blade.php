@@ -7,10 +7,13 @@
 <body>
 	@yield('content')
     <div class="container">
-    <div class="col-md-12" id="container">
-        <div class="contact">
-        	<h1>Kontakta oss</h1>
-        	<p>Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din e-post adress så kan vi återkomma till dig.<br>
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+<h1>Support</h1>
+<div class="section">Kontakta oss</div>
+    <div class="inner-wrap">       	
+
+        	<p style="text-align: center;">Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din <br> e-post adress så kan vi återkomma till dig.
         	 Eller så kanske du hittar svaret på frågan längre ner på sidan.</p>
 		
 			<form action="http://localhost/Herz/public/contact.php" method="post" id="contact">
@@ -23,10 +26,8 @@
 		</div>
 
 <!--FAQ-ruta-->
-
-		<div class="faq">
-
-			<h2>FAQ</h2>
+<div class="section">F.A.Q</div>
+    <div class="inner-wrap">
 			<button type="button" class="faqbtn" data-toggle="collapse" data-target="#faq1">Jag vill ladda upp ett eget ljudklipp, hur gör jag?</button><br>
 	  			<div id="faq1" class="collapse">
 					<p>Se till så att du har skapat en kanal. I den högra menyn längst ner hittar du "Ladda upp podcast". Här kan du ladda upp ditt ljudklipp.</p>
