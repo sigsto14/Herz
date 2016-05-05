@@ -7,7 +7,8 @@
 
 $user = Auth::user();
 /* variabel för senaste uppladdningar */
-$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->take(5)->get();
+$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->paginate(6);
+$loadMore = $senaste->render();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();
  $favoriteCheck = DB::table('favorites')->first();
@@ -39,7 +40,8 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
         </script>          
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="home">    
-            <h1 id="home-title">Senast uppladdat</h1> <!-- detta är den aktiva, första som syns --><br>
+            <h1 id="home-title">Senast uppladdat</h1><!-- detta är den aktiva, första som syns --><br>
+
           @foreach($senaste as $senast) 
           <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
           <?php
@@ -80,9 +82,10 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
 
 @endforeach
 <div class="SeeMore">
-<a href="http://localhost/Herz/public/sound"><img src="http://localhost/Herz/public/images/podcast_av/pod.png"/></a><br>
-<a href="http://localhost/Herz/public/sound" id="SeeMore">Se fler...</a>
-</div>
+<center><?php echo $loadMore
+
+?> 
+</div></center>
 
             </div>
 <!-- här tar första boxen slut -->
