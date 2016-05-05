@@ -82,10 +82,10 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
 
 @endforeach
 <div class="SeeMore">
-<center><?php echo $loadMore
+<?php echo $loadMore
 
 ?> 
-</div></center>
+</div>
 
             </div>
 <!-- här tar första boxen slut -->

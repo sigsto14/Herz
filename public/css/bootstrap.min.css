@@ -1730,7 +1730,10 @@ border: 5px solid #b7e165;
 		background-color: #FFFFFF;
 	}
 
+.SeeMore ul {
+margin-left: 80%;
 
+}
 .SeeMore ul li a{
 		font-family: 'Museo-b';
 background-color: #b6e8de;
