@@ -33,7 +33,7 @@
 
 
 
-{!! Form::submit('Save',  array('class' => 'form-control btn')) !!}
+{!! Form::submit('Skapa Kanal',  array('class' => 'form-control btn')) !!}
 {!! Form::close() !!}
 
 
