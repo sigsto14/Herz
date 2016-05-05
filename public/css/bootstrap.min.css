@@ -56,6 +56,8 @@
 	#container3{
 		margin-top: 15%;
 		background-color: #cee5d0;
+		border-radius: 1px;
+  box-shadow: 0px 0px 0px 8px #ffffff);
 		border: 5px solid #26a09f;
 		min-height: 100%;
 	}
@@ -1823,6 +1825,13 @@ padding-bottom: 7%;
 
 
 }
+#homeFields li a {
+
+	border-radius: 0px  25px 0px 0px;
+	border-bottom: none;
+
+
+}
 
 #navA {
   
@@ -1886,16 +1895,16 @@ height: 120%;
 	position: absolute;
 
 	margin-top: -3.75%;
-	background-color: #26a09f;
+	
 	
 	padding-left: 30px;
 	padding-right: 0.5%;
-	    border: 2px solid #26a09f;
+	   
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 0px 6px 6px 0px;
     font-family: 'Museo-b';
 	text-align: left;
-	color: #9fdecd;
+	color: #26a09f;
 	font-size: 220%;
 }
