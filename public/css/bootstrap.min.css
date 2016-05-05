@@ -54,6 +54,73 @@
 		min-height: 660px;
 	}
 
+	#mini-container{
+		margin-top: 150px;
+		background-color: #ddf1e5;
+		min-height: 680px;
+  		border-radius: 8px;
+	}
+
+	#mini-container h1{
+  
+  	text-align: center;
+  		font-family: 'Museo-b';
+		color: #26a09f;
+	font-size: 40px;
+	background-color:  #9fdecd;
+	-webkit-border-radius: 8px 8px 0 0;
+	-moz-border-radius: 8px 8px 0 0;
+	border-radius: 8px 8px 0 0;
+	padding: 20px 26px;
+	margin-left: -3.5%;
+	width: 578px;
+	margin-top: -3%;
+	}
+
+#mini-container .inner-wrap{
+    padding: 30px;
+    background: #F8F8F8;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+#mini-container .section{
+    font-family: 'Museo-b';
+    color: #26a09f;
+    margin-bottom: 5px;
+}
+
+#mini-container input{
+  background: rgba(255,255,255,0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+  margin-bottom: 30px;
+}
+
+#mini-container .btn{
+	 background-color:#26a09f ;
+ color: #9fdecd;
+}
+
+#mini-container .btn:hover{
+	 background-color:#b7e165;
+ color: #26a09f;
+}
+
+#mini-container img{
+	margin-left: 30%;
+	padding-bottom: 15px;
+}
+
+
 	#container2{
 		background-color: #ddf1e5;
 		padding-top: 50px;
@@ -1572,7 +1639,7 @@ border: 5px solid #b7e165;
 		color: #26a09f;
 	}
 
-	.nav-tabs > li.active > a,
+.nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #26a09f;
