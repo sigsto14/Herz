@@ -1730,3 +1730,49 @@ border: 5px solid #b7e165;
 		background-color: #FFFFFF;
 	}
 
+
+.SeeMore ul li a{
+		font-family: 'Museo-b';
+background-color: #b6e8de;
+color: #26a09f;
+border-color: #cee5d0;
+
+}
+
+
+
+
+.SeeMore ul li a:hover{
+		font-family: 'Museo-b';
+background-color:   #b7e165;
+}
+
+
+.SeeMore ul li.disabled span
+
+ {
+display: none;
+ }
+
+
+  .SeeMore ul li.active span
+
+ {
+position: relative;
+	font-family: 'Museo-b';
+background-color: #ddf1e5;
+color: #26a09f;
+border-top: none;
+border-bottom: none;
+border-left: 2px solid #cee5d0;
+border-right: 2px solid #cee5d0;
+ }
+
+   .SeeMore ul li.active span:hover
+
+ {
+position: relative;
+	font-family: 'Museo-b';
+	background-color:   #b7e165;
+
+ }
