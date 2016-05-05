@@ -106,6 +106,7 @@ END;
               {!! Form::close() !!}
          @else
 {!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
+     {!! csrf_field() !!}
             <button tooltip="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
 
               {!! Form::close() !!}
