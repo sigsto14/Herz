@@ -9,11 +9,16 @@
 
 
 <div class="container">
-<div class="col-md-12" id="container">
-<div class="redigering2">
-    <h3> För att ladda upp ljudklipp får du <br>först skapa en kanal! </h3>
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+
+
+<h1>OBS!!!</h1>
+    
+<div class="section"> För att ladda upp ljudklipp får du först skapa en kanal! </h3></div>
+<div class="inner-wrap">
 @if(Auth::check())
-<title>Skapa kanal</title>
+
 
 
 {!! Form::open(array('route' => 'channel.store', 'files' => 'true')) !!}
@@ -23,12 +28,12 @@
 {!! Form::text('channelname') !!}<br>
 
 {!! Form::label('Information om kanalen:') !!}
-{!! Form::textarea('information') !!}<br>
+{!! Form::textarea('information') !!}<br><br>
 
 
 
 
-{!! Form::submit('Save', '', array('class' => 'form-control')) !!}
+{!! Form::submit('Save',  array('class' => 'form-control btn')) !!}
 {!! Form::close() !!}
 
 
