@@ -11,8 +11,14 @@
 @if(Auth::check())
 <title>Ladda upp podcast</title>
 <div class="container">
-<div class="col-md-12" id="container">
-	<div class="redigering">
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+
+
+<h1>Ladda Upp Podcast</h1>
+
+<div class="section">Redigera Info</div>
+    <div class="inner-wrap">
 
 {!! Form::open(array('route' => 'sound.store', 'files' => 'true')) !!}
     {!! csrf_field() !!}
