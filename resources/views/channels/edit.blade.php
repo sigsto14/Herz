@@ -3,30 +3,33 @@
 @section('footer')
 <title>Edit Profile</title>
 <div class="container">
-	<div class="col-md-12" id="container">
-	<div class="redigering">
-<!-- kör <br> sålänge för att kunna se -->
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
 
-<table class="table">
+
+<h1>Redigera Kanal</h1>
+
+<div class="section">Redigera Kanal</div>
+    <div class="inner-wrap">
 @if(Auth::check())
 @if(Auth::user()->userID == $channel->userID)
 
 {{-- formulär som även visar den data som är i databasen --}}
 {!!     Form::model($channel, array('route' => array('channel.update', $channel->channelID), 'method' => 'PUT')) !!}
 
-    {!! csrf_field() !!}<br>
+    {!! csrf_field() !!}
 
 {!!     Form::label('channelname', 'Kanalnamn:') !!}
-{!!     Form::text('channelname') !!}<br>
+{!!     Form::text('channelname') !!}
 {!!     Form::label('information', 'Information:') !!}
-{!!     Form::textarea('information') !!}<br>
+{!!     Form::textarea('information') !!}
 
 
 
 
-{!!     Form::submit('Ändra kontoinformation') !!}<br>
+{!!     Form::submit('Ändra kontoinformation', array('class' => 'btn')) !!}
 
-{!!     Form::close() !!}<br><br><br>
+{!!     Form::close() !!}
 
 
 
@@ -60,8 +63,8 @@
 
 </div>
 </div>
-</table>
 
+</div>
 </div>
 </div>
 </div>
