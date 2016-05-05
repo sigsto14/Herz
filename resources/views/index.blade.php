@@ -265,49 +265,21 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
         </div>
 
         <div id="collapseOne" class="panel-collapse collapse in">
-          <div class="panel-body">
-            <table class="pre-fav" style="width:100%">
-            <p>Senaste uppladdningar:</p>
-            <tr>
-              @foreach($subscribes as $subscribe)  
+          <div class="panel-body" id="pre-fav">
+            <table>
+              <p style="margin-left: -10%;">Senaste uppladdningar:</p>
+              @foreach($subscribes as $subscribe)
+              <tr>
+              
                
-            <td><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}">{{ $subscribe->title }}</a></td>
+            <td ><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}" style="margin-left: 18px;">{{ $subscribe->title }}</a></td>
             <td>av</td>
             <td><a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}">{{ $subscribe->channelname}}</a></td>
+            @endforeach 
             </tr>
-            @endforeach            
-            <tr>
-            <td><a href="http://localhost/Herz/public/subscribe">Se alla...</a></td></tr>
-            <!--
-              <td>2</td>
-              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>   
-              <td><a href="#">Prenumering 2</a></td>
-              <td>av</td>
-              <td><a href="#">Herz</a></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
-              <td><a href="#">Prenumering 3</a></td>
-              <td>av</td>
-              <td><a href="#">Herz</a></td>          
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
-              <td><a href="#">Prenumering 4</a></td>
-              <td>av</td>
-              <td><a href="#">Herz</a></td>
-            </tr>
-            <tr>
-              <td>5</a></td>
-              <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:65%"></td>    
-              <td><a href="#">Prenumering 5</a></td>
-              <td>av</td>
-              <td><a href="#">Herz</a></td>
-              -->
-            </tr>
+                       
           </table> 
+          <p style="margin-top: 5%;"><a href="http://localhost/Herz/public/subscribe">Se alla...</a></p>
         </div>
       </div>
       </div>
@@ -326,49 +298,19 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
         </div>
         
         <div id="collapseTwo" class="panel-collapse collapse in">
-            <div class="panel-body">
-          <table class="pre-fav" style="width:100%">
-          <p>Senaste favoriter:</p>
+            <div class="panel-body" id="pre-fav">
+          <table >
+          <p style="margin-left: -10%;">Senaste favoriter:</p>
           <tr>
             <!-- tar varje resultat (5 st) individuellt -->
             @foreach($favorites as $favorite)  
-            <td style="width: 50%; "><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}">{{ $favorite->title }}</a></td>
-            <td style="position: absolute; margin-left: -12%;">Kanal:</td>
-            <td ><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}" style="position: relative; ">{{ $favorite->channelname}}</a></td></tr>
+            <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}" style="margin-left: 18px;">{{ $favorite->title }}</a></td>
+            <td>Kanal:</td>
+            <td ><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></td></tr>
             @endforeach
-            <tr>
-            <td><p><a href="http://localhost/Herz/public/favorite">Se alla...</a></p></td>
             </tr>
-          
-          <!-- tillfällig utkommentering<tr>
-            <td>2</td>
-            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>   
-            <td><a href="#">Favorit 2</a></td>
-            <td>av</td>
-            <td><a href="#">Herz</a></td>
-          </tr>
-          <tr>
-          <td>3</td>
-          <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>    
-          <td><a href="#">Favorit 3</a></td>
-          <td>av</td>
-          <td><a href="#">Herz</a></td>          
-          </tr>
-          <tr>
-            <td>4</td>
-            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%" ></td>    
-            <td><a href="#">Favorit 4</a></td>
-            <td>av</td>
-            <td><a href="#">Herz</a></td>
-          </tr>
-           <tr>
-            <td>5</a></td>
-            <td><img src="http://localhost/Herz/public/images/user_av/ava_50.jpg" style="width:50%"></td>    
-            <td><a href="#">Favorit 5</a></td>
-            <td>av</td>
-            <td><a href="#">Herz</a></td>
-          </tr>-->
-        </table>
+           </table>
+           <p style="margin-top: 5%;"><a href="http://localhost/Herz/public/favorite">Se alla...</a></p>
             </div>
             </div>
             </div>

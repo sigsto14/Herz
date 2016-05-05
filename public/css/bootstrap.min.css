@@ -1297,20 +1297,7 @@ font-family: 'Museo';
 		margin-top: 1%;
 		margin-left: 2%;
 	}
-	.nav-tabs>li{
-		background-color: #42e1aa;
-	}
-	.nav-tabs>li> a:hover{
-		background-color: white;
-	}
-	.nav-tabs>li:active{
-		background-color: white;
-	}	
-
-	.admin-feedback {
-		width: 15%;
-		background-color: #FFFFFF;
-	}
+	
 	.redigering{
 		padding-top: 70px;
 		margin-left: 40%;
@@ -1361,6 +1348,12 @@ height: 317.5px;
 	margin-top: -1%;
 }
 
+#panel1 .panel-heading:hover{
+	background-color: #b7e165;
+	color: #26a09f;
+
+}
+
 #darkerbox{
 	background-color: #cee5d0 ;
 
@@ -1376,6 +1369,17 @@ height: 317.5px;
 
 	background-color: #9fdecd;
     border: 10px solid #b6e8de;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    margin-top: 10%;
+
+}
+
+#pod-mini-img:hover{
+
+
+    border: 10px solid #b7e165;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
     border-radius: 6px 6px 6px 6px;
@@ -1417,6 +1421,13 @@ height: 317.5px;
 
 }
 
+.podtitle-box p:hover{
+
+	color: #b7e165;
+
+
+}
+
 .podtitle-box a{
 	font-family: 'Museo-b';
 	color: #9fdecd;
@@ -1431,15 +1442,17 @@ height: 317.5px;
 	width: 100px;
 
 }
+.podchanneltitle a:hover{
+	color: #b7e165;
+}
+
+
 
 .podfavicon{
 	position: absolute;
 	margin-left: 100px;
 transform: translateY(35%);
 width: 100px;
-
-
-
 }
 
 .podtitledownbox{
@@ -1450,6 +1463,7 @@ width: 100px;
 	height: 25px;
 	margin-top: -5px;
 }
+
 
 .vertical-line{
 	position: absolute;
@@ -1493,7 +1507,7 @@ width: 100px;
 	position: absolute;
 	margin-left: 7%;
 	margin-top: 5px;
-			font-family: 'Museo-b';
+	font-family: 'Museo-b';
 	
 	color: #9fdecd;
 	font-size: 15px;
@@ -1505,3 +1519,68 @@ width: 100px;
 
 
 }
+
+#pre-fav p, #pre-fav a {
+	font-family: 'League';
+	font-size: 20px;
+	color: #26a09f;
+
+}
+
+#pre-fav p{
+	margin-left: -3%;
+}
+
+#pre-fav tr{
+	position: relative;
+	background-color: #9fdecd;
+	border-color: #26a09f;
+	border-style: solid;
+	border-width: 1px;	
+	height: 38px;
+	margin-top: -5%;
+}
+
+#pre-fav tr:hover{
+	background-color: #b7e165;
+
+
+}
+#pre-fav table{
+	position: relative;
+	width: 278px !important;
+	margin-left: -14%;
+}
+
+.nav-tabs>li{
+		background-color: #42e1aa;
+		color: #26a09f;
+	}
+
+	.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: #26a09f;
+  cursor: default;
+  background-color: #ddf1e5;
+  border: 1px solid #ddf1e5;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs>li> a{
+		color: #26a09f;
+		font-size: 15px;
+		font-family: 'Museo-b';
+	}
+
+.nav-tabs>li> a:hover{
+		background-color: #b7e165;
+		border-color: #b7e165;
+	}
+
+
+.admin-feedback {
+		width: 15%;
+		background-color: #FFFFFF;
+	}
+
