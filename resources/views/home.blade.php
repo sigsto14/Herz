@@ -8,40 +8,39 @@
     <title>Välkommen till Herz</title>
 
     <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
-    <link rel="stylesheet" type="text/css" href="http://localhost/Herz/public/engine1//style.css" />
-    <script type="text/javascript" src="http://localhost/Herz/public/engine1//jquery.js"></script>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Made with WOW Slider - Create beautiful, responsive image sliders in a few clicks. Awesome skins and animations. Jquery slideshow" />
+  
+  <!-- Start WOWSlider.com HEAD section --> <!-- add to the <head> of your page -->
+  <link rel="stylesheet" type="text/css" href="engine1/style.css" />
+  <script type="text/javascript" src="engine1/jquery.js"></script>
     <!-- End WOWSlider.com HEAD section -->
 </head>
 <body>
-<div class="container">
-    <div class="col-md-12" id="container"> 
+<div class="container" id="homeContainer">
+    <div class="col-md-12" id="container3"> 
     <div id="bildspel1">    
 <!-- Start WOWSlider.com BODY section -->
 <div id="wowslider-container1">
-<div class="ws_images"><ul>
-        <li><img src="http://localhost/Herz/public/data1/images/herzheader2.png" alt="Herz-header2" title="Herz-header2" id="wows1_0"/></li>
-        <li><img src="http://localhost/Herz/public/data1/images/herzheader3.png" alt="Herz-header3" title="Herz-header3" id="wows1_1"/></li>
-        <li><a href="http://wowslider.com"><img src="http://localhost/Herz/public/data1/images/herzheader4.png" alt="wowslider.com" title="Herz-header4" id="wows1_2"/></a></li>
-        <li><img src="http://localhost/Herz/public/data1/images/herzheader5.png" alt="Herz-header5" title="Herz-header5" id="wows1_3"/></li>
-    </ul></div>
-    <div class="ws_bullets"><div>
-        <a href="#" title="Herz-header2"><span><img src="http://localhost/Herz/public/data1/tooltips/herzheader2.png" alt="Herz-header2"/>1</span></a>
-        <a href="#" title="Herz-header3"><span><img src="http://localhost/Herz/public/data1/tooltips/herzheader3.png" alt="Herz-header3"/>2</span></a>
-        <a href="#" title="Herz-header4"><span><img src="http://localhost/Herz/public/data1/tooltips/herzheader4.png" alt="Herz-header4"/>3</span></a>
-        <a href="#" title="Herz-header5"><span><img src="http://localhost/Herz/public/data1/tooltips/herzheader5.png" alt="Herz-header5"/>4</span></a>
-    </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com">bootstrap slider</a> by WOWSlider.com v8.7</div>
-<div class="ws_shadow"></div>
-</div>  
-<script type="text/javascript" src="http://localhost/Herz/public/engine1/wowslider.js"></script>
-<script type="text/javascript" src="http://localhost/Herz/public/engine1/script.js"></script>
+  <div class="ws_images"><ul>
+    <li><a href="http://wowslider.com"><img src="data1/images/herzheader2.png" alt="wow slider" title="" id="wows1_0"/></a></li>
+    <li><img src="data1/images/herzheader3.png" alt="" title="" id="wows1_1"/></li>
+  </ul></div>
+  
+
+  <div class="ws_shadow"></div>
+  </div>  
+  <script type="text/javascript" src="engine1/wowslider.js"></script>
+  <script type="text/javascript" src="engine1/script.js"></script>
 <!-- End WOWSlider.com BODY section -->
 </div>
-   
+
     <div class="fields" >
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#registrera" role="tab" data-toggle="tab">Registrera</a></li>
-            <li role="presentation"><a href="#loggain" role="tab" data-toggle="tab">Logga in</a></li>
+        <ul class="nav nav-tabs" role="tablist" id="homeFields">
+            <li role="presentation" class="active"><a id="navA" href="#registrera" role="tab" data-toggle="tab">Registrering</a></li>
+            <li role="presentation"><a href="#loggain" id="navA" role="tab" data-toggle="tab">Logga in</a></li>
         </ul>
+        <div id="wrapper">
         <script>
             $('#btnReview').click(function(){
             $(".tab-content").removeClass("active");
@@ -51,8 +50,9 @@
 
         <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="registrera">
-            <div class="register_field">
-                <h1>Registrera dig</h1>
+        <h1 id="regTitle">Registrera dig:</h1>
+            <div class="register_field" id="homereg">
+
                 <form action="http://localhost/Herz/public/auth/register" method="POST">    
                 {!! csrf_field() !!}
             <div>
@@ -79,7 +79,15 @@
                    <input type="password" name="password_confirmation">
                 </div>
                   <div id="register_button" class="submit_button_style">
-                   <button type="submit" class="submit_button"><span>Registrera dig</span></button>
+                      <button type="submit" class="btn" style="  
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+   margin-bottom: 30px;">Registrera dig</button>
                 </div>
             
                 </form>
@@ -87,8 +95,8 @@
         </div>
 
         <div role="tabpanel" class="tab-pane" id="loggain">
-            <div class="login_field">
-                <h1>Logga in</h1>
+            <div class="login_field" id="homereg">
+             <h1 id="regTitle">Logga in:</h1>
                 <form action="http://localhost/Herz/public/auth/login" method="POST">
                 {!! csrf_field() !!}
                     <div>
@@ -101,11 +109,19 @@
                         <input type="password" name="password" id="password">
                     </div>
                         <div id="login_button" class="submit_button_style">
-                    <button type="submit" class="submit_button"><span>Login</span></button>
+                   <button type="submit" class="btn" style="  
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 100%;
+   margin-bottom: 30px;">Logga in</button>
             </div>
         </div>
         </div>
-            </form>
+            </form></div>
         </div>
     </div>    
     </div>
