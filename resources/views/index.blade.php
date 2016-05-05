@@ -82,9 +82,9 @@ $favoriteIDs = DB::table('favorites')->join('sounds', 'sounds.soundID', '=', 'fa
 
 @endforeach
 <div class="SeeMore">
-<?php echo $loadMore
+<center><?php echo $loadMore
 
-?> 
+?> </center>
 </div>
 
             </div>
