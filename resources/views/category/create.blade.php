@@ -49,7 +49,7 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
 
  {!!   Form::open(array('method' => 'DELETE', 'route' => array('category.destroy'))) !!}
-
+<div class="catlabel">
 <label>
      <select name="categoryID">
          @foreach($categories as $category)
@@ -58,6 +58,7 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 @endforeach
 </select>
 </label>
+</div>
 </td>
 <br>
 <br>
