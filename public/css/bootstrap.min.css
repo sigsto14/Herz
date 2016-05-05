@@ -1527,6 +1527,14 @@ width: 100px;
 
 }
 
+#SeeMore:hover{
+background-color: #b7e165;
+color: #26a09f;
+border: 5px solid #b7e165;
+
+
+}
+
 #pre-fav p, #pre-fav a {
 	font-family: 'League';
 	font-size: 20px;
