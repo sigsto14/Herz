@@ -24,17 +24,17 @@
     {!! csrf_field() !!}
 
 {!! Form::label('Podcasttitel:') !!}
-{!! Form::text('title') !!}<br>
+{!! Form::text('title') !!}
 
 {!! Form::label('Tag:') !!}
-{!! Form::text('tag') !!}<br>
+{!! Form::text('tag') !!}
 {!! Form::label('Beskrivning:') !!}
-{!! Form::textarea('description') !!}<br>
+{!! Form::textarea('description') !!}
 
-{!! Form::label('Synlighet:') !!}<br>
+{!! Form::label('Synlighet:') !!}
 
-  <input type="radio" name="status" value="publik" checked>Publik<br>
-  <input type="radio" name="status" value="privat">Endast för prenumeranter<br><br>
+  <input type="radio" name="status" value="publik" checked><p style="margin-top: -10%">Publik</p>
+  <input type="radio" name="status" value="privat"><p style="margin-top: -10%">Endast för prenumeranter</p>
 
 <?php
 $categories = DB::table('category')->get();
@@ -49,13 +49,13 @@ $categories = DB::table('category')->get();
 <br>
 
 {!! Form::label('Poddens bild:') !!}
-{!! Form::file('image', null) !!}<br>
+{!! Form::file('image', null) !!}
 <div>
         <input type="hidden" name="channelID" value="{{ Auth::user()->userID }}">
 </div>
  {!! Form::label('Ljudklipp:') !!}
  <!-- uppladdningen tillåter bara ljudfiler -->
-<input type="file" name="audio" accept="audio/*"><br>
+<input type="file" name="audio" accept="audio/*">
 
 {!! Form::submit('Ladda upp!', '', array('class' => 'form-control')) !!}
 {!! Form::close() !!}
