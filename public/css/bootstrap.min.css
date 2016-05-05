@@ -1797,6 +1797,7 @@ margin-top: 7%;
 	width: 140%;
 	height: 60%;
 	margin-left: -32%;
+
 	padding-top: 6%;
 padding-bottom: 7%;
 	background-color: #ddf1e5;
@@ -1805,6 +1806,7 @@ padding-bottom: 7%;
 
 	margin-left: -30%;
 	margin-top: -35%;
+	padding-bottom: 1%;
 	border-radius: 25px;
 	border-bottom: none;
 
@@ -1866,7 +1868,7 @@ padding-bottom: 7%;
 #homereg .btn{
 	 background-color:#26a09f ;
  color: #9fdecd;
- font-family: 'Museo';
+ font-family: 'Museo-b';
 }
 
 
@@ -1885,7 +1887,7 @@ padding-bottom: 7%;
 	float: left;
 
 padding-top: 2%;
-padding-bottom: 1%;
+padding-bottom: 2.5%;
 height: 120%;
 	width: 55%;
 	background-color: #ddf1e5;;
@@ -1894,17 +1896,19 @@ height: 120%;
 #regTitle {
 	position: absolute;
 
-	margin-top: -3.75%;
-	
+	margin-top: -1%;
+	background-color: #26a09f;
 	
 	padding-left: 30px;
 	padding-right: 0.5%;
-	   
+	padding-bottom: 0.5%;
+	padding-top: 0.5%;
+	    border: 2px solid #26a09f;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
     border-radius: 0px 6px 6px 0px;
     font-family: 'Museo-b';
 	text-align: left;
-	color: #26a09f;
+	color: #9fdecd;
 	font-size: 220%;
 }

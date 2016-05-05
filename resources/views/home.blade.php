@@ -50,7 +50,7 @@
 
         <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="registrera">
-        <h1 id="regTitle">Registrera dig:</h1>
+        <h1 id="regTitle">Registrera dig:</h1><br>
             <div class="register_field" id="homereg">
 
                 <form action="http://localhost/Herz/public/auth/register" method="POST">    
