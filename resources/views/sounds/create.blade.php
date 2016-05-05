@@ -46,7 +46,7 @@ $categories = DB::table('category')->get();
 
 @endforeach
 </select>
-<br>
+
 
 {!! Form::label('Poddens bild:') !!}
 {!! Form::file('image', null) !!}
@@ -54,10 +54,12 @@ $categories = DB::table('category')->get();
         <input type="hidden" name="channelID" value="{{ Auth::user()->userID }}">
 </div>
  {!! Form::label('Ljudklipp:') !!}
+ <div>
  <!-- uppladdningen tillåter bara ljudfiler -->
 <input type="file" name="audio" accept="audio/*">
+</div>
 
-{!! Form::submit('Ladda upp!', '', array('class' => 'form-control')) !!}
+{!! Form::submit('Ladda upp!', array('class' => 'form-control btn')) !!}
 {!! Form::close() !!}
 
 
@@ -78,6 +80,7 @@ $categories = DB::table('category')->get();
 @if(Session::has('message'))
 <div class="alert alert-success">
 	{{ Session::get('message') }}
+</div>
 </div>
 @endif
 </div>

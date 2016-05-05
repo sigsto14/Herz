@@ -110,11 +110,20 @@
  color: #9fdecd;
 }
 
+#mini-container .form-control{
+	 background-color:#26a09f ;
+ color: #9fdecd;
+}
+
 #mini-container .btn:hover{
 	 background-color:#b7e165;
  color: #26a09f;
 }
 
+#mini-container .btn:hover{
+	 background-color:#b7e165;
+ color: #26a09f;
+}
 #mini-container img{
 	margin-left: 30%;
 	padding-bottom: 15px;
