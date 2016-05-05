@@ -4,9 +4,14 @@
 
 <body>
    <div class="container">
-    <div class="col-md-12" id="container">
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+
+<h1>Spellista</h1>
     <!-- skapa lista/se mina listor om inloggad -->
     @if(Auth::check())
+    <div class="section">Skapa Spelliss</div>
+    <div class="inner-wrap">
 <td>{!! Form::open(array('route' => 'playlist.store')) !!}
  {!! csrf_field() !!}
 <div>
@@ -23,9 +28,11 @@
 
 
 
+</div>
 
 {!! Form::close() !!}
-<br><br><br><br>
+<div class="section">Mina spellistor</div>
+    <div class="inner-wrap">
 <!-- redigering av befintliga spellistor -->
 <table class="table">
 <?php
@@ -39,7 +46,7 @@ $playlistsCheck = DB::table('playlists')->where('userID', '=', $user->userID)->f
 <!-- kollar så den ej e tom -->
 @if(!is_null($playlistsCheck))
 <!-- presenterar spellistorna -->
-<h2>Mina spellistor</h2>
+
 <script>
 $(document).ready(function() {
 $('.editList').on( "click", function( event ) {

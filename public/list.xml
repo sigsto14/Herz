@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<music>
-<song url="http://localhost/Herz/public/sounds/Fisklever.mp3"/>
-
-</music>
+<music><song url="http://localhost/Herz/public/sounds/Galaxy Cat.wav">
+  <songTitle>Galaxy Cat</songTitle>
+    <songArtist>Herzteam</songArtist>
+  </song>
+  <song url="http://localhost/Herz/public/sounds/Galaxy Cat.wav">
+  <songTitle>Galaxy Cat</songTitle>
+    <songArtist>Herzteam</songArtist>
+  </song>
+  <song url="http://localhost/Herz/public/sounds/Galaxy Cat.wav">
+  <songTitle>Galaxy Cat</songTitle>
+    <songArtist>Herzteam</songArtist>
+  </song>
+  <song url="http://localhost/Herz/public/sounds/Galaxy Cat.wav">
+  <songTitle>Galaxy Cat</songTitle>
+    <songArtist>Herzteam</songArtist>
+  </song>
+  <song url="http://localhost/Herz/public/sounds/Galaxy Cat.wav">
+  <songTitle>Galaxy Cat</songTitle>
+    <songArtist>Herzteam</songArtist>
+  </song>
+  </music>
