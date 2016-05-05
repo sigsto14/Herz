@@ -167,8 +167,8 @@
 /* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
 
 
-#mini-container label {position:relative}
-#mini-container label:after {
+#mini-container .catlabel {position:relative}
+#mini-container .catlabel:after {
     content:'<>';
     font:11px "Consolas", monospace;
     color:#aaa;
