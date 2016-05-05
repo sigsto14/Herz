@@ -204,7 +204,7 @@ END;
               <!--  Favorit mätare slut -->            
             </ul>
             <!-- Knapp för att dela på Facebook -->
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-mobile-iframe="true"></div>
+            <div class="fb-share-button" data-href="http://localhost/Herz/public/sound/{{ $sound->soundID }}" data-layout="button_count" data-mobile-iframe="true"></div>
           </div>
            <!--  Podmenubar slut --> 
             <!--  Podinfo box --> 
