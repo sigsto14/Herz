@@ -7,11 +7,13 @@
 <body>
 <!-- formulär för att kunna återställa lösenord med hjälp av emailadress -->
 <div class="container">
-<div class="col-md-12" id="container">
+<div class="col-md-3"></div>
+<div class="col-md-6" id="mini-container">
+<h1>Glömt Lösenord</h1>
 
-<p> Skriv din registrerade email i fälten nedan så skickar Herz ett nytt lösenord till dig.<br>
-Du kan byta detta lösenordet i "Redigera Profil" efter att du loggat in med det. </p>
 
+<div class="section">Skriv din registrerade email i fälten nedan så skickar Herz ett nytt lösenord till dig.Du kan byta detta lösenordet i "Redigera Profil" efter att du loggat in med det.</div>
+    <div class="inner-wrap">
  <form action="http://localhost/Herz/public/resetPassword/reset" method="post">
  {!! csrf_field() !!} 
  <div class="form-group">
@@ -31,7 +33,9 @@ Du kan byta detta lösenordet i "Redigera Profil" efter att du loggat in med det
 </div>
 @endif
 </div>
-</div> 
+</div>
+</div>
+
 
 </body>
 
