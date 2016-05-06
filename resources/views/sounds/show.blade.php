@@ -262,7 +262,7 @@ END;
   {{ Session::get('message') }}
 </div>
 @endif    
-<form action="#" method="post" id="comment" name="comment">
+<form action="http://localhost/Herz/public/comment" method="post" id="comment" name="comment">
     {!! csrf_field() !!}
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}"><!-- Dolt fält som hämtar Användarid -->
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}"><!-- Dolt fält som hämtar ljudid -->
