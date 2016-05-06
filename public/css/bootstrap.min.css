@@ -230,7 +230,7 @@
     	text-align: center;
     	margin: auto;
     	padding: 1%;
-    	transform: translateY(-55%);
+
      }
 
 	 #searchfield {
@@ -298,68 +298,7 @@
     	font-style: italic;
 	}   
 
-/* Form submit button */
-	.input-group button {
-		overflow-x: visible;
-    	position: relative;
-    	float: right;
-    	border: 0;
-    	padding: 0;
-    	cursor: pointer;
-    	height: 40px;
-    	width: 50px;
-    	font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    	color: #fff;
-    	text-transform: uppercase;
-    	background: #d83c3c;
-    	border-radius: 0 3px 3px 0;     
-    	text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-    	margin-top: -24%;
-    	margin-right: -30%;
-    	z-index: 2;
-	}  
 
-	.input-group button:hover{    
-    	background: #e54040;
-	}  
-
-	.input-group button:active,
-	.input-group button:focus{  
-    	background: #c42f2f;
-    	outline: 0;  
-	}
-
-	.input-group button:before { /* left arrow */
-    	content: '';
-    	position: absolute;
-    	border-width: 8px 8px 8px 0;
-    	border-style: solid solid solid none;
-    	border-color: transparent #d83c3c transparent;
-    	top: 12px;
-    	left: -6px;
-	}
-
-	.input-group button:hover:before{
-    	border-right-color: #e54040;
-	}
-
-	.input-group button:focus:before,
-	.input-group button:active:before{
-        border-right-color: #c42f2f;
-	}     
-
-	.input-group button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
-    	border: 0;
-    	padding: 0;
-	}   
-
-	.blabla{
-		padding-left: 50px;
-	}
-
-	#kat{
-		width: 100px;
-	}
 
 
 	#reg-log{
@@ -407,19 +346,12 @@
   		background-color: #b9dcdc;
 	}
 
-	#nav-knapp{
-  		transform: translateY(35%);
+	#nav-knapp {
+  		position: relative;
+  		transform: translateY(50%);
+
 	}
 
-	#nav-knapp button{
-  		background-color:#b9dcdc;
-  		color:#26a09f;
-  		border-style: hidden;
-	}
-
-	#nav-knapp button:hover{
-		color:white;
-	}
 
 	#user{
   		transform: translateY(22%);

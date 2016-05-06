@@ -145,38 +145,39 @@ $titleNr = '';
               </ul>
             </li>
             <!-- Sökfunktion -->
-
-
-            <div id="search" >  
-              <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
-                <div class="input-group">
-                  <!-- Sökfältet -->
-                  <div class="left-inner-addon ">
-    <i class="icon-search"></i>
-                  <input type="search" class="form-control" placeholder="Sök" name="search" value="Sök" onfocus="if(this.value  == 'Sök') { this.value = ''; } " onblur="if(this.value == '') { this.value = 'Sök'; } "> </div>
-      
-                  <button type="submit" value="Sök">Sök</button>
-                  <div class="input-group-btn">
-                                  <!-- Kategorier i sökfältet -->
+<div id="search" >  
+              <form action="http://localhost/Herz/public/search/index">
+              <div class="input-group">
+            <div class="input-group-btn">
+              <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+              <span class="caret"></span>
+              </button>
+              <ul role="input" class="dropdown-menu">
+              <script type="text/javascript">$('.dropdown-menu').click(function(e) {
+    e.stopPropagation();
+});</script>
+                                   <!-- Kategorier i sökfältet -->
                   <!-- gör php för att hämta ut kategorierna-->
                   <?PHP
                   $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
                   ?>
-                  <div class="blabla">
-                  <div class="test">
-                  <select name="categoryID" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="kat">
-                  <option selected="selected" disabled="disabled">Kategorier</option>                     @foreach($categories as $category)
-                     
-                  <option value="{{ $category->categoryID }}">{{$category->categoryname}}</option>
+                    
+                    @foreach($categories as $category)
+                     <li><a>
+                      <input type="checkbox" value="{{ $category->categoryID }}"><span class="lbl">{{$category->categoryname}}</span></a>
+                      </li>
                  @endforeach
               
-                </select></div>      
-                </div><!-- /btn-group -->
-
-              </div><!-- /input-group -->
-
-            </form>
-            </div>
+        
+              </ul>
+             </div>
+            <input type="search" class="form-control" name="search"/>
+            <div class="input-group-btn">
+            <button tabindex="-1" class="btn btn-default" type="submit">Sök</button></div>
+          </div>
+</form>
+          </div>
+            
               <!-- Sökfältet slut -->
           </ul><!-- Vänster delen av naven slut -->
 
@@ -185,42 +186,39 @@ $titleNr = '';
              @if(Auth::check())
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
-            <!-- php för att hämta ut notifikationer -->
-     
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+              </li>
 
-            <!-- sätter antalet notiser i knappen -->
-           
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+              </li>
 
-            
-
-
-
-
-<!--
-               <script type="text/javascript">
-
-
-  
-
-</script>--><p id="variable2" class="hidden"></p>
-
-<button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true">{{ $notiNr }}</span>
-              </button>
-
-              <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-lg">
-              <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
-              </button>              
-
-
-              
-
-              
-
-
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+                      </li>    
+</li>
 @endif
 
 
