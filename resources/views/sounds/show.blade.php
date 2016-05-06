@@ -181,7 +181,7 @@ END;
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-             <button type="button" class="btn btn-primary">Anmäl</button>          
+             <button type="submit" class="btn btn-primary">Anmäl</button>          
             </form> 
             
             </div>
