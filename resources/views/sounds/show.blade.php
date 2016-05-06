@@ -69,8 +69,11 @@ chmod($file_name2,0777);
     <!--  Här börjar första kolumnen, här finns podspelare --> 
       <div class="col-md-6">
       <!--  Podspelare --> 
+
         <div class="podspelare"><!--  Gröna boxen omkring podspelare --> 
+          <div id="feedback"></div>
           <div class="podspelare2">
+
             <div id="flashContent">
               <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
             </div>
@@ -179,21 +182,23 @@ END;
 
             <li id="podmenu-right">
              <!--  Anmälning knappen --> 
+                 
               <div class="btn-group">
                 <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
                     <p style="margin-left: 10%; color: #26a09f; font-size: 13px; text-align: center;">Tycker du att poden är kränkade? Här kan du anmäla den.</p>
                   @if(Auth::check())
-                    <form action="http://ideweb2.hh.se/~sigsto14/Test/report.php" method="post" id="report">
+                    <form action="" method="post" id="report" name="report">
             {!! csrf_field() !!} 
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
-              <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-             <button type="submit" class="btn btn-primary">Anmäl</button>          
+              <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
+            <button type="submit" id="reportBtn" class="btn btn-primary">Anmäl</button>        
             </form> 
-            
+      
             </div>
+        
             @else
             <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
             @endif
@@ -257,15 +262,15 @@ END;
   {{ Session::get('message') }}
 </div>
 @endif    
-    {!! Form::open(array('route' => 'comment.store', 'files' => 'true')) !!}
+<form action="#" method="post" id="comment" name="comment">
     {!! csrf_field() !!}
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}"><!-- Dolt fält som hämtar Användarid -->
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}"><!-- Dolt fält som hämtar ljudid -->
-            <input type="text" class="form-control" placeholder="Lägg till komment" name="comment"/>
+            <input type="text" class="form-control" placeholder="Lägg till komment" name="comment" id="comment"/>
           </div>
           <!--  komment knappen -->
           <div class="addcomment-btn">
-            <button type="submit" class="btn btn-primary">Lägg till</button>
+            <button type="submit" id="commentBtn" class="btn btn-primary">Lägg till</button>
          
             
           </div>
@@ -324,5 +329,63 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
     </div><!--  col-md-12 slut -->
   </div><!--  container slut -->
 </div><!--  div som vi behöver att footer hamnar rätt -->
+
+    <script>
+$('#reportBtn').click(function(e)
+{
+  e.preventDefault();
+var msg = $('#msg').val();
+var username = $('#username').val();
+var soundID = $('#soundID').val();
+if(msg == ''){
+
+  $('#feedback').html('<div class="alert alert-danger">Motivera varför du vill anmäla klippet!</div>');
+}
+else {
+
+ $('#feedback').html('<div class="alert alert-danger">Du har anmält klipp {{ $sound->title }} för att. Tack för att du hjälper oss hålla Herz trivsamt. Läs mer om våra regler här: <a href="#">Regler</a></div>');
+  $.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://ideweb2.hh.se/~sigsto14/Test/report.php',
+  data: { msg: msg, username: username, soundID: soundID},  
+        dataType: 'text',
+
+   success: function(data){
+
+
+
+    },
+   error: function() {}
+
+ });
+}
+});
+
+$('#comment').submit(function(e)
+{
+  e.preventDefault();
+var comment = $('#comment').val();
+var userID = $('#userID').val();
+var soundID = $('#soundID').val();
+
+  $.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/comment.php',
+  data: { comment: comment, username: username, soundID: soundID},  
+        dataType: 'text',
+
+   success: function(data){
+alert(data);
+
+
+    },
+   error: function() {}
+
+ });
+}
+});
+            </script>
 </body>
 @stop

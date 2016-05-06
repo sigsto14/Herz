@@ -52,7 +52,8 @@ Route::post('channel/create', 'ChannelController@create');
 Route::post('user/edit', 'UserController@update');
 Route::post('category/show', 'CategoryController@show');
 Route::post('noty', 'NotificationController@index');
-Route::resource('comment', 'CommentController');	
+Route::resource('comment', 'CommentController');
+
 
 
 Route::get('favorite/destroy', 'FavoriteController@destroy');
