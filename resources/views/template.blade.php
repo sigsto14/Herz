@@ -185,42 +185,39 @@ $titleNr = '';
              @if(Auth::check())
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
-            <!-- php för att hämta ut notifikationer -->
-     
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+              </li>
 
-            <!-- sätter antalet notiser i knappen -->
-           
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+              </li>
 
-            
-
-
-
-
-<!--
-               <script type="text/javascript">
-
-
-  
-
-</script>--><p id="variable2" class="hidden"></p>
-
-<button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true">{{ $notiNr }}</span>
-              </button>
-
-              <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-              </button>
-              <button type="button" class="btn btn-default btn-lg">
-              <span class=" glyphicon glyphicon-comment" aria-hidden="true"></span>
-              </button>              
-
-
-              
-
-              
-
-
+ <li class="dropdown" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a>Element 1</a></li>
+                <li><a>Element 2</a></li>
+                <li><a>Element 3</a></li>
+                <li><a>Element 4</a></li>
+                <li><a>Element 5</a></li>
+              </ul>
+                      </li>    
+</li>
 @endif
 
 

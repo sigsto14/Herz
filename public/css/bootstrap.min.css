@@ -407,19 +407,12 @@
   		background-color: #b9dcdc;
 	}
 
-	#nav-knapp{
-  		transform: translateY(35%);
+	#nav-knapp {
+  		position: relative;
+  		transform: translateY(50%);
+
 	}
 
-	#nav-knapp button{
-  		background-color:#b9dcdc;
-  		color:#26a09f;
-  		border-style: hidden;
-	}
-
-	#nav-knapp button:hover{
-		color:white;
-	}
 
 	#user{
   		transform: translateY(22%);
