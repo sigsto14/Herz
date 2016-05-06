@@ -163,6 +163,12 @@ END;
     <div class="podmenudropdown-btn2"> 
             <a href="http://localhost/Herz/public/playlist"><button type="button" class="btn btn-primary">Skapa ny spellista</button></a>
             </div>
+
+            <script type="text/javascript">
+              $('.dropdown-menu').click(function(e) {
+    e.stopPropagation();
+});
+            </script>
  </div>
  </div>
  </li> 
