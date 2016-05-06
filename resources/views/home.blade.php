@@ -95,8 +95,9 @@
         </div>
 
         <div role="tabpanel" class="tab-pane" id="loggain">
+        <h1 id="regTitle">Logga in:</h1><br><br>
             <div class="login_field" id="homereg">
-             <h1 id="regTitle">Logga in:</h1>
+             
                 <form action="http://localhost/Herz/public/auth/login" method="POST">
                 {!! csrf_field() !!}
                     <div>
