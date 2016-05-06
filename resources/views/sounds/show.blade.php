@@ -135,7 +135,7 @@ END;
 
 <div class="dropdown-menu" id="podmenudropdown">
          @if(is_null($listCheck))
-         <p style="margin-left: 10%; color: #26a09f; font-size: 13px;>Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+         <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
          @else
  {!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
           <div>
@@ -181,12 +181,13 @@ END;
               <input type="text" name="msg" id="msg" placeholder="Varför vill du anmäla klippet?">
               <input type="hidden" name="soundID" id="soundID" value="{{ $sound->soundID }}">
               <input type="hidden" name="user" id="user" value="{{ Auth::user()->username }}">
-              <button type="submit"  class="btn btn-primary">Anmäl</button>
+             <button type="button" class="btn btn-primary">Anmäl</button>          
             </form> 
+            
+            </div>
             @else
             <input type="text" name="msg" id="msg" placeholder="Logga in för att anmäla">
             @endif
-                </div>
               </div>
                <!--  Anmälning knappen slut -->      
              </li>
