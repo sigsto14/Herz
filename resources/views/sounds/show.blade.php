@@ -132,10 +132,12 @@ END;
             <div class="btn-group">   
               <button type="button" tooltip="Lägg till i spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-star">
               </button>
-
-<div class="dropdown-menu" id="podmenudropdown">
-         @if(is_null($listCheck))
-         <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Du har inga spellistor</p><button type="button"><a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a></button>
+                <div class="dropdown-menu" id="podmenudropdown">
+                  @if(is_null($listCheck))
+                  <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Du har inga spellistor</p>
+                <button type="button">
+                <a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a>
+                </button>
          @else
  {!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
           <div>
@@ -153,7 +155,7 @@ END;
             </select>
             </label>
             </div>
-            <div class="podmenudropdown-btn">  
+              <div class="podmenudropdown-btn">  
 
     <button type="submit" class="btn btn-primary">Lägg till!</button>
     </div>
@@ -161,6 +163,7 @@ END;
     <div class="podmenudropdown-btn2"> 
             <a href="http://localhost/Herz/public/playlist"><button type="button" class="btn btn-primary">Skapa ny spellista</button></a>
             </div>
+ </div>
  </div>
  </li> 
 @endif
