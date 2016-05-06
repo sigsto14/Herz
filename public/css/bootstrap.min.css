@@ -810,7 +810,7 @@
 }
 
 #podmenu-right{
-	margin-left: 63%;
+	margin-left: 58%;
 }
 
 #podmenu-right2{
@@ -1126,6 +1126,11 @@ list-style: none;
 .icon-star:before {
 	content: "\ea0a";
 }
+
+.fb-button:before {
+	content: "\ea90";
+}
+
 
 /* Filled star */
 .icon-star:after,

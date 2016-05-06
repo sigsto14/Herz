@@ -200,6 +200,9 @@ END;
               </div>
                <!--  Anmälning knappen slut -->      
              </li>
+             <li>
+              <button type="button" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>
               <!--  Favorit mätare? den som visa hur måna favorit har poden -->         
              <li id="podmenu-right2">
              @if(is_null($favNr))
@@ -214,7 +217,6 @@ END;
               <!--  Favorit mätare slut -->            
             </ul>
             <!-- Knapp för att dela på Facebook -->
-            <div class="fb-share-button" data-href="http://localhost/Herz/public/sound/{{ $sound->soundID }}" data-layout="button_count" data-mobile-iframe="true"></div>
           </div>
            <!--  Podmenubar slut --> 
             <!--  Podinfo box --> 
