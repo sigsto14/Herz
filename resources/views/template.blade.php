@@ -277,7 +277,7 @@ else {
 
  @else
           <!-- Höger meny när man är ej inloggad-->   
-            <li><a href="http://localhost/Herz/public/auth/register" id="reg-log">Registrera dig</a></li> 
+            <li><a href="http://localhost/Herz/public/register" id="reg-log">Registrera dig</a></li> 
             <li class="divider-vertical"></li>
             <!-- lägger variabel på class och id för att kunna ha olika om fel inloggningsuppgifter: FÖRSTA OM FAILAR ANDRA OM EJ-->
              @if (count($errors) > 0)
