@@ -58,10 +58,11 @@ $userID = Auth::user()->userID;
         </div>
         <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
+           <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>
             @if(Auth::check())
             @if(Auth::user()->userID == $user->userID)
 
-            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>
+           
 
 
  @endif
@@ -127,7 +128,7 @@ $userID = Auth::user()->userID;
                                     <?php echo $lo ?>
                                 </ul>
                                 @endif
-                                           <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Rekommendationer</a></li>
+                                <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Rekommendationer</a></li>
                                      <li role="presentation"><a href="#fav" role="add" data-toggle="tab">+</a></li>
             <li class="dropdown">
    
