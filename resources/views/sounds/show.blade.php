@@ -201,7 +201,7 @@ END;
                <!--  Anmälning knappen slut -->      
              </li>
              <li>
-             <div id="FBSHARE" class="hidden"><form action=""><input type="hidden" name="fblink" id="fblink" value="http://localhost/Herz/public/sound/{{ $sound->soundID }}"></form></div>
+             <div id="FBSHARE" class="hidden"><form action=""><input type="hidden" name="fblink" id="fblink" value="https://www.facebook.com/Webbprojekt-Herz-275113066162500/{{ $sound->soundID }}"></form></div>
               <button type="button" onclick="share();" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
               </li>
               <!--  Favorit mätare? den som visa hur måna favorit har poden -->         
