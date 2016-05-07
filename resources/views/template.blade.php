@@ -187,75 +187,15 @@ $titleNr = '';
              <?php $userID = Auth::user()->userID; ?>
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
- <li class="dropdown" id="nav-knapp">                        
+ <li class="dropdown notify" id="nav-knapp">                        
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger"><span id="prenIcon" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="prenNoti" name="prenNoti" method="post">{!! csrf_field() !!}<input type="hidden" name="userID" id="userID" value="{{ $userID }}"></form>
               <ul class="dropdown-menu">
-                <div id="prenNotiLI" class="PREN"></div>
+                <div id="prenNotiLI"></div>
               </ul>
               </li>
 
               <script>
-               $(function()
-{
 
-$('#NotiTrigger').click(function(){
-
-
-  $('#prenNoti').trigger('submit');
-
-  });
-
-$('#prenNoti').submit(function(e){
-e.preventDefault();
-var userID = $('#userID').val();
-
- $.ajax({
-        type: 'POST',
-        crossDomain: true,
-        url: 'http://localhost/Herz/public/notiPren.php',
-  data: { userID: userID},  
-        dataType: 'text',
-
-   success: function(data){ 
-
-var current = document.getElementById('prenNotiLI').innerHTML;
-var c = current.length;
-var nr = c + 2;
-var d = data.length;
-
-
-if(d == nr){ 
-
-$('#prenIcon').removeClass('NOTI');
-}
-else {
-if(nr<10){
-  $('#prenNotiLI').html(data);
-}
-else{
-$('#prenNotiLI').html(data);
-$('#prenNotiLI').change();
-}
-}
-
-   },
-   error: function() {
-
-   }
-});
- });
-
-  
-
-
-$('#prenNotiLI').on('change', function() {
-$('#prenIcon').addClass('NOTI');
-});
-
-
-
-
-});
    </script>
 
  <li class="dropdown" id="nav-knapp">                        
@@ -460,7 +400,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     </script>
       
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
-
+<script src="http://localhost/Herz/public/js/notifications.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
