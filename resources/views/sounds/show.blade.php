@@ -174,6 +174,9 @@ END;
             </script>
  </div>
  </div>
+</li>
+<li>
+ <button onclick="myFunction()" tooltip="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
  </li> 
 @endif
       @endif
@@ -222,7 +225,7 @@ END;
               <!--  Favorit mätare slut -->            
             </ul>
             <!-- knappen för öppna i nytt fönster -->
-           <button onclick="myFunction()">NÅN SNYGG IKON</button>
+           
             <!-- Knapp för att dela på Facebook -->
           </div>
    

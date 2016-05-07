@@ -726,7 +726,7 @@ color: red;
 }
 
 #podmenu-right{
-	margin-left: 58%;
+	margin-left: 50%;
 }
 
 #podmenu-right2{
@@ -1086,6 +1086,10 @@ list-style: none;
 
 .icon-remove-2:before {
 	content: "\e005";
+}
+
+.icon-bigger:before {
+	content: "\ea7d";
 }
 
 .icon-alert:before {
