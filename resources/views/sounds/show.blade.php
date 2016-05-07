@@ -176,7 +176,7 @@ END;
  </div>
 </li>
 <li>
- <button onclick="myFunction()" tooltip="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
+ <button onclick="myFunction()" tooltip="Extern ljudspelare" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
  </li> 
 @endif
       @endif
