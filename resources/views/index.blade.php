@@ -107,12 +107,12 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
     <!-- klipp skall bara synas om de inte är privata -->
 @if($favNr >= 2)
 @if($favorite->status != 'privat' or $sub > 0)
-
+<br>
              <div class="col-md-4" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
               <div class="podtitle-box">
               <a href="http://localhost/Herz/public/sound/"><h4>{{ $favorite->title }}</h4></a>
-                          <div class="podtitledownbox">
+              <div class="podtitledownbox">
               <div class="podfavicon">
                 <div class="vertical-line"></div>
               @if(Auth::check())
@@ -125,7 +125,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               @endif
               </div>
               <div class="podchanneltitle">
-              <p>av </p><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a>
+              <p>av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a></p>
                       </div>       
        </div> 
        </div>
