@@ -42,7 +42,7 @@ chmod($file_name2,0777);
         /* id för kanalen så att det kan hämtas mer info */  $id = $sound->channelID;
         /*kanalinfo*/  $channel = DB::table('channels')->where('channels.channelID', '=', $id)->first();
         /* user som gjort klippet */  $user = DB::table('users')->where('users.userID', '=', $id)->first();
-    /* kommentarerna på klippet */      $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->get();
+    /* kommentarerna på klippet */      $comments = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->orderBy('comments.created_at', 'DESC')->get();
      /* för att kolla om nulll */      $commentsCheck = DB::table('comments')->join('users', 'users.userID', '=', 'comments.userID')->where('soundID', '=', $sound->soundID)->first();
       /*för att hämta kategorinamn */    $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
       /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
@@ -221,8 +221,11 @@ END;
               </li>
               <!--  Favorit mätare slut -->            
             </ul>
+            <!-- knappen för öppna i nytt fönster -->
+           <button onclick="myFunction()">NÅN SNYGG IKON</button>
             <!-- Knapp för att dela på Facebook -->
           </div>
+   
            <!--  Podmenubar slut --> 
             <!--  Podinfo box --> 
           <div class="podinfo">
@@ -362,30 +365,11 @@ else {
 }
 });
 
-$('#comment').submit(function(e)
-{
-  e.preventDefault();
-var comment = $('#comment').val();
-var userID = $('#userID').val();
-var soundID = $('#soundID').val();
-
-  $.ajax({
-        type: 'POST',
-        crossDomain: true,
-        url: 'http://localhost/Herz/public/comment.php',
-  data: { comment: comment, username: username, soundID: soundID},  
-        dataType: 'text',
-
-   success: function(data){
-alert(data);
-
-
-    },
-   error: function() {}
-
- });
+          function myFunction() {
+window.open("http://localhost/Herz/public/mp3_player/mp3_player.swf", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=150");
 }
-});
+      
+
             </script>
 </body>
 @stop
