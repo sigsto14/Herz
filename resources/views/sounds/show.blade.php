@@ -227,7 +227,7 @@ END;
             <!--  Podinfo box --> 
           <div class="podinfo">
             <div class="podinfo-header">
-              <h3>{{ $sound->title }}- av {{ $channel->channelname}}</h3>
+              <h3>{{ $sound->title }}- av <a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}">{{ $channel->channelname}}</a></h3>
             </div>
             <div class="podinfo-kat">
               <p>Kategori: {{ $category->categoryname }}</p>

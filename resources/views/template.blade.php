@@ -43,7 +43,7 @@ $LastLogout = Auth::user()->last_logout;
     /* sätter variabel för hur många notiser man har */
         $LastLogout = Auth::user()->created_at;
        }
-      
+
         /*hämtar ut notiserna och räknar antalet, sätter variabel av antalet */
               $notiNr = DB::table('subscribe')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('subscribe.userID', '=', $userID)->where('sounds.created_at', '>', $LastLogout)
        ->orderBy('sounds.created_at', 'DESC')->count();
@@ -188,24 +188,18 @@ $titleNr = '';
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
  <li class="dropdown notify" id="nav-knapp">                        
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger"><span id="prenIcon" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="prenNoti" name="prenNoti" method="post">{!! csrf_field() !!}<input type="hidden" name="userID" id="userID" value="{{ $userID }}"></form>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger"><span id="prenIcon" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="prenNoti" name="prenNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID" id="userID" value="{{ $userID }}"></form>
               <ul class="dropdown-menu">
                 <div id="prenNotiLI"></div>
               </ul>
               </li>
 
-              <script>
+              
 
-   </script>
-
- <li class="dropdown" id="nav-knapp">                        
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a>
+ <li class="dropdown notify2" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger2"><span id="favIcon" class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="favNoti" name="favNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID2" id="userID2" value="{{ $userID }}"></form>
               <ul class="dropdown-menu">
-                <li><a>Element 1</a></li>
-                <li><a>Element 2</a></li>
-                <li><a>Element 3</a></li>
-                <li><a>Element 4</a></li>
-                <li><a>Element 5</a></li>
+                  <div id="favNotiLI"></div>
               </ul>
               </li>
 

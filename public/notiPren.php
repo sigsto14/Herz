@@ -71,7 +71,7 @@ $channel = $channelG->fetch_object();
 $channelname = $channel->channelname;
 
 	//gör en kortare string av created at
-	$uploaded= substr($sounds->created_at, 10, 20);
+	$uploaded= substr($sounds->created_at, 10, 16);
 
 		$title = utf8_encode($sounds->title);
 		//lägger till object för varje res (max 5)
@@ -96,11 +96,11 @@ $content .= '<li><a href="http://localhost/Herz/public/sound/' . $sounds->soundI
 
 
 // om det inte finns några sounds
+
+}
 if($content == ''){
 	$content = 'Det finns inga nya uppladdningar!';
 }
-}
-
 
 echo $content;
 
