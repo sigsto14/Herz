@@ -181,8 +181,11 @@ return view('sounds.show', compact('channel'), compact('sound'));
     {
         $favorite = Favorite::where('soundID', '=', $id);
           $sound = Sound::where('soundID', '=', $id);
+          $comment = DB::table('comments')->where('soundID', '=', $id);
           $favorite->delete();
+           $comment->delete();
        $sound->delete();
+      
         return back()->withMessage('Ljudklipp raderat!');
     }
 }
