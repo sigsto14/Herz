@@ -7,7 +7,7 @@
 
 $user = Auth::user();
 /* variabel för senaste uppladdningar */
-$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->paginate(6);
+$senaste = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->orderBy('sounds.created_at', 'DESC')->simplePaginate(6);
 $loadMore = $senaste->render();
 /* gör variabel som kollar hur många gånger de förekommer i favorites */
 $favorites = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->groupBy('soundID')->orderBy('sounds.created_at', 'DESC')->get();

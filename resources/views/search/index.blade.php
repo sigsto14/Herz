@@ -25,7 +25,7 @@ $('#btnReview').click(function(){
 
             <div role="tabpanel" class="tab-pane active" id="klipp">
 <h1>Klipp</h1>
-@if (count($sounds) === 0)
+@if (count($sounds) === 0 || $query == '')
 Inga klipp matchar din sökning
 Kolla igenom <a href="http://localhost/Herz/public/sound">senaste uppladdningar!</a>
 @else
@@ -66,7 +66,7 @@ Uppladdat av <a href="http://localhost/Herz/public/channel/{{ $sound->channelID 
   <div role="tabpanel" class="tab-pane" id="kanal">
 <h1>Kanaler</h1>
 <!-- kollar om sökningen hittat några kanaler -->
-@if (count($channels) === 0)
+@if (count($channels) === 0 || $query == '')
 Inga kanaler matchar din sökning
 <!-- om det finns kanaler visar dom -->
 @else
@@ -106,7 +106,7 @@ $users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take
 ?>
    <div role="tabpanel" class="tab-pane" id="anvandare">
 <h1>Användare</h1>
-@if (count($users) === 0)
+@if (count($users) === 0 || $query == '')
 Inga användare matchar din sökning
 @else
 @foreach($users as $user)

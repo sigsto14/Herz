@@ -109,13 +109,21 @@ public function search(Request $request)
     //för att kolla kategorier
 $categoryID = $request->get('categoryID');
 
+if($query == ''){
+    if($categoryID != ''){
+    $getCat = DB::table('category')->where('categoryID', '=', $categoryID)->first();
+    $query = $getCat->categoryname;
+}
+
+}
+  
 
 // söker kanaler som matchar sökningen
     $channels = DB::table('channels')
     ->where('channels.channelname', 'LIKE', '%' . $query . '%')->take(5)->get();
 //söker ljudklipp som matchar sökningen
  $sounds = DB::table('sounds')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->join('category', 'category.categoryID', '=', 'sounds.categoryID')->where('sounds.title', 'LIKE', '%' . $query . '%')
-   ->orwhere('sounds.categoryID', '=', $categoryID)->orwhere('sounds.tag', 'LIKE', '%' . $query . '%')->paginate(10);
+   ->orwhere('sounds.categoryID', '=', $categoryID)->orwhere('sounds.tag', 'LIKE', '%' . $query . '%')->paginate(3);
 // söker användare som matchar sökningen
 
 

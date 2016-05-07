@@ -151,7 +151,7 @@ $LastLogout = Auth::user()->last_logout;
                     
                     @foreach($categories as $category)
                      <li><a>
-                      <input type="checkbox" value="{{ $category->categoryID }}"><span class="lbl">{{$category->categoryname}}</span></a>
+                      <input type="checkbox" value="{{ $category->categoryID }}" name="categoryID" id="categoryID"><span class="lbl">{{$category->categoryname}}</span></a>
                       </li>
                  @endforeach
               
