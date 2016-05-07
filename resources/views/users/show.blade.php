@@ -15,17 +15,17 @@
         <img src="http://localhost/Herz/public/images/channel/default.png">
         </div>
         <!-- Första låda, här finns profil --> 
-        <div class="col-lg-4">
+        <div class="col-lg-4" id="user-box">
           <div class="row">
             <h2>{{ $user->username }}</h2>
-            <img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>    
+            <img src="{{ $user->profilePicture }}" style="width:180px;height:180px;"/>    
           </div>
           <div class="row">
           </div>
           <div class="row">
           </div>
           <hr>
-          <div class="row"> 
+          <div class="row" id="uc-redigering"> 
           <!-- kollar om user inloggad -->
           @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
@@ -56,7 +56,7 @@ $userID = Auth::user()->userID;
             @endif
           </div>
         </div>
-        <div class="col-lg-8"  id="tabus">        
+        <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
             @if(Auth::check())
             @if(Auth::user()->userID == $user->userID)

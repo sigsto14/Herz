@@ -20,18 +20,22 @@ $subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)
         <img src="http://localhost/Herz/public/images/channel/default.png">
         </div>
         <!-- Första låda, här finns profil --> 
-        <div class="col-lg-4">
+        <div class="col-lg-4" id="user-box">
           <div class="row">
             <h2>{{ $channel->channelname }}</h2>
             <p>Prenumeranter:{{ $subscrNr }}</p> 
             <p>{{ $channel->information }}</p>    
           </div>
           <div class="row">
+          <p>gfdgdf</p>
+          <p>gfdgdf</p>
+          <p>gfdgdf</p>
+          <p>gfdgdf</p>
           </div>
           <div class="row">
           </div>
           <hr>
-          <div class="row"> 
+          <div class="row" id="uc-redigering"> 
           @if(Auth::user())
 
 <!-- php-kod för att kolla om det redan är prenumeration. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
@@ -105,7 +109,7 @@ $state = 0;
           </div>
         </div>
          <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8"  id="tabus">        
+        <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">{{ $channel->channelname }}</a></li>
             <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Serier</a></li>
@@ -118,7 +122,6 @@ $('#btnReview').click(function(){
   $(".tab-content:first-child").addClass("active");
 });
 </script>
-          <br>
           <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="chome">
