@@ -256,14 +256,7 @@ $('#prenIcon').addClass('NOTI');
 
 
 });
-
-               $(function notify(){
-                  var intervalID = window.setInterval(notify, 8000);
-
-$('#prenNoti').trigger('submit');
-});
-notify();
-              </script>
+   </script>
 
  <li class="dropdown" id="nav-knapp">                        
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a>

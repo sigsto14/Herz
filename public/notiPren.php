@@ -8,6 +8,7 @@ $dbname = "herz";
 $content = '';
 $max = 9;
 $counter = 0;
+$conta = '';
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // Check connection
@@ -72,23 +73,26 @@ $channelname = $channel->channelname;
 	//gör en kortare string av created at
 	$uploaded= substr($sounds->created_at, 10, 20);
 
-	//loop för resultatet
-		
-	while($channel = $channelG->fetch_object()){
-	// en counter i loopen som räknar upp
-$counter++;
-//sålänge countern är mindre än 6 posta resultat
-if($counter < 5){
-	//gör variabel av titel för att kunna utfencoda (så titeln kan ha åäö)
-	$title = utf8_encode($sounds->title);
+		$title = utf8_encode($sounds->title);
 		//lägger till object för varje res (max 5)
 $content .= '<li><a href="http://localhost/Herz/public/sound/' . $sounds->soundID . '">' . $title . '</a>uppladdad:' . $uploaded . ' av <a href="http://localhost/Herz/public/channel/' . $sounds->channelID .'">' . $channelname . '</a></li>';
 
-}
-}
-}
-}
+	
+//loop för resultatet
+	while($sounds = $soundsG->fetch_object()){
+	// en counter i loopen som räknar upp
+$counter++;
+//sålänge countern är mindre än 6 posta resultat
 
+
+if($counter < 4){
+	//gör variabel av titel för att kunna utfencoda (så titeln kan ha åäö)
+		//lägger till object för varje res (max 5)
+$title = utf8_encode($sounds->title);
+$content .= '<li><a href="http://localhost/Herz/public/sound/' . $sounds->soundID . '">' . $title . '</a>uppladdad:' . $uploaded . ' av <a href="http://localhost/Herz/public/channel/' . $sounds->channelID .'">' . $channelname . '</a></li>';
+}
+}}
+}
 
 
 // om det inte finns några sounds
