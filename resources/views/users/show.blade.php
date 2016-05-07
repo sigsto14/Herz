@@ -148,6 +148,7 @@ $('#btnReview').click(function(){
             <div class="tab-content">
              <div role="tabpanel" class="tab-pane active" class="tab-pane" id="chome">
   <h1 id="uc-title">Favoriter</h1>
+  <br>
   <!-- Innehåll här (Favoriter) -->
   <?php
 $favorites1 = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('users', 'users.userID', '=', 'favorites.userID')->get();
@@ -175,9 +176,9 @@ $loadMore = $favorites->render();
               </div>
    
  
-
 @if(Auth::check())
 @if(Auth::user() == $user)
+
 <!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
       {!! Form::submit('Ta bort favorit',  array('class' => 'form-control btn btn-danger')) !!}
 {!! Form::close() !!}
