@@ -128,8 +128,9 @@ $userID = Auth::user()->userID;
                                     <?php echo $lo ?>
                                 </ul>
                                 @endif
+
                                 <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Rekommendationer</a></li>
-                                     <li role="presentation"><a href="#fav" role="add" data-toggle="tab">+</a></li>
+                                <li role="presentation"><a href="#fav" role="add" data-toggle="tab">+</a></li>
             <li class="dropdown">
    
  
@@ -155,23 +156,44 @@ $userID = $user->userID;
 $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->simplePaginate(4);
 $loadMore = $favorites->render();
 ?>
-@foreach($favorites as $favorite)
 
-               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"> <h3>{{ $favorite->title }}</h3></a>
-              <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
-      
-<!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+ <div class="col-md-5" id="uc-box">
+ @foreach($favorites as $favorite)              
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+               <div class="podtitle-box">
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
+               <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
+                 <p>hjärt</p>
+                </div>     
+            <div class="podchanneltitle">
+              
+              <p>av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+              </div>
+              </div>
+              </div>
+   
+ 
+
 @if(Auth::check())
 @if(Auth::user() == $user)
 <!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
-      {!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
+      {!! Form::submit('Ta bort favorit',  array('class' => 'form-control btn btn-danger')) !!}
 {!! Form::close() !!}
-        @endif       
+
+
+
+        @endif  
+
  @endif 
 
 
+
          @endforeach
-            <?php echo $loadMore ?>
+        
+         </div>    
+         <?php echo $loadMore ?>
 
   </div>
             <div role="tabpanel" class="tab-pane" id="fav">
