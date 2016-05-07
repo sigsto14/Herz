@@ -50,6 +50,23 @@
 
         <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="registrera">
+                           @if (count($errors) > 0)
+               
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+        @if(Session::has('message'))
+<div class="alert alert-success">
+    {{ Session::get('message') }}
+   </div>
+@endif
+          
         <h1 id="regTitle">Registrera dig:</h1><br>
             <div class="register_field" id="homereg">
 
@@ -96,6 +113,8 @@
 
         <div role="tabpanel" class="tab-pane" id="loggain">
         <h1 id="regTitle">Logga in:</h1><br><br>
+                  
+          
             <div class="login_field" id="homereg">
              
                 <form action="http://localhost/Herz/public/auth/login" method="POST">
