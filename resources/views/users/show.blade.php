@@ -61,7 +61,7 @@ $userID = Auth::user()->userID;
             @if(Auth::check())
             @if(Auth::user()->userID == $user->userID)
 
-            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Rekommendationer</a></li>
+            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>
 
 
  @endif
@@ -127,7 +127,7 @@ $userID = Auth::user()->userID;
                                     <?php echo $lo ?>
                                 </ul>
                                 @endif
-                                           <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Favoriter</a></li>
+                                           <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Rekommendationer</a></li>
                                      <li role="presentation"><a href="#fav" role="add" data-toggle="tab">+</a></li>
             <li class="dropdown">
    
@@ -144,7 +144,36 @@ $('#btnReview').click(function(){
 </script>
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
             <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="chome">
+             <div role="tabpanel" class="tab-pane active" class="tab-pane" id="chome">
+  <h1 id="uc-title">Favoriter</h1>
+  <!-- Innehåll här (Favoriter) -->
+  <?php
+$favorites1 = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('users', 'users.userID', '=', 'favorites.userID')->get();
+$userID = $user->userID;
+/* gör en variabel för att hämta ut alla favoriter användaren har **/
+$favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->simplePaginate(4);
+$loadMore = $favorites->render();
+?>
+@foreach($favorites as $favorite)
+
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"> <h3>{{ $favorite->title }}</h3></a>
+              <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
+      
+<!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+@if(Auth::check())
+@if(Auth::user() == $user)
+<!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
+      {!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
+{!! Form::close() !!}
+        @endif       
+ @endif 
+
+
+         @endforeach
+            <?php echo $loadMore ?>
+
+  </div>
+            <div role="tabpanel" class="tab-pane" id="fav">
              <!-- kollar om user inloggad -->
            @if(Auth::check())
                <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
@@ -215,35 +244,8 @@ $('#btnReview').click(function(){
 </div>
 
 
-                <div role="tabpanel" class="tab-pane" id="fav">
-  <h1 id="uc-title">Favoriter</h1>
-  <!-- Innehåll här (Favoriter) -->
-  <?php
-$favorites1 = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('users', 'users.userID', '=', 'favorites.userID')->get();
-$userID = $user->userID;
-/* gör en variabel för att hämta ut alla favoriter användaren har **/
-$favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->simplePaginate(4);
-$loadMore = $favorites->render();
-?>
-@foreach($favorites as $favorite)
 
-               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"> <h3>{{ $favorite->title }}</h3></a>
-              <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
-      
-<!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
-@if(Auth::check())
-@if(Auth::user() == $user)
-<!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
-      {!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
-{!! Form::close() !!}
-        @endif       
- @endif 
-
-
-         @endforeach
-            <?php echo $loadMore ?>
-
-  </div>
+               
    <div role="tabpanel" class="tab-pane" id="add">
 
 
