@@ -218,6 +218,31 @@ $('#btnReview').click(function(){
                 <div role="tabpanel" class="tab-pane" id="fav">
   <h1 id="uc-title">Favoriter</h1>
   <!-- Innehåll här (Favoriter) -->
+  <?php
+$favorites1 = DB::table('favorites')->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('users', 'users.userID', '=', 'favorites.userID')->get();
+$userID = $user->userID;
+/* gör en variabel för att hämta ut alla favoriter användaren har **/
+$favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->join('sounds', 'favorites.soundID', '=', 'sounds.soundID')->join('channels', 'sounds.channelID', '=', 'channels.channelID')->simplePaginate(4);
+$loadMore = $favorites->render();
+?>
+@foreach($favorites as $favorite)
+
+                <h3>{{ $favorite->title }}</h3>
+              <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
+      
+<!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+@if(Auth::check())
+@if(Auth::user() == $user)
+<!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
+      {!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
+{!! Form::close() !!}
+        @endif       
+ @endif 
+
+
+         @endforeach
+            <?php echo $loadMore ?>
+
   </div>
    <div role="tabpanel" class="tab-pane" id="add">
 
