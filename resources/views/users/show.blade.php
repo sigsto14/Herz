@@ -227,7 +227,7 @@ $loadMore = $favorites->render();
 ?>
 @foreach($favorites as $favorite)
 
-                <h3>{{ $favorite->title }}</h3>
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"> <h3>{{ $favorite->title }}</h3></a>
               <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
       
 <!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
