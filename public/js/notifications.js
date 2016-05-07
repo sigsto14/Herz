@@ -40,6 +40,13 @@ if(nr < 10){
 else{
 $('#prenNotiLI').html(data);
  $('.notify').addClass('NOTI');
+
+
+$.titleAlert("Herz - Nytt material!", {
+    requireBlur:false,
+    stopOnFocus:true,
+    interval:700
+});
 }
 }
 },
@@ -99,6 +106,11 @@ else{
 
 $('#favNotiLI').html(data);
  $('.notify2').addClass('NOTI');
+$.titleAlert("Herz - Ny favoritmarkering!", {
+    requireBlur:false,
+    stopOnFocus:true,
+    interval:700
+});
 }
 }
 },
@@ -152,6 +164,12 @@ if(nr < 10){
 else{
 $('#comNotiLI').html(data);
  $('.notify3').addClass('NOTI');
+
+$.titleAlert("Herz - Ny kommentar!", {
+    requireBlur:false,
+    stopOnFocus:true,
+    interval:700
+});
 }
 }
 },
@@ -192,6 +210,8 @@ function interval(func, wait, times){
 
 }, 5000, 100000);
 }, 5000, 100000);
+
+
 
 
 });

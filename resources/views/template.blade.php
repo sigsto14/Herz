@@ -45,27 +45,14 @@ $LastLogout = Auth::user()->last_logout;
        }
 
         /*hämtar ut notiserna och räknar antalet, sätter variabel av antalet */
-              $notiNr = DB::table('subscribe')->join('channels', 'channels.channelID', '=', 'subscribe.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->where('subscribe.userID', '=', $userID)->where('sounds.created_at', '>', $LastLogout)
-       ->orderBy('sounds.created_at', 'DESC')->count();
-if($notiNr == 0) {
-  $notiNr = '';
-}
-if($notiNr > 0){
-$titleNr = '(' . $notiNr . ')';
-
-}
-else {
-$titleNr = '';
-
-
-}       
+          
 
 ?>
-<p id="notif">{{ $notiNr }}</p>
+
 </div>
 
 </div>
-<title>Herz {{$titleNr}} </title>
+<div id="titleHead"><title>Herz</title></div>
 
 
 
@@ -392,6 +379,7 @@ $('.dropdown').on('hide.bs.dropdown', function(e){
     <script src="http://localhost/Herz/public/js/bootstrap.min.js"></script>
 <script src="http://localhost/Herz/public/js/notifications.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script type="text/javascript" src="http://localhost/Herz/public/js/jquery.titlealert.js"></script>
     <script src="http://localhost/Herz/public/js/ie10-viewport-bug-workaround.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
