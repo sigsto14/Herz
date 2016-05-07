@@ -183,12 +183,18 @@ $('#btnReview').click(function(){
 <div class="podtitle-box">
            <a href="http://localhost/Herz/public/sound/{{$result->soundID}}"><h4>{{ $result->title }}</h4></a>   
 <div class="podtitledownbox">
+
 <div class="podfavicon">
-                <div class="vertical-line2"></div>
+<div class="vertical-line2"></div>
+                  <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp"><span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+              </button>
+              
                 </div>
+
              <div class="podchanneltitle">   
             <p>av <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
               </div>
+               
                     </div> 
            </div>
            </div>
