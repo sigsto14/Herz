@@ -1417,10 +1417,6 @@ height: 317.5px;
 }
 
 
-#indexBox  {
-
-
-	}
 
 #pod-mini-img{
 
@@ -1918,8 +1914,6 @@ height: 120%;
 
 }
 
-
-
 #user-box hr {
 border-top: 1px solid #ddf1e5;
 }
@@ -1928,4 +1922,54 @@ border-top: 1px solid #ddf1e5;
 		  max-height: 850px;
   overflow-y: scroll;
   width: 750px;
+}
+
+
+
+
+#uc-title{
+	position: relative;
+	margin-top:-5px;
+	margin-left: -25px;
+	background-color: #26a09f;
+	width: 320px;
+	padding-left: 30px;
+	border: 2px solid #26a09f;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    font-family: 'Museo-b';
+	text-align: left;
+	color: #9fdecd;
+	font-size: 30px;
+	z-index: 2;
+
+}
+
+#chome .btn-danger{
+	position: relative;
+	margin-top: -165%;
+	margin-left: -5%;
+
+}
+
+#uc-box img{
+	margin-left: 5%;
+}
+
+.pod_mini{
+	margin-left: -10%;
+	margin-top: 10%;
+}
+
+#uc-box .podtitle-box{
+	margin-left: 3%;
+}
+
+ .vertical-line2{
+	position: absolute;
+	border-left: 1px solid #9fdecd;
+	height: 20px;
+
+
 }

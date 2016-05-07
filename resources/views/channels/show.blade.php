@@ -165,22 +165,35 @@ $userID = '';
           <?php
     
           $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
+           $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
+      /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
           ?>
           <!-- om det ej är privat eller man subbar -->
            @if($sound->status != 'privat' or $sub > 0 or $channel->channelID == $userID)
 <!-- visar upp alla ljud -->
-          <div class="sb">
-           <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title }}</h1> </a>
-           <img src=" {{ $sound->podpicture }}" width="200px" height="auto"><br>
-           <audio controls>
-  <source src="{{ $sound->URL }}" type="audio/ogg">
-  <source src="{{ $sound->URL }}" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
+          <div class="col-md-5" id="uc-box">
+           <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}">
+           <img src=" {{ $sound->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+            <div class="podtitle-box">
+            <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title }}</h4> 
+          </a>
+          <div class="podtitledownbox">
+              <div class="podfavicon">
+                <div class="vertical-line"></div>
+                <p>{{ $category->categoryname }}</p>
+              </div>
+              <div class="podchanneltitle">
+              <p>{{ $uploaded }}</p>
+
+               </div>       
+       </div> 
+           </div>
 <!-- kollar om användare är inloggad -->
 @if(Auth::check())
 <!-- kollar så att det INTE är inloggad användares kanal -->
 @if($sound->channelID != Auth::user()->userID)
+
+
 <!-- kollar så det inte är favorit redan och så man kan göra klippet till favorit -->
 @if($state == 3)
 <td>{!! Form::open(array('route' => 'favorite.store')) !!}
@@ -230,16 +243,16 @@ Your browser does not support the audio element.
   </div>
 
   <div role="tabpanel" class="tab-pane" id="fav">
-  <h1>Favoriter</h1>
+  <h1 id="uc-title">Serier</h1>
   <!-- Innehåll här (Favoriter) -->
   </div>
   <div role="tabpanel" class="tab-pane" id="list">
-  <h1>List</h1>
+  <h1 id="uc-title">List</h1>
   <!-- Innehåll här (List) -->
   </div>
 
   <div role="tabpanel" class="tab-pane" id="add">
-  <h1>Namnlös</h1>
+  <h1 id="uc-title">Namnlös</h1>
 <!-- Innehåll här (plus flik ) -->
   </div>
 

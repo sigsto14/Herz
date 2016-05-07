@@ -142,7 +142,6 @@ $('#btnReview').click(function(){
 
 
 </script>
-          <br>
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="chome">
@@ -150,7 +149,7 @@ $('#btnReview').click(function(){
            @if(Auth::check())
                <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
-            <h1> Ljudklipp för dig:</h1>
+            <h1 id="uc-title"> Ljudklipp för dig:</h1>
             <!-- gör loopar av tidigare variabler -->
            @if(is_null($favoriteCheck))
            <p>Inga rekommendationer</p>
@@ -175,18 +174,24 @@ $('#btnReview').click(function(){
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
 @if($result->channelID != $userID)
-  <div class="row">
-              <h3><a href="http://localhost/Herz/public/sound/{{$result->soundID}}">{{ $result->title }}</a></h3><br></div>
-               <img src="{{ $result->podpicture }}" style="width:145px;height:159px;"/><br>
-               
-                <audio controls>
-  <source src="{{ $result->URL }}" type="audio/ogg">
-  <source src="{{ $result->URL }}" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>    <br><br><br><br>
-
-            <p>Kanal <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
-              
+  <div class="col-md-5" id="uc-box">
+  <div class="pod_mini">
+<div id="flashContent">
+              <embed src="http://localhost/Herz/public/pod_mini/mp3_player.swf" style="width:250px;height:50px;">
+            </div>
+</div>
+<div class="podtitle-box">
+           <a href="http://localhost/Herz/public/sound/{{$result->soundID}}"><h4>{{ $result->title }}</h4></a>   
+<div class="podtitledownbox">
+<div class="podfavicon">
+                <div class="vertical-line2"></div>
+                </div>
+             <div class="podchanneltitle">   
+            <p>av <a href="http://localhost/Herz/public/channel/{{ $result->channelID }}">{{$result->channelname}}</a></p>
+              </div>
+                    </div> 
+           </div>
+           </div>
               @endif
              
              
@@ -205,13 +210,13 @@ Your browser does not support the audio element.
 
 
                 <div role="tabpanel" class="tab-pane" id="fav">
-  <h1>Favoriter</h1>
+  <h1 id="uc-title">Favoriter</h1>
   <!-- Innehåll här (Favoriter) -->
   </div>
    <div role="tabpanel" class="tab-pane" id="add">
 
 
-  <h1>Namnlös</h1>
+  <h1 id="uc-title">Namnlös</h1>
   
 </div>
 <!-- kollar om resultaten finns o kör dom -->

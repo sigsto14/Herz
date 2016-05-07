@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GALLERY COLUMNS="1"  WIDTH="50" HEIGHT="50">
+<IMAGE  THUMB="thumbs/thumb1.jpg" />
+<IMAGE  THUMB="thumbs/thumb2.jpg" />
+<IMAGE  THUMB="thumbs/thumb3.jpg" />
+</GALLERY>
