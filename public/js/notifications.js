@@ -96,9 +96,62 @@ if(nr < 10){
   $('#favNotiLI').html(data);
 }
 else{
-  alert('farre');
+
 $('#favNotiLI').html(data);
  $('.notify2').addClass('NOTI');
+}
+}
+},
+   error: function() {
+
+   }
+});
+ });
+
+
+
+});
+
+                      $(document).ready(function()
+{
+
+
+  $('#NotiTrigger3').click(function(){
+$('.notify3').removeClass('NOTI');
+
+  $('#comNoti').trigger('submit');
+
+  });
+
+$('#comNoti').submit(function(e){
+e.preventDefault();
+
+var userID = $('#userID3').val();
+
+ $.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/notiCom.php',
+  data: { userID: userID},  
+        dataType: 'text',
+
+   success: function(data){ 
+  var current = document.getElementById('comNotiLI').innerHTML;
+var c = current.length;
+var nr = c + 2;
+var d = data.length;
+
+
+if(d == nr){ 
+  $('#comNotiLI').html(data);
+}
+else {
+if(nr < 10){
+  $('#comNotiLI').html(data);
+}
+else{
+$('#comNotiLI').html(data);
+ $('.notify3').addClass('NOTI');
 }
 }
 },

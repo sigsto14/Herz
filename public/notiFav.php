@@ -29,7 +29,7 @@ SELECT sounds.soundID, sounds.title, favorites.userID FROM sounds
 JOIN favorites
 ON favorites.soundID = sounds.soundID
 WHERE channelID = '{$userID}'
-ORDER BY favorites.created_at
+ORDER BY favorites.created_at DESC
 END;
 // kör queryn
 $matchesG = $mysqli->query($matchesQ);
@@ -50,7 +50,7 @@ $favUser = $favUserG->fetch_object();
 $favUsername = utf8_encode($favUser->username);
 $title = utf8_encode($matches->title);
 //läger till i content
-	$content .= '<li><a href="http://localhost/Herz/public/user/' . $matches->userID . '">' . $favUsername . '</a>gillar din pod: <a href="http://localhost/Herz/public/sound/' . $matches->soundID .'">'  . $title . '</a></li>';
+	$content = '<li><a href="http://localhost/Herz/public/user/' . $matches->userID . '">' . $favUsername . '</a>gillar din pod: <a href="http://localhost/Herz/public/sound/' . $matches->soundID .'">'  . $title . '</a></li>';
 //samma i while loop för att få fler resultat
 while($matches= $matchesG->fetch_object()){
 	$favUserQ = <<<END

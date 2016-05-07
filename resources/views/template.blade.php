@@ -203,14 +203,10 @@ $titleNr = '';
               </ul>
               </li>
 
- <li class="dropdown" id="nav-knapp">                        
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span class="caret"></span></a>
+ <li class="dropdown notify3" id="nav-knapp">                        
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger3"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="comNoti" name="comNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID3" id="userID3" value="{{ $userID }}"></form>
               <ul class="dropdown-menu">
-                <li><a>Element 1</a></li>
-                <li><a>Element 2</a></li>
-                <li><a>Element 3</a></li>
-                <li><a>Element 4</a></li>
-                <li><a>Element 5</a></li>
+                 <div id="comNotiLI"></div>
               </ul>
                       </li>    
 </li>
