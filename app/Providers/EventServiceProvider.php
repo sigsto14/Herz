@@ -29,9 +29,7 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot($events);
 /* ett event som sparar när användaren loggar ut */
-  $events->listen('auth.logout', function ($user) {
-        $user->last_logout = new DateTime;
- $user->save();
+
     });
 
     }    
