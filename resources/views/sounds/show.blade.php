@@ -167,10 +167,11 @@ END;
  </div>
  </div>
 </li>
+
+@endif
 <li>
  <button onclick="myFunction()" tooltip="Extern ljudspelare" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
  </li> 
-@endif
       @endif
 
 
