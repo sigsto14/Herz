@@ -208,10 +208,11 @@
 
 /*Body slut */
 /*Footer */
-	#footer{
+	.footer{
 		background-color: #596365;
 		height: 70px;
 		color: white;
+		
 	}
 /*Footer slut */
 
@@ -564,17 +565,23 @@ background-color:  #b7e165;
 	#changePass{
 		margin-left: 23%;
 		margin-top: 5%;
+		background-color: #b9dcdc;
+		border-color: #72c7d0;
+		color: #72c7d0;
 	}
 
 	#logindrop{
 		margin-top: -1%;
 	}
 
+	#loginmsg{
+		margin-top: 5%;
+	}
 	/* boxen om login failar */
 	#login-menu-fail{
 		position: absolute;
 		background-color: #b9dcdc;
-		min-height: 500px;
+		min-height: 400%;
 	}
 	
 	#logo-text{

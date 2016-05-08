@@ -299,7 +299,7 @@ else {
                       {!! Form::close() !!}
                    @if (count($errors) > 0)
                
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" id="loginmsg">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -346,7 +346,7 @@ else {
 <br>
 <br>
 <br>
-<div id="footer">
+<div class="footer">
       <div class="container">
       <br>
         <p class="muted credit">©Herz Projekt</p>
