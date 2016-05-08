@@ -4,3 +4,16 @@
 Homestead.yaml
 Homestead.json
 .env
+public/gallery.xml
+*.xml
+public/images/Profilepictures/Herzteam.jpg
+*.jpg
+*.wav
+public/sounds/Ms. Universe.mp3
+*.mp3
+public/Podcastpictures/Pod 1.png
+*.png
+public/list.xml
+*.xml
+public/gallery.xml
+*.xml
