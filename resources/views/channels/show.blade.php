@@ -244,7 +244,7 @@ $userID = '';
 
   <div role="tabpanel" class="tab-pane" id="fav">
   <h1 id="uc-title">Serier</h1>
-  <!-- Innehåll här (Favoriter) -->
+  <!-- Innehåll här (Serier) -->
   </div>
   <div role="tabpanel" class="tab-pane" id="list">
   <h1 id="uc-title">List</h1>
