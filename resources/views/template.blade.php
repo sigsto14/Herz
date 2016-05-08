@@ -133,7 +133,7 @@ $LastLogout = Auth::user()->last_logout;
             </li>
             <!-- Sökfunktion -->
 <div id="search" >  
-              <form action="http://localhost/Herz/public/search/index">
+              <form class="form-wrapper cf" action="http://localhost/Herz/public/search/index">
               <div class="input-group">
             <div class="input-group-btn">
               <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
@@ -158,9 +158,9 @@ $LastLogout = Auth::user()->last_logout;
         
               </ul>
              </div>
-            <input type="search" class="form-control" name="search"/>
+            <input type="search" class="form-control" name="search" placeholder="  Sök..." id="sokinput"/>
             <div class="input-group-btn">
-            <button tabindex="-1" class="btn btn-default" type="submit">Sök</button></div>
+            <button tabindex="-1" class="btn btn-default" type="submit" id="sokknapp">Sök</button></div>
           </div>
 </form>
           </div>

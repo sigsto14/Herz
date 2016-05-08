@@ -10,7 +10,7 @@
 <h1>Spellista</h1>
     <!-- skapa lista/se mina listor om inloggad -->
     @if(Auth::check())
-    <div class="section">Skapa Spelliss</div>
+    <div class="section">Skapa Spellist</div>
     <div class="inner-wrap">
 <td>{!! Form::open(array('route' => 'playlist.store')) !!}
  {!! csrf_field() !!}
@@ -34,7 +34,6 @@
 <div class="section">Mina spellistor</div>
     <div class="inner-wrap">
 <!-- redigering av befintliga spellistor -->
-<table class="table">
 <?php
 /* hämtar ut spellistorna */
 $user = Auth::user();
@@ -66,6 +65,7 @@ $listItems = array_values(explode(',',$playlist->soundIDs,13));
 
 
 ?>
+<div class="spellistbox">
 <a href="http://localhost/Herz/public/playlist/{{ $playlist->listID }}"><h4>{{ $playlist->listTitle }}</h4></a>
 
 @if($playlist->soundIDs == '')
@@ -89,7 +89,7 @@ Beskrivning:<input type="textarea" name="listDescription" placeholder="{{ $playl
 </form>
 
 <!-- formulär för att ta bort klipp ur spellista -->
-<h4> Ta bort klipp ur spellista </h4>
+<h5> Ta bort klipp ur spellista </h5>
 <form action="http://localhost/Herz/public/playlist/taBort" method="post" accept-charset="UTF-8">
  {!! csrf_field() !!}
  <input type="hidden" name="listID" value="{{ $playlist->listID }}">
@@ -106,18 +106,23 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 @endforeach
 @endforeach
 </select>
+<form>
+<br>
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort klippet ur spellistan?");' )) !!}
 {!! Form::close() !!}
 </div>
+</div>
+<br>
 <!-- script för att öppna formulären -->
 
 @endif
+
 @endforeach
-</table>
 
 
 @endif
 @endif
+
 
 @if(Session::has('message'))
 <div class="alert alert-success">
