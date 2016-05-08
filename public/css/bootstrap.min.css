@@ -259,8 +259,14 @@
 }
 
 .form-wrapper .dropdown-toggle{
-	height: 42.5px;
+	height: 43px;
 
+}
+
+#sokdrop{
+	position: absolute;
+	margin-top: 55%;
+	background-color: #b9dcdc;
 }
 /* Form text input */
 

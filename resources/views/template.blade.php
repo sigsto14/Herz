@@ -139,7 +139,7 @@ $LastLogout = Auth::user()->last_logout;
               <button tabindex="-1" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
               <span class="caret"></span>
               </button>
-              <ul role="input" class="dropdown-menu">
+              <ul role="input" class="dropdown-menu" id="sokdrop">
               <script type="text/javascript">$('.dropdown-menu').click(function(e) {
     e.stopPropagation();
 });</script>
