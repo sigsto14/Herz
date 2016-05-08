@@ -426,13 +426,16 @@ background-color:  #b7e165;
 
 	#hmenu{
   		background-color: #b9dcdc;
+  		margin-top: 6%;
 	}
 
 	#nav-knapp {
   		position: relative;
   		transform: translateY(25%);
 	}
-
+	#nav-knapp:hover {
+		background-color: white;
+	}
 
 
 
@@ -552,16 +555,26 @@ background-color:  #b7e165;
 	}
 
 	#login-menu{
+		margin-top: 3%;
 		position: absolute;
 		background-color: #b9dcdc;
-		height: 303%;
+		min-height: 350%;
+	}
+
+	#changePass{
+		margin-left: 23%;
+		margin-top: 5%;
+	}
+
+	#logindrop{
+		margin-top: -1%;
 	}
 
 	/* boxen om login failar */
 	#login-menu-fail{
 		position: absolute;
 		background-color: #b9dcdc;
-		min-height: 400%;
+		min-height: 500px;
 	}
 	
 	#logo-text{
@@ -1496,7 +1509,7 @@ font-family: 'Museo';
 		background-color: white;
 	}
 	#tabus p{
-		margin-top: -5%;
+		margin-top: -5%;		
 		margin-left: 15%;
 	}	
 	#tabus h3{

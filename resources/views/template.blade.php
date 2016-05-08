@@ -99,7 +99,7 @@ $LastLogout = Auth::user()->last_logout;
           <ul class="nav navbar-nav">
           <!-- Dropdown meny vänster --> 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><span class="icon-menu"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><span class="icon-menu"></span><span class="caret"></span</a>
               <ul class="dropdown-menu" id="hmenu">
                 <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
@@ -278,7 +278,7 @@ else {
                
                    ?>
                    @endif
-              <li class="dropdown" id="user-menu">                        
+              <li class="dropdown" id="logindrop">                        
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="{{ $loginID }}">{{$text}}<span class="caret"></span></a>
               <!-- Logga In meny -->                   
                 <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">
