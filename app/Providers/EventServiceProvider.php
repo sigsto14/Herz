@@ -30,7 +30,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot($events);
 /* ett event som sparar när användaren loggar ut */
 
-    });
 
     }    
 
