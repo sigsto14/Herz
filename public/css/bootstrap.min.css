@@ -360,8 +360,25 @@
 } 
 
 .NOTI span {
-color: red;
+color: #b7e165;
 }
+
+.NOTI {
+background-color:  #b7e165;
+		border-radius: 200px;
+		border-style: solid;
+		border-color: #26a09f;
+		border-width: 2px;
+		width: 35px;
+		height: 35px;
+	}	
+
+.notislist{
+	color: #26a09f;
+}
+
+
+
 
 
 	#reg-log{
@@ -398,7 +415,9 @@ color: red;
 
 	#menu{  
   		left: 70%;
-  		height: 80px;
+  		height: 115%;
+  		margin-top: -6%;
+
 	}
 
 	#menu:hover{
@@ -411,9 +430,92 @@ color: red;
 
 	#nav-knapp {
   		position: relative;
-  		transform: translateY(50%);
-
+  		transform: translateY(25%);
 	}
+
+
+
+
+
+	#notisdrop2{
+	position: absolute;
+	margin-top: 7%;
+	width: 250px;
+	background-color: #b9dcdc;
+	font-family: 'Museo';
+	}
+
+	#notisdrop3{
+	position: absolute;
+	margin-top: 7%;
+	width: 350px;
+	background-color: #b9dcdc;
+	font-family: 'Museo';
+	}
+
+
+.icon-comment:before {
+	content: "\e96d";
+		font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 25px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	color: #26a09f;
+}
+
+.icon-menu:before {
+	content: "\e9bd";
+		font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 45px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	color: #26a09f;
+}
+
+.icon-heart3:before {
+	content: "\e9da";
+		font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 25px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	color: #26a09f;
+
+}
+
+
+.icon-eye:before {
+	content: "\e9ce";
+		font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	font-size: 25px;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	color: #26a09f;
+
+}
 
 
 	#user{
@@ -1824,7 +1926,7 @@ padding-bottom: 7%;
 	width: 100%;
 		}
 
-		#homereg input {
+#homereg input {
   background: rgba(255,255,255,0.1);
   border: none;
   font-size: 140%;
@@ -1863,8 +1965,8 @@ padding-bottom: 7%;
 padding-top: 3.25%;
 padding-bottom: 3.25%;
 height: 120%;
-	width: 55%;
-	background-color: #ddf1e5;;
+width: 55%;
+background-color: #ddf1e5;;
 
 }
 #regTitle {
@@ -1885,9 +1987,7 @@ height: 120%;
 	font-size: 220%;
 }
 
-.NOTI {
-	background-color: red;
-}
+
 
 /* chanels/users show*/
 
@@ -2061,3 +2161,5 @@ border-top: 1px solid #ddf1e5;
 .spellistbox select{
 	width: 150px;
 }
+
+

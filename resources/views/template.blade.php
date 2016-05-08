@@ -99,7 +99,7 @@ $LastLogout = Auth::user()->last_logout;
           <ul class="nav navbar-nav">
           <!-- Dropdown meny vänster --> 
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><img src="http://localhost/Herz/public/images/menu4.png"><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><span class="icon-menu"></span></a>
               <ul class="dropdown-menu" id="hmenu">
                 <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>        
                 <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
@@ -175,25 +175,25 @@ $LastLogout = Auth::user()->last_logout;
             <!-- Komment/Favorti Knappar -->
             <li class="knapp" id="nav-knapp">
  <li class="dropdown notify" id="nav-knapp">                        
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger"><span id="prenIcon" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="prenNoti" name="prenNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID" id="userID" value="{{ $userID }}"></form>
-              <ul class="dropdown-menu">
-                <div id="prenNotiLI"></div>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger"><span id="prenIcon" class="icon-eye" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="prenNoti" name="prenNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID" id="userID" value="{{ $userID }}"></form>
+              <ul class="dropdown-menu" id="notisdrop2">
+                <div id="prenNotiLI" class="notislist"></div>
               </ul>
               </li>
 
               
 
  <li class="dropdown notify2" id="nav-knapp">                        
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger2"><span id="favIcon" class="glyphicon glyphicon-heart" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="favNoti" name="favNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID2" id="userID2" value="{{ $userID }}"></form>
-              <ul class="dropdown-menu">
-                  <div id="favNotiLI"></div>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger2"><span id="favIcon" class="icon-heart3" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="favNoti" name="favNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID2" id="userID2" value="{{ $userID }}"></form>
+              <ul class="dropdown-menu" id="notisdrop2">
+                  <div id="favNotiLI" class="notislist"></div>
               </ul>
               </li>
 
  <li class="dropdown notify3" id="nav-knapp">                        
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger3"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="comNoti" name="comNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID3" id="userID3" value="{{ $userID }}"></form>
-              <ul class="dropdown-menu">
-                 <div id="comNotiLI"></div>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="NotiTrigger3"><span class="icon-comment" aria-hidden="true"></span><span class="caret"></span></a><form action="" id="comNoti" name="comNoti" method="post" class="noti">{!! csrf_field() !!}<input type="hidden" name="userID3" id="userID3" value="{{ $userID }}"></form>
+              <ul class="dropdown-menu" id="notisdrop3">
+                  <li id="comNotiLI" class="notislist"></li>
               </ul>
                       </li>    
 </li>
