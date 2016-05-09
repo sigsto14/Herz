@@ -2229,3 +2229,8 @@ border-top: 1px solid #ddf1e5;
 	margin-top: -7%;
 	font-family: 'Museo';
 }
+
+#plLink {
+	font-family: 'Museo-b';
+	color: #26a09f;
+}

@@ -100,7 +100,7 @@ else {
       <!--  Podspelare --> 
 
         <div class="podspelare"><!--  Gröna boxen omkring podspelare --> 
-          <div id="feedback"></div>
+         <div id="feedback"></div>
           <div class="podspelare2">
 
             <div id="flashContent">
@@ -108,10 +108,13 @@ else {
             </div>
           </div>
         </div>
+
         <!--  Podspelare slut--> 
         <!--  Podmenubar --> 
         <div class="podmenu" >
+ 
           <ul>
+
           <li>
            <!--  prenumerera knapp --> 
                    @if(Auth::check())
@@ -295,7 +298,12 @@ else {
 
     {!! csrf_field() !!}
     <div id="commentFB"></div>
-        <input type="hidden" name="userID" value="{{ Auth::user()->userID }}"><!-- Dolt fält som hämtar Användarid -->
+             @if(is_null($commentsCheck))
+<input type="hidden" mame="null" id="null" value="null">
+@else
+<input type="hidden" mame="null" id="null" value="notnull">
+@endif
+        <input type="hidden" name="userID" value="{{ $userID }}"><!-- Dolt fält som hämtar Användarid -->
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}"><!-- Dolt fält som hämtar ljudid -->
             <input type="text" class="form-control" placeholder="Lägg till komment" name="comment" id="comment"/>
           </div>
@@ -305,7 +313,7 @@ else {
          
             
           </div>
-          {!! Form::close() !!}
+
 
         </div>
         @else

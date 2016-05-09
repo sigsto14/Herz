@@ -71,13 +71,14 @@ $.ajax({
 
    success: function(data){ 
 
-if(data == 'japp'){
- $('#feedback').html('<div class="alert gray"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok"></span></button>Pod tillagd </div>');
+ $('#feedback').html(data);
  	  $('#close').click(function(){
  $('#feedback').html('');
 	  });
+if(data == 'napp')
+{
+  $('#feedback').html('<div class="alert alert-danger"><button id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: red;"></span></button>Någonting gick fel, försök igen.</div>');
 }
-
   },
    error: function() {}
 
@@ -91,6 +92,8 @@ if(data == 'japp'){
 var soundID = $('#soundID').val();
 var userID =  $('#userID').val();
 var comment =  $('#comment').val();
+var nullcheck = $('#null').val();
+
 if(comment == ''){
   $('#commentFB').html('<div class="alert gray">Skriv i något för att kommentera</div>');
 }
@@ -103,9 +106,14 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
+if(nullcheck == 'null'){
+$('#commentbox2').html(data);
+
+}
+else {
 $('#commentbox2').addClass('hidden');
 $('#commentbox').html(data);
-
+}
   },
    error: function() {}
 
@@ -119,7 +127,7 @@ $('#commentbox').html(data);
 
 var soundID = $('#soundID').val();
 
-
+var nullcheck = $('#null').val();
 $.ajax({
         type: 'POST',
         crossDomain: true,
@@ -128,9 +136,14 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
+if(nullcheck == 'null'){
+$('#commentbox2').html(data);
+
+}
+else {
 $('#commentbox2').addClass('hidden');
 $('#commentbox').html(data);
-
+}
   },
    error: function() {}
 
