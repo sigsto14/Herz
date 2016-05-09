@@ -292,8 +292,9 @@ else {
   {{ Session::get('message') }}
 </div>
 @endif    
-<form action="http://localhost/Herz/public/comment" method="post" id="comment" name="comment">
+
     {!! csrf_field() !!}
+    <div id="commentFB"></div>
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}"><!-- Dolt fält som hämtar Användarid -->
         <input type="hidden" name="soundID" value="{{ $sound->soundID }}"><!-- Dolt fält som hämtar ljudid -->
             <input type="text" class="form-control" placeholder="Lägg till komment" name="comment" id="comment"/>
@@ -327,6 +328,7 @@ else {
            @if(is_null($commentsCheck))
            <P>Denna pod har inga kommentarer</P>
            @else
+           <div id="commentbox">
            @foreach($comments as $comment)
            <!-- för att hämta ut rätt "created_at" då det finns i flertalet tabeller -->
            <?php
@@ -340,7 +342,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
                               <!--  Använder information-->
 
                       <li id="well-left" ><img src="{{ $comment->profilePicture }}" width="40px" height="40px" ></li>
-                      <li id="well-left">{{ $comment->username }}</li>
+                      <li id="well-left"><a href="http://localhost/Herz/public/user/{{ $comment->userID}}">{{ $comment->username }}</a></li>
                       <li id="well-left-right">{{ $commentUpload->created_at}}</li>
                     </ul>
                   </li> 
@@ -350,6 +352,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
                 </ul>
               </div>
               @endforeach
+              </div>
 @endif
 
                                                                      

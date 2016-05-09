@@ -85,6 +85,35 @@ if(data == 'japp'){
  });
   });
 
+  $('#commentBtn').click(function()
+  {
+
+var soundID = $('#soundID').val();
+var userID =  $('#userID').val();
+var comment =  $('#comment').val();
+if(comment == ''){
+  $('#commentFB').html('<div class="alert alert"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: gray;"></span></button>Skriv i något för att kommentera</div>');
+}
+else {
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/comments.php',
+  data: { soundID: soundID, userID: userID, comment: comment},  
+        dataType: 'text',
+
+   success: function(data){ 
+   
+$('#commentbox').html(data);
+
+  },
+   error: function() {}
+
+
+ });
+}
+  });
+
 	  $('#reportBtn').click(function(e)
 {
   e.preventDefault();
