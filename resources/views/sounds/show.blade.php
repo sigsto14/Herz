@@ -395,6 +395,6 @@ window.open("http://localhost/Herz/public/mp3_player/mp3_player.swf", "_blank", 
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
             </script>
-             <script src="http://localhost/Herz/public/js/showsounds.js"></script>
+             <script src="http://localhost/Herz/public/js/showsounds.js" charset="UTF-8"></script>
 </body>
 @stop

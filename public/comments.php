@@ -23,7 +23,7 @@ else {
 if(isset($_POST['userID'])){
   $userID = $_POST['userID'];
 $commentRaw = $_POST['comment'];
-$comment = utf8_encode($commentRaw);
+$comment = utf8_decode($commentRaw);
   $time = date('Y-m-d H:i:s');
 
 $sql = $sql = "INSERT INTO comments (userID, soundID, comment, created_at)
@@ -39,8 +39,8 @@ END;
 $commentsG = $mysqli->query($commentsQ);
 if($commentsG->num_rows > 0){
 $comment = $commentsG->fetch_object();
-$username = utf8_decode($comment->username);
-$commentCont = utf8_decode($comment->comment);
+$username = utf8_encode($comment->username);
+$commentCont = utf8_encode($comment->comment);
 $content = '<div class="commentbox">
                 <ul>
                   <li class="well">
@@ -59,8 +59,8 @@ $content = '<div class="commentbox">
               </div>';
               while($comment = $commentsG->fetch_object()){
 
-               $username = utf8_decode($comment->username);
-$commentCont = utf8_decode($comment->comment);
+             $username = utf8_encode($comment->username);
+$commentCont = utf8_encode($comment->comment);
 $content .= '<div class="commentbox">
                 <ul>
                   <li class="well">
@@ -93,8 +93,8 @@ END;
 $commentsG = $mysqli->query($commentsQ);
 if($commentsG->num_rows > 0){
 $comment = $commentsG->fetch_object();
-$username = utf8_decode($comment->username);
-$commentCont = utf8_decode($comment->comment);
+$username = utf8_encode($comment->username);
+$commentCont = utf8_encode($comment->comment);
 $content = '<div class="commentbox">
                 <ul>
                   <li class="well">
@@ -113,8 +113,8 @@ $content = '<div class="commentbox">
               </div>';
               while($comment = $commentsG->fetch_object()){
 
-               $username = utf8_decode($comment->username);
-$commentCont = utf8_decode($comment->comment);
+           $username = utf8_encode($comment->username);
+$commentCont = utf8_encode($comment->comment);
 $content .= '<div class="commentbox">
                 <ul>
                   <li class="well">
