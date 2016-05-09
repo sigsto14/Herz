@@ -43,11 +43,39 @@ $.ajax({
 if(data == 'removed'){
   $('#favAdd').removeClass('icon-heart-2');
   $('#favAdd').addClass('icon-heart');
+
 }
 else if(data == 'added'){
   $('#favAdd').removeClass('icon-heart');
   $('#favAdd').addClass('icon-heart-2');
+
 }
+  },
+   error: function() {}
+
+
+ });
+  });
+
+ $('#plAdd').click(function()
+  {
+
+var soundID = $('#soundID').val();
+var listID =  $(this).prev().find('option:selected').val(); 
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/plAdd.php',
+  data: { soundD: soundID, listID: listID},  
+        dataType: 'text',
+
+   success: function(data){ 
+alert(data);
+if(data == 'removed'){
+  $('#favAdd').removeClass('icon-heart-2');
+  $('#favAdd').addClass('icon-heart');
+}
+
   },
    error: function() {}
 

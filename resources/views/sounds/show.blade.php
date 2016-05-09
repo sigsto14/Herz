@@ -47,6 +47,43 @@ chmod($file_name2,0777);
       /*för att hämta kategorinamn */    $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
       /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
        /* hur många som har klippet som favorit*/       $favNr = DB::table('favorites')->where('soundID', '=', $sound->soundID)->count();
+
+if(Auth::check()){
+               $lists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->get();
+        $listCheck = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->first();
+        $userID = Auth::user()->userID;
+        $soundID = $sound->soundID;
+        $mysqli = new mysqli("localhost","root","","herz");
+        $query = <<<END
+        SELECT * FROM favorites
+        WHERE userID = '{$userID}'
+        AND soundID = '{$soundID}'
+END;
+        $res = $mysqli->query($query);
+        if($res->num_rows > 0){
+        $state = 1;
+        }
+        else {
+        $state = 0;
+        }
+        // php för o kolla om användaren redan prenumererar på kanalen:
+$channelID = $sound->channelID;
+$prenCheckQ = <<<END
+SELECT * FROM subscribe
+WHERE userID = '{$userID}'
+AND channelID = '{$channelID}'
+END;
+$prenCheckG = $mysqli->query($prenCheckQ);
+if($prenCheckG->num_rows >0){
+  $pren = 'true';
+}
+else {
+  $pren = 'false';
+}
+}
+
+
+
 ?>
 
 <title>{{ $sound->title }}</title>
@@ -73,47 +110,11 @@ chmod($file_name2,0777);
         </div>
         <!--  Podspelare slut--> 
         <!--  Podmenubar --> 
-          <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
-                @if(Auth::check())
-                 <?php
-        $lists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->get();
-        $listCheck = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->first();
-        $userID = Auth::user()->userID;
-        $soundID = $sound->soundID;
-        $mysqli = new mysqli("localhost","root","","herz");
-        $query = <<<END
-        SELECT * FROM favorites
-        WHERE userID = '{$userID}'
-        AND soundID = '{$soundID}'
-END;
-        $res = $mysqli->query($query);
-        if($res->num_rows > 0){
-        $state = 1;
-        }
-        else {
-        $state = 0;
-        }
-// php för o kolla om användaren redan prenumererar på kanalen:
-$channelID = $sound->channelID;
-$prenCheckQ = <<<END
-SELECT * FROM subscribe
-WHERE userID = '{$userID}'
-AND channelID = '{$channelID}'
-END;
-$prenCheckG = $mysqli->query($prenCheckQ);
-if($prenCheckG->num_rows >0){
-  $pren = 'true';
-}
-else {
-  $pren = 'false';
-}
-        ?>
         <div class="podmenu" >
           <ul>
           <li>
-           <!--  prenumerera knapp -->
-
-           {!! csrf_field() !!}
+           <!--  prenumerera knapp --> 
+                   @if(Auth::check())
            @if($pren == 'false')
             <button type="button" id="pren" tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
             @else 
@@ -121,33 +122,27 @@ else {
                   @endif
            <input type="hidden" name="userID" id="userID" value="{{ $userID }}" >
               <input type="hidden" name="channelID" id="channelID" value="{{ $channelID }}" >
-
-
-
-           <!--  när man har klickat den första <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button> --> 
           </li>
             <li>
 
-      
- 
-       
+        <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
+
+   
          @if($state == 0)
   
-       
-            <button id="favAdd" tooltip="Lägg till favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
-             <input type="hidden" name="userID" id="userID" value="{{ $userID }}">
-           <input type="hidden" name="soundID" id="soundID" value="{{ $soundID }}">
-
+         
+            <button id="favAdd" tooltip="Favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart">Like</button>
+<input type="hidden" name="userID" id="userID" value="{{ $userID }}">
+           <input type="hidden" id="soundID" name="soundID" value="{{ $soundID }}">
               </li>
               <li>
-            
+
          @else
 
-            <button id="favAdd" tooltip="Ta bort favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
-        <input type="hidden" name="userID" id="userID" value="{{ $userID }}">
-           <input type="hidden" name="soundID" id="soundID" value="{{ $soundID }}">
-
-              {!! Form::close() !!}
+            <button id="favAdd" tooltip="Favorit" class="knp knp-7 knp-7e knp-icon-only icon-heart-2">Like</button>
+<input type="hidden" name="userID" id="userID" value="{{ $userID }}">
+           <input type="hidden" id="soundID" name="soundID" value="{{ $soundID }}">
+         
          @endif
    
              
@@ -365,6 +360,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
 
     <script>
 
+
           function myFunction() {
 window.open("http://localhost/Herz/public/mp3_player/mp3_player.swf", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=150");
 }
@@ -394,6 +390,6 @@ window.open("http://localhost/Herz/public/mp3_player/mp3_player.swf", "_blank", 
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
             </script>
-            <script src="http://localhost/Herz/public/js/showsounds.js"></script>
+             <script src="http://localhost/Herz/public/js/showsounds.js"></script>
 </body>
 @stop
