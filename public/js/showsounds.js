@@ -103,7 +103,7 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
-
+$('#commentbox2').addClass('hidden');
 $('#commentbox').html(data);
 
   },
@@ -128,7 +128,7 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
-
+$('#commentbox2').addClass('hidden');
 $('#commentbox').html(data);
 
   },

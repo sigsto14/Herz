@@ -157,10 +157,10 @@ else {
               </button>
                 <div class="dropdown-menu" id="podmenudropdown">
                   @if(is_null($listCheck))
-                  <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Du har inga spellistor</p>
-                <button type="button">
-                <a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a>
-                </button>
+                  <p style="margin-left: 10%; color: #26a09f; font-size: 13px; font-family: 'Museo';">Du har inga spellistor</p>
+            <div class="podmenudropdown-btn2"> 
+                  <a href="http://localhost/Herz/public/playlist"><button type="button" class="btn btn-primary">Skapa ny spellista</button></a>
+                </div>
          @else
           <div>
           <!-- hidden fields -->
@@ -325,10 +325,11 @@ else {
             <div class="panel-heading"><button type="button" id="commentRefresh" tooltip="Läs in kommentarer" class="knp"><span class="glyphicon glyphicon-refresh"></span></button>Kommentarer:  </div>          <!--  komment header -->
           <div class="panel-body"> <!--  boxen som innehåller kommentarer --> 
            <!--  1 st komment -->
+                      <div id="commentbox2">
            @if(is_null($commentsCheck))
            <P>Denna pod har inga kommentarer</P>
            @else
-           <div id="commentbox">
+
            @foreach($comments as $comment)
            <!-- för att hämta ut rätt "created_at" då det finns i flertalet tabeller -->
            <?php
@@ -354,6 +355,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
               @endforeach
               </div>
 @endif
+<div id="commentbox"></div>
 
                                                                      
             </div><!--  Panel-body slut-->

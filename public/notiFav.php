@@ -70,6 +70,10 @@ $favUsername = utf8_encode($favUser->username);
 }
 
 }
+else{
+	$content = 'Det finns inga nya favoritmarkeringar!';
+}
+
 
 echo $content;
 }

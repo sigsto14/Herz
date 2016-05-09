@@ -133,7 +133,11 @@ $content .= '<div class="commentbox">
               </div>'; 
               }
             }
+            else {
+  $content = ' <P>Denna pod har inga kommentarer</P>';
 }
+}
+
 echo $content;  
       
 }

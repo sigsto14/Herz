@@ -37,20 +37,24 @@ END;
 $commentsG = $mysqli->query($commentsQ);
 if($commentsG->num_rows >0){
 	$comments = $commentsG->fetch_object();
+		$username = utf8_encode($comments->username);
 	$comment = utf8_encode($comments->comment);
 		$title = utf8_encode($comments->title);
-$content = '<li><a href="http://localhost/Herz/public/user/' . $comments->userID . '">' . $comments->username . '</a> Har kommenterat: ' . $comment .' din pod: <a href="http://localhost/Herz/public/sound/' . $comments->soundID .'">'  . $title . '</a></li>';
+$content = '<li><a href="http://localhost/Herz/public/user/' . $comments->userID . '">' . $username . '</a> Har kommenterat: ' . $comment .' på din pod: <a href="http://localhost/Herz/public/sound/' . $comments->soundID .'">'  . $title . '</a></li>';
 //samma i while loop för att få fler resultat
 while($comments = $commentsG->fetch_object()){
+		$username = utf8_encode($comments->username);
 	$comment = utf8_encode($comments->comment);
 		$title = utf8_encode($comments->title);
 $counter++;
 		if($counter < 5){
-	$content .= '<li><a href="http://localhost/Herz/public/user/' . $comments->userID . '">' . $comments->username . '</a> Har kommenterat: ' . $comment .' din pod: <a href="http://localhost/Herz/public/sound/' . $comments->soundID .'">'  . $title . '</a></li>';
+	$content .= '<li><a href="http://localhost/Herz/public/user/' . $comments->userID . '">' . $username . '</a> Har kommenterat: ' . $comment .' på din pod: <a href="http://localhost/Herz/public/sound/' . $comments->soundID .'">'  . $title . '</a></li>';
 }
 }
 
-
+}
+else{
+	$content = 'Det finns inga nya kommentarer!';
 }
 
 echo $content;
