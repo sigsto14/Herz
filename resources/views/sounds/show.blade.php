@@ -73,19 +73,8 @@ chmod($file_name2,0777);
         </div>
         <!--  Podspelare slut--> 
         <!--  Podmenubar --> 
-        <div class="podmenu" >
-          <ul>
-          <li>
-           <!--  prenumerera knapp --> 
-          <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
-
-           <!--  när man har klickat den första <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button> --> 
-          </li>
-            <li>
-
-        <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
-        @if(Auth::check())
-        <?php
+                @if(Auth::check())
+                 <?php
         $lists = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->get();
         $listCheck = DB::table('playlists')->where('userID', '=', Auth::user()->userID)->first();
         $userID = Auth::user()->userID;
@@ -103,8 +92,71 @@ END;
         else {
         $state = 0;
         }
-
+// php för o kolla om användaren redan prenumererar på kanalen:
+$channelID = $sound->channelID;
+$prenCheckQ = <<<END
+SELECT * FROM subscribe
+WHERE userID = '{$userID}'
+AND channelID = '{$channelID}'
+END;
+$prenCheckG = $mysqli->query($prenCheckQ);
+if($prenCheckG->num_rows >0){
+  $pren = 'true';
+}
+else {
+  $pren = 'false';
+}
         ?>
+        <div class="podmenu" >
+          <ul>
+          <li>
+           <!--  prenumerera knapp -->
+
+           {!! csrf_field() !!}
+           @if($pren == 'false')
+            <button type="button" id="pren" tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
+            @else 
+                  <button type="button" id="pren" tooltip="Sluta prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button>
+                  @endif
+           <input type="hidden" name="userID" id="userID" value="{{ $userID }}" >
+              <input type="hidden" name="channelID" id="channelID" value="{{ $channelID }}" >
+
+<script>
+  $('#pren').click(function()
+  {
+var userID = $(this).next('#userID').val();
+var channelID = $('#channelID').val();
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/pren.php',
+  data: { userID: userID, channelID: channelID},  
+        dataType: 'text',
+
+   success: function(data){ 
+if(data == 'removed'){
+  $('#pren').removeClass('icon-eye2b');
+  $('#pren').addClass('icon-eye2');
+}
+else if(data == 'added'){
+  $('#pren').removeClass('icon-eye2');
+  $('#pren').addClass('icon-eye2b');
+}
+  },
+   error: function() {}
+
+
+ });
+  });
+</script>
+
+           <!--  när man har klickat den första <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button> --> 
+          </li>
+            <li>
+
+        <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
+ 
+       
          @if($state == 0)
          {!! Form::open(array('route' => 'favorite.store')) !!}
         {!! csrf_field() !!}

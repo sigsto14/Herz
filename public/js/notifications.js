@@ -4,7 +4,7 @@
 
 
 $('#NotiTrigger').click(function(){
-$('.notify').removeClass('NOTI');
+$('.notify').removeClass('NOTIactive');
 
   $('#prenNoti').trigger('submit');
 
@@ -39,7 +39,7 @@ if(nr < 10){
 }
 else{
 $('#prenNotiLI').html(data);
- $('.notify').addClass('NOTI');
+ $('.notify').addClass('NOTIactive');
 
 
 $.titleAlert("Herz - Nytt material!", {
@@ -70,7 +70,7 @@ $.titleAlert("Herz - Nytt material!", {
 
 
   $('#NotiTrigger2').click(function(){
-$('.notify2').removeClass('NOTI');
+$('.notify2').removeClass('NOTIactive');
 
   $('#favNoti').trigger('submit');
 
@@ -105,7 +105,7 @@ if(nr < 10){
 else{
 
 $('#favNotiLI').html(data);
- $('.notify2').addClass('NOTI');
+ $('.notify2').addClass('NOTIactive');
 $.titleAlert("Herz - Ny favoritmarkering!", {
     requireBlur:false,
     stopOnFocus:true,
@@ -129,7 +129,7 @@ $.titleAlert("Herz - Ny favoritmarkering!", {
 
 
   $('#NotiTrigger3').click(function(){
-$('.notify3').removeClass('NOTI');
+$('.notify3').removeClass('NOTIactive');
 
   $('#comNoti').trigger('submit');
 
@@ -163,7 +163,7 @@ if(nr < 10){
 }
 else{
 $('#comNotiLI').html(data);
- $('.notify3').addClass('NOTI');
+ $('.notify3').addClass('NOTIactive');
 
 $.titleAlert("Herz - Ny kommentar!", {
     requireBlur:false,
