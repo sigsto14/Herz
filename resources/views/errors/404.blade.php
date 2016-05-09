@@ -63,7 +63,7 @@
                 <img src="http://localhost/Herz/public/images/error.png">
                 <div class="title">404 <br>Oops. Vi kunde inte hitta sidan du sökte.</div>
                 <form action="http://localhost/Herz/public">
-    <input type="submit" value="Tillbaka till Hemsida">
+    <input type="submit" value="Tillbaka till Hemsidan">
 </form>
                 
             </div>
