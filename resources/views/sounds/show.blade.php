@@ -75,8 +75,14 @@ chmod($file_name2,0777);
         <!--  Podmenubar --> 
         <div class="podmenu" >
           <ul>
+          <li>
+           <!--  prenumerera knapp --> 
+          <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
+
+           <!--  när man har klickat den första <button tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button> --> 
+          </li>
             <li>
-       
+
         <!-- php-kod för att kolla om det redan är favorit. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
         @if(Auth::check())
         <?php

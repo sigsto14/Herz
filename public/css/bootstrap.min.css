@@ -522,6 +522,7 @@ background-color:  #b7e165;
 }
 
 
+
 	#user{
   		transform: translateY(22%);
   		right: -5%;  
@@ -909,7 +910,7 @@ background-color:  #b7e165;
 }
 
 #podmenu-right{
-	margin-left: 50%;
+	margin-left: 40%;
 }
 
 #podmenu-right2{
@@ -1197,7 +1198,8 @@ list-style: none;
 .icon-star:after,
 .icon-plus:after,
 .icon-file:before,
-.icon-alert:before {
+.icon-alert:before,
+.icon-eye2:before {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -1209,6 +1211,16 @@ list-style: none;
 	-webkit-font-smoothing: antialiased;
 }
 
+.icon-eye2:before {
+	content: "\e9cf";
+}
+
+
+
+.icon-eye2b:before {
+	content: "\e9d0";
+	color: #f26563;
+}
 
 .icon-heart:before {
 	font-family: 'icomoon2';
