@@ -60,20 +60,22 @@ else if(data == 'added'){
  $('#plAdd').click(function()
   {
 
-var soundID = $('#soundID').val();
+var soundID = $(this).next('#soundID').val();
 var listID =  $(this).prev().find('option:selected').val(); 
 $.ajax({
         type: 'POST',
         crossDomain: true,
         url: 'http://localhost/Herz/public/plAdd.php',
-  data: { soundD: soundID, listID: listID},  
+  data: { soundID: soundID, listID: listID},  
         dataType: 'text',
 
    success: function(data){ 
 alert(data);
-if(data == 'removed'){
-  $('#favAdd').removeClass('icon-heart-2');
-  $('#favAdd').addClass('icon-heart');
+if(data == 'japp'){
+ $('#feedback').html('<div class="alert alert-success"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: green;"></span></button>Pod tillagd </div>');
+ 	  $('#close').click(function(){
+ $('#feedback').html('');
+	  });
 }
 
   },
@@ -95,7 +97,11 @@ if(msg == ''){
 }
 else {
 
- $('#feedback').html('<div class="alert alert-danger">Tack för att du hjälper oss hålla Herz trivsamt. Läs mer om våra regler här: <a href="#">Regler</a></div>');
+ $('#feedback').html('<div class="alert alert-danger"><button id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: red;"></span></button>Tack för att du hjälper oss hålla Herz trivsamt. Läs mer om våra regler här: <a href="#">Regler</a></div>');
+ 	  $('#close').click(function(){
+ $('#feedback').html('');
+	  });
+
   $.ajax({
         type: 'POST',
         crossDomain: true,
@@ -113,5 +119,7 @@ else {
  });
 }
 });
+
+
 
 });

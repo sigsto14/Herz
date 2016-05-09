@@ -363,7 +363,9 @@
 .NOTI span {
 color: #b7e165;
 }
-
+.checkPL {
+	background-color: #b7e165;
+}
 .NOTIactive {
 background-color: #b7e165;
 border-radius: 25px;
@@ -2191,3 +2193,12 @@ border-top: 1px solid #ddf1e5;
 }
 
 
+/* stäng feedback knapp*/
+#close {
+	color: black;
+	font-family: 'Museo-b';
+	position: absolute;
+	margin-left: 95%;
+	margin-top: -3.5%;
+
+}

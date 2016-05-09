@@ -19,7 +19,40 @@ if (!$conn) {
 
 
 else {
-echo 'hej';
+
+ 	$playlistQ = <<<END
+SELECT * FROM playlists
+WHERE listID = '{$listID}'
+END;
+// kör queryn 
+$playlistG = $mysqli->query($playlistQ);
+//kollar om finns res
+if($playlistG->num_rows > 0){
+	//om finns res
+	//hämtar object
+	$playlist = $playlistG->fetch_object();
+	//vi behöver specifikt soundIDS, hämtar ut.
+	$soundIDS = $playlist->soundIDs;
+	if($soundIDS == ''){
+		$newValue = $soundIDS . $soundID;
+	}
+	else {
+	$newValue = $soundIDS . ', ' . $soundID;
+}
+//query för att uppdatera
+	$sql = <<<END
+UPDATE playlists
+SET soundIDs = '{$newValue}'
+WHERE listID = '{$listID}'
+END;
+if (mysqli_query($conn, $sql)) {
+	echo 'japp';
+	}
+	else {
+		echo 'napp';
+	}
+}
+
 }
 $conn->close();
 ?>

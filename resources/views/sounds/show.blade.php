@@ -162,12 +162,12 @@ else {
                 <a href="http://localhost/Herz/public/playlist"> Skapa ny spellista</a>
                 </button>
          @else
- {!! Form::open(array('route' => 'playlist.update', 'method' => 'PUT')) !!}
           <div>
           <!-- hidden fields -->
 
-            <input type="hidden" name="soundID" value="{{ $sound->soundID }}">
+
           </div>
+
           <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Välj lista:</p>
           <div class="podmenudropdown-list">  
               <label>
@@ -176,11 +176,13 @@ else {
               <option value="{{$list->listID}}">{{ $list->listTitle }}</option>
               @endforeach
             </select>
+
+    <button id="plAdd" class="btn btn-primary">Lägg till!</button>
+      <input type="hidden" name="soundID" id="soundID" value="{{ $soundID }}">
             </label>
             </div>
               <div class="podmenudropdown-btn">  
 
-    <button type="submit" class="btn btn-primary">Lägg till!</button>
     </div>
 
     <div class="podmenudropdown-btn2"> 
