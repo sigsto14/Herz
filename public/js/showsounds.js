@@ -70,7 +70,7 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
-alert(data);
+
 if(data == 'japp'){
  $('#feedback').html('<div class="alert alert-success"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: green;"></span></button>Pod tillagd </div>');
  	  $('#close').click(function(){
@@ -103,7 +103,7 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
-   
+
 $('#commentbox').html(data);
 
   },
@@ -112,6 +112,31 @@ $('#commentbox').html(data);
 
  });
 }
+  });
+
+  $('#commentRefresh').click(function()
+  {
+
+var soundID = $('#soundID').val();
+
+
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/comments.php',
+  data: { soundID: soundID},  
+        dataType: 'text',
+
+   success: function(data){ 
+
+$('#commentbox').html(data);
+
+  },
+   error: function() {}
+
+
+ });
+
   });
 
 	  $('#reportBtn').click(function(e)

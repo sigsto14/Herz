@@ -322,7 +322,7 @@ else {
       <!--  Kommentarer börjar här -->
         <div class="comment">
           <div class="panel panel-primary">
-            <div class="panel-heading">Kommentarer:</div>          <!--  komment header -->
+            <div class="panel-heading"><button type="button" id="commentRefresh" tooltip="Läs in kommentarer" class="knp"><span class="glyphicon glyphicon-refresh"></span></button>Kommentarer:  </div>          <!--  komment header -->
           <div class="panel-body"> <!--  boxen som innehåller kommentarer --> 
            <!--  1 st komment -->
            @if(is_null($commentsCheck))

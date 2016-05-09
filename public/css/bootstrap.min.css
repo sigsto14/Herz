@@ -1085,6 +1085,18 @@ border: 2px solid #26a09f;
 
 .comment .panel-heading {background-color: #26a09f!important}
 
+#commentRefresh
+{
+padding: 0px 0px 0px 0px;
+color: #ddf1e5;
+font-size: 150%;
+position: absolute;
+margin-left: 83%;
+
+
+
+}
+
 .comment .panel-primary{
 	background-color: #9fdecd;
 }	
