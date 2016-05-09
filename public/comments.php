@@ -20,7 +20,7 @@ if (!$conn) {
 
 
 else {
-if(isset($_POST['username'])){
+if(isset($_POST['userID'])){
   $userID = $_POST['userID'];
 $commentRaw = $_POST['comment'];
 $comment = utf8_encode($commentRaw);

@@ -72,7 +72,7 @@ $.ajax({
    success: function(data){ 
 
 if(data == 'japp'){
- $('#feedback').html('<div class="alert alert-success"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: green;"></span></button>Pod tillagd </div>');
+ $('#feedback').html('<div class="alert gray"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok"></span></button>Pod tillagd </div>');
  	  $('#close').click(function(){
  $('#feedback').html('');
 	  });
@@ -92,7 +92,7 @@ var soundID = $('#soundID').val();
 var userID =  $('#userID').val();
 var comment =  $('#comment').val();
 if(comment == ''){
-  $('#commentFB').html('<div class="alert alert"><button type="button" id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: gray;"></span></button>Skriv i något för att kommentera</div>');
+  $('#commentFB').html('<div class="alert gray">Skriv i något för att kommentera</div>');
 }
 else {
 $.ajax({
@@ -147,12 +147,17 @@ var username = $('#username').val();
 var soundID = $('#soundID').val();
 if(msg == ''){
 
-  $('#feedback').html('<div class="alert alert-danger">Motivera varför du vill anmäla klippet!</div>');
+  $('#feedback').html('<div class="alert gray"><button id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok"></span></button>Motivera varför du vill anmäla klippet!</div>');
+      $('#close').click(function(){
+
+ $('#feedback').html('');
+    });
 }
 else {
 
- $('#feedback').html('<div class="alert alert-danger"><button id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: red;"></span></button>Tack för att du hjälper oss hålla Herz trivsamt. Läs mer om våra regler här: <a href="#">Regler</a></div>');
+ $('#feedback').html('<div class="alert alert-danger"><button id="close" tooltip="OK" class="knp"><span class="glyphicon glyphicon-ok" style="color: red;"></span></button>Tack för att du hjälper oss hålla Herz trivsamt.</div>');
  	  $('#close').click(function(){
+
  $('#feedback').html('');
 	  });
 

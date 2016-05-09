@@ -1096,6 +1096,13 @@ margin-left: 83%;
 
 
 }
+.gray {
+	background-color: #ddf1f5;
+	width: 100%;
+	font-family: 'Museo';
+	color: #26a09f;
+}
+
 
 .comment .panel-primary{
 	background-color: #9fdecd;
@@ -2210,7 +2217,15 @@ border-top: 1px solid #ddf1e5;
 	color: black;
 	font-family: 'Museo-b';
 	position: absolute;
-	margin-left: 95%;
-	margin-top: -3.5%;
+	padding: 0px 0px 0px 0px;
+	margin-left: 100%;
+	
+}
+#close span {
+	color:  #42e1aa;
+}
 
+.alert {
+	margin-top: -7%;
+	font-family: 'Museo';
 }
