@@ -16,13 +16,13 @@
         	<p style="text-align: center;">Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din <br> e-post adress så kan vi återkomma till dig.
         	 Eller så kanske du hittar svaret på frågan längre ner på sidan.</p>
 		
-			<form action="http://localhost/Herz/public/contact.php" method="post" id="contact">
+<form action="http://ideweb2.hh.se/~sigsto14/Test/contact.php" method="post" id="contact">
 			{!! csrf_field() !!}
 			<input type="text" name="namn" placeholder="Ditt namn"><br><br> 
 			<input type="text" name="email" placeholder="Din epost"><br><br>
 			<textarea rows="4" cols="50" name="msg" placeholder="Ditt meddelande"></textarea><br><br>
 			<button type="submit" class="btn btn-default">Skicka</button>
-			</form> 
+</form> 
 		</div>
 
 <!--FAQ-ruta-->
