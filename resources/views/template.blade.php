@@ -101,9 +101,8 @@ $LastLogout = Auth::user()->last_logout;
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="menu"><span class="icon-menu"></span><span class="caret"></span</a>
               <ul class="dropdown-menu" id="hmenu">
-                <li><a href="http://localhost/Herz/public/channel">Kanaler</a></li>        
-                <li><a href="http://localhost/Herz/public/sound">Podcasts</a></li>
-                <li role="separator" class="divider"></li>
+              
+         
                  <li class="dropdown-header">Upptäck</li>
                 <li><a href="#">Senast uppladdat</a></li>
                 <li><a href="#">Populärt</a></li>
