@@ -149,7 +149,7 @@ $state = 3;
 //hämtar ut kategorier
 $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
 /* hämtar ut tiden klippet laddades upp */  
-$uploaded= substr($category->created_at, 0, 10);
+$uploaded= substr($sound->created_at, 0, 10);
 ?>
 <!-- ^state 2 om det är favorit och state 3 om ej -->
 
