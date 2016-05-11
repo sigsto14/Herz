@@ -57,7 +57,7 @@
 			background-color: #ddf1e5;
 			min-height: 660px;
 		}
-
+		/*Container 2  */
 		#container2{
 			background-color: #ddf1e5;
 			padding-top: 50px;
@@ -65,6 +65,20 @@
 			margin: auto;
 			min-height: 660px;
 		}
+
+			#container2 .row{
+				margin-left: 10%;
+			}
+
+			#container2 p{
+				margin-top: -5%;
+				margin-left: 15%;
+			}
+
+			#container2 h3{
+				margin-top: 1%;
+				margin-left: 2%;
+			}
 
 		#container3{
 			margin-top: 15%;
@@ -82,7 +96,7 @@
   			border-radius: 8px;
 		}
 
-	/*Utssende på alla create/edit.blade +formulär sida   */
+	/*mini-container och utssende på alla create/edit.blade +formulär sida   */
 
 		#mini-container h1{  
   			text-align: center;
@@ -192,32 +206,19 @@
     		pointer-events:none;
 		}
 
-
-
-
-	#container2 .row{
-		margin-left: 10%;
+	/*Footer */
+		.footer{
+			background-color: #596365;
+			height: 70px;
+			color: white;		
 	}
 
-	#container2 p{
-		margin-top: -5%;
-		margin-left: 15%;
-	}
 
-	#container2 h3{
-		margin-top: 1%;
-		margin-left: 2%;
-	}
 
-/*Body slut */
-/*Footer */
-	.footer{
-		background-color: #596365;
-		height: 70px;
-		color: white;
-		
-	}
-/*Footer slut */
+
+
+
+
 
 /*Nav */
 	#nav{
