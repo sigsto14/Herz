@@ -95,6 +95,7 @@ $favNr = DB::table('favorites')->where('soundID', '=', $senast->soundID)->count(
 <!-- här tar första boxen slut -->
 <div role="tabpanel" class="tab-pane" id="pop">
 <h1 id="home-title">Populärt</h1><!-- här börjar andra rubriken -->
+<br>
 <!-- loop för favoriter, hämtar ut individuellt -->
 @foreach($favorites as $favorite)
 <?php
@@ -106,7 +107,7 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
     <!-- klipp skall bara synas om de inte är privata -->
 @if($favNr >= 2)
 @if($favorite->status != 'privat' or $sub > 0)
-<br>
+
              <div class="col-md-4" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $favorite->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
               <div class="podtitle-box">
@@ -126,12 +127,10 @@ $popular = DB::table('favorites')->where('soundID', '=', $favorite->soundID)->fi
               <div class="podchanneltitle">
               <p>av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID}}">{{$favorite->channelname}}</a></p>
                       </div>       
-       </div> 
-       </div>
-            
-                        </div>
-
-     @endif
+                      </div> 
+                      </div>            
+                      </div>
+@endif
 @endif
 @endforeach
 
