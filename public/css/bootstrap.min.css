@@ -216,13 +216,49 @@
 /*Template.blade */
 	/*Nav */
 		#nav{
-  		position: relative;
-  		top: 25%;
-  		transform: translateY(5%);
-  		min-height: 80px;
-	}
-		/*Nav Väntster*/
+  			position: relative;
+  			top: 25%;
+  			transform: translateY(5%);
+  			min-height: 80px;
+		}
 
+		.navbar-fixed-top{
+			background-color:  #b9dcdc;
+			border-color:  #0c5150;
+		}
+		/*Nav Väntster*/
+		a.navbar-brand{
+	 		transform: translateY(16%);
+		}
+
+		#logo{
+ 			transform: translateY(-10%);
+		}
+		
+		#logo-text{
+			position: absolute;
+			margin-top: -30px;
+ 			transform: translateX(80%);
+ 			font-family: 'League';
+			font-size: 40px; text-transform: uppercase;
+			color: #26a09f;
+			letter-spacing: .05em;
+		}
+
+		#menu{  
+  			left: 70%;
+  			height: 115%;
+  			margin-top: -6%;
+		}
+
+		#menu:hover{
+			background-color:white; 
+		}
+
+		#hmenu{
+  			background-color: #b9dcdc;
+  			margin-top: 6%;
+		}
 
 		/*SökFunktion*/
 		#search { 
@@ -487,21 +523,7 @@
 		font-size: 20px; text-transform: uppercase;
 	}
 
-	#menu{  
-  		left: 70%;
-  		height: 115%;
-  		margin-top: -6%;
-
-	}
-
-	#menu:hover{
-		background-color:white; 
-	}
-
-	#hmenu{
-  		background-color: #b9dcdc;
-  		margin-top: 6%;
-	}
+	
 
 	#nav-knapp {
   		position: relative;
@@ -509,17 +531,6 @@
 	}
 	#nav-knapp:hover {
 		background-color: white;
-	}
-
-
-
-
-	
-
-
-	a.navbar-brand{
-	 transform: translateY(16%);
-
 	}
 
 	#user-img{
@@ -557,10 +568,6 @@
 	 	background-color: #b9dcdc;
 	}
 
-	#logo{
- 		transform: translateY(-10%);
-	}
-
 	#login-menu{
 		margin-top: 3%;
 		position: absolute;
@@ -590,21 +597,6 @@
 		min-height: 400%;
 	}
 	
-	#logo-text{
-		position: absolute;
-		margin-top: -30px;
- 		transform: translateX(80%);
- 		font-family: 'League';
-		font-size: 40px; text-transform: uppercase;
-		color: #26a09f;
-		letter-spacing: .05em;
-	}
-
-	.navbar-fixed-top{
-		background-color:  #b9dcdc;
-		border-color:  #0c5150;
-	}
-
 	/* linje under naven */
 		.line {
   			position: fixed;
