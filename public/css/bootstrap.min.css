@@ -234,7 +234,7 @@
 		#logo{
  			transform: translateY(-10%);
 		}
-		
+
 		#logo-text{
 			position: absolute;
 			margin-top: -30px;
@@ -488,114 +488,111 @@
 			color: #26a09f;
 		}
 
+	/*Nav Höger*/
+		#reg-log{
+			position: relative;
+  			transform: translateY(20%);
+    		font-family: 'Museo';
+			font-size: 20px; text-transform: uppercase;
+			color: #0c5150;
+			height: 73px;
+		}
 
+		#reglog{
+			position: relative;
+  			transform: translateY(24%);
+    		font-family: 'Museo';
+			font-size: 20px; text-transform: uppercase;
+			color: #0c5150;
+			height: 73px;
+		}
 
-
-	#reg-log{
-		position: relative;
-  		transform: translateY(20%);
-    	font-family: 'Museo';
-		font-size: 20px; text-transform: uppercase;
-		color: #0c5150;
-		height: 73px;
-	}
-
-	#reglog{
-		position: relative;
-  		transform: translateY(24%);
-    	font-family: 'Museo';
-		font-size: 20px; text-transform: uppercase;
-		color: #0c5150;
-		height: 73px;
-	}
-
-	#reg-log:hover{
-  		background-color: white;
-	}
-
-	/* boxen om loginuppgifter fel */
-	#reglogfail{
-		position: relative;
-		transform: translateY(24%);
-		color: #0c5150;
-		height: 73px;
-		font-family: 'Museo';
-		font-size: 20px; text-transform: uppercase;
-	}
-
+		#reg-log:hover{
+  			background-color: white;
+		}
 	
+		#reglogfail{
+			position: relative;
+			transform: translateY(24%);
+			color: #0c5150;
+			height: 73px;
+			font-family: 'Museo';
+			font-size: 20px; text-transform: uppercase;
+		}	
 
-	#nav-knapp {
-  		position: relative;
-  		transform: translateY(25%);
-	}
-	#nav-knapp:hover {
-		background-color: white;
-	}
+		#nav-knapp {
+  			position: relative;
+  			transform: translateY(25%);
+		}
 
-	#user-img{
-		border-radius: 150px;
-		border-style: solid;
-		border-color: #0c5150;
-		border-width: 2px;
-	}
-	#user{
-  		transform: translateY(22%);
-  		right: -5%;  
-   		font-family: 'Museo';
-		font-size: 20px; text-transform: uppercase;
-		color: #b9dcdc;	
-	}
+		#nav-knapp:hover {
+			background-color: white;
+		}
 
-	#user a{	
-		color: #26a09f;
-	}
+		#user-img{
+			border-radius: 150px;
+			border-style: solid;
+			border-color: #0c5150;
+			border-width: 2px;
+		}
 
-	#user a:hover{	
-		color: white;
-	}
+		#user{
+  			transform: translateY(22%);
+  			right: -5%;  
+   			font-family: 'Museo';
+			font-size: 20px; text-transform: uppercase;
+			color: #b9dcdc;	
+		}
 
-	#user-menu{
-  		transform: translateY(-5%);
-  		z-index: 1;
-    }
+		#user a{	
+			color: #26a09f;
+		}
 
-	#user-menu:hover{
-  		background-color: white;  
-	}
+		#user a:hover{	
+			color: white;
+		}
 
-	#usermd{
-	 	background-color: #b9dcdc;
-	}
+		#user-menu{
+  			transform: translateY(-5%);
+  			z-index: 1;
+    	}
 
-	#login-menu{
-		margin-top: 3%;
-		position: absolute;
-		background-color: #b9dcdc;
-		min-height: 350%;
-	}
+		#user-menu:hover{
+  			background-color: white;  
+		}
 
-	#changePass{
-		margin-left: 23%;
-		margin-top: 5%;
-		background-color: #b9dcdc;
-		border-color: #72c7d0;
-		color: #72c7d0;
-	}
+		#usermd{
+	 		background-color: #b9dcdc;
+		}
 
-	#logindrop{
-		margin-top: -1%;
-	}
+		#login-menu{
+			margin-top: 3%;
+			position: absolute;
+			background-color: #b9dcdc;
+			min-height: 350%;
+		}
 
-	#loginmsg{
-		margin-top: 5%;
-	}
-	/* boxen om login failar */
-	#login-menu-fail{
-		position: absolute;
-		background-color: #b9dcdc;
-		min-height: 400%;
-	}
+		#changePass{
+			margin-left: 23%;
+			margin-top: 5%;
+			background-color: #b9dcdc;
+			border-color: #72c7d0;
+			color: #72c7d0;
+		}
+
+		#logindrop{
+			margin-top: -1%;
+		}
+
+		#loginmsg{
+			margin-top: 5%;
+		}
+	
+		#login-menu-fail{
+			position: absolute;
+			background-color: #b9dcdc;
+			min-height: 400%;
+		}
 	
 	/* linje under naven */
 		.line {
@@ -645,11 +642,6 @@
 		}
 
 
-
-
-
-
-
 /*Fav-knapparna*/
 
 	#fav-knapp {
@@ -693,7 +685,7 @@
   		opacity:0;
   		transition:opacity 0.6s linear;
 	}
-/*Fav-knapparna slut*/
+
 
 
 /*Home Blade -första sida ej inloggad-*/
