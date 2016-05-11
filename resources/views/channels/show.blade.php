@@ -4,7 +4,38 @@
 
 <?php
 /* variabel för se hur många gånger ID förekommer i subscribetabell */
-$subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)->count();        
+$subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)->count();
+//variabel av aktulle kanals id //channelvariabel kommer från ChannelController show
+$channelID = $channel->channelID;
+//hämtar kanalens klipp 
+$sounds = DB::table('sounds')->where('channelID', '=', $channelID)->orderBy('sounds.created_at', 'desc')->get();  
+//om användare inloggad userID variabel.
+if(Auth::check()){  
+//variabel av inloggad användare
+$userID = Auth::user()->userID;
+
+}
+//kopplingssträng til ldtabas för att kunna jobba mot den med php
+$mysqli = new mysqli("localhost","root","","herz");
+ //php-kod för att kolla om det redan är prenumeration. Det fungerar ej med eloquent så vanlig mysql/php löser problemet 
+$query = <<<END
+SELECT * FROM subscribe
+WHERE userID = '{$userID}'
+AND channelID = '{$channelID}'
+END;
+//sätter states beroende på resultat
+$res = $mysqli->query($query);
+//state 1 är besökare prenumerant
+if($res->num_rows > 0){
+  $state = 1;
+}
+else {
+//state 0 är besökare ej prenumerant
+$state = 0;
+}
+
+
+
 ?> 
 
 <!DOCTYPE HTML>
@@ -36,66 +67,38 @@ $subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)
           </div>
           <hr>
           <div class="row" id="uc-redigering"> 
-          @if(Auth::user())
 
-<!-- php-kod för att kolla om det redan är prenumeration. Det fungerar ej med eloquent så vanlig sql/php löser problemet -->
-<?php
-$userID = Auth::user()->userID;
-$channelID = $channel->channelID;
-
-$mysqli = new mysqli("localhost","root","","herz");
-
-$query = <<<END
-SELECT * FROM subscribe
-WHERE userID = '{$userID}'
-AND channelID = '{$channelID}'
-END;
-
-$res = $mysqli->query($query);
-if($res->num_rows > 0){
-  $state = 1;
-
-}
-else {
-
-$state = 0;
-}
-
-?>
-<!-- ^ sätter state 1 om man prenumererar och state 0 om man ej gör det -->
+<!-- kollar om inlogad -->
+@if(Auth::user())
 <!-- kollar om man är på sin egen sida innehåll om man är på sin egen kanal -->
 @if(Auth::user()->userID == $channel->channelID)
+<!-- om man ej är på egen kanal -->
 @else
 <!-- vy för icke prenumerant med formulär så den kan prenumerera -->
 @if($state == 0)
 
-<td>{!! Form::open(array('route' => 'subscribe.store')) !!}
- {!! csrf_field() !!}
+{!! Form::open(array('route' => 'subscribe.store')) !!}
+{!! csrf_field() !!}
 <div>
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
 </div>
 <div>
         <input type="hidden" name="channelID" value="{{ $channel->channelID }}">
 </div>
- 
-
-
-<button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
+        <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
               <span class="glyphicon glyphicon-eye-open" aria-hidden="true"  id="heart"></a><p> Prenumerera </p></span>
-              </button>
+        </button>
 {!! Form::close() !!}
 <!-- vy för prenumerant så den kan avprenumerera -->
 @else
-
-<td>{!! Form::open(array('method' => 'DELETE', 'route' => array('subscribe.destroy', $channel->channelID)))  !!}
+{!! Form::open(array('method' => 'DELETE', 'route' => array('subscribe.destroy', $channel->channelID)))  !!}
  {!! csrf_field() !!}
-      <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
+         <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
               <span class="glyphicon glyphicon-eye-close" aria-hidden="true"id="heart"></a><p> Sluta prenumerera</p></span>
-              </button>
+         </button>
 {!! Form::close() !!}</td>
-
-@endif
-@endif
+@endif<!-- slut på koll om prenumerant -->
+@endif<!-- slut på koll om state -->
 
 
 
@@ -103,10 +106,10 @@ $state = 0;
 <!-- ifall man är på sin egen sida ska man få länk till att redigera den -->
 @if(Auth::user()->userID == $user->userID)
 <a href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Redigera kanal</a><br>
-@endif
-@endif
+@endif<!-- slut på komm om man är på egen sida -->
+@endif<!-- slut på auth check -->
 <!-- slut på prenumerationsdel (till vänster på sidan) -->
-          </div>
+         </div>
         </div>
          <!-- Andra lådan, här fins podar -->
         <div class="col-lg-8"  id="uc-tabus">        
@@ -116,60 +119,45 @@ $state = 0;
             <li role="presentation"><a href="#list" role="tab" data-toggle="tab">Liknande</a></li>
             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
           </ul>
-          <script>
-$('#btnReview').click(function(){
-  $(".tab-content").removeClass("active");
-  $(".tab-content:first-child").addClass("active");
-});
-</script>
+
           <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="chome">
-          <!-- php-kod som kollar om klippet är favorit för inloggad användare eller ej -->
-            <?php
-           $id = $user->userID;
-              $sounds = DB::table('sounds')->where('channelID', '=', $id)->orderBy('sounds.created_at', 'desc')->get();  
-          ?>
-           @foreach($sounds as $sound)
-          @if(Auth::check())
+<!-- loop för alla klipp -->
+@foreach($sounds as $sound)
+@if(Auth::check())
         <?php
-$userID = Auth::user()->userID;
+//gör variabel av var enskilt soundID
 $soundID = $sound->soundID;
-
-$mysqli = new mysqli("localhost","root","","herz");
-
+//query för att inloggad användares favoriter, med soundIDt
 $query = <<<END
 SELECT * FROM favorites
 WHERE userID = '{$userID}'
 AND soundID = '{$soundID}'
 END;
-
+//sätter states för att avgöra om det är favorit eller ej
 $res = $mysqli->query($query);
 if($res->num_rows > 0){
+	//klippet är favorit
   $state = 2;
-
 }
 else {
-
+	//klippet är ej favorit
 $state = 3;
 }
 
+//hämtar ut kategorier
+$category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
+/* hämtar ut tiden klippet laddades upp */  
+$uploaded= substr($category->created_at, 0, 10);
 ?>
 <!-- ^state 2 om det är favorit och state 3 om ej -->
-@else
-<?php
-$userID = '';
-?>
+
 @endif
    <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
-          <?php
-    
-          $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
-           $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
-      /* hämtar ut tiden klippet laddades upp */  $uploaded= substr($category->created_at, 0, 10);
-          ?>
-          <!-- om det ej är privat eller man subbar -->
-           @if($sound->status != 'privat' or $sub > 0 or $channel->channelID == $userID)
+
+<!-- om det ej är privat eller man subbar -->
+@if($sound->status != 'privat' or $state == 0 or $channel->channelID == $userID)
 <!-- visar upp alla ljud -->
           <div class="col-md-5" id="uc-box">
            <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}">
@@ -221,8 +209,8 @@ $userID = '';
               </button></div>
 
 {!! Form::close() !!}</td>
-@endif
-@endif
+@endif<!-- slut på om man inte är inloggad användare -->
+@endif<!--slut på state-checj -->
 <!-- slut på favoriter -->
 <!-- kollar om det är den inloggade användarens kanal och då kan användaren ta bort ljudklipp -->
 @if(Auth::user()->userID == $user->userID)
@@ -231,13 +219,13 @@ $userID = '';
 {!! csrf_field() !!}
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
 {!! Form::close() !!}
-@endif
-@endif
+@endif<!-- slut på koll om användare äger kanal -->
+@endif<!-- slut på koll om det är privat klipp-->
 </div>
 
-@endif
+@endif<!-- slut på auth check -->
 
-@endforeach
+@endforeach<!--slut på sounds loop -->
 
 
   </div>
