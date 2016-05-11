@@ -135,6 +135,7 @@ $title = $titleCut . '...';
 <div role="tabpanel" class="tab-pane" id="pop">
 
 <h1 id="home-title">Populärt</h1><!-- här börjar andra rubriken -->
+<br>
 <!-- loop för popularcheck, hämtar ut resultaten individuellt -->
 @foreach($popularCheck as $pop)
 <?php
@@ -146,7 +147,7 @@ $popular = DB::table('sounds')->join('channels', 'sounds.channelID','=', 'channe
 ?>
 <!-- klipp skall bara synas om de inte är privata -->
 @if($popular->status != 'privat' or $sub > 0)
-<br>
+
               <div class="col-md-4" id="indexBox">
               <a href="http://localhost/Herz/public/sound/"><img src="{{ $popular->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
               <div class="podtitle-box">
