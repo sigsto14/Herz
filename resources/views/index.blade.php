@@ -55,7 +55,7 @@ $favorites = DB::table('favorites')
   <div class="container">
     <div class="col-md-12">
       <div class="podcast-box">
-        <ul class="nav nav-tabs" role="tablist">
+        <ul class="nav nav-tabs" role="tablist"><!-- tabbar -->
           <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Senaste</a></li>
           <li role="presentation"><a href="#pop" role="tab" data-toggle="tab">Populärt</a></li>
           <li role="presentation"><a href="#sen" role="tab" data-toggle="tab">Rekommendationer</a></li>
