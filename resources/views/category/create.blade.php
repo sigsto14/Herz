@@ -5,7 +5,6 @@
 <!DOCTYPE HTML>
 
 <title>Users</title>
-
 <body>
 
 @yield('content')
@@ -16,23 +15,20 @@
 <div class="col-md-6" id="mini-container">
 
 <h1>Administrera Kategorier</h1>
-
-
-<!-- PHP för att hämta ut ljudklippen och kunna hämta vem som laddat upp och annan info -->
-		
-	
-			<!-- gör en foreach, så att vi drar ut var klipp och kör dess info enskilt i en tabell -->
-			
-@if(Auth::check())
+@if(Auth::check())<!--kollar så inloggad -->
 <div class="section">Kategorier</div>
     <div class="inner-wrap">
 <!-- php-kod för att kunna kolla om den som är inlogad är admin-->
 <?php
+//användare
 $username = Auth::user()->username;
+// hämtar kategorier
+$categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 ?>
+<!-- kollar så inloggad användare är Herzteam (adminkonto) -->
+@if($username == 'Herzteam')
 
 <!-- ett formulär för att lägga till kategori -->
-@if($username == 'Herzteam')
 <td>{!! Form::open(array('route' => 'category.store')) !!}
  {!! csrf_field() !!}
 
@@ -43,18 +39,15 @@ $username = Auth::user()->username;
 </div>
 
 <div class="section">Nuvarande kategorier</div>
-    <div class="inner-wrap">
-<?PHP
-$categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
-?>
-
- {!!   Form::open(array('method' => 'DELETE', 'route' => array('category.destroy'))) !!}
+<div class="inner-wrap">
+<!-- formulär för att ta bort kategorier -->
+{!!   Form::open(array('method' => 'DELETE', 'route' => array('category.destroy'))) !!}
 <div class="catlabel">
 <label>
      <select name="categoryID">
-         @foreach($categories as $category)
- <option value="{{$category->categoryID}}"><p>{{ $category->categoryname }}</p></option>
-
+ <!-- foreach loop för kategorier, för att få var category i select -->
+@foreach($categories as $category)
+  <option value="{{$category->categoryID}}"><p>{{ $category->categoryname }}</p></option>
 @endforeach
 </select>
 </label>
@@ -65,34 +58,22 @@ $categories = DB::table('category')->orderBy('categoryname', 'asc')->get();
 
 {!! Form::submit('Ta Bort', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort kategorin?");' )) !!}
 {!! Form::close() !!}
-@endif
+@endif <!-- slut på check användare är admin -->
 
+<!-- printar feedbacken från controller -->
 @if(Session::has('message'))
-<div class="admin-feedback">
-<p>
+   <div class="admin-feedback">
+     <p>
 	{{ Session::get('message') }}
 	</p>
-</div>
-@endif
-
-@endif
-<!-- formuläret syns bra om man är inloggad -->
-
-			
-			
+   </div>
+@endif<!-- slut på message koll-->
+@endif<!-- slut på auth check -->
 				
-				</tr>
-			
+</tr>
 </table>
-
 </div>
 </div>			 
-	
-
-
-
-
-
 </div>
 
 
