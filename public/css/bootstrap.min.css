@@ -1172,10 +1172,6 @@
 		content: "\e9d9";
 	}
 
-	.icon-remove:before {
-		content: "\e00f";
-	}
-
 	.icon-cog:before {
 		content: "\e010";
 	}
@@ -1183,30 +1179,6 @@
 	.icon-plus:before,
 	.icon-plus:after {
 		content: "\e011";
-	}
-
-	.icon-minus:before {
-		content: "\e012";
-	}
-
-	.bh-icon-smiley:before {
-		content: "\e001";
-	}
-
-	.bh-icon-sad:before {
-		content: "\e002";
-	}
-
-	.icon-file:before {
-		content: "\e004";
-	}
-
-	.icon-remove-2:before {
-		content: "\e005";
-	}
-
-	.icon-bigger:before {
-		content: "\ea7d";
 	}
 
 	.icon-alert:before {
@@ -1221,7 +1193,7 @@
 
 }
 
-/* Icon only style */
+
 .knp-icon-only {
 	font-size: 0;
 	padding: 15px 20px;
@@ -1295,7 +1267,7 @@ font-family: 'Museo';
   line-height: 1.2;
 }
 
-/* Triangle hack to make tooltip look like a speech bubble */
+
 .knp:hover:after {
   position: absolute;
   bottom: 150%;
@@ -1311,7 +1283,7 @@ font-family: 'Museo';
   line-height: 0;
 }
 
-/* Show tooltip content on hover */
+
 .knp:hover:hover:before,
 .knp:hover:hover:after {
   visibility: visible;
@@ -1320,7 +1292,7 @@ font-family: 'Museo';
   opacity: 1;
 }
 
-/* The CSS */
+
 .podmenudropdown-list select {
     padding:3px;
     margin: 0;
@@ -1341,9 +1313,6 @@ font-family: 'Museo';
     appearance:none;
     cursor:pointer;
 }
-
-/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
-
 
 .podmenudropdown-list label {position:relative}
 .podmenudropdown-list label:after {
