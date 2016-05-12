@@ -1830,6 +1830,7 @@
 	}
 
 	#userbtn{
+		padding-top: 1.5%;
 		font-family: 'Museo';
 		font-size: 15px;
 		background-color: #9fdecd;
@@ -1841,7 +1842,13 @@
 	    height: 30px;
 	    text-align: center;
 	}
+	#userbtn:hover{
+		background-color: #b7e165;
+	}
 
+	#userbtn a{
+		color: #26a09f;
+	}
 
 	#user-box h2{
 		text-align: center;	

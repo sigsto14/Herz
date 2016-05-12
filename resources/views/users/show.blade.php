@@ -52,7 +52,7 @@
             <!-- om användaren ej har kanal -->
 <a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
                @else
-              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
+              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}"style="margin-bottom: -5px;">Kolla din Kanal</a><br> 
             @endif
             @endif
              @endif
