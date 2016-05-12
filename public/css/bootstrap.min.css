@@ -1848,6 +1848,7 @@
 
 	#userbtn a{
 		color: #26a09f;
+		text-decoration: none;
 	}
 
 	#user-box h2{
