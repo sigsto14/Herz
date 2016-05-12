@@ -52,7 +52,7 @@
             <!-- om användaren ej har kanal -->
 <a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
                @else
-              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}"style="margin-bottom: -5px;">Kolla din Kanal</a><br> 
+              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
             @endif
             @endif
              @endif
@@ -147,7 +147,7 @@ $userID = Auth::user()->userID;
               ?>
              @if($count >0)
             <a href="#" data-toggle="dropdown" id="pil">Spellista<span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="colordrop">
                                     <?php echo $lo ?>
                                 </ul>
                                 @endif

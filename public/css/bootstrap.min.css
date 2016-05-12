@@ -1799,6 +1799,14 @@
 	#info li{
 		  list-style: none;
 		  display: inline;
+		  margin-left: 15%;
+		  font-family: 'Museo-b';
+		  color: #26a09f;
+		  font-size: 20px;
+	}
+
+	#colordrop{
+		background-color: #ddf1e5;
 	}
 
 	#usinfobox {
