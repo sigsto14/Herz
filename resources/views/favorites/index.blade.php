@@ -16,42 +16,41 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
 
 <body>
 @yield('content')
-
-   <h2>{{ Auth::user()->username }}'s favoriter</h2>
+<br>
+   <h1 id="uc-title">{{ Auth::user()->username }}'s favoriter</h1>
    <!-- lägger ut resultaten en och en -->
 
-    @foreach($favorites as $favorite)
+    
               <div class="row">
-              <div class="col-md-4">
-                <h3>{{ $favorite->title }}</h3>
-              <image src="{{ $favorite->podpicture }}" width="100px" height="auto"></image><br>
-              <audio controls>
-              <source src="{{ $favorite->URL }}" type="audio/ogg">
-              <source src="{{ $favorite->URL }}" type="audio/mpeg">
-              Your browser does not support the audio element.
-              </audio>
-<!--rad 4 --><p>Från kanal: <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
-<!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
-      {!! Form::submit('Ta bort favorit', '', array('class' => 'form-control')) !!}
-{!! Form::close() !!}
-              </div>           
-
-   
+              @foreach($favorites as $favorite)
+ <div class="col-md-3" id="uc-box">          
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+               <div class="podtitle-box">
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
+               <div class="podtitledownbox">
+              <div class="podfavicon2">
+                <div class="vertical-line2"></div>
+                 <button class="button"><span class="icon-heart4"></span></button>
+                </div>     
+            <div class="podchanneltitle">
+              
+              <p style="margin-left: 6%; margin-top: -5%;">av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+              </div>
+              </div>
+              </div> 
+              </div>
 
          @endforeach
-         
-
-
-    
-        </div>
-        </div>
-</div>
-</div>        
-     
+     </div>
+     </div>
+     </div>
+     </image>
    
 		@endif	
 
 
-
+</div>
+</div>
+</div>
 </body>
 @stop
