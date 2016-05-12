@@ -17,11 +17,12 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
 <body>
 @yield('content')
 <br>
+
    <h1 id="uc-title">{{ Auth::user()->username }}'s favoriter</h1>
    <!-- lägger ut resultaten en och en -->
 
     
-              <div class="row">
+              <div class="row" id="scroll">
               @foreach($favorites as $favorite)
  <div class="col-md-3" id="uc-box">          
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
