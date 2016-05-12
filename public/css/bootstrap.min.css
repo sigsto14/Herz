@@ -1427,6 +1427,19 @@
 	.icon-bigger:before {
 		content: "\ea7d";
 	}
+
+	.icon-delete:before {
+		content: "\ea0f";
+	}
+
+	.icon-minus:before {
+		content: "\ea0b";
+	}
+
+	.icon-down:before {
+		content: "\ea43";
+	}
+
 	/* Button 7 */
 	.knp-7 {
 		background: #17aa56;
@@ -1925,7 +1938,7 @@
 		margin-left: -2%;
 		margin-top: 2%;
 		height: 50px;
-		width: 80%;
+		width: 100%;
 		border-radius: 5px;  		
   		background: #26a09f;
   		background: -o-linear-gradient(top, #9edceb, #26a09f);
@@ -1935,11 +1948,67 @@
   		background: linear-gradient(to bottom, #9edceb, #26a09f);
   		box-shadow: inset 0 -3px 0 #1f97c7, inset 0 -3px 3px #1f9acc, inset 0 2px 2px #9ad7ef, inset 1px 0 2px #22a4d9, inset -1px 0 2px #22a4d9, 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px rgba(0, 0, 0, 0.05);
 	}
+	.playlistmenu ul,
+	.playlistmenu ul li,
+	.playlistmenu ul li a{
+   		padding: 0.5%;
+  		border: 0;
+  		list-style: none;
+  		line-height: 1;
+  		display: block;
+  		position: relative;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+  		box-sizing: border-box;
+	}
+
+	.playlistmenu ul{
+		margin-left: 5%;
+	}
+
+	.playlistmenu > ul > li {
+  		float: left;
+	}
+
+	#playlist-right{
+		margin-left: 48%;
+	}
+
+	#spelinfobox {
+		background-color: #9fdecd;
+		-moz-border-radius: 6px 6px 6px 6px;
+	    -webkit-border-radius: 6px 6px 6px 6px;
+	    border-radius: 6px 6px 6px 6px;
+	    width: 90%;
+	    height: 80px;
+	}
+
+	#spelinfobox hr{
+	    width: 90%;
+	    margin-left: 5%;
+	    margin-top: -1%;
+	}
+
+	#spelinfobox h4{
+		padding-top: 2%;
+		font-family: 'Museo';
+		font-size: 20px;
+		color: #26a09f;
+		margin-left: 4%;
+	}
+
+	#spelinfobox p{
+		margin-top: -1%;
+		font-family: 'Museo';
+		font-size: 15px;
+		color: #26a09f;
+		margin-left: 5%;
+	}
 
 
-
-	
-
+	#box1{
+		margin-left: 5%;
+	}
 
 /* spellist index*/
 	.spellistbox{

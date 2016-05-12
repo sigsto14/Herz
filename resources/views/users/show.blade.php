@@ -56,7 +56,7 @@
             <!-- om användaren ej har kanal -->           
               <a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
               @else
-              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
+              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din kanal</a><br> 
             @endif              
             </li>        
             <li id="ucli2">
@@ -304,27 +304,50 @@ $loadMore = $favorites->render();
    <div role="tabpanel" class="tab-pane" id="list1">
 
  <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1 id="uc-title">{{ $list1->listTitle}}</h1></a>
- <h6>{{ $list1->listDescription }}</h6>
+  <div id="spelinfobox">
+  <h4>Beskrivning av spellista</h4>
+ <hr>
+ <p>{{ $list1->listDescription }}</p>
+ </div>
   <div class="playlistmenu">
+  <ul>
+        <li>                 
+            <form action="" method="put" name="play1" id="play">
+                <input type="hidden" name="listID" value="{{ $list1->listID }}" id="listID">
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down"> id="play">
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                     </button>
+                </form>
+                   </li>                   
+                    @if(Auth::check())
+                    @if(Auth::user()->userID == $user->userID)                 
+                    <li>
+            <button type="button" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete">Like</button>              
+                   </li>
+                   @endif
+                   @endif 
 
+                   <li>
+                  <button type="button" tooltip="Ta bort från spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-minus">
+              </button>
+                   </li>
+                   <li>
+                    <button tooltip="Extern spellistan" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
+                    </li>
+                    <li id="playlist-right">
+             <!--  Anmälning knappen --> 
                  
-                    <form action="" method="put" name="play1" id="play">
-                      <input type="hidden" name="listID" value="{{ $list1->listID }}" id="listID">
-                      <button type="submit" class="btn btn-default btn-lg" id="play">
-                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-                      </button>
-                    </form> 
+                  <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+            </li>
+                    <li>  
+              <button type="button" onclick="share();" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>                
+                   <ul> 
    </div>                 
                                           <!-- en box som vi ska ladda in värden i senare -->
                     <div id="box1"></div>
-                     @if(Auth::check())
-                    @if(Auth::user()->userID == $user->userID )
-                    {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID1))) !!}
-                    {!! csrf_field() !!}
-                    {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-                    {!! Form::close() !!}
-                    @endif
-                    @endif
+
 </div>
    <script>
 
