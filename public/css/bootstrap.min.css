@@ -1441,6 +1441,12 @@
 		color: #f26563;
 	}
 
+	.icon-heart-3 {
+		content: "\e9da";
+		font-family: 'icomoon'
+		font-size: 10px;
+	}
+
 	.icon-star:before {
 		content: "\ea0a";
 	}
@@ -1465,6 +1471,10 @@
 
 	.icon-alert:before {
 		content: "\ea08";
+	}
+
+	.icon-bigger:before {
+		content: "\ea7d";
 	}
 	/* Button 7 */
 	.knp-7 {
@@ -1892,7 +1902,7 @@
 	}
 
 	#uc-tabus>#container2{
-		max-height: 850px;
+		max-height: 500px;
 	  	overflow-y: scroll;
 	  	width: 750px;
 	}
@@ -1935,9 +1945,17 @@
 	}
 
 	.vertical-line2{
-		position: absolute;
+		position: relative;
 		border-left: 1px solid #9fdecd;
+		transform: translateY(58%);
 		height: 20px;
+	}
+
+	.podfavicon2{
+			position: absolute;
+			margin-left: 120px;
+			margin-top: -4%;
+			width: 100px;
 	}
 
 

@@ -187,9 +187,9 @@ $loadMore = $favorites->render();
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
                <div class="podtitledownbox">
-              <div class="podfavicon">
-                <div class="vertical-line"></div>
-                 <p>hjärt</p>
+              <div class="podfavicon2">
+                <div class="vertical-line2"></div>
+                 <p><span class="glyphicon glyphicon-heart"></span></p>
                 </div>     
             <div class="podchanneltitle">
               

@@ -407,5 +407,6 @@ window.open("http://localhost/Herz/public/mp3_player/mp3_player.swf", "_blank", 
 }(document, 'script', 'facebook-jssdk'));
             </script>
              <script src="http://localhost/Herz/public/js/showsounds.js" charset="UTF-8"></script>
+</div>             
 </body>
 @stop
