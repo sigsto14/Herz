@@ -1392,10 +1392,11 @@
 		color: #f26563;
 	}
 
-	.icon-heart-3 {
+	.icon-heart4:before {
 		content: "\e9da";
-		font-family: 'icomoon'
-		font-size: 10px;
+		font-family: 'icomoon';
+		color: #f26563;
+
 	}
 
 	.icon-star:before {
@@ -1928,6 +1929,17 @@
 			margin-top: -4%;
 			width: 100px;
 	}
+
+	.podfavicon2 button{
+		position: absolute;
+		background-color: #26a09f;
+		width: 30px;
+		margin-top: -10px;
+		margin-left: 10px;
+		height: 25px;
+		border: 1px solid #26a09f;
+	}
+
 
 	.playlistmenu button{
 		background-color: #26a09f;

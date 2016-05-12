@@ -189,28 +189,15 @@ $loadMore = $favorites->render();
                <div class="podtitledownbox">
               <div class="podfavicon2">
                 <div class="vertical-line2"></div>
-                 <p><span class="glyphicon glyphicon-heart"></span></p>
+                 <button class="button"><span class="icon-heart4"></span></button>
                 </div>     
             <div class="podchanneltitle">
               
               <p>av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
               </div>
               </div>
-              </div>
-   
- 
-@if(Auth::check())
-@if(Auth::user() == $user)
+              </div> 
 
-<!--rad 5-->{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $favorite->soundID))) !!}
-      {!! Form::submit('Ta bort favorit',  array('class' => 'form-control btn btn-danger')) !!}
-{!! Form::close() !!}
-
-
-
-        @endif  
-
- @endif 
 
 
 
