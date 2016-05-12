@@ -24,7 +24,7 @@ $('#btnReview').click(function(){
 <!-- box för klipp -->
 
             <div role="tabpanel" class="tab-pane active" id="klipp">
-<h1>Klipp</h1>
+<h1 id="uc-title">Klipp</h1>
 @if (count($sounds) === 0 || $query == '')
 Inga klipp matchar din sökning
 Kolla igenom <a href="http://localhost/Herz/public/sound">senaste uppladdningar!</a>
@@ -44,23 +44,30 @@ $userID = Auth::user()->userID;
   $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
   ?>
 @if($sound->status != 'privat' or $sub > 0)
-     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h1>{{ $sound->title}}</h1></a>
-    <image src="{{ $sound->podpicture }}" width="80px" height="auto"></image>
-    <audio controls>
-  <source src="{{ $sound->URL }}" type="audio/ogg">
-  <source src="{{ $sound->URL }}" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio><br>
+<div class="row" id="scroll">
+  @endif
+<div class="col-md-3" id="uc-box">  
+     
+    <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
+    <div class="podtitle-box">
+    <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title}}</h4></a>
 <!-- gör en liten variabel för att få ut categoryname -->
-
-<p><a href="http://localhost/Herz/public/category/{{ $sound->categoryID }}">{{ $sound->categoryname }}</a></p>
-Uppladdat av <a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a><br><br>
-   @endif
+               <div class="podtitledownbox">
+              <div class="podfavicon2">
+                <div class="vertical-line2"></div>
+                <p><a href="http://localhost/Herz/public/category/{{ $sound->categoryID }}">{{ $sound->categoryname }}</a></p>
+                </div>
+              <div class="podchanneltitle">
+                <a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
+              </div>
+  </div>
+  </div>
+  </div>
     @endforeach
-
 @endif
 </div>
-
+</div>
+</div>
 
 <!-- box för kanaler -->
   <div role="tabpanel" class="tab-pane" id="kanal">
