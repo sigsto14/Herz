@@ -54,18 +54,21 @@ $state = 0;
         <div class="col-lg-4" id="user-box">
           <div class="row">
             <h2>{{ $channel->channelname }}</h2>
-            <p>Prenumeranter:{{ $subscrNr }}</p> 
-            <p>{{ $channel->information }}</p>    
+            </div>
+            <br>
+          <div class="row" id="usinfobox">
+            <h4>Information om Kanalen</h4>
+            <hr>
+            <p>{{ $channel->information }}</p> 
           </div>
-          <div class="row">
-          <p>gfdgdf</p>
-          <p>gfdgdf</p>
-          <p>gfdgdf</p>
-          <p>gfdgdf</p>
+          <div class="row">          
           </div>
           <div class="row">
           </div>
           <hr>
+          <div class="row">
+          <p>Prenumeranter:{{ $subscrNr }}</p>             
+          </div>
           <div class="row" id="uc-redigering"> 
 
 <!-- kollar om inlogad -->

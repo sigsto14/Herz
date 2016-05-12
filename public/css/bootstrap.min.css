@@ -1758,6 +1758,7 @@
 	#user-box{
 		background-color: #cee5d0;
 		margin-left: -1.3%;
+		min-height: 700px;
 	}
 
 	#user-box img{
