@@ -20,17 +20,28 @@
             <h2>{{ $user->username }}</h2>
             <img src="{{ $user->profilePicture }}" style="width:180px;height:180px;"/>    
           </div>
+           <hr>
           <div class="row">
+          <ul>
+            <li>Kön:</li>
+            <li>Kvinna</li>
+          </ul>
           </div>
           <div class="row">
+              <ul>
+            <li>Ålder:</li>
+            <li>25</li>
+          </ul>
           </div>
+          <div class="row">
+          <p>Information</p>
           <hr>
-          <div class="row" id="uc-redigering"> 
-          <!-- kollar om user inloggad -->
-          @if(Auth::user())
+          <p>Jag heter ...</p>
+          </div>
+          <div class="row">
+           @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
-            <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
             <?php
             /* kod för att kolla om användaren har kanal */
             $channelCheck = DB::table('channels')->where('channelID', '=', $user->userID)->first();
@@ -39,7 +50,18 @@
             @if(is_null($channelCheck))
             <!-- om användaren ej har kanal -->
 <a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
+               @else
+              <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
             @endif
+            @endif
+             @endif
+          </div>
+          <div class="row" id="uc-redigering">
+          <!-- kollar om user inloggad -->
+          @if(Auth::user())
+          <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
+            @if(Auth::user()->userID == $user->userID)
+            <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
             @endif
             @endif
              @if(Auth::user())
