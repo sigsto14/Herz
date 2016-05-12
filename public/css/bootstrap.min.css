@@ -1440,6 +1440,13 @@
 		content: "\ea43";
 	}
 
+	.icon-up:before {
+		content: "\ea41";
+	}
+
+	.icon-settings:before {
+		content: "\e994";
+	}
 	/* Button 7 */
 	.knp-7 {
 		background: #17aa56;
@@ -1971,7 +1978,7 @@
 	}
 
 	#playlist-right{
-		margin-left: 48%;
+		margin-left: 30%;
 	}
 
 	#spelinfobox {
@@ -2004,7 +2011,6 @@
 		color: #26a09f;
 		margin-left: 5%;
 	}
-
 
 	#box1{
 		margin-left: 5%;
@@ -2051,7 +2057,6 @@
 	.spellistbox select{
 		width: 150px;
 	}
-
 
 /* stäng feedback knapp*/
 	#close {
@@ -2188,7 +2193,6 @@
 		  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
 		  opacity: 1;
 	}
-
 
 /*Fav-knapparna*/
 

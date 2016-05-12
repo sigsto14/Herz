@@ -305,7 +305,7 @@ $loadMore = $favorites->render();
 
  <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1 id="uc-title">{{ $list1->listTitle}}</h1></a>
   <div id="spelinfobox">
-  <h4>Beskrivning av spellista</h4>
+  <h4>Beskrivning av spellistan</h4>
  <hr>
  <p>{{ $list1->listDescription }}</p>
  </div>
@@ -318,11 +318,17 @@ $loadMore = $favorites->render();
                       <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
                      </button>
                 </form>
+                   </li>
+                   <li>
+                    <button type="submit" tooltip="Stänga spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up"> id="play">
                    </li>                   
                     @if(Auth::check())
                     @if(Auth::user()->userID == $user->userID)                 
                     <li>
             <button type="button" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete">Like</button>              
+                   </li>
+                   <li>
+                  <button type="button" tooltip="Installningar" class="knp knp-7 knp-7e knp-icon-only icon-settings">Like</button>
                    </li>
                    @endif
                    @endif 
