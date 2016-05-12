@@ -64,9 +64,10 @@
             @if(Auth::user()->userID == $user->userID)
               <div class="row" id="uc-redigering">
             <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+                 </div>
+            @endif       
             @endif
-            </div>
-            @endif
+
              @if(Auth::user())
             <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
             <?php
