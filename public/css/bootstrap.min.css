@@ -1257,180 +1257,177 @@
 	    -moz-backface-visibility: hidden;
 		backface-visibility: hidden;
 	}
-/* Button 7e */
-.knp-7e:after {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	z-index: 1;
-	font-size: 20px;
-	line-height: 54px;
-	color: #ea515e;
-	-webkit-transform: scale(0);
-	-moz-transform: scale(0);
-	-ms-transform: scale(0);
-	transform: scale(0);
-	opacity: 0;
-	-webkit-transition: none;
-	-moz-transition: none;
-	transition: none;
-}
+	/* Button 7e */
+	.knp-7e:after {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: 1;
+		font-size: 20px;
+		line-height: 54px;
+		color: #ea515e;
+	    -webkit-transform: scale(0);
+	    -moz-transform: scale(0);
+	    -ms-transform: scale(0);
+		transform: scale(0);
+		opacity: 0;
+	    -webkit-transition: none;
+	    -moz-transition: none;
+		transition: none;
+	}
 
+	.knp:hover:before,
+	.knp:hover:after {
+  		visibility: hidden;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  		filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  		opacity: 0;
+  		pointer-events: none;
+	}
 
-.knp:hover:before,
-.knp:hover:after {
-  visibility: hidden;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  pointer-events: none;
-}
+	.knp:hover:before {
+		font-family: 'Museo';
+  		z-index: 2;
+  		cursor: pointer;
+  		position: absolute;
+  		bottom: 150%;
+  		left: 50%;
+  		margin-bottom: 5px;
+  		margin-left: -80px;
+  		margin-top: -20px;
+  		padding: 7px;
+ 		width: 160px;
+        -webkit-border-radius: 3px;
+         -moz-border-radius: 3px;
+  		border-radius: 3px;
+ 		background-color: #26a09f;
+  		background-color: hsla(0, 0%, 20%, 0.9);
+  		color: #fff;
+  		content: attr(tooltip);
+  		text-align: center;
+  		font-size: 14px;
+  		line-height: 1.2;
+	}
 
+	.knp:hover:after {
+  		position: absolute;
+  		bottom: 150%;
+  		left: 50%;
+  		margin-left: -5px;
+ 		width: 0;
+  		border-top: 5px solid #26a09f;
+  		border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  		border-right: 5px solid transparent;
+  		border-left: 5px solid transparent;
+  		content: " ";
+  		font-size: 0;
+  		line-height: 0;
+	}
 
-.knp:hover:before {
-font-family: 'Museo';
-  z-index: 2;
-  cursor: pointer;
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-bottom: 5px;
-  margin-left: -80px;
-  margin-top: -20px;
-  padding: 7px;
-  width: 160px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #26a09f;
-  background-color: hsla(0, 0%, 20%, 0.9);
-  color: #fff;
-  content: attr(tooltip);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.2;
-}
+	.knp:hover:hover:before,
+	.knp:hover:hover:after {
+  		visibility: visible;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  		filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  		opacity: 1;
+	}
 
+	.podmenudropdown-list select {
+    	padding:3px;
+    	margin: 0;
+        -webkit-border-radius:4px;
+        -moz-border-radius:4px;
+    	border-radius:4px;
+    	min-width: 110px;
+        -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+        -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+   		box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+   		background: #f8f8f8;
+    	color:#888;
+    	border:none;
+    	outline:none;
+    	display: inline-block;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+    	appearance:none;
+    	cursor:pointer;
+	}
 
-.knp:hover:after {
-  position: absolute;
-  bottom: 150%;
-  left: 50%;
-  margin-left: -5px;
-  width: 0;
-  border-top: 5px solid #26a09f;
-  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
-}
+	.podmenudropdown-list label {position:relative}
+	.podmenudropdown-list label:after {
+    	content:'<>';
+    	font:11px "Consolas", monospace;
+    	color:#aaa;
+        -webkit-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+        -ms-transform:rotate(90deg);
+    	transform:rotate(90deg);
+    	right:8px; top:2px;
+    	padding:0 0 2px;
+    	border-bottom:1px solid #ddd;
+    	position:absolute;
+    	pointer-events:none;
+	}
 
+	.podmenudropdown-list label:before {
+    	content:'';
+   		right:6px; top:0px;
+    	width:20px; height:20px;
+    	background:#f8f8f8;
+    	position:absolute;
+    	pointer-events:none;
+    	display:block;
+	}
 
-.knp:hover:hover:before,
-.knp:hover:hover:after {
-  visibility: visible;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
-}
+	.podmenudropdown-list{
+		margin-left: 15%;
+	}
 
+	.podmenudropdown-btn{
+		margin-left: 34%;
+	}
 
-.podmenudropdown-list select {
-    padding:3px;
-    margin: 0;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px;
-    min-width: 110px;
-    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-    background: #f8f8f8;
-    color:#888;
-    border:none;
-    outline:none;
-    display: inline-block;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    cursor:pointer;
-}
+	.podmenudropdown-btn2{
+		margin-left: -0.5%;
+		background-color: white;
+		height: 45px;
+		margin-top: 3%;
+	    border: 1px solid lightgrey;
+        -moz-border-radius: 6px 6px 6px 6px;
+        -webkit-border-radius: 6px 6px 6px 6px;
+   		border-radius: 6px 6px 6px 6px;
+	}
 
-.podmenudropdown-list label {position:relative}
-.podmenudropdown-list label:after {
-    content:'<>';
-    font:11px "Consolas", monospace;
-    color:#aaa;
-    -webkit-transform:rotate(90deg);
-    -moz-transform:rotate(90deg);
-    -ms-transform:rotate(90deg);
-    transform:rotate(90deg);
-    right:8px; top:2px;
-    padding:0 0 2px;
-    border-bottom:1px solid #ddd;
-    position:absolute;
-    pointer-events:none;
-}
-.podmenudropdown-list label:before {
-    content:'';
-    right:6px; top:0px;
-    width:20px; height:20px;
-    background:#f8f8f8;
-    position:absolute;
-    pointer-events:none;
-    display:block;
-}
+	.podmenudropdown-btn2 button{
+		margin-top: 3%;
+		margin-left: 6%;
+	}
 
-.podmenudropdown-list{
-	margin-left: 15%;
-}
+	#podmenudropdown{
+		background-color: #9fdecd;
+		height: 100px;
+	}
 
-.podmenudropdown-btn{
-	margin-left: 34%;
-}
+	#podmenudropdown2{
+		background-color: #9fdecd;
+	}
 
-.podmenudropdown-btn2{
-	margin-left: -0.5%;
-	background-color: white;
-	height: 45px;
-	margin-top: 3%;
-	    	border: 1px solid lightgrey;
-    -moz-border-radius: 6px 6px 6px 6px;
-    -webkit-border-radius: 6px 6px 6px 6px;
-    border-radius: 6px 6px 6px 6px;
-}
-.podmenudropdown-btn2 button{
-	margin-top: 3%;
-	margin-left: 6%;
-}
+	#podmenudropdown2 button{
+		margin-left: 34%;
+		margin-top: 4%;
+	}
 
-#podmenudropdown{
-	background-color: #9fdecd;
-	height: 100px;
-}
-
-#podmenudropdown2{
-	background-color: #9fdecd;
-}
-
-#podmenudropdown2 button{
-	margin-left: 34%;
-	margin-top: 4%;
-}
-
-#podmenudropdown2 input{
-	height: 100px;
-	border: 1px solid lightgrey;
-    -moz-border-radius: 6px 6px 6px 6px;
-    -webkit-border-radius: 6px 6px 6px 6px;
-    border-radius: 6px 6px 6px 6px;
-    margin-left: 4%;
-    width: 92%;   
-}
+	#podmenudropdown2 input{
+		height: 100px;
+		border: 1px solid lightgrey;
+        -moz-border-radius: 6px 6px 6px 6px;
+        -webkit-border-radius: 6px 6px 6px 6px;
+    	border-radius: 6px 6px 6px 6px;
+    	margin-left: 4%;
+    	width: 92%;   
+	}
 
 /* Index.blade */
  #accordion .panel {
