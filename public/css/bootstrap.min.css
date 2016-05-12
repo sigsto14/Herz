@@ -1796,18 +1796,8 @@
 	    margin-top: 5%;
 	}
 
-	#info li{
-		  list-style: none;
-		  display: inline;
-		  margin-left: 15%;
-		  font-family: 'Museo-b';
-		  color: #26a09f;
-		  font-size: 20px;
-	}
-
 	#colordrop{
 		background-color: #ddf1e5;
-
 	}
 
 	#pil:active{
@@ -1842,28 +1832,6 @@
 		margin-left: 5%;
 	}
 
-	#userbtn{
-		padding-top: 1.5%;
-		font-family: 'Museo';
-		font-size: 15px;
-		background-color: #9fdecd;
-		margin-left: 30%;
-		-moz-border-radius: 6px 6px 6px 6px;
-	    -webkit-border-radius: 6px 6px 6px 6px;
-	    border-radius: 6px 6px 6px 6px;
-	    width: 40%;
-	    height: 30px;
-	    text-align: center;
-	}
-	#userbtn:hover{
-		background-color: #b7e165;
-	}
-
-	#userbtn a{
-		color: #26a09f;
-		text-decoration: none;
-	}
-
 	#user-box h2{
 		text-align: center;	
 		font-family: 'Museo';
@@ -1877,24 +1845,46 @@
 	    margin-left: 14%;
 	}
 
-	#uc-redigering{
-		text-align: center;	
+	#uc-redigering {
+		border-top: 1px solid #ddf1e5;
+		margin-top: 30%;
+		background-color: #9fdecd;
+		height: 35px;
+	}
+
+	#ucli1{
+		margin-left: -10%;
+		padding-right: 2%;
+		padding-left: 1%;
+	}
+
+	#ucli2{
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+
+	#uc-redigering ul{
+		display: inline;
+		list-style: none;	
+	}
+
+	#uc-redigering li{
 		font-family: 'Museo';
+		text-align: center;
 		font-size: 20px;
 		color: #ddf1e5;
 		background-color: #9fdecd;
-		height: 40px;
 		padding-top: 5px;
-		margin-top: 37%;
-		border-top: 1px solid #ddf1e5;
+		display: inline-flex;
 	}
 
-	#uc-redigering:hover{
+	#uc-redigering li:hover{
 		background-color: #b7e165;
 	}
 
 	#uc-redigering a{
 		color: #26a09f;
+		text-decoration: none;
 	}
 
 	#user-box hr {

@@ -21,17 +21,9 @@
             <img src="{{ $user->profilePicture }}" style="width:180px;height:180px;"/>    
           </div>
            <hr>
-          <div class="row" id="info">
-          <ul>
-            <li>Kön:</li>
-            <li>Kvinna</li>
-          </ul>
+          <div class="row">
           </div>
-          <div class="row" id="info">
-              <ul>
-            <li>Ålder:</li>
-            <li>25</li>
-          </ul>
+          <div class="row" >
           </div>
           <div class="row" id="usinfobox">
           <h4>Information</h4>
@@ -39,36 +31,42 @@
           <p>Jag heter lkflökf fkldskflödsk lfkdlsökflöds lfkldsökflö</p>
           </div>
           <br>
+          <div class="row" id="usinfobox">
+          <h4>Vad har hänt</h4>
+          <hr>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          </div>
+          <br>
           @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
-            @if(Auth::user()->userID == $user->userID)
-          <div class="row" id="userbtn">
+          @if(Auth::user()->userID == $user->userID)
+         <div class="row" id="uc-redigering">   
+         <ul>
+            <li id="ucli1">
             <?php
             /* kod för att kolla om användaren har kanal */
             $channelCheck = DB::table('channels')->where('channelID', '=', $user->userID)->first();
             ?>
             
             @if(is_null($channelCheck))
-            <!-- om användaren ej har kanal -->
-<a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
-               @else
+            <!-- om användaren ej har kanal -->           
+              <a href="{{URL::route('channel.create', array('id' => $user->userID)) }}">Skapa kanal</a><br>
+              @else
               <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
+            @endif              
+            </li>        
+            <li id="ucli2">
+              <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
+            </li> 
+            <ul>       
+          </div>
+             @endif       
             @endif
-            </div>
-            @endif
-             @endif
-
-          <!-- kollar om user inloggad -->
-          @if(Auth::user())
-          <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
-            @if(Auth::user()->userID == $user->userID)
-              <div class="row" id="uc-redigering">
-            <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
-                 </div>
-            @endif       
-            @endif
-
-             @if(Auth::user())
+ @if(Auth::user())
             <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
             <?php
 $userID = Auth::user()->userID;
@@ -78,9 +76,9 @@ $userID = Auth::user()->userID;
             $channels = DB::table('subscribe')->join('channels', 'subscribe.channelID', '=', 'channels.channelID')->join('sounds', 'sounds.channelID', '=', 'channels.channelID')->groupBy('channels.channelID')->get();
             ?>
 
-
             @endif
-        </div>
+
+</div>
         <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>

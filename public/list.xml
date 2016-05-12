@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <music>
-<song url="http://localhost/Herz/public/sounds/Blommor 2.mp3">
-	<songTitle>Blommor 2</songTitle>
-    <songArtist>Blommor</songArtist>
-	</song>
-	</music>
+<song url="http://localhost/Herz/public/sounds/Blommor 1.mp3"/>
+
+</music>
