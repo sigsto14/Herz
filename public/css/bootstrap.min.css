@@ -1796,6 +1796,53 @@
 	    margin-top: 5%;
 	}
 
+	#info li{
+		  list-style: none;
+		  display: inline;
+	}
+
+	#usinfobox {
+		background-color: #9fdecd;
+		-moz-border-radius: 6px 6px 6px 6px;
+	    -webkit-border-radius: 6px 6px 6px 6px;
+	    border-radius: 6px 6px 6px 6px;
+	    width: 90%;
+	    margin-left: 5%;
+	}
+	#usinfobox hr{
+	    width: 90%;
+	    margin-left: 5%;
+	    margin-top: -3%;
+	}
+
+	#usinfobox h4{
+		font-family: 'Museo';
+		font-size: 20px;
+		color: #26a09f;
+		margin-left: 5%;
+	}
+
+	#usinfobox p{
+		font-family: 'Museo';
+		font-size: 15px;
+		color: #26a09f;
+		margin-left: 5%;
+	}
+
+	#userbtn{
+		font-family: 'Museo';
+		font-size: 15px;
+		background-color: #9fdecd;
+		margin-left: 30%;
+		-moz-border-radius: 6px 6px 6px 6px;
+	    -webkit-border-radius: 6px 6px 6px 6px;
+	    border-radius: 6px 6px 6px 6px;
+	    width: 40%;
+	    height: 30px;
+	    text-align: center;
+	}
+
+
 	#user-box h2{
 		text-align: center;	
 		font-family: 'Museo';
@@ -1876,11 +1923,12 @@
 		margin-left: 3%;
 	}
 
-	 .vertical-line2{
+	.vertical-line2{
 		position: absolute;
 		border-left: 1px solid #9fdecd;
 		height: 20px;
 	}
+
 
 /* spellist index*/
 	.spellistbox{

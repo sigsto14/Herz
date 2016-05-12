@@ -21,24 +21,25 @@
             <img src="{{ $user->profilePicture }}" style="width:180px;height:180px;"/>    
           </div>
            <hr>
-          <div class="row">
+          <div class="row" id="info">
           <ul>
             <li>Kön:</li>
             <li>Kvinna</li>
           </ul>
           </div>
-          <div class="row">
+          <div class="row" id="info">
               <ul>
             <li>Ålder:</li>
             <li>25</li>
           </ul>
           </div>
-          <div class="row">
-          <p>Information</p>
+          <div class="row" id="usinfobox">
+          <h4>Information</h4>
           <hr>
-          <p>Jag heter ...</p>
+          <p>Jag heter lkflökf fkldskflödsk lfkdlsökflöds lfkldsökflö</p>
           </div>
-          <div class="row">
+          <br>
+          <div class="row" id="userbtn">
            @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
