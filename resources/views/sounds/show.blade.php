@@ -245,8 +245,9 @@ else {
                 <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f;  margin-top: 6px; margin-left: 18%;">:000</span></p></td>
              
              @else
-
-                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f; margin-top: 6px; margin-left: 18%;">{{$favNr}}</span></p></td>
+             <div id="favNr">
+<input type="hidden" id="favNrG" value="{{ $favNr }}">
+                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f; margin-top: 6px; margin-left: 18%;" id="favRem">{{$favNr}}</span></p></td></div>
                 @endif
               </li>
               <!--  Favorit mätare slut -->            

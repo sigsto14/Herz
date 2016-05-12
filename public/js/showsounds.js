@@ -27,10 +27,14 @@ else if(data == 'added'){
 
  });
   });
- $('#favAdd').click(function()
+ $('#favAdd').click(function(e)
   {
+    e.preventDefault();
 var userID = $(this).next('#userID').val();
 var soundID = $('#soundID').val();
+
+
+
 $.ajax({
         type: 'POST',
         crossDomain: true,
@@ -39,15 +43,19 @@ $.ajax({
         dataType: 'text',
 
    success: function(data){ 
+   var favNr1 = $('#favNrG').val();
+var favNr2 = parseInt(favNr1);
 
 if(data == 'removed'){
+  var favNr = favNr2 - 1;
   $('#favAdd').removeClass('icon-heart-2');
   $('#favAdd').addClass('icon-heart');
-
+  $('#favRem').text(favNr);
 }
-else if(data == 'added'){
+else {
   $('#favAdd').removeClass('icon-heart');
   $('#favAdd').addClass('icon-heart-2');
+  $('#favNr').html(data);
 
 }
   },

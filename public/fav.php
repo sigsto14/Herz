@@ -41,7 +41,20 @@ else {
 	$sql = "INSERT INTO favorites (userID, soundID)
 VALUES ('{$userID}', '{$soundID}')";
 if (mysqli_query($conn, $sql)) {
-		echo 'added';
+	
+$favNrQ = <<<END
+SELECT * FROM favorites
+WHERE soundID = '{$soundID}'
+END;
+
+$favNrG = $mysqli->query($favNrQ);
+if($favNrG->num_rows > 0){
+	$favNrG2 = $favNrG->fetch_object();
+$favNr = mysqli_num_rows($favNrG);
+		echo '<input type="hidden" id="favNrG" value="'. $favNr . '">
+                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f; margin-top: 6px; margin-left: 18%;">' . $favNr . '</span></p></td>';
+
+}
  }
 }
 
