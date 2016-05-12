@@ -303,10 +303,10 @@ $loadMore = $favorites->render();
 @if($count > 0)
    <div role="tabpanel" class="tab-pane" id="list1">
 
-
- <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1>{{ $list1->listTitle}}</h1></a>
+ <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1 id="uc-title">{{ $list1->listTitle}}</h1></a>
  <h6>{{ $list1->listDescription }}</h6>
-  
+  <div class="playlistmenu">
+
                  
                     <form action="" method="put" name="play1" id="play">
                       <input type="hidden" name="listID" value="{{ $list1->listID }}" id="listID">
@@ -314,6 +314,7 @@ $loadMore = $favorites->render();
                         <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
                       </button>
                     </form> 
+   </div>                 
                                           <!-- en box som vi ska ladda in värden i senare -->
                     <div id="box1"></div>
                      @if(Auth::check())
@@ -350,7 +351,7 @@ $loadMore = $favorites->render();
    <div role="tabpanel" class="tab-pane" id="list2">
 
 
-  <a href="http://localhost/Herz/public/playlist/{{ $listID2 }}"> <h1>{{ $list2->listTitle}}</h1></a>
+  <a href="http://localhost/Herz/public/playlist/{{ $listID2 }}"> <h1 id="uc-title">{{ $list2->listTitle}}</h1></a>
      <h6>{{ $list2->listDescription }}</h6>
   <form action="" method="put" name="play2" id="play2">
                       <input type="hidden" name="listID2" value="{{ $list2->listID }}" id="listID2">
@@ -391,7 +392,7 @@ $loadMore = $favorites->render();
    <div role="tabpanel" class="tab-pane" id="list3">
 
   
-  <a href="http://localhost/Herz/public/playlist/{{ $listID3 }}">   <h1>{{ $list3->listTitle}}</h1></a>
+  <a href="http://localhost/Herz/public/playlist/{{ $listID3 }}"><h1 id="uc-title">{{ $list3->listTitle}}</h1></a>
     <h6>{{ $list3->listDescription }}</h6>
     <form action="" method="put" name="play3" id="play3">
                       <input type="hidden" name="listID3" value="{{ $list3->listID }}" id="listID3">
@@ -432,7 +433,7 @@ $loadMore = $favorites->render();
    <div role="tabpanel" class="tab-pane" id="list4">
 
  
-    <a href="http://localhost/Herz/public/playlist/{{ $listID4 }}"> <h1>{{$list4->listTitle}}</h1></a>
+    <a href="http://localhost/Herz/public/playlist/{{ $listID4 }}"><h1 id="uc-title">{{$list4->listTitle}}</h1></a>
    <h6>{{ $list4->listDescription }}</h6>
    <form action="" method="put" name="play4" id="play4">
                       <input type="hidden" name="listID4" value="{{ $list4->listID }}" id="listID4">
@@ -473,7 +474,7 @@ $loadMore = $favorites->render();
    <div role="tabpanel" class="tab-pane" id="list5">
 
 
-    <a href="http://localhost/Herz/public/playlist/{{ $listID5 }}"> <h1> {{ $list5->listTitle }}</h1></a>
+    <a href="http://localhost/Herz/public/playlist/{{ $listID5 }}"><h1 id="uc-title">{{ $list5->listTitle }}</h1></a>
 
    <h6>{{ $list5->listDescription }}</h6>
    <form action="" method="put" name="play5" id="play5">

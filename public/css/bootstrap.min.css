@@ -1909,6 +1909,37 @@
 			width: 100px;
 	}
 
+	.playlistmenu button{
+		background-color: #26a09f;
+		color: #9fdecd;
+		border-color: #26a09f;
+	}
+
+	.playlistmenu button:hover{
+		background-color: #b7e165;
+		border-color: #26a09f;
+		color: #26a09f;
+	}
+
+	.playlistmenu{
+		margin-left: -2%;
+		margin-top: 2%;
+		height: 50px;
+		width: 80%;
+		border-radius: 5px;  		
+  		background: #26a09f;
+  		background: -o-linear-gradient(top, #9edceb, #26a09f);
+  		background: -ms-linear-gradient(top, #9edceb, #26a09f);
+  		background: -webkit-linear-gradient(top, #9edceb, #26a09f);
+  		background: -moz-linear-gradient(top, #9edceb, #26a09f);
+  		background: linear-gradient(to bottom, #9edceb, #26a09f);
+  		box-shadow: inset 0 -3px 0 #1f97c7, inset 0 -3px 3px #1f9acc, inset 0 2px 2px #9ad7ef, inset 1px 0 2px #22a4d9, inset -1px 0 2px #22a4d9, 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px rgba(0, 0, 0, 0.05);
+	}
+
+
+
+	
+
 
 /* spellist index*/
 	.spellistbox{
