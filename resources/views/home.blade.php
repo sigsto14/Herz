@@ -35,7 +35,7 @@
 <!-- End WOWSlider.com BODY section -->
 </div>
 
-    <div class="fields" >
+    <div class="fields">
         <ul class="nav nav-tabs" role="tablist" id="homeFields">
             <li role="presentation" class="active"><a id="navA" href="#registrera" role="tab" data-toggle="tab">Registrering</a></li>
             <li role="presentation"><a href="#loggain" id="navA" role="tab" data-toggle="tab">Logga in</a></li>
@@ -103,7 +103,7 @@
   margin: 0;
   outline: 0;
   padding: 15px;
-  width: 100%;
+  width: 90%;
    margin-bottom: 30px;">Registrera dig</button>
                 </div>
             
@@ -136,7 +136,7 @@
   margin: 0;
   outline: 0;
   padding: 15px;
-  width: 100%;
+  width: 90%;
    margin-bottom: 30px;">Logga in</button>
             </div>
         </div>

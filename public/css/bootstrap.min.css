@@ -810,16 +810,6 @@
 
 /*Home Blade -första sida ej inloggad-*/
 
-	.register_field input{
-    	width: 100%;
-    	clear: both;	
-	}
-
-	.login_field input{
-    	width: 100%;
-    	clear: both;	
-	}
-
 	.fields {
 		float: right;
 		margin: auto;
@@ -828,45 +818,6 @@
 		padding: 0px 20px 20px 20px;
 		margin-bottom: 20px;
 		color: #000;
-	}
-
-	.submit_button {
-		width: 230px;
-		margin-top: 8px;
-		background-color: #26a09f;
-		border: 1px solid #596365;
-		color: #fff;
-		text-decoration: none;
-		font-size: 20px;
-		padding: 15px 32px;
-		border-radius: 2px;
-		transition: all 0.5s;
-  		cursor: pointer;
-	}
-
-	.submit_button span {
-  		cursor: pointer;
- 		display: inline-block;
-  		position: relative;
-  		transition: 0.5s;
-	}
-
-	.submit_button span:after {
- 		content: '»';
-  		position: absolute;
-  		opacity: 0;
-  		top: 0;
-  		right: -20px;
-  		transition: 0.5s;
-	}
-
-	.submit_button:hover span {
-  		padding-right: 25px;
-	}
-
-	.submit_button:hover span:after {
-  		opacity: 1;
-  		right: 0;
 	}
 
 	#homereg {
@@ -880,7 +831,7 @@
 	}
 
 	#wrapper {
-		width: 140%;
+		width: 141.5%;
 		height: 60%;
 		margin-left: -32%;
 		padding-top: 6%;
@@ -933,7 +884,7 @@
   		margin: 0;
   		outline: 0;
   		padding: 2%;
-  		width: 100%;
+  		width: 90%;
   		background-color: #e8eeef;
   		color: #8a97a0;
   		box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
