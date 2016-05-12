@@ -1809,6 +1809,10 @@
 		background-color: #ddf1e5;
 	}
 
+	#pil:active{
+		background-color: #ddf1e5;
+	}
+
 	#usinfobox {
 		background-color: #9fdecd;
 		-moz-border-radius: 6px 6px 6px 6px;
