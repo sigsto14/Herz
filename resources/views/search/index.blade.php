@@ -44,8 +44,8 @@ $userID = Auth::user()->userID;
   $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
   ?>
 @if($sound->status != 'privat' or $sub > 0)
+    @endif
 <div class="row" id="scroll">
-  @endif
 <div class="col-md-3" id="uc-box">  
      
     <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
@@ -62,11 +62,16 @@ $userID = Auth::user()->userID;
               </div>
   </div>
   </div>
+
   </div>
-    @endforeach
+
+  </div>
+          @endforeach
+
+
+
 @endif
-</div>
-</div>
+
 </div>
 
 <!-- box för kanaler -->
