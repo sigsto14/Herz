@@ -39,10 +39,10 @@
           <p>Jag heter lkflökf fkldskflödsk lfkdlsökflöds lfkldsökflö</p>
           </div>
           <br>
-          <div class="row" id="userbtn">
-           @if(Auth::user())
+          @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
+          <div class="row" id="userbtn">
             <?php
             /* kod för att kolla om användaren har kanal */
             $channelCheck = DB::table('channels')->where('channelID', '=', $user->userID)->first();
@@ -54,16 +54,18 @@
                @else
               <a href="{{URL::route('channel.show', array('id' => $user->userID)) }}">Kolla din Kanal</a><br> 
             @endif
+            </div>
             @endif
              @endif
-          </div>
-          <div class="row" id="uc-redigering">
+
           <!-- kollar om user inloggad -->
           @if(Auth::user())
           <!-- kolla om user inloggad stämmer överens om det id man är på (show-funktion från controller -->
             @if(Auth::user()->userID == $user->userID)
+              <div class="row" id="uc-redigering">
             <a href="{{URL::route('user.edit', array('id' => $user->userID)) }}">Ändra kontouppgifter</a><br>
             @endif
+            </div>
             @endif
              @if(Auth::user())
             <!-- sätter variabler att senare testa mot i loopar för att skapa rekommendationer -->
@@ -77,7 +79,6 @@ $userID = Auth::user()->userID;
 
 
             @endif
-          </div>
         </div>
         <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
