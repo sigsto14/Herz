@@ -22,12 +22,12 @@
 <!-- Namn på spellista -->
 <div>
     <label>Spellisttitel:</label>
-    <input type="text" name="title" data-toggle="tooltip" title="Skriv ett namn på din spellista">
+    <input type="text" name="listTitle" data-toggle="tooltip" title="Skriv ett namn på din spellista">
 </div>
 <!-- Beskrivning av spellista -->
 <div>
     <label>Spellistbeskrivning:</label>
-    <textarea name="description" rows="5" data-toggle="tooltip" title="Här kan du lägga till en beskrivning av din spellista"></textarea>
+    <textarea name="listDescription" rows="5" data-toggle="tooltip" title="Här kan du lägga till en beskrivning av din spellista"></textarea>
 </div>
 
 <button name="submit" type="submit" class="btn btn-default btn-md">
