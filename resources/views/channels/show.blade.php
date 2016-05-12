@@ -66,7 +66,7 @@ $state = 0;
           <div class="row">
           </div>
           <hr>
-          <div class="playlistmenu">
+          <div class="playlistmenu2">
                     <ul>
 
           <li>
@@ -86,7 +86,7 @@ $state = 0;
             </li>
             @endif
             @endif
-          <li id="playlist-right">
+          <li id="playlist-right2">
           <p>Prenumeranter:{{ $subscrNr }}</p> 
           </li>
           </ul>         
@@ -159,7 +159,7 @@ $uploaded= substr($sound->created_at, 0, 10);
           <div class="podtitledownbox">
               <div class="podfavicon">
                 <div class="vertical-line"></div>
-                <p>{{ $category->categoryname }}</p>
+                <p style="margin-left: 2%;">{{ $category->categoryname }}</p>
               </div>
               <div class="podchanneltitle">
               <p>{{ $uploaded }}</p>
