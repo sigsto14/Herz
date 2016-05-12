@@ -22,22 +22,22 @@
 {{-- formulär som även visar den data som är i databasen, för ändringar i users och channels tabeller--}}
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
 {!! csrf_field() !!}
-{!!     Form::label('username', 'Användarnamn:') !!}
-{!!     Form::text('username') !!}
-
-
-
-
-{!!     Form::label('email', 'Email:') !!}
-{!!     Form::text('email') !!}
-
-{!! Form::label('Profilbild') !!}<br>
-<img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>
-
-{!! Form::file('image', null) !!}
-
-
-
+<!-- Redigering av användarnamn -->
+<div>
+    <label>Användarnamn:</label>
+    <input type="text" name="username" data-toggle="tooltip" title="Ditt användarnamn får bestå av max 10 tecken">
+</div>
+<!-- Redigering av E-post adress -->
+<div>
+   <label>Email:</label>
+   <input type="email" name="email" data-toggle="tooltip" title="Du måste ange en giltig e-postadress">
+</div>
+<!-- Val av Profilbild -->
+<div>
+	<label>Profilbild:</label>
+	<img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>
+    <input type="file" name="image" accept="image/*" data-toggle="tooltip" title="Välj en bild som ska visas på din profil">
+</div>
 
 <input type="submit" class="btn" value="Uppdatera">
 
@@ -66,13 +66,21 @@
 <form action="http://localhost/Herz/public/user/resetPass" method="POST">
 {!! csrf_field() !!}
 <div id="newPass">
-<label>Nytt lösenord:</label><input type="password" id="newPass" name="newPass">
-
-{!!     Form::label('newPassConfirm', 'Upprepa Nytt Lösenord:') !!}
-{!!     Form::password('newPassConfirm') !!}
-
-{!!     Form::label('activeConfirm', 'Nuvarande Lösenord:') !!}
-{!!     Form::password('activeConfirm') !!}
+	<!-- Kod för nytt lösenord -->	
+	<div>
+		<label>Nytt lösenord:</label>
+		<input type="password" name="newPass" id="newPass" data-toggle="tooltip" title="Skriv in ditt nya lösenord, det måste innehålla minst 6 tecken">
+	</div>
+	<!-- Upprepa nytt lösenord -->
+	<div>
+		<label>Upprepa Nytt lösenord:</label>
+		<input type="password" name="newPassConfirm" id="newPass" data-toggle="tooltip" title="Upprepa ditt nya lösenord">
+	</div>
+	<!-- Nuvaranade lösenord -->
+	<div>
+		<label>Nuvarande Lösenord:</label>
+		<input type="password" name="activeConfirm" data-toggle="tooltip" title="Skriv in ditt nuvarande lösenord">
+	</div>
 <input type="submit" class="btn" value="Byt lösenord">
 </div>
 
@@ -107,7 +115,12 @@
 
 
 
-
+<!-- Script för tooltips -->
+<script>
+	$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 
 
 

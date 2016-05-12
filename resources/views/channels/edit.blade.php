@@ -19,10 +19,16 @@
 
     {!! csrf_field() !!}
 
-{!!     Form::label('channelname', 'Kanalnamn:') !!}
-{!!     Form::text('channelname') !!}
-{!!     Form::label('information', 'Information:') !!}
-{!!     Form::textarea('information') !!}
+    <!-- Kanalnamn -->
+    <div>
+        <label>Kanalnamn:</label>
+        <input type="text" name="channelname" data-toggle="tooltip" title="Välj ett namn för din kanal">
+    </div>
+    <!-- Information om kanal -->
+    <div>
+        <label>Information:</label>
+        <textarea name="information" rows="10" data-toggle="tooltip" title="Här kan du lägga till information om din kanal"></textarea>
+    </div>
 
 
 
@@ -69,5 +75,11 @@
 </div>
 </div>
 
+<!-- Script för tooltips -->
+<script>
+	$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 
 @stop

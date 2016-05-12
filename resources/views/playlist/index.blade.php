@@ -18,13 +18,21 @@
 <!-- gömt formulär för användarID till controller -->
         <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
 </div>
-{!! Form::label('Spellisttitel:') !!}
-{!! Form::text('listTitle') !!}<br>
-{!! Form::label('Spellistbeskrivning:') !!}
-{!! Form::text('listDescription') !!}<br>
+
+<!-- Namn på spellista -->
+<div>
+    <label>Spellisttitel:</label>
+    <input type="text" name="title" data-toggle="tooltip" title="Skriv ett namn på din spellista">
+</div>
+<!-- Beskrivning av spellista -->
+<div>
+    <label>Spellistbeskrivning:</label>
+    <textarea name="description" rows="5" data-toggle="tooltip" title="Här kan du lägga till en beskrivning av din spellista"></textarea>
+</div>
+
 <button name="submit" type="submit" class="btn btn-default btn-md">
               Lägg till spellista 
-              </button>
+</button>
 
 
 
@@ -136,6 +144,12 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 </div>
 </div>
 
+<!-- Script för tooltips -->
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 
 </body>
 @stop

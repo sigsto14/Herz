@@ -21,31 +21,31 @@
     </div>
    
 
-    <div>
-        <label>Användarnamn:</label>
-        <input type="text" name="username" value="{{ old('username') }}">
-    </div>
+       <div>
+           <label>Användarnamn:</label>
+           <input type="text" name="username" value="{{ old('username') }}" data-toggle="tooltip" title="Ditt användarnamn får bestå av max 10 tecken">
+       </div>
 
-    <div>
-        <label>Email:</label>
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+       <div>
+           <label>Email:</label>
+           <input type="email" name="email" value="{{ old('email') }}" data-toggle="tooltip" title="Du måste ange en giltig e-postadress">
+       </div>
 
 
-
- <div>
-        <label>Lösenord:</label>
-        <input type="password" name="password">
-    </div>
 
     <div>
-        <label>Bekräfta lösenordet:</label>
-        <input type="password" name="password_confirmation">
+           <label>Lösenord:</label>
+           <input type="password" name="password" data-toggle="tooltip" title="Ditt lösenord måste bestå av minst 6 tecken">
+       </div>
+
+       <div>
+           <label>Bekräfta lösenordet:</label>
+           <input type="password" name="password_confirmation"  data-toggle="tooltip" title="Bekräfta ditt lösenord">
 
 
 
 
-        <button type="submit" class="btn" style="  
+           <button type="submit" class="btn" style="  
   border: none;
   font-size: 16px;
   height: auto;
@@ -72,7 +72,12 @@
     {{ Session::get('message') }}
 @endif
 
-
+<!-- Script för tooltips -->
+<script>
+  $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 
 </div>
 </form>

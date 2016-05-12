@@ -78,25 +78,25 @@
    
                 <div>
                    <label>Användarnamn:</label>
-                   <input type="text" name="username">
+                   <input type="text" name="username" data-toggle="tooltip" title="Ditt användarnamn får bestå av max 10 tecken">
                 </div>
 
                 <div>
                    <label>Email:</label>
-                   <input type="email" name="email">
+                   <input type="email" name="email" data-toggle="tooltip" title="Du måste ange en giltig e-postadress">
                 </div>
 
                 <div>
                    <label>Lösenord:</label>
-                   <input type="password" name="password">
+                   <input type="password" name="password" data-toggle="tooltip" title="Ditt lösenord måste bestå av minst 6 tecken">
                 </div>
 
                 <div>
                    <label>Bekräfta lösenordet:</label>
-                   <input type="password" name="password_confirmation">
+                   <input type="password" name="password_confirmation" data-toggle="tooltip" title="Bekräfta ditt lösenord">
                 </div>
                   <div id="register_button" class="submit_button_style">
-                      <button type="submit" class="btn" style="  
+                      <button type="submit" class="btn" style="   
   border: none;
   font-size: 16px;
   height: auto;
@@ -119,17 +119,17 @@
              
                 <form action="http://localhost/Herz/public/auth/login" method="POST">
                 {!! csrf_field() !!}
-                    <div>
-                        <label>Email:</label>
-                        <input type="email" name="email" value="{{ old('email') }}">
-                    </div>
+                 <div>
+                     <label>Email:</label>
+                     <input type="email" name="email" value="{{ old('email') }}" data-toggle="tooltip" title="Skriv in den e-postadress du registrerade med">
+                 </div>
 
-                    <div>
-                        <label>Password:</label>
-                        <input type="password" name="password" id="password">
-                    </div>
-                        <div id="login_button" class="submit_button_style">
-                   <button type="submit" class="btn" style="  
+                 <div>
+                     <label>Lösenord:</label>
+                     <input type="password" name="password" id="password" data-toggle="tooltip" title="Skriv in ditt lösenord">
+                 </div>
+                     <div id="login_button" class="submit_button_style">
+                <button type="submit" class="btn" style="   
   border: none;
   font-size: 16px;
   height: auto;
@@ -145,6 +145,14 @@
         </div>
     </div>    
     </div>
-</div>  
+</div>
+
+<!-- Script för tooltips -->
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
+  
 </body>
 </html>

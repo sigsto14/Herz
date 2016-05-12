@@ -18,9 +18,9 @@
 		
 <form action="http://ideweb2.hh.se/~sigsto14/Test/contact.php" method="post" id="contact">
 			{!! csrf_field() !!}
-			<input type="text" name="namn" placeholder="Ditt namn"><br><br> 
-			<input type="text" name="email" placeholder="Din epost"><br><br>
-			<textarea rows="4" cols="50" name="msg" placeholder="Ditt meddelande"></textarea><br><br>
+			<input type="text" name="namn" placeholder="Ditt namn" data-toggle="tooltip" title="Skriv in ditt namn här"><br><br> 
+			<input type="text" name="email" placeholder="Din e-mail" data-toggle="tooltip" title="Skriv in din e-postadress här"><br><br>
+			<textarea rows="4" cols="50" name="msg" placeholder="Ditt meddelande"data-toggle="tooltip" title="Här skriver du ditt meddelande"></textarea><br><br>
 			<button type="submit" class="btn btn-default">Skicka</button>
 </form> 
 		</div>
@@ -52,6 +52,12 @@
 
 <!--FAQ-ruta slut-->
 
+<!-- Script för tooltips -->
+<script>
+	$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 	</div>
 	</div>
 </body>
