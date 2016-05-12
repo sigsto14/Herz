@@ -80,6 +80,7 @@ $listItems = array_values(explode(',',$playlist->soundIDs,13));
 @if($playlist->soundIDs == '')
 <p>Spellista tom</p>
 <!-- inget formulär om det är tomt i spellistan -->
+</div><br>
 @else
 <a id="editList" class="editList">
              Redigera spellista <span class="caret"></span>

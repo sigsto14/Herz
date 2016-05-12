@@ -28,17 +28,57 @@
           <div class="row" id="usinfobox">
           <h4>Information</h4>
           <hr>
-          <p>Jag heter lkflökf fkldskflödsk lfkdlsökflöds lfkldsökflö</p>
+          <p>{{ $user->information }}</p>
           </div>
           <br>
           <div class="row" id="usinfobox">
-          <h4>Vad har hänt</h4>
+          <h4>Senaste aktivitet</h4>
           <hr>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </ul>
+          <!-- gömt formulär för att kunna hämta aktiviteter med ajax -->
+          <form id="act" action="" method="post">
+          <!-- input användarnamn -->
+          <input type="hidden" id="username" value="{{ $user->username }}">
+          <!-- input användarid -->
+          <input type="hidden" id="userID" value="{{ $user->userID }}">
+          </form>
+          <ul id="activity">
+         </ul>
+         <!-- script för att hämta ut aktiviteter -->
+         <script>
+
+          $(document).ready(function()
+{
+  function actTrigger(){
+   
+$('#act').trigger('submit');
+
+}
+    $('#act').submit(function(e)
+  {
+
+    e.preventDefault();
+var userID = $('#userID').val();
+var username = $('#username').val();
+
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://localhost/Herz/public/activity.php',
+  data: { userID: userID, username: username},  
+        dataType: 'text',
+
+   success: function(data){ 
+    $('#activity').html(data);
+
+  },
+   error: function() {}
+
+
+ });
+  });
+actTrigger();
+    });
+         </script>
           </div>
           <br>
           @if(Auth::user())
@@ -82,6 +122,7 @@ $userID = Auth::user()->userID;
         <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>
+
             @if(Auth::check())
             @if(Auth::user()->userID == $user->userID)
 
@@ -167,9 +208,10 @@ $('#btnReview').click(function(){
 
 
 </script>
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
+            <div class="col-md-9" id="container2">
             <div class="tab-content">
              <div role="tabpanel" class="tab-pane active" class="tab-pane" id="chome">
+
   <h1 id="uc-title">Favoriter</h1>
   <br>
   <!-- Innehåll här (Favoriter) -->
@@ -181,8 +223,9 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
 $loadMore = $favorites->render();
 ?>
 
- <div class="col-md-5" id="uc-box">
- @foreach($favorites as $favorite)              
+
+ @foreach($favorites as $favorite)  
+           <div class="col-md-5" id="uc-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
@@ -199,14 +242,15 @@ $loadMore = $favorites->render();
               </div> 
 
 
-
+ </div> 
 
          @endforeach
         
-         </div>    
-         <?php echo $loadMore ?>
+           
+           <?php echo $loadMore ?>
 
   </div>
+
             <div role="tabpanel" class="tab-pane" id="fav">
              <!-- kollar om user inloggad -->
            @if(Auth::check())
@@ -286,74 +330,107 @@ $loadMore = $favorites->render();
   <h1 id="uc-title">Namnlös</h1>
   
 </div>
-<!-- kollar om resultaten finns o kör dom -->
+<!--Första spellistan om den finns-->
 @if($count > 0)
    <div role="tabpanel" class="tab-pane" id="list1">
-
+<!-- matar ut första spellistan -->
  <a href="http://localhost/Herz/public/playlist/{{ $listID1 }}"> <h1 id="uc-title">{{ $list1->listTitle}}</h1></a>
+ <!-- div för spellistacontent -->
   <div id="spelinfobox">
   <h4>Beskrivning av spellistan</h4>
  <hr>
  <p>{{ $list1->listDescription }}</p>
  </div>
+ <!-- spellistans meny -->
   <div class="playlistmenu">
   <ul>
-        <li>                 
+        <li>    
+        <!-- formulär vars innehåll skickas till php-fil för att generera xml -->             
             <form action="" method="put" name="play1" id="play">
                 <input type="hidden" name="listID" value="{{ $list1->listID }}" id="listID">
-                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down"> id="play">
+                <!-- knappen sätter igång js som laddar in listan -->
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down" id="playOpen">
                       <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
                      </button>
-                </form>
+                </form><!-- slut på formulär till xml -->
                    </li>
                    <li>
-                    <button type="submit" tooltip="Stänga spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up"> id="play">
-                   </li>                   
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose">
+                   </li>    
+                   <!-- om användare inloggad -->               
                     @if(Auth::check())
+                    <!-- om användare äger spellista -->
                     @if(Auth::user()->userID == $user->userID)                 
                     <li>
-            <button type="button" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete">Like</button>              
+                    <!-- formulär för att radera spellistan -->
+                     {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID1))) !!}
+                    {!! csrf_field() !!}
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
                    </li>
                    <li>
-                  <button type="button" tooltip="Installningar" class="knp knp-7 knp-7e knp-icon-only icon-settings">Like</button>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
                    </li>
-                   @endif
-                   @endif 
-
+                         @endif <!-- slut på auth check -->
+                   @endif <!-- slut på koll om användare äger spellista -->
                    <li>
-                  <button type="button" tooltip="Ta bort från spellista" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="knp knp-7 knp-7f knp-icon-only icon-minus">
-              </button>
-                   </li>
-                   <li>
-                    <button tooltip="Extern spellistan" class="knp knp-7 knp-7e knp-icon-only icon-bigger"></button>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open1();"></button>
                     </li>
                     <li id="playlist-right">
-             <!--  Anmälning knappen --> 
-                 
-                  <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                </button>
-            </li>
-                    <li>  
-              <button type="button" onclick="share();" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-              </li>                
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
+
+         
                    <ul> 
    </div>                 
-                                          <!-- en box som vi ska ladda in värden i senare -->
+<!-- en box som spellistan laddas in i senare -->
                     <div id="box1"></div>
 
 </div>
    <script>
+          function open1() {
+       //öppnar spellistan i externt fönster
+var player = window.open("http://localhost/Herz/public/playlistPlayer/mp3_player.swf", "_blank", "titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=350");
+// sätter igång formuläret som genom ajax skickar till php-fil som genererar xml-fil
+ $('#play').trigger('submit');
+}
+      function edit() {
+    //öppnar edit playlists i nytt fönster
+window.open("http://localhost/Herz/public/playlist", "_blank", "scrollbars=yes,width=615,height=800");
+}
+    // om man trycker på öppna spellistan knappen
+$('#playOpen').click(function(){
+//lägga till hidden clss o ta bort hidden från stängknappen
+$(this).toggleClass('hidden');
+$('#playClose').toggleClass('hidden');
+});
 
+$('#playClose').click(function(){
+  //stängknappen tar bort innehåll i boxen och ändrar från hidden
+$("#box1").html('');
+$(this).toggleClass('hidden');
+$('#playOpen').toggleClass('hidden');
+});
+//formuläret till xml
                       $('#play').submit(function(e){
                       e.preventDefault();
+                      //laddar in spelaren
                       $("#box1").load( "http://localhost/Herz/public/player.html" );
-     
+     //variabler som åker med till php fil för att identifiera spellista
                       var listID = $('#listID').val();
-                      var listID = $.trim(listID);
                       var userID = $('#userID').val();
-                      var userID = $.trim(userID); 
+
                       $.ajax({
+                        // php-filens url
                       url: 'http://localhost/Herz/public/list.php',
+                      //skickar med data
                       data: { listID: listID, userID: userID},
                       dataType: 'json',
                       success: function(data){            
@@ -361,172 +438,445 @@ $loadMore = $favorites->render();
                       });
                       });
                     </script>
-@endif
+@endif<!--slut på lista 1 -->
 
 @if($count > 1)
-   <div role="tabpanel" class="tab-pane" id="list2">
-
-
-  <a href="http://localhost/Herz/public/playlist/{{ $listID2 }}"> <h1 id="uc-title">{{ $list2->listTitle}}</h1></a>
-     <h6>{{ $list2->listDescription }}</h6>
-  <form action="" method="put" name="play2" id="play2">
-                      <input type="hidden" name="listID2" value="{{ $list2->listID }}" id="listID2">
-                      <button type="submit" class="btn btn-default btn-lg" id="play2">
-                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-                      </button>
-                    </form>  
-                    <div id="box2"></div>
-                    <!-- om man äger spellistan kan man radera den -->
+     <div role="tabpanel" class="tab-pane" id="list2">
+<!-- matar ut första spellistan -->
+ <a href="http://localhost/Herz/public/playlist/{{ $listID2 }}"> <h1 id="uc-title">{{ $list2->listTitle}}</h1></a>
+ <!-- div för spellistacontent -->
+  <div id="spelinfobox">
+  <h4>Beskrivning av spellistan</h4>
+ <hr>
+ <p>{{ $list2->listDescription }}</p>
+ </div>
+ <!-- spellistans meny -->
+  <div class="playlistmenu">
+  <ul>
+        <li>    
+        <!-- formulär vars innehåll skickas till php-fil för att generera xml -->             
+            <form action="" method="put" name="play2" id="play2">
+                <input type="hidden" name="listID2" value="{{ $list2->listID }}" id="listID2">
+                <!-- knappen sätter igång js som laddar in listan -->
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down" id="playOpen2">
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                     </button>
+                </form><!-- slut på formulär till xml -->
+                   </li>
+                   <li>
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose2">
+                   </li>    
+                   <!-- om användare inloggad -->               
                     @if(Auth::check())
-                    @if(Auth::user()->userID == $user->userID )
-                    {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID2))) !!}
+                    <!-- om användare äger spellista -->
+                    @if(Auth::user()->userID == $user->userID)                 
+                    <li>
+                    <!-- formulär för att radera spellistan -->
+                     {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID2))) !!}
                     {!! csrf_field() !!}
-                    {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-                    {!! Form::close() !!}
-                    @endif
-                    @endif
-                    <script>
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
+                   </li>
+                   <li>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
+                   </li>
+                         @endif <!-- slut på auth check -->
+                   @endif <!-- slut på koll om användare äger spellista -->
+                   <li>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open2();"></button>
+                    </li>
+                    <li id="playlist-right">
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
+
+         
+                   <ul> 
+   </div>                 
+<!-- en box som spellistan laddas in i senare -->
+                    <div id="box2"></div>
+
+</div>
+   <script>
+          function open2() {
+       //öppnar spellistan i externt fönster
+var player = window.open("http://localhost/Herz/public/playlistPlayer/mp3_player.swf", "_blank", "titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=350");
+// sätter igång formuläret som genom ajax skickar till php-fil som genererar xml-fil
+ $('#play2').trigger('submit');
+}
+      function edit() {
+    //öppnar edit playlists i nytt fönster
+window.open("http://localhost/Herz/public/playlist", "_blank", "scrollbars=yes,width=615,height=800");
+}
+    // om man trycker på öppna spellistan knappen
+$('#playOpen2').click(function(){
+//lägga till hidden clss o ta bort hidden från stängknappen
+$(this).toggleClass('hidden');
+$('#playClose2').toggleClass('hidden');
+});
+
+$('#playClose2').click(function(){
+  //stängknappen tar bort innehåll i boxen och ändrar från hidden
+$("#box2").html('');
+$(this).toggleClass('hidden');
+$('#playOpen2').toggleClass('hidden');
+});
+//formuläret till xml
                       $('#play2').submit(function(e){
                       e.preventDefault();
+                      //laddar in spelaren
                       $("#box2").load( "http://localhost/Herz/public/player.html" );
+     //variabler som åker med till php fil för att identifiera spellista
                       var listID2 = $('#listID2').val();
-                      var listID2 = $.trim(listID2);
                       var userID2 = $('#userID2').val();
-                      var userID2 = $.trim(userID2); 
+
                       $.ajax({
+                        // php-filens url
                       url: 'http://localhost/Herz/public/list2.php',
+                      //skickar med data
                       data: { listID2: listID2, userID2: userID2},
                       dataType: 'json',
                       success: function(data){            
                       }
                       });
                       });
-                    </script>                    
-</div>
-@endif
-@if($count > 2)
-   <div role="tabpanel" class="tab-pane" id="list3">
+                    </script>
+@endif<!-- slut lista 2 -->
 
-  
-  <a href="http://localhost/Herz/public/playlist/{{ $listID3 }}"><h1 id="uc-title">{{ $list3->listTitle}}</h1></a>
-    <h6>{{ $list3->listDescription }}</h6>
-    <form action="" method="put" name="play3" id="play3">
-                      <input type="hidden" name="listID3" value="{{ $list3->listID }}" id="listID3">
-                      <button type="submit" class="btn btn-default btn-lg" id="play3">
-                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-                      </button>
-                    </form>  
-                    <div id="box3"></div>
-                    <!-- om man äger spellistan kan man radera den -->
+<!-- start lista 3 -->
+@if($count > 2)
+     <div role="tabpanel" class="tab-pane" id="list3">
+<!-- matar ut första spellistan -->
+ <a href="http://localhost/Herz/public/playlist/{{ $listID3 }}"> <h1 id="uc-title">{{ $list3->listTitle}}</h1></a>
+ <!-- div för spellistacontent -->
+  <div id="spelinfobox">
+  <h4>Beskrivning av spellistan</h4>
+ <hr>
+ <p>{{ $list3->listDescription }}</p>
+ </div>
+ <!-- spellistans meny -->
+  <div class="playlistmenu">
+  <ul>
+        <li>    
+        <!-- formulär vars innehåll skickas till php-fil för att generera xml -->             
+            <form action="" method="put" name="play3" id="play3">
+                <input type="hidden" name="listID3" value="{{ $list3->listID }}" id="listID3">
+                <!-- knappen sätter igång js som laddar in listan -->
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down" id="playOpen3">
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                     </button>
+                </form><!-- slut på formulär till xml -->
+                   </li>
+                   <li>
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose3">
+                   </li>    
+                   <!-- om användare inloggad -->               
                     @if(Auth::check())
-                    @if(Auth::user()->userID == $user->userID )
-                    {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID3))) !!}
+                    <!-- om användare äger spellista -->
+                    @if(Auth::user()->userID == $user->userID)                 
+                    <li>
+                    <!-- formulär för att radera spellistan -->
+                     {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID3))) !!}
                     {!! csrf_field() !!}
-                    {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-                    {!! Form::close() !!}
-                    @endif
-                    @endif
-                    <script>
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
+                   </li>
+                   <li>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
+                   </li>
+                         @endif <!-- slut på auth check -->
+                   @endif <!-- slut på koll om användare äger spellista -->
+                   <li>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open3();"></button>
+                    </li>
+                    <li id="playlist-right">
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
+
+         
+                   <ul> 
+   </div>                 
+<!-- en box som spellistan laddas in i senare -->
+                    <div id="box3"></div>
+
+</div>
+   <script>
+          function open3() {
+       //öppnar spellistan i externt fönster
+var player = window.open("http://localhost/Herz/public/playlistPlayer/mp3_player.swf", "_blank", "titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=350");
+// sätter igång formuläret som genom ajax skickar till php-fil som genererar xml-fil
+ $('#play3').trigger('submit');
+}
+      function edit() {
+    //öppnar edit playlists i nytt fönster
+window.open("http://localhost/Herz/public/playlist", "_blank", "scrollbars=yes,width=615,height=800");
+}
+    // om man trycker på öppna spellistan knappen
+$('#playOpen3').click(function(){
+//lägga till hidden clss o ta bort hidden från stängknappen
+$(this).toggleClass('hidden');
+$('#playClose3').toggleClass('hidden');
+});
+
+$('#playClose3').click(function(){
+  //stängknappen tar bort innehåll i boxen och ändrar från hidden
+$("#box3").html('');
+$(this).toggleClass('hidden');
+$('#playOpen3').toggleClass('hidden');
+});
+//formuläret till xml
                       $('#play3').submit(function(e){
                       e.preventDefault();
+                      //laddar in spelaren
                       $("#box3").load( "http://localhost/Herz/public/player.html" );
+     //variabler som åker med till php fil för att identifiera spellista
                       var listID3 = $('#listID3').val();
-                      var listID3 = $.trim(listID3);
                       var userID3 = $('#userID3').val();
-                      var userID3 = $.trim(userID3); 
+
                       $.ajax({
+                        // php-filens url
                       url: 'http://localhost/Herz/public/list3.php',
+                      //skickar med data
                       data: { listID3: listID3, userID3: userID3},
                       dataType: 'json',
                       success: function(data){            
                       }
                       });
                       });
-                    </script>                    
-</div>
-@endif
-@if($count > 3)
-   <div role="tabpanel" class="tab-pane" id="list4">
+                    </script>
+@endif<!-- slut lista 3 -->
 
- 
-    <a href="http://localhost/Herz/public/playlist/{{ $listID4 }}"><h1 id="uc-title">{{$list4->listTitle}}</h1></a>
-   <h6>{{ $list4->listDescription }}</h6>
-   <form action="" method="put" name="play4" id="play4">
-                      <input type="hidden" name="listID4" value="{{ $list4->listID }}" id="listID4">
-                      <button type="submit" class="btn btn-default btn-lg" id="play4">
-                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-                      </button>
-                    </form>  
-                    <div id="box4"></div>
-                    <!-- om man äger spellistan kan man radera den -->
+<!-- start lista 4 -->
+@if($count > 3)
+        <div role="tabpanel" class="tab-pane" id="list4">
+<!-- matar ut första spellistan -->
+ <a href="http://localhost/Herz/public/playlist/{{ $listID4 }}"> <h1 id="uc-title">{{ $list4->listTitle}}</h1></a>
+ <!-- div för spellistacontent -->
+  <div id="spelinfobox">
+  <h4>Beskrivning av spellistan</h4>
+ <hr>
+ <p>{{ $list4->listDescription }}</p>
+ </div>
+ <!-- spellistans meny -->
+  <div class="playlistmenu">
+  <ul>
+        <li>    
+        <!-- formulär vars innehåll skickas till php-fil för att generera xml -->             
+            <form action="" method="put" name="play4" id="play4">
+                <input type="hidden" name="listID4" value="{{ $list4->listID }}" id="listID4">
+                <!-- knappen sätter igång js som laddar in listan -->
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down" id="playOpen4">
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                     </button>
+                </form><!-- slut på formulär till xml -->
+                   </li>
+                   <li>
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose4">
+                   </li>    
+                   <!-- om användare inloggad -->               
                     @if(Auth::check())
-                    @if(Auth::user()->userID == $user->userID )
-                    {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID4))) !!}
+                    <!-- om användare äger spellista -->
+                    @if(Auth::user()->userID == $user->userID)                 
+                    <li>
+                    <!-- formulär för att radera spellistan -->
+                     {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID4))) !!}
                     {!! csrf_field() !!}
-                    {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-                    {!! Form::close() !!}
-                    @endif
-                    @endif
-                    <script>
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
+                   </li>
+                   <li>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
+                   </li>
+                         @endif <!-- slut på auth check -->
+                   @endif <!-- slut på koll om användare äger spellista -->
+                   <li>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open4();"></button>
+                    </li>
+                    <li id="playlist-right">
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
+
+         
+                   <ul> 
+   </div>                 
+<!-- en box som spellistan laddas in i senare -->
+                    <div id="box4"></div>
+
+</div>
+   <script>
+          function open4() {
+       //öppnar spellistan i externt fönster
+var player = window.open("http://localhost/Herz/public/playlistPlayer/mp3_player.swf", "_blank", "titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=350");
+// sätter igång formuläret som genom ajax skickar till php-fil som genererar xml-fil
+ $('#play4').trigger('submit');
+}
+      function edit() {
+    //öppnar edit playlists i nytt fönster
+window.open("http://localhost/Herz/public/playlist", "_blank", "scrollbars=yes,width=615,height=800");
+}
+    // om man trycker på öppna spellistan knappen
+$('#playOpen4').click(function(){
+//lägga till hidden clss o ta bort hidden från stängknappen
+$(this).toggleClass('hidden');
+$('#playClose4').toggleClass('hidden');
+});
+
+$('#playClose4').click(function(){
+  //stängknappen tar bort innehåll i boxen och ändrar från hidden
+$("#box4").html('');
+$(this).toggleClass('hidden');
+$('#playOpen4').toggleClass('hidden');
+});
+//formuläret till xml
                       $('#play4').submit(function(e){
                       e.preventDefault();
+                      //laddar in spelaren
                       $("#box4").load( "http://localhost/Herz/public/player.html" );
+     //variabler som åker med till php fil för att identifiera spellista
                       var listID4 = $('#listID4').val();
-                      var listID4 = $.trim(listID4);
                       var userID4 = $('#userID4').val();
-                      var userID4 = $.trim(userID4); 
+
                       $.ajax({
+                        // php-filens url
                       url: 'http://localhost/Herz/public/list4.php',
+                      //skickar med data
                       data: { listID4: listID4, userID4: userID4},
                       dataType: 'json',
                       success: function(data){            
                       }
                       });
                       });
-                    </script>                    
-</div>
-@endif
+                    </script>
+@endif<!-- slut lista 4 -->
+
+<!-- start lista 5 -->
 @if($count > 4)
-   <div role="tabpanel" class="tab-pane" id="list5">
-
-
-    <a href="http://localhost/Herz/public/playlist/{{ $listID5 }}"><h1 id="uc-title">{{ $list5->listTitle }}</h1></a>
-
-   <h6>{{ $list5->listDescription }}</h6>
-   <form action="" method="put" name="play5" id="play5">
-                      <input type="hidden" name="listID5" value="{{ $list5->listID }}" id="listID5">
-                      <button type="submit" class="btn btn-default btn-lg" id="play5">
-                        <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
-                      </button>
-                    </form>  
-                    <div id="box5"></div>
-                    <!-- om man äger spellistan kan man radera den -->
+       <div role="tabpanel" class="tab-pane" id="list5">
+<!-- matar ut första spellistan -->
+ <a href="http://localhost/Herz/public/playlist/{{ $listID5 }}"> <h1 id="uc-title">{{ $list5->listTitle}}</h1></a>
+ <!-- div för spellistacontent -->
+  <div id="spelinfobox">
+  <h4>Beskrivning av spellistan</h4>
+ <hr>
+ <p>{{ $list5->listDescription }}</p>
+ </div>
+ <!-- spellistans meny -->
+  <div class="playlistmenu">
+  <ul>
+        <li>    
+        <!-- formulär vars innehåll skickas till php-fil för att generera xml -->             
+            <form action="" method="put" name="play5" id="play5">
+                <input type="hidden" name="listID5" value="{{ $list5->listID }}" id="listID5">
+                <!-- knappen sätter igång js som laddar in listan -->
+                  <button type="submit" tooltip="Öppna spellistan" class="knp knp-7 knp-7e knp-icon-only icon-down" id="playOpen5">
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                     </button>
+                </form><!-- slut på formulär till xml -->
+                   </li>
+                   <li>
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose3">
+                   </li>    
+                   <!-- om användare inloggad -->               
                     @if(Auth::check())
-                    @if(Auth::user()->userID == $user->userID )
-                    {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID5))) !!}
+                    <!-- om användare äger spellista -->
+                    @if(Auth::user()->userID == $user->userID)                 
+                    <li>
+                    <!-- formulär för att radera spellistan -->
+                     {!!   Form::open(array('method' => 'DELETE', 'route' => array('playlist.destroy', $listID5))) !!}
                     {!! csrf_field() !!}
-                    {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort spellistan?");' )) !!}
-                    {!! Form::close() !!}
-                    @endif
-                    @endif
-                    <script>
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
+                   </li>
+                   <li>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
+                   </li>
+                         @endif <!-- slut på auth check -->
+                   @endif <!-- slut på koll om användare äger spellista -->
+                   <li>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open5();"></button>
+                    </li>
+                    <li id="playlist-right">
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
+
+         
+                   <ul> 
+   </div>                 
+<!-- en box som spellistan laddas in i senare -->
+                    <div id="box5"></div>
+
+</div>
+   <script>
+          function open5() {
+       //öppnar spellistan i externt fönster
+var player = window.open("http://localhost/Herz/public/playlistPlayer/mp3_player.swf", "_blank", "titlebar=no,toolbar=yes,scrollbars=yes,resizable=yes,width=600,height=350");
+// sätter igång formuläret som genom ajax skickar till php-fil som genererar xml-fil
+ $('#play5').trigger('submit');
+}
+      function edit() {
+    //öppnar edit playlists i nytt fönster
+window.open("http://localhost/Herz/public/playlist", "_blank", "scrollbars=yes,width=615,height=800");
+}
+    // om man trycker på öppna spellistan knappen
+$('#playOpen5').click(function(){
+//lägga till hidden clss o ta bort hidden från stängknappen
+$(this).toggleClass('hidden');
+$('#playClose5').toggleClass('hidden');
+});
+
+$('#playClose5').click(function(){
+  //stängknappen tar bort innehåll i boxen och ändrar från hidden
+$("#box5").html('');
+$(this).toggleClass('hidden');
+$('#playOpen5').toggleClass('hidden');
+});
+//formuläret till xml
                       $('#play5').submit(function(e){
                       e.preventDefault();
+                      //laddar in spelaren
                       $("#box5").load( "http://localhost/Herz/public/player.html" );
+     //variabler som åker med till php fil för att identifiera spellista
                       var listID5 = $('#listID5').val();
-                      var listID5 = $.trim(listID5);
                       var userID5 = $('#userID5').val();
-                      var userID5 = $.trim(userID5); 
+
                       $.ajax({
+                        // php-filens url
                       url: 'http://localhost/Herz/public/list5.php',
+                      //skickar med data
                       data: { listID5: listID5, userID5: userID5},
                       dataType: 'json',
                       success: function(data){            
                       }
                       });
                       });
-                    </script>                    
-</div>
+                    </script>
 @endif
 
   </div>
