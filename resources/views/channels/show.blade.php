@@ -66,53 +66,41 @@ $state = 0;
           <div class="row">
           </div>
           <hr>
-          <div class="row">
-          <p>Prenumeranter:{{ $subscrNr }}</p>             
+          <div class="playlistmenu">
+                    <ul>
+
+          <li>
+           <!--  prenumerera knapp --> 
+            @if(Auth::check())
+            <button type="button" id="pren" tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
+            @else 
+                  <button type="button" id="pren" tooltip="Sluta prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button>
+                  @endif
+           <input type="hidden" name="userID" id="userID" value="{{ $userID }}" >
+              <input type="hidden" name="channelID" id="channelID" value="{{ $channelID }}" >
+          </li>
+          @if(Auth::user())
+          @if(Auth::user()->userID == $user->userID)
+           <li>
+            <button type="submit" tooltip="Redigera kanal" class="knp knp-7 knp-7e knp-icon-only icon-settings" href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Like</button>
+            </li>
+            @endif
+            @endif
+          <li id="playlist-right">
+          <p>Prenumeranter:{{ $subscrNr }}</p> 
+          </li>
+          </ul>         
           </div>
-          <div class="row" id="uc-redigering"> 
-
-<!-- kollar om inlogad -->
-@if(Auth::user())
-<!-- kollar om man är på sin egen sida innehåll om man är på sin egen kanal -->
-@if(Auth::user()->userID == $channel->channelID)
-<!-- om man ej är på egen kanal -->
-@else
-<!-- vy för icke prenumerant med formulär så den kan prenumerera -->
-@if($state == 0)
-
-{!! Form::open(array('route' => 'subscribe.store')) !!}
-{!! csrf_field() !!}
-<div>
-        <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
-</div>
-<div>
-        <input type="hidden" name="channelID" value="{{ $channel->channelID }}">
-</div>
-        <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"  id="heart"></a><p> Prenumerera </p></span>
-        </button>
-{!! Form::close() !!}
-<!-- vy för prenumerant så den kan avprenumerera -->
-@else
-{!! Form::open(array('method' => 'DELETE', 'route' => array('subscribe.destroy', $channel->channelID)))  !!}
- {!! csrf_field() !!}
-         <button name="submit" type="submit" class="btn btn-default btn-lg" id="fav-knapp">
-              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"id="heart"></a><p> Sluta prenumerera</p></span>
-         </button>
-{!! Form::close() !!}</td>
-@endif<!-- slut på koll om prenumerant -->
-@endif<!-- slut på koll om state -->
-
-
-
-
-<!-- ifall man är på sin egen sida ska man få länk till att redigera den -->
-@if(Auth::user()->userID == $user->userID)
-<a href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Redigera kanal</a><br>
-@endif<!-- slut på komm om man är på egen sida -->
-@endif<!-- slut på auth check -->
-<!-- slut på prenumerationsdel (till vänster på sidan) -->
-         </div>
+          <br>
+          <div class="row" id="usinfobox">
+          <h4>Vad har hänt</h4>
+          <hr>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+          </div>
         </div>
          <!-- Andra lådan, här fins podar -->
         <div class="col-lg-8"  id="uc-tabus">        
