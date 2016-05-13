@@ -84,6 +84,7 @@ Inga kanaler matchar din sökning
 @else
 
     @foreach($channels as $channel)
+    <div class="searchresult">
 
 <?php
 
@@ -94,19 +95,22 @@ $soundCount = DB::table('sounds')->where('channelID', '=', $channel->channelID)-
 ?>
 @if(is_null($sound))
 @else
-   <a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}"><h1>{{ $channel->channelname }}</h1></a>
+<div class="sen1">
+   <a href="http://localhost/Herz/public/channel/{{ $channel->channelID }}"><h3>{{ $channel->channelname }}</h3></a>
   
 
 
 <p>Kanal skapad {{ $channel->created_at }}<br>
-Antal uppladdningar: {{ $soundCount }}<br>
-<h3>Senaste:</h3><br>
-     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><image src="{{ $sound->podpicture }}" width="20px" height="auto"></image><h4>{{ $sound->title}}</h4></a>
+Antal uppladdningar: {{ $soundCount }}</p><br>
+</div>
+<div class="sen2">
+<h5>Senaste uppladdning:</h5>
+     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><image src="{{ $sound->podpicture }}" width="50px" height="auto"></image><h4>{{ $sound->title}}</h4></a>
 
 
-</p>
+</div>
   @endif
-
+</div>
     @endforeach
   
  @endif   
@@ -133,6 +137,7 @@ Inga användare matchar din sökning
    <h6>Medlem sedan: {{ $user->created_at }}</h6>
    </div>
 </div>
+<br>
 <br>
 @endforeach
 

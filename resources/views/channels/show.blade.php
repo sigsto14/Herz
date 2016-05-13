@@ -8,38 +8,36 @@ $subscrNr = DB::table('subscribe')->where('channelID', '=', $channel->channelID)
 //variabel av aktulle kanals id //channelvariabel kommer från ChannelController show
 $channelID = $channel->channelID;
 //hämtar kanalens klipp 
+$soundsCheck = DB::table('sounds')->where('channelID', '=', $channelID)->first();  
 $sounds = DB::table('sounds')->where('channelID', '=', $channelID)->orderBy('sounds.created_at', 'desc')->get();  
 //om användare inloggad userID variabel.
 if(Auth::check()){  
 //variabel av inloggad användare
 $userID = Auth::user()->userID;
 
-}
+
 //kopplingssträng til ldtabas för att kunna jobba mot den med php
 $mysqli = new mysqli("localhost","root","","herz");
- //php-kod för att kolla om det redan är prenumeration. Det fungerar ej med eloquent så vanlig mysql/php löser problemet 
-$query = <<<END
+
+//kollar om användaren prenumererar på kanalen eller ej
+$prenCheckQ = <<<END
 SELECT * FROM subscribe
 WHERE userID = '{$userID}'
 AND channelID = '{$channelID}'
 END;
-//sätter states beroende på resultat
-$res = $mysqli->query($query);
-//state 1 är besökare prenumerant
-if($res->num_rows > 0){
-  $state = 1;
+$prenCheckG = $mysqli->query($prenCheckQ);
+if($prenCheckG->num_rows >0){
+  $pren = 'true';
 }
 else {
-//state 0 är besökare ej prenumerant
-$state = 0;
+  $pren = 'false';
 }
 
+
+}
 
 
 ?> 
-
-<!DOCTYPE HTML>
-
 <title>{{ $channel->channelname }}</title>
 <body>
 @yield('content')
@@ -48,7 +46,7 @@ $state = 0;
     <div class="col-md-12" id="container">
     <!-- Kanal header --> 
         <div class="channel_header">
-        <img src="http://localhost/Herz/public/images/channel/default.png">
+        <img src="http://ideweb2.hh.se/~sigsto14/Herz/public/images/channel/default.png">
         </div>
         <!-- Första låda, här finns profil --> 
         <div class="col-lg-4" id="user-box">
@@ -69,40 +67,51 @@ $state = 0;
           <div class="playlistmenu2">
                     <ul>
 
-          <li>
-           <!--  prenumerera knapp --> 
-            @if(Auth::check())
-            <button type="button" id="pren" tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
-            @else 
-                  <button type="button" id="pren" tooltip="Sluta prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button>
-                  @endif
-           <input type="hidden" name="userID" id="userID" value="{{ $userID }}" >
-              <input type="hidden" name="channelID" id="channelID" value="{{ $channelID }}" >
-          </li>
-          @if(Auth::user())
-          @if(Auth::user()->userID == $user->userID)
+   <li>       
+@if(Auth::check())<!-- om användare inloggad -->
+  @if(Auth::user()->userID == $channel->channelID)
            <li>
-            <button type="submit" tooltip="Redigera kanal" class="knp knp-7 knp-7e knp-icon-only icon-settings" href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Like</button>
+            <a href="http://ideweb2.hh.se/~sigsto14/Herz/public/index.php/channel/{{ $channel->channelID }}/edit"><button type="submit" tooltip="Redigera kanal" class="knp knp-7 knp-7e knp-icon-only icon-settings" href="{{URL::route('channel.edit', array('id' => $user->userID)) }}">Like</button></a>
             </li>
-            @endif
-            @endif
-          <li id="playlist-right2">
-          <p>Prenumeranter:{{ $subscrNr }}</p> 
+            @else
+               @if($pren == 'false')<!-- om ej prenumererar -->
+            <button type="button" id="pren" tooltip="Prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2">Like</button>
+            @elseif($pren == 'true') <!-- om prenumererar -->
+                  <button type="button" id="pren" tooltip="Sluta prenumerera" class="knp knp-7 knp-7e knp-icon-only icon-eye2b">Like</button>
+                  @else 
+                  @endif
+                    <input type="hidden" name="userID" id="userID" value="{{ $userID }}" >
+              <input type="hidden" name="channelID" id="channelID" value="{{ $channelID }}" >
+  
+                  
+
+        
+            @endif<!-- slut koll om man äger kanal -->
+
+
+
+            @endif<!-- slut auth check -->
+</li>
+   <li id="playlist-right2" class="linkHover" tooltip="{{ $channel->channelname }} har {{ $subscrNr }} prenumeranter">
+          <p class="icon-eye2 " style="font-family: 'Museo'; color: #26a09f;" >: {{ $subscrNr }}</p> 
           </li>
           </ul>         
           </div>
           <br>
-          <div class="row" id="usinfobox">
-          <h4>Vad har hänt</h4>
+    <form id="act" action="" method="post">
+          <!-- input användarnamn -->
+          <input type="hidden" id="channelID" value="{{ $channel->channelID }}">
+          
+          </form>
+  <div class="row" id="usinfobox">
+          <h4>Senaste aktivitet</h4>
           <hr>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </ul>
+          <ul id="activity">
+         </ul>
           </div>
         </div>
-         <!-- Andra lådan, här fins podar -->
+
+          <!-- Andra lådan, här fins podar -->
         <div class="col-lg-8"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">{{ $channel->channelname }}</a></li>
@@ -111,15 +120,21 @@ $state = 0;
             <li role="presentation"><a href="#add" role="tab" data-toggle="tab">+</a></li>
           </ul>
 
+
           <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id="container2">
             <div class="tab-content">
             <div role="tabpanel" class="tab-pane active" id="chome">
 <!-- loop för alla klipp -->
+
+<!-- loop för alla klipp -->
+@if(is_null($soundsCheck))
+@else
 @foreach($sounds as $sound)
-@if(Auth::check())
+
         <?php
 //gör variabel av var enskilt soundID
 $soundID = $sound->soundID;
+if(Auth::check()){
 //query för att inloggad användares favoriter, med soundIDt
 $query = <<<END
 SELECT * FROM favorites
@@ -129,14 +144,14 @@ END;
 //sätter states för att avgöra om det är favorit eller ej
 $res = $mysqli->query($query);
 if($res->num_rows > 0){
-	//klippet är favorit
+  //klippet är favorit
   $state = 2;
 }
 else {
-	//klippet är ej favorit
+  //klippet är ej favorit
 $state = 3;
 }
-
+}
 //hämtar ut kategorier
 $category = DB::table('category')->where('categoryID', '=', $sound->categoryID)->first();
 /* hämtar ut tiden klippet laddades upp */  
@@ -144,17 +159,13 @@ $uploaded= substr($sound->created_at, 0, 10);
 ?>
 <!-- ^state 2 om det är favorit och state 3 om ej -->
 
-@endif
-   <!-- php kod för att kolla om användare e prenumerant på aktuell kanal -->
-
-<!-- om det ej är privat eller man subbar -->
 @if($sound->status != 'privat' or $state == 0 or $channel->channelID == $userID)
 <!-- visar upp alla ljud -->
           <div class="col-md-5" id="uc-box">
-           <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}">
+           <a href="http://ideweb2.hh.se/~sigsto14/Herz/public/index.php/sound/{{ $sound->soundID }}">
            <img src=" {{ $sound->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
             <div class="podtitle-box">
-            <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title }}</h4> 
+            <a href="http://ideweb2.hh.se/~sigsto14/Herz/public/index.php/sound/{{ $sound->soundID }}"><h4>{{ $sound->title }}</h4> 
           </a>
           <div class="podtitledownbox">
               <div class="podfavicon">
@@ -203,6 +214,7 @@ $uploaded= substr($sound->created_at, 0, 10);
 @endif<!-- slut på om man inte är inloggad användare -->
 @endif<!--slut på state-checj -->
 <!-- slut på favoriter -->
+
 <!-- kollar om det är den inloggade användarens kanal och då kan användaren ta bort ljudklipp -->
 @if(Auth::user()->userID == $user->userID)
 
@@ -216,10 +228,8 @@ $uploaded= substr($sound->created_at, 0, 10);
 
 @endif<!-- slut på auth check -->
 
-@endforeach<!--slut på sounds loop -->
-
-
-  </div>
+@endforeach
+ </div>
 
   <div role="tabpanel" class="tab-pane" id="fav">
   <h1 id="uc-title">Serier</h1>
@@ -248,10 +258,96 @@ $uploaded= substr($sound->created_at, 0, 10);
           </div>
 <!-- /container -->
    
-			<!--TADAAA!!-->
-			
+      <!--TADAAA!!-->
+      
 
 
 
 </body>
+@endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+            $(document).ready(function()
+{
+
+    $('#pren').click(function()
+  {
+
+var userID = $(this).next('#userID').val();
+var channelID = $('#channelID').val();
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://ideweb2.hh.se/~sigsto14/Herz/public/pren.php',
+  data: { userID: userID, channelID: channelID},  
+        dataType: 'text',
+
+   success: function(data){ 
+if(data == 'removed'){
+  $('#pren').removeClass('icon-eye2b');
+  $('#pren').addClass('icon-eye2');
+}
+else if(data == 'added'){
+  $('#pren').removeClass('icon-eye2');
+  $('#pren').addClass('icon-eye2b');
+}
+  },
+   error: function() {}
+
+
+ });
+  });
+      });
+
+
+             $(document).ready(function()
+{
+  function actTrigger(){
+   
+$('#act').trigger('submit');
+
+}
+    $('#act').submit(function(e)
+  {
+
+    e.preventDefault();
+var channelID = $('#channelID').val();
+
+$.ajax({
+        type: 'POST',
+        crossDomain: true,
+        url: 'http://ideweb2.hh.se/~sigsto14/Herz/public/activityC.php',
+  data: { channelID: channelID},  
+        dataType: 'text',
+
+   success: function(data){ 
+    $('#activity').html(data);
+
+  },
+   error: function() {}
+
+
+ });
+  });
+actTrigger();
+    });
+    </script>
 @stop

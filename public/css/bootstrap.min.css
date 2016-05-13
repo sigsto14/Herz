@@ -2377,6 +2377,41 @@
 	padding-top: 2px;
 	padding-bottom: 2px;
 }
+.sen1{
+	margin-left: 5%;
+	padding-top: 1px;
+}
+
+.sen1 h3, .sen1 p{
+	font-family: 'Museo';
+	padding-bottom: 1px;
+}
+
+.sen2 h5, .sen2 h4{
+	font-family: 'Museo';
+	padding-left: 1%;
+}
+
+.sen2{
+	margin-left: 30%;
+	margin-top: -12%;
+	border-left: 1px solid #26a09f;
+}
+
+.sen2 img{
+			background-color: #9fdecd;
+    		border: 3px solid #b6e8de;
+           -moz-border-radius: 6px 6px 6px 6px;
+           -webkit-border-radius: 6px 6px 6px 6px;
+    		border-radius: 6px 6px 6px 6px;
+    		margin-left: 1%;
+		}
+
+.sen2 img:hover{
+    		border: 3px solid #b7e165;
+            -moz-border-radius: 6px 6px 6px 6px;
+            -webkit-border-radius: 6px 6px 6px 6px;
+    		}
 
 .simg img{
 			background-color: #9fdecd;
