@@ -128,6 +128,13 @@ else {
 
 <!-- loop för alla klipp -->
 @if(is_null($soundsCheck))
+<h3>Här finns inga poddar</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @else
 @foreach($sounds as $sound)
 
