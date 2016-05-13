@@ -137,8 +137,7 @@ Inga användare matchar din sökning
    <h6>Medlem sedan: {{ $user->created_at }}</h6>
    </div>
 </div>
-<br>
-<br>
+
 @endforeach
 
   
