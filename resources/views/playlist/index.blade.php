@@ -100,10 +100,13 @@ Beskrivning:<input type="textarea" name="listDescription" placeholder="{{ $playl
 
 <!-- formulär för att ta bort klipp ur spellista -->
 <h5> Ta bort klipp ur spellista </h5>
+
 <form action="http://localhost/Herz/public/playlist/taBort" method="post" accept-charset="UTF-8">
  {!! csrf_field() !!}
- <input type="hidden" name="listID" value="{{ $playlist->listID }}">
-<select name="soundID">
+ <input  type="hidden" name="listID" value="{{ $playlist->listID }}">
+  <div class="slist"> 
+  <label>
+<select  name="soundID">
 @foreach($listItems as $listItem)
 <?php
 $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
@@ -116,6 +119,7 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 @endforeach
 @endforeach
 </select>
+</div>
 <form>
 <br>
 {!! Form::submit('X', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Säker på att du vill ta bort klippet ur spellistan?");' )) !!}
