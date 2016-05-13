@@ -107,7 +107,7 @@
 		}
 
 		#darkerbox{
-			background-color: #cee5d0 ;
+			background-color: #cee5d0 ;			
 		}
 
 	/*mini-container och utssende på alla create/edit.blade +formulär sida   */
@@ -1176,6 +1176,7 @@
 		background-color: #cee5d0;
 		left: 10%;
 		width: 45%;
+		min-height: 660px;
 	}
 
 	.addcomment-box{
