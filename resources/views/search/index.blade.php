@@ -121,13 +121,16 @@ $users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take
 @if (count($users) === 0 || $query == '')
 Inga användare matchar din sökning
 @else
-@foreach($users as $user)
 <h2>Sökresultat</h2>
+
+@foreach($users as $user)
+<div class="searchresult">
    <a href="http://localhost/Herz/public/user/{{ $user->userID }}"><img src="{{ $user->profilePicture }}" width="30px" height="auto"></a><a href="http://localhost/Herz/public/user/{{ $user->userID }}"><h4>{{ $user->username }}</h4></a>
    <h6>Medlem sedan: {{ $user->created_at }}</h6>
-
+</div>
 @endforeach
 
+  
   
     
 @endif

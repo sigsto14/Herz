@@ -3,7 +3,7 @@
 @section('footer')
 <!DOCTYPE HTML>
   <div class="container">
-  <div class="col-md-12" id="container">
+  <div class="col-md-12" id="container4">
 
  @if(Auth::user())
 <!-- gör lite php-kod för att hämta ut rätt info -->
@@ -21,7 +21,7 @@ $subscribes = DB::table('subscribe')->where('subscribe.userID', '=', $userID)->j
 <br>
    <h1 id="uc-title">{{ Auth::user()->username }}'s prenumerationer</h1>
    <!-- lägger ut resultaten en och en -->
-   <div class="row" id="scroll">
+   <div class="row">
     @foreach($subscribes as $subscribe)
     <!-- gör variabel inuti foreachen för att kunna hämta ut ur sounds-tabellen som stämmer överens, kollar om kanal har sound annars text att den saknar -->
 <?php

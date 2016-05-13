@@ -3,7 +3,7 @@
 @section('footer')
 <!DOCTYPE HTML>
   <div class="container">
-  <div class="col-md-12" id="container">
+  <div class="col-md-12" id="container4">
 
  @if(Auth::user())
 
@@ -22,7 +22,7 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
    <!-- lägger ut resultaten en och en -->
 
     
-              <div class="row" id="scroll">
+              <div class="row">
               @foreach($favorites as $favorite)
  <div class="col-md-3" id="uc-box">          
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>

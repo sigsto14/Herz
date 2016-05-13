@@ -2139,7 +2139,7 @@
 	}
 
 	#box1{
-		margin-left: 5%;
+		margin-left: 5%;		
 	}
 
 /* spellist index*/
@@ -2180,9 +2180,6 @@
 		margin-left: -6.5%;
 	}
 
-	.slist .btn-danger{
-		width: 480px;
-	}
 
 	.slist select {
 		width: 540%;
@@ -2365,6 +2362,16 @@
 		max-height: 900px;
   	   overflow-y: scroll;
 	}
+
+/*Search-index*/	
+
+.searchresult{
+		-moz-border-radius: 6px 6px 6px 6px;
+	    -webkit-border-radius: 6px 6px 6px 6px;
+	    border-radius: 6px 6px 6px 6px;
+	    background-color: #9fdecd;
+}
+
 /*Fav-knapparna*/
 
 	#fav-knapp {
