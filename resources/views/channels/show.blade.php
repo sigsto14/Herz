@@ -93,7 +93,7 @@ else {
             @endif<!-- slut auth check -->
 </li>
    <li id="playlist-right2" class="linkHover" tooltip="{{ $channel->channelname }} har {{ $subscrNr }} prenumeranter">
-          <p class="icon-eye2 " style="font-family: 'Museo'; color: #26a09f;" >: {{ $subscrNr }}</p> 
+          <p class="icon-pre" >: {{ $subscrNr }}</p> 
           </li>
           </ul>         
           </div>

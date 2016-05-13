@@ -1475,6 +1475,13 @@
 	.icon-settings:before {
 		content: "\e994";
 	}
+
+	.icon-pre:before {
+		content: "\e9ce";
+		font-family: 'icomoon'; 
+		color: #26a09f;
+	}
+
 	/* Button 7 */
 	.knp-7 {
 		background: #17aa56;
@@ -2059,7 +2066,7 @@
 	#playlist-right2{
 		padding-top: 2%;
 		padding-bottom: 1%;
-		margin-left: 35%;
+		margin-left: 70%;
 		-moz-border-radius: 6px 6px 6px 6px;
 	    -webkit-border-radius: 6px 6px 6px 6px;
 	    border-radius: 6px 6px 6px 6px;
