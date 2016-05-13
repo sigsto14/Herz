@@ -74,11 +74,6 @@ $userID = Auth::user()->userID;
 
 </div>
 
-
-
-
-
-
 <!-- box för kanaler -->
   <div role="tabpanel" class="tab-pane" id="kanal">
 <h1 id="uc-title">Kanaler</h1>
