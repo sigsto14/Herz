@@ -5,7 +5,7 @@
 <!DOCTYPE HTML>
 
 <title>Sökresultat</title>
-<div class="container" id="container">
+<div class="container" id="container4">
  <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#klipp" role="tab" data-toggle="tab">Klipp</a></li>
             <li role="presentation"><a href="#kanal" role="tab" data-toggle="tab">Kanaler</a></li>
@@ -24,12 +24,13 @@ $('#btnReview').click(function(){
 <!-- box för klipp -->
 
             <div role="tabpanel" class="tab-pane active" id="klipp">
+      
 <h1 id="uc-title">Klipp</h1>
 @if (count($sounds) === 0 || $query == '')
 Inga klipp matchar din sökning
 Kolla igenom <a href="http://localhost/Herz/public/sound">senaste uppladdningar!</a>
 @else
-
+<div>
   @foreach($sounds as $sound)
   <?php
   if(Auth::check()){
@@ -45,7 +46,7 @@ $userID = Auth::user()->userID;
   ?>
 @if($sound->status != 'privat' or $sub > 0)
     @endif
-<div class="row" id="scroll">
+
 <div class="col-md-3" id="uc-box">  
      
     <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
@@ -54,18 +55,17 @@ $userID = Auth::user()->userID;
 <!-- gör en liten variabel för att få ut categoryname -->
                <div class="podtitledownbox">
               <div class="podfavicon2">
-                <div class="vertical-line2"></div>
-                <p><a href="http://localhost/Herz/public/category/{{ $sound->categoryID }}">{{ $sound->categoryname }}</a></p>
+                <div class="vertical-line2" style="margin-left:-40%; "></div>
+                <p><a href="http://localhost/Herz/public/category/{{ $sound->categoryID }}" style=" position: absolute; margin-top: -5%; margin-left:-35%; ">{{ $sound->categoryname }}</a></p>
                 </div>
               <div class="podchanneltitle">
-                <a href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
+                <a style=" position: absolute; margin-left: 6%; margin-top: 3%;" href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
               </div>
   </div>
   </div>
 
   </div>
 
-  </div>
           @endforeach
 
 
@@ -73,10 +73,12 @@ $userID = Auth::user()->userID;
 @endif
 
 </div>
+</div>
+
 
 <!-- box för kanaler -->
   <div role="tabpanel" class="tab-pane" id="kanal">
-<h1>Kanaler</h1>
+<h1 id="uc-title">Kanaler</h1>
 <!-- kollar om sökningen hittat några kanaler -->
 @if (count($channels) === 0 || $query == '')
 Inga kanaler matchar din sökning
@@ -117,7 +119,7 @@ $users = DB::table('users')->where('username', 'LIKE', '%' . $query . '%')->take
 
 ?>
    <div role="tabpanel" class="tab-pane" id="anvandare">
-<h1>Användare</h1>
+<h1 id="uc-title">Användare</h1>
 @if (count($users) === 0 || $query == '')
 Inga användare matchar din sökning
 @else

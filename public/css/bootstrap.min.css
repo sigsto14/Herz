@@ -52,10 +52,19 @@
    		}
    	 /*Olika container som innehållar sidans innehåll  */
 
+
 		#container{
 			margin-top: 150px;
 			background-color: #ddf1e5;
 			min-height: 660px;
+		}
+
+		#container4{
+			margin-top: 150px;
+			background-color: #ddf1e5;
+			min-height: 660px;
+			max-height: 670px;
+  	   		overflow-y: scroll;
 		}
 
 		/*Container 2  */
@@ -2267,7 +2276,7 @@
 	}
 
 	#scroll{
-		max-height: 500px;
+		max-height: 900px;
   	   overflow-y: scroll;
 	}
 /*Fav-knapparna*/
