@@ -45,10 +45,11 @@ $userID = Auth::user()->userID;
   $sub = DB::table('subscribe')->where('userID', '=', $userID)->where('channelID', '=', $sound->channelID)->count();
   ?>
 @if($sound->status != 'privat' or $sub > 0)
-    @endif
+
+
 
 <div class="col-md-3" id="uc-box">  
-     
+    @endif   
     <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
     <div class="podtitle-box">
     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title}}</h4></a>
@@ -61,19 +62,20 @@ $userID = Auth::user()->userID;
               <div class="podchanneltitle">
                 <a style=" position: absolute; margin-left: 6%; margin-top: 3%;" href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
               </div>
+
+
+
+    </div>
   </div>
   </div>
-
-  </div>
-
-          @endforeach
-
-
-
+@endforeach
 @endif
+</div>
+</div>
 
-</div>
-</div>
+
+
+
 
 
 <!-- box för kanaler -->
