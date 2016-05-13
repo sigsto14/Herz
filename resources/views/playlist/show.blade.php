@@ -103,8 +103,12 @@ chmod($file_name2,0777);
 <body>
   <div class="container">
     <div class="col-md-12" id="container">
-    <h1>{{ $playlist->listTitle }}</h1>
-    <p>av <a href="http://localhost/Herz/public/user/{{ $user->userID }}">{{ $user->username}}</a></p>
+    <br>
+    <h1 id="uc-title">{{ $playlist->listTitle }}</h1>
+    <div id="spelinfobox">
+    <h4>av <a href="http://localhost/Herz/public/user/{{ $user->userID }}">{{ $user->username}}</a></h4>
+    <hr>
+
 @foreach($listItems as $listItem)
 
 <?php
@@ -115,10 +119,45 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
     @foreach($sounds as $sound)
               <li><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}">{{ $sound->title }}</a></li>
               @endforeach
-            
+                </div>
+                <br>
 @endforeach
+<div class="playlistmenu" style=" margin-left: 15%; width: 60%;">
+  <ul>
+                   <li>
+                   <!-- stänger listan -->
+                    <button type="submit" tooltip="Stäng spellistan" class="knp knp-7 knp-7e knp-icon-only icon-up hidden" id="playClose2">
+                   </li>    
+                   <!-- om användare inloggad -->               
+                    <!-- om användare äger spellista -->
+                    <li>
+                    <!-- formulär för att radera spellistan -->
+                 <!-- submit o confirma spellistan ska bort -->
+            <button type="submit" tooltip="Ta bort spellistan" class="knp knp-7 knp-7e knp-icon-only icon-delete" onclick="return confirm('Säker på att du vill ta bort spellistan?')">Like</button>
+               {!! Form::close() !!}         <!-- slut på delete formulär -->     
+                   </li>
+                   <li>
+                   <!-- knapp som öppnar redigera spellista i nytt fönster -->
+                  <button type="button" tooltip="Inställningar" class="knp knp-7 knp-7e knp-icon-only icon-settings" onclick="edit()">Like</button>
+                   </li>
+ <!-- slut på auth check -->
+ <!-- slut på koll om användare äger spellista -->
+                   <li>
+                   <!-- knapp startar script som öppnar spellistan i nytt fönster (och genererar xml) -->
+                    <button type="button" tooltip="Extern spellista" class="knp knp-7 knp-7e knp-icon-only icon-bigger" onclick="open2();"></button>
+                    </li>
+                    <li id="playlist-right">
+            
+             <!-- facebook dela knapp, tillfälligt inaktiv -->
+              <button type="button" onclick="share()" tooltip="Dela på Facebook" class="knp knp-7 knp-7f knp-icon-only fb-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+              </li>    
+          
 
-  <div id="flashContent">
+         
+                   <ul> 
+   </div>                 
+<!-- en box som spellistan laddas in i senare -->
+  <div id="flashContent" style=" margin-left:18%;">
 <embed src="http://localhost/Herz/public/playlistPlayer/mp3_player.swf" style="width:600px;height:350px;">
 </div>
 </div>
