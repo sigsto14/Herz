@@ -125,9 +125,15 @@ Inga användare matchar din sökning
 
 @foreach($users as $user)
 <div class="searchresult">
-   <a href="http://localhost/Herz/public/user/{{ $user->userID }}"><img src="{{ $user->profilePicture }}" width="30px" height="auto"></a><a href="http://localhost/Herz/public/user/{{ $user->userID }}"><h4>{{ $user->username }}</h4></a>
+  <div class="simg">
+  <img src="{{ $user->profilePicture }}" width="50px" height="auto">
+  </div>
+  <div class="stext">
+   <a href="http://localhost/Herz/public/user/{{ $user->userID }}"><a href="http://localhost/Herz/public/user/{{ $user->userID }}"><h4>{{ $user->username }}</h4></a>
    <h6>Medlem sedan: {{ $user->created_at }}</h6>
+   </div>
 </div>
+<br>
 @endforeach
 
   

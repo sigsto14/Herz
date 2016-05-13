@@ -2372,6 +2372,41 @@
 	    background-color: #9fdecd;
 }
 
+.simg{
+	margin-left: 3%;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+.simg img{
+			background-color: #9fdecd;
+    		border: 3px solid #b6e8de;
+           -moz-border-radius: 6px 6px 6px 6px;
+           -webkit-border-radius: 6px 6px 6px 6px;
+    		border-radius: 6px 6px 6px 6px;
+		}
+
+.simg img:hover{
+    		border: 3px solid #b7e165;
+            -moz-border-radius: 6px 6px 6px 6px;
+            -webkit-border-radius: 6px 6px 6px 6px;
+    		border-radius: 6px 6px 6px 6px;
+		}
+.stext{
+		margin-left: 10%;
+		margin-top: -5%;
+}		
+
+.stext h4{
+		font-family: 'Museo';
+
+		}	
+
+.stext h6{
+		font-family: 'Museo';
+		padding-bottom: 3px;
+		}		
+
 /*Fav-knapparna*/
 
 	#fav-knapp {
