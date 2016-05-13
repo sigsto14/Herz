@@ -202,15 +202,8 @@ $uploaded= substr($sound->created_at, 0, 10);
               <div class="podchanneltitle">
               <p>{{ $uploaded }}</p>
 
-               </div>       
-       </div> 
-           </div>
 
-
-
-
-
-<!-- kollar om det är den inloggade användarens kanal och då kan användaren ta bort ljudklipp -->
+       <!-- kollar om det är den inloggade användarens kanal och då kan användaren ta bort ljudklipp -->
 @if(Auth::user()->userID == $user->userID)
 
 {!!   Form::open(array('method' => 'DELETE', 'route' => array('sound.destroy', $sound->soundID))) !!}
@@ -219,12 +212,18 @@ $uploaded= substr($sound->created_at, 0, 10);
 {!! Form::close() !!}
 @endif<!-- slut på koll om användare äger kanal -->
 @endif<!-- slut på koll om det är privat klipp-->
-</div>
+
 
 @endif<!-- slut på auth check -->
-
+           </div>
+</div>
+</div>
+</div>
 @endforeach
- </div>
+</div>
+
+
+
 
   <div role="tabpanel" class="tab-pane" id="fav">
   <h1 id="uc-title">Serier</h1>
