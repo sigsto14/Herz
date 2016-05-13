@@ -1423,7 +1423,12 @@
 		content: "\e9da";
 		font-family: 'icomoon';
 		color: #f26563;
+	}
 
+	.icon-heart5:before {
+		font-family: 'icomoon2';
+		content: "\e009";
+		color:  #9fdecd;
 	}
 
 	.icon-star:before {
@@ -1957,12 +1962,29 @@
 		transform: translateY(58%);
 		height: 20px;
 	}
-
+	.vertical-line3{
+		position: absolute;
+		border-left: 1px solid #9fdecd;
+		height: 20px;
+	}
 	.podfavicon2{
 			position: absolute;
 			margin-left: 120px;
 			margin-top: -4%;
-			width: 100px;
+			width: 100px;			
+	}
+
+	.podfavicon button{
+		position: absolute;
+		background-color: #26a09f;
+		width: 30px;
+		margin-top: -1.5px;
+		margin-left: 20px;
+		height: 25px;
+		border: 1px solid #26a09f;
+	}
+	.podfavicon button:hover{
+		background-color: #b7e165;
 	}
 
 	.podfavicon2 button{

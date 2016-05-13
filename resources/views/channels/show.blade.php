@@ -169,22 +169,12 @@ $uploaded= substr($sound->created_at, 0, 10);
           </a>
           <div class="podtitledownbox">
               <div class="podfavicon">
-                <div class="vertical-line"></div>
-                <p style="margin-left: 2%;">{{ $category->categoryname }}</p>
-              </div>
-              <div class="podchanneltitle">
-              <p>{{ $uploaded }}</p>
-
-               </div>       
-       </div> 
-           </div>
-<!-- kollar om användare är inloggad -->
+                <div class="vertical-line3"></div>
+                <!-- kollar om användare är inloggad -->
 @if(Auth::check())
 <!-- kollar så att det INTE är inloggad användares kanal -->
 @if($sound->channelID != Auth::user()->userID)
-
-
-<!-- kollar så det inte är favorit redan och så man kan göra klippet till favorit -->
+                <!-- kollar så det inte är favorit redan och så man kan göra klippet till favorit -->
 @if($state == 3)
 <td>{!! Form::open(array('route' => 'favorite.store')) !!}
  {!! csrf_field() !!}</td>
@@ -196,24 +186,29 @@ $uploaded= substr($sound->created_at, 0, 10);
 </div>
  
 
-<div class="fvbox">
-<button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class=" glyphicon glyphicon-heart-empty" aria-hidden="true"  id="heart"></a><p> Lägg till favorit </p></span>
-              </button></div>
+<button class="button"><span class="icon-heart5"></span></button>
 {!! Form::close() !!}
 <!-- om det redan är favorit kan man ta bort från favorit -->
 @else
 <td>{!! Form::open(array('method' => 'DELETE', 'route' => array('favorite.destroy', $sound->soundID)))  !!}
 
-<div class="fvbox2">
-      <button name="submit" type="submit" class="btn btn-default btn-md" id="fav-knapp">
-              <span class="glyphicon glyphicon-heart" aria-hidden="true"id="heart"></a><p> Ta bort favorit</p></span>
-              </button></div>
+<button class="button"><span class="icon-heart4"></span></button>
 
 {!! Form::close() !!}</td>
 @endif<!-- slut på om man inte är inloggad användare -->
 @endif<!--slut på state-checj -->
 <!-- slut på favoriter -->
+              </div>
+              <div class="podchanneltitle">
+              <p>{{ $uploaded }}</p>
+
+               </div>       
+       </div> 
+           </div>
+
+
+
+
 
 <!-- kollar om det är den inloggade användarens kanal och då kan användaren ta bort ljudklipp -->
 @if(Auth::user()->userID == $user->userID)
