@@ -2068,8 +2068,24 @@
 	    -webkit-border-radius: 6px 6px 6px 6px;
 	    border-radius: 6px 6px 6px 6px;
 	    width: 90%;
-	    height: 80px;
+	    min-height: 80px;
 	}
+
+	#spelinfobox li, #spelinfobox li a{
+		list-style: none;
+		margin-left: 5%;
+		margin-top: -1%;
+		font-family: 'Museo';
+		font-size: 15px;
+		color: #26a09f;
+		text-decoration-style: none;
+		padding-bottom: 1%;
+	}
+
+	 #spelinfobox li a:hover,  #spelinfobox h4 a:hover{
+	 	background-color: #b7e165;
+	}
+
 
 	#spelinfobox hr{
 	    width: 90%;
@@ -2083,6 +2099,13 @@
 		font-size: 20px;
 		color: #26a09f;
 		margin-left: 4%;
+	}
+
+	#spelinfobox h4 a{
+		padding-top: 2%;
+		font-family: 'Museo';
+		font-size: 20px;
+		color: #26a09f;
 	}
 
 	#spelinfobox p{

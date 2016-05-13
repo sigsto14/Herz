@@ -119,9 +119,10 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
     @foreach($sounds as $sound)
               <li><a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}">{{ $sound->title }}</a></li>
               @endforeach
+
+@endforeach
                 </div>
                 <br>
-@endforeach
 <div class="playlistmenu" style=" margin-left: 15%; width: 60%;">
   <ul>
                    <li>
