@@ -29,6 +29,7 @@ $('#btnReview').click(function(){
 @if (count($sounds) === 0 || $query == '')
 Inga klipp matchar din sökning
 Kolla igenom <a href="http://localhost/Herz/public/sound">senaste uppladdningar!</a>
+
 @else
 <div>
   @foreach($sounds as $sound)
@@ -47,9 +48,7 @@ $userID = Auth::user()->userID;
 @if($sound->status != 'privat' or $sub > 0)
 
 
-
-<div class="col-md-3" id="uc-box">  
-    @endif   
+<div class="col-md-3" id="uc-box">   
     <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
     <div class="podtitle-box">
     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title}}</h4></a>
@@ -68,9 +67,11 @@ $userID = Auth::user()->userID;
     </div>
   </div>
   </div>
+      @endif
 @endforeach
-@endif
 </div>
+@endif
+
 </div>
 
 
