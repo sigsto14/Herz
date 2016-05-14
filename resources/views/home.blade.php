@@ -96,15 +96,7 @@
                    <input type="password" name="password_confirmation" data-toggle="tooltip" title="Bekräfta ditt lösenord">
                 </div>
                   <div id="register_button" class="submit_button_style">
-                      <button type="submit" class="btn" style="   
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
-  width: 90%;
-   margin-bottom: 30px;">Registrera dig</button>
+                      <button type="submit" class="btn">Registrera dig</button>
                 </div>
             
                 </form>
@@ -129,15 +121,7 @@
                      <input type="password" name="password" id="password" data-toggle="tooltip" title="Skriv in ditt lösenord">
                  </div>
                      <div id="login_button" class="submit_button_style">
-                <button type="submit" class="btn" style="   
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
-  width: 90%;
-   margin-bottom: 30px;">Logga in</button>
+                <button type="submit" class="btn">Logga in</button>
             </div>
         </div>
         </div>

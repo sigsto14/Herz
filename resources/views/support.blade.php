@@ -13,7 +13,7 @@
 <div class="section">Kontakta oss</div>
     <div class="inner-wrap">       	
 
-        	<p style="text-align: center;">Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din <br> e-post adress så kan vi återkomma till dig.
+        	<p id="iw-center">Om du har något du undrar över kan du ställa en fråga till oss. Fyll i din <br> e-post adress så kan vi återkomma till dig.
         	 Eller så kanske du hittar svaret på frågan längre ner på sidan.</p>
 		
 <form action="http://ideweb2.hh.se/~sigsto14/Test/contact.php" method="post" id="contact">

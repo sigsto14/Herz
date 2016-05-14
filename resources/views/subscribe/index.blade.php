@@ -48,16 +48,16 @@ $state = 0;
               <div class="col-md-3" id="uc-box">
               @if($state == 1)
 @foreach($uploads as $upload)          
-               <a href="http://localhost/Herz/public/sound/{{ $upload->podpicture }}"><image src="{{ $upload->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+               <a href="http://localhost/Herz/public/sound/{{ $upload->podpicture }}"><image src="{{ $upload->podpicture }}" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $upload->soundID }}"><h4>{{ $upload->title }}</h4></a>
                <div class="podtitledownbox">
               <div class="podfavicon2">
-                <div class="vertical-line2" style="margin-left:-60%; "></div>
-                 <p style="margin-top: -3%; margin-left:-55%; font-size: 9px;">{{ $upload->created_at }}</p>
+                <div class="vertical-line4"></div>
+                 <p id="pfi2-p1">{{ $upload->created_at }}</p>
                 </div>     
             <div class="podchanneltitle">              
-              <p style="margin-left: 6%; margin-top: -3%; font-size: 10px;">av <a href="http://localhost/Herz/public/channel/{{ $upload->channelID }}" style="font-size: 10px;">{{ $upload->channelname }}</a></p>
+              <p id="pct-p2">av <a href="http://localhost/Herz/public/channel/{{ $upload->channelID }}">{{ $upload->channelname }}</a></p>
               </div>
               </div>
               </div>

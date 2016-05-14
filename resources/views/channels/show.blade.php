@@ -170,7 +170,7 @@ $uploaded= substr($sound->created_at, 0, 10);
 <!-- visar upp alla ljud -->
           <div class="col-md-5" id="uc-box">
            <a href="http://ideweb2.hh.se/~sigsto14/Herz/public/index.php/sound/{{ $sound->soundID }}">
-           <img src=" {{ $sound->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+           <img src=" {{ $sound->podpicture }}" id="pod-mini-img"></a>
             <div class="podtitle-box">
             <a href="http://ideweb2.hh.se/~sigsto14/Herz/public/index.php/sound/{{ $sound->soundID }}"><h4>{{ $sound->title }}</h4> 
           </a>

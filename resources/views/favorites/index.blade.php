@@ -25,7 +25,7 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
               <div class="row">
               @foreach($favorites as $favorite)
  <div class="col-md-3" id="uc-box">          
-               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
                <div class="podtitledownbox">
@@ -35,7 +35,7 @@ $favorites = DB::table('favorites')->where('favorites.userID', '=', $userID)->jo
                 </div>     
             <div class="podchanneltitle">
               
-              <p style="margin-left: 6%; margin-top: -5%;">av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
+              <p id="pct-p1">av <a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></p>
               </div>
               </div>
               </div> 

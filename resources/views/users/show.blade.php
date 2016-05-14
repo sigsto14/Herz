@@ -18,7 +18,7 @@
         <div class="col-lg-4" id="user-box">
           <div class="row">
             <h2>{{ $user->username }}</h2>
-            <img src="{{ $user->profilePicture }}" style="width:180px;height:180px;"/>    
+            <img src="{{ $user->profilePicture }}"/>    
           </div>
            <hr>
           <div class="row">
@@ -226,7 +226,7 @@ $loadMore = $favorites->render();
 
  @foreach($favorites as $favorite)  
            <div class="col-md-5" id="uc-box">
-               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" width="150px" height="150" id="pod-mini-img"></a>
+               <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
                <div class="podtitledownbox">

@@ -45,15 +45,7 @@
 
 
 
-           <button type="submit" class="btn" style="  
-  border: none;
-  font-size: 16px;
-  height: auto;
-  margin: 0;
-  outline: 0;
-  padding: 15px;
-  width: 100%;
-   margin-bottom: 30px;">Registrera dig</button>
+           <button type="submit" class="btn">Registrera dig</button>
 
 
 @endif

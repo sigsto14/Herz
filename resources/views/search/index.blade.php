@@ -49,17 +49,17 @@ $userID = Auth::user()->userID;
 
 
 <div class="col-md-3" id="uc-box">   
-    <a><image src="{{ $sound->podpicture }}"width="150px" height="150" id="pod-mini-img"></image><a>
+    <a><image src="{{ $sound->podpicture }}" id="pod-mini-img"></image><a>
     <div class="podtitle-box">
     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><h4>{{ $sound->title}}</h4></a>
 <!-- gör en liten variabel för att få ut categoryname -->
                <div class="podtitledownbox">
               <div class="podfavicon2">
-                <div class="vertical-line2" style="margin-left:-40%; "></div>
-                <p><a href="http://localhost/Herz/public/category/{{ $sound->categoryID }}" style=" position: absolute; margin-top: -5%; margin-left:-35%; ">{{ $sound->categoryname }}</a></p>
+                <div class="vertical-line5" ></div>
+                <p><a id="pfi2-p2" href="http://localhost/Herz/public/category/{{ $sound->categoryID }}">{{ $sound->categoryname }}</a></p>
                 </div>
               <div class="podchanneltitle">
-                <a style=" position: absolute; margin-left: 6%; margin-top: 3%;" href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
+                <a id="pct-p3" href="http://localhost/Herz/public/channel/{{ $sound->channelID }}">{{ $sound->channelname }}</a>
               </div>
 
 
@@ -105,7 +105,7 @@ Antal uppladdningar: {{ $soundCount }}</p><br>
 </div>
 <div class="sen2">
 <h5>Senaste uppladdning:</h5>
-     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><image src="{{ $sound->podpicture }}" width="50px" height="auto"></image><h4>{{ $sound->title}}</h4></a>
+     <a href="http://localhost/Herz/public/sound/{{ $sound->soundID }}"><image src="{{ $sound->podpicture }}"></image><h4>{{ $sound->title}}</h4></a>
 
 
 </div>
@@ -130,7 +130,7 @@ Inga användare matchar din sökning
 @foreach($users as $user)
 <div class="searchresult">
   <div class="simg">
-  <img src="{{ $user->profilePicture }}" width="50px" height="auto">
+  <img src="{{ $user->profilePicture }}">
   </div>
   <div class="stext">
    <a href="http://localhost/Herz/public/user/{{ $user->userID }}"><a href="http://localhost/Herz/public/user/{{ $user->userID }}"><h4>{{ $user->username }}</h4></a>

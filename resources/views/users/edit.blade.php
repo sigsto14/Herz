@@ -35,7 +35,7 @@
 <!-- Val av Profilbild -->
 <div>
 	<label>Profilbild:</label>
-	<img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>
+	<img src="{{ $user->profilePicture }}"/>
     <input type="file" name="image" accept="image/*" data-toggle="tooltip" title="Välj en bild som ska visas på din profil">
 </div>
 

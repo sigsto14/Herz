@@ -41,8 +41,8 @@
     <!-- Vem so kan se podcasten -->
     <div>
     	<label>Synlighet:</label>
-      	<input type="radio" name="status" value="publik" checked data-toggle="tooltip" title="Alla kan se din podcast"><p style="margin-top: -10%" >Publik</p>
-      	<input type="radio" name="status" value="privat" data-toggle="tooltip" title="Endast prenumeranter kan se din podcast"><p style="margin-top: -10%">Endast för prenumeranter</p>
+      	<input type="radio" name="status" value="publik" checked data-toggle="tooltip" title="Alla kan se din podcast"><p id="mc-p1">Publik</p>
+      	<input type="radio" name="status" value="privat" data-toggle="tooltip" title="Endast prenumeranter kan se din podcast"><p id="mc-p1">Endast för prenumeranter</p>
     </div>
 
     <!-- Val av kategori -->

@@ -134,7 +134,7 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 @endforeach
 
 @else 
-<p style="font-family: 'Museo'; color: #26a09f;">Inga spellistor</p>
+<p id="mc-p2">Inga spellistor</p>
 @endif
 @endif
 
