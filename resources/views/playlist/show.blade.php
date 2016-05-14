@@ -123,7 +123,7 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
 @endforeach
                 </div>
                 <br>
-<div class="playlistmenu" style=" margin-left: 15%; width: 60%;">
+<div class="playlistmenu" id="mypl1" >
   <ul>
                    <li>
                    <!-- stänger listan -->
@@ -158,8 +158,8 @@ $sounds = DB::table('sounds')->where('soundID', '=', $listItem)->get();
                    <ul> 
    </div>                 
 <!-- en box som spellistan laddas in i senare -->
-  <div id="flashContent" style=" margin-left:18%;">
-<embed src="http://localhost/Herz/public/playlistPlayer/mp3_player.swf" style="width:600px;height:350px;">
+  <div id="flashContent2">
+<embed src="http://localhost/Herz/public/playlistPlayer/mp3_player.swf">
 </div>
 </div>
 </div>

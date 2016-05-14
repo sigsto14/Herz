@@ -93,7 +93,7 @@ $title = $titleCut . '...';
 @if($senast->status != 'privat' or $sub > 0)
 <!-- matar ut information om var klipp individuellt -->
               <div class="col-md-4" id="indexBox">
-              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
+              <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><img src="{{ $senast->podpicture }}" id="pod-mini-img"></a>
               <div class="podtitle-box">
               <a href="http://localhost/Herz/public/sound/{{ $senast->soundID }}"><h4>{{ $title }} </h4></a>
               <div class="podtitledownbox">
@@ -149,7 +149,7 @@ $popular = DB::table('sounds')->join('channels', 'sounds.channelID','=', 'channe
 @if($popular->status != 'privat' or $sub > 0)
 
               <div class="col-md-4" id="indexBox">
-              <a href="http://localhost/Herz/public/sound/"><img src="{{ $popular->podpicture }}" width="150px" height="150px" id="pod-mini-img"></a>
+              <a href="http://localhost/Herz/public/sound/"><img src="{{ $popular->podpicture }}" id="pod-mini-img"></a>
               <div class="podtitle-box">
               <a href="http://localhost/Herz/public/sound/"><h4>{{ $popular->title }}</h4></a>
               <div class="podtitledownbox">
@@ -226,7 +226,7 @@ $tag = $favoriteID->tag;
 $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count();
 ?>
 <!-- matar ut resultat -->
-               <img src="{{ $result->podpicture }}" width="150px" height="150px" id="pod-mini-img"/>
+               <img src="{{ $result->podpicture }}"  id="pod-mini-img"/>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{$result->soundID}}"><h4>{{ $result->title }}</h4></a>
                              <div class="podtitledownbox">
@@ -307,18 +307,18 @@ $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count(
         <div id="collapseTwo" class="panel-collapse collapse in">
             <div class="panel-body" id="pre-fav">
           <table >
-          <p style="margin-left: -10%;">Senaste favoriter:</p>
+          <p id="pf-p1">Senaste favoriter:</p>
           <tr>
 <!-- tar varje resultat (5 st) individuellt -->
 @foreach($favorites as $favorite)  
-            <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}" style="margin-left: 18px;">{{ $favorite->title }}</a></td>
+            <td><a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}" id="pf-p2">{{ $favorite->title }}</a></td>
             <td>Kanal:</td>
             <td ><a href="http://localhost/Herz/public/channel/{{ $favorite->channelID }}">{{ $favorite->channelname}}</a></td></tr>
 <!-- slut favorites for loop -->
 @endforeach
             </tr>
            </table>
-           <p style="margin-top: 5%;"><a href="http://localhost/Herz/public/favorite">Se alla...</a></p>
+           <p id="pf-p3"><a href="http://localhost/Herz/public/favorite">Se alla...</a></p>
             </div>
             </div>
             </div>

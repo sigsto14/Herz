@@ -104,7 +104,7 @@ else {
           <div class="podspelare2">
 
             <div id="flashContent">
-              <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf" style="width:600px;height:150px;">
+              <embed src="http://localhost/Herz/public/mp3_player/mp3_player.swf">
             </div>
           </div>
         </div>
@@ -160,7 +160,7 @@ else {
               </button>
                 <div class="dropdown-menu" id="podmenudropdown">
                   @if(is_null($listCheck))
-                  <p style="margin-left: 10%; color: #26a09f; font-size: 13px; font-family: 'Museo';">Du har inga spellistor</p>
+                  <p id="pmdd-p1" >Du har inga spellistor</p>
             <div class="podmenudropdown-btn2"> 
                   <a href="http://localhost/Herz/public/playlist"><button type="button" class="btn btn-primary">Skapa ny spellista</button></a>
                 </div>
@@ -171,7 +171,7 @@ else {
 
           </div>
 
-          <p style="margin-left: 10%; color: #26a09f; font-size: 13px;">Välj lista:</p>
+          <p id="pmdd-p2">Välj lista:</p>
           <div class="podmenudropdown-list">  
               <label>
               <select name="listID">
@@ -216,7 +216,7 @@ else {
                 <button type="button" tooltip="Anmäl klipp" class="knp knp-7 knp-7f knp-icon-only icon-alert" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 <div class="dropdown-menu" id="podmenudropdown2">
-                    <p style="margin-left: 10%; color: #26a09f; font-size: 13px; text-align: center;">Tycker du att poden är kränkade? Här kan du anmäla den.</p>
+                    <p id="pmdd-p3">Tycker du att poden är kränkade? Här kan du anmäla den.</p>
                   @if(Auth::check())
                     <form action="" method="post" id="report" name="report">
             {!! csrf_field() !!} 
@@ -242,12 +242,12 @@ else {
              <li id="podmenu-right2">
              @if(is_null($favNr))
 
-                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f;  margin-top: 6px; margin-left: 18%;">:000</span></p></td>
+                <td><p><span class="glyphicon glyphicon-heart">:000</span></p></td>
              
              @else
              <div id="favNr">
 <input type="hidden" id="favNrG" value="{{ $favNr }}">
-                <td><p><span class="glyphicon glyphicon-heart" style="color: #26a09f; margin-top: 6px; margin-left: 18%;" id="favRem">{{$favNr}}</span></p></td></div>
+                <td><p><span class="glyphicon glyphicon-heart" id="favRem">{{$favNr}}</span></p></td></div>
                 @endif
               </li>
               <!--  Favorit mätare slut -->            
@@ -351,7 +351,7 @@ $commentUpload = DB::table('comments')->where('commentID', '=', $comment->commen
                     <ul>
                               <!--  Använder information-->
 
-                      <li id="well-left" ><img src="{{ $comment->profilePicture }}" width="40px" height="40px" ></li>
+                      <li id="well-left" ><img src="{{ $comment->profilePicture }}"  ></li>
                       <li id="well-left"><a href="http://localhost/Herz/public/user/{{ $comment->userID}}">{{ $comment->username }}</a></li>
                       <li id="well-left-right">{{ $commentUpload->created_at}}</li>
                     </ul>

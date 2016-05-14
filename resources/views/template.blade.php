@@ -264,16 +264,16 @@ else {
               <!-- använder variabler för att ge olika text i "Logga in"- rubriken beroende på om fel eller ej -->                   
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="{{ $loginID }}">{{$text}}<span class="caret"></span></a>
               <!-- Logga In meny -->                   
-                <ul class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;" id="{{ $loginID2 }}">
+                <ul class="dropdown-menu" id="{{ $loginID2 }}">
                   <!-- formulär för inloggning -->
                 <form action="http://localhost/Herz/public/auth/login" method="post" accept-charset="UTF-8">
                   <!-- laravel skydd mot csrf-inmatning -->
                     {!! csrf_field() !!}
                     <p>E-mail</p>
-                    <input id="user_username" style="margin-bottom: 15px;" type="text" name="email" size="30" />
+                    <input id="user_username" type="text" name="email" size="30" />
                     <p>Lösenord</p>
-                    <input id="user_password" style="margin-bottom: 15px;" type="password" name="password" size="30" />
-                    <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Logga In" />
+                    <input id="user_password" type="password" name="password" size="30" />
+                    <input class="btn btn-primary" type="submit" name="commit" value="Logga In" />
 				</form>
 				<!-- slut inloggningsformulär -->
 				<!-- knapp/länk för glömt lösenord -->

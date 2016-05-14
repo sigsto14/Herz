@@ -283,8 +283,8 @@ $loadMore = $favorites->render();
 @if($result->channelID != $userID)
   <div class="col-md-5" id="uc-box">
   <div class="pod_mini">
-<div id="flashContent">
-              <embed src="http://localhost/Herz/public/pod_mini/mp3_player.swf" style="width:250px;height:50px;">
+<div id="flashContent3">
+              <embed src="http://localhost/Herz/public/pod_mini/mp3_player.swf">
             </div>
 </div>
 <div class="podtitle-box">
