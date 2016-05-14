@@ -1,8 +1,0 @@
-ÖPPNA GIT BASH I HERZ-MAPPEN
-
-SKRIV
-composer require intervention/image
-
-INSTALLERA
-
-KLART
