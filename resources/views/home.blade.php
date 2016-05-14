@@ -23,8 +23,11 @@
 <!-- Start WOWSlider.com BODY section -->
 <div id="wowslider-container1">
   <div class="ws_images"><ul>
-    <li><a href="http://wowslider.com"><img src="data1/images/herzheader2.png" alt="wow slider" title="" id="wows1_0"/></a></li>
-    <li><img src="data1/images/herzheader3.png" alt="" title="" id="wows1_1"/></li>
+    <li><img src="data1/images/bildspel1.png" alt="" title="" id="wows1_1"/></li>
+    <li><img src="data1/images/bildspel2.png" alt="" title="" id="wows1_1"/></li>
+    <li><img src="data1/images/bildspel3.png" alt="" title="" id="wows1_1"/></li>
+    <li><img src="data1/images/bildspel4.png" alt="" title="" id="wows1_1"/></li>
+    <li><img src="data1/images/bildspel5.png" alt="" title="" id="wows1_1"/></li>
   </ul></div>
   
 
