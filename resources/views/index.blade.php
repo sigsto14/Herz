@@ -278,20 +278,20 @@ $favNr = DB::table('favorites')->where('soundID', '=', $result->soundID)->count(
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body" id="pre-fav">
             <table>
-              <p style="margin-left: -10%;">Senaste uppladdningar:</p>
+              <p id="pf-p1">Senaste uppladdningar:</p>
 <!-- loop för subscribes resultat, matar ut resultat enskilt -->
 @foreach($subscribes as $subscribe)
               <tr>
               
                
-            <td><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}" style="margin-left: 18px;">{{ $subscribe->title }}</a></td>
+            <td><a href="http://localhost/Herz/public/sound/{{ $subscribe->soundID }}" id="pf-p2">{{ $subscribe->title }}</a></td>
             <td>av</td>
             <td><a href="http://localhost/Herz/public/channel/{{ $subscribe->channelID }}">{{ $subscribe->channelname}}</a></td>
 @endforeach
 <!-- subscribeloop slut -->
               </tr>
             </table> 
-          <p style="margin-top: 5%;"><a href="http://localhost/Herz/public/subscribe">Se alla...</a></p>
+          <p id="pf-p3"><a href="http://localhost/Herz/public/subscribe">Se alla...</a></p>
         </div>
       </div>
     </div>
