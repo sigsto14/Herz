@@ -8,4 +8,8 @@
 	<songTitle>Blommor 1</songTitle>
     <songArtist>Blommor</songArtist>
 	</song>
+	<song url="http://localhost/Herz/public/sounds/akena.mp3">
+	<songTitle>akena</songTitle>
+    <songArtist>akena</songArtist>
+	</song>
 	</music>

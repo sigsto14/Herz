@@ -15,7 +15,7 @@
         <img src="http://localhost/Herz/public/images/channel/default.png">
         </div>
         <!-- Första låda, här finns profil --> 
-        <div class="col-lg-4" id="user-box">
+        <div class="col-lg-4 col-sm-2" id="user-box">
           <div class="row">
             <h2>{{ $user->username }}</h2>
             <img src="{{ $user->profilePicture }}"/>    
@@ -119,7 +119,7 @@ $userID = Auth::user()->userID;
             @endif
 
 </div>
-        <div class="col-lg-8"  id="uc-tabus">        
+        <div class="col-lg-8 col-sm-6"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
            <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">Favoriter</a></li>
 
@@ -225,7 +225,7 @@ $loadMore = $favorites->render();
 
 
  @foreach($favorites as $favorite)  
-           <div class="col-md-5" id="uc-box">
+           <div class="col-md-5 col-sm-3" id="uc-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
@@ -281,7 +281,7 @@ $loadMore = $favorites->render();
          <!-- kör en loop för alla resultat -->
              @foreach($results as $result)
 @if($result->channelID != $userID)
-  <div class="col-md-5" id="uc-box">
+  <div class="col-md-5 col-sm-3" id="uc-box">
   <div class="pod_mini">
 <div id="flashContent3">
               <embed src="http://localhost/Herz/public/pod_mini/mp3_player.swf">
