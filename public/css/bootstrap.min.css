@@ -2791,7 +2791,7 @@
 
 
 /* Skärmen som är mindre än 1220 px */
-@media (max-width:1219px) { 
+@media ( min-width: 1110px) and (max-width:1219px) { 
 	/*Allmänna */	
  	 /*Sidans bakgrund */
 		body{
@@ -5548,7 +5548,7 @@
 }
 
 
-@media (max-width: 1009px) {
+@media (min-width: 785px) and (max-width: 1009px) {
 	/*Allmänna */	
  	 /*Sidans bakgrund */
 		body{
@@ -5619,12 +5619,12 @@
 			}
 
 		#container3{
-			margin-top: 15%;
+			margin-top: 23%;
 			background-color: #cee5d0;
 			border-radius: 1px;
   			box-shadow: 0px 0px 0px 8px #ffffff);
 			border: 5px solid #26a09f;
-			min-height: 660px;
+			min-height: 600px;
 		}
 
 		#mini-container{
@@ -6082,26 +6082,28 @@
 		/*Nav Väntster*/
 		a.navbar-brand{
 	 		transform: translateY(16%);
+	 		width: 40%;
 		}
 
 		#logo{
  			transform: translateY(-10%);
+ 			width: 40%;
 		}
 
 		#logo-text{
 			position: absolute;
 			margin-top: -30px;
- 			transform: translateX(80%);
+ 			transform: translateX(100%);
  			font-family: 'League';
-			font-size: 40px; text-transform: uppercase;
+			font-size: 30px; text-transform: uppercase;
 			color: #26a09f;
 			letter-spacing: .05em;
 		}
 
 		#menu{  
-  			left: 70%;
+  			left: 35%;
   			height: 115%;
-  			margin-top: -6%;
+  			margin-top: 5%;
 		}
 
 		#menu:hover{
@@ -6137,7 +6139,7 @@
 		}    
 	
 		.form-wrapper {
-    		width: 300px;
+    		width: 250px;
     		padding: 6px;
     		margin: 0px auto 0px auto;
     		background: #444;
@@ -6148,7 +6150,7 @@
 		}	
 
 		.form-wrapper .dropdown-toggle{
-			height: 35px;
+			height: 30px;
 		}
 
 		#sokdrop{
@@ -6158,10 +6160,10 @@
 		}
 
 		#sokinput {
-    		width: 175px;
-    		height: 34px;
+    		width: 125px;
+    		height: 30px;
     		padding: 0px 0px;
-    		margin-top: 2px;
+    		margin-top: 1px;
     		float: left;   
     		font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
     		border: 0;
@@ -6201,7 +6203,7 @@
     		border: 0;
     		padding: 0;
     		cursor: pointer;
-    		height: 38px;
+    		height: 33px;
     		width: 80px;
     		font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
     		color: #ddf1e5;
@@ -6268,7 +6270,7 @@
 
 		#notisdrop2{
 			position: absolute;
-			margin-top: 7%;
+			margin-top: 25%;
 			width: 250px;
 			background-color: #b9dcdc;
 			font-family: 'Museo';
@@ -6276,7 +6278,7 @@
 
 		#notisdrop3{
 			position: absolute;
-			margin-top: 7%;
+			margin-top: 25%;
 			width: 350px;
 			background-color: #b9dcdc;
 			font-family: 'Museo';
@@ -6291,7 +6293,7 @@
 			font-variant: normal;
 			text-transform: none;
 			line-height: 1;
-			font-size: 25px;
+			font-size: 10px;
 			position: relative;
 	        -webkit-font-smoothing: antialiased;
 			color: #26a09f;
@@ -6306,7 +6308,7 @@
 			font-variant: normal;
 			text-transform: none;
 			line-height: 1;
-			font-size: 45px;
+			font-size: 35px;
 			position: relative;
 	        -webkit-font-smoothing: antialiased;
 			color: #26a09f;
@@ -6321,7 +6323,7 @@
 			font-variant: normal;
 			text-transform: none;
 			line-height: 1;
-			font-size: 25px;
+			font-size: 10px;
 			position: relative;
 	       -webkit-font-smoothing: antialiased;
 			color: #26a09f;
@@ -6336,18 +6338,30 @@
 			font-variant: normal;
 			text-transform: none;
 			line-height: 1;
-			font-size: 25px;
+			font-size: 10px;
 			position: relative;
 	        -webkit-font-smoothing: antialiased;
 			color: #26a09f;
 		}
+
+		.notify {
+			margin-left: 10%;
+		}
+
+		.notify2 {
+			margin-left: -8%;
+		}	
+
+		.notify3 {
+			margin-left: -8%;
+		}				
 
 	/*Nav Höger*/
 		#reg-log{
 			position: relative;
   			transform: translateY(20%);
     		font-family: 'Museo';
-			font-size: 20px; text-transform: uppercase;
+			font-size: 15px; text-transform: uppercase;
 			color: #0c5150;
 			height: 73px;
 		}
@@ -6356,7 +6370,7 @@
 			position: relative;
   			transform: translateY(24%);
     		font-family: 'Museo';
-			font-size: 20px; text-transform: uppercase;
+			font-size: 15px; text-transform: uppercase;
 			color: #0c5150;
 			height: 73px;
 		}
@@ -6371,12 +6385,13 @@
 			color: #0c5150;
 			height: 73px;
 			font-family: 'Museo';
-			font-size: 20px; text-transform: uppercase;
+			font-size: 15px; text-transform: uppercase;
 		}	
 
 		#nav-knapp {
   			position: relative;
   			transform: translateY(25%);
+  			padding-left: -3%;
 		}
 
 		#nav-knapp:hover {
@@ -6394,7 +6409,7 @@
   			transform: translateY(22%);
   			right: -5%;  
    			font-family: 'Museo';
-			font-size: 20px; text-transform: uppercase;
+			font-size: 15px; text-transform: uppercase;
 			color: #b9dcdc;	
 		}
 
@@ -6522,13 +6537,12 @@
 /*Home Blade -första sida ej inloggad-*/
 
 	.fields {
-		float: right;
-		margin: auto;
-		margin-top: 60px;
-		width: 35%;
+		margin-top: 16.5%;
+		width: 78%;
 		padding: 0px 20px 20px 20px;
 		margin-bottom: 20px;
 		color: #000;
+		margin-left: 18%;
 	}
 
 	#homereg {
@@ -6634,6 +6648,7 @@
 		height: 120%;
 		width: 55%;
 		background-color: #ddf1e5;
+		display: none;
 	}
 
 	#regTitle {
@@ -7685,8 +7700,6 @@
 		margin-left: -5%;
 	}
 
-
-
 	#uc-box img{
 		margin-left: 5%;
 	}
@@ -8303,7 +8316,13 @@
 	}
  }
 
-@media (max-width: 640px) { 
+@media (max-width: 785px) { 
+			body{
+					background-color: green;
+   		}
+ }
+
+ @media (max-width: 640px) { 
 			body{
 					background-color: green;
    		}
