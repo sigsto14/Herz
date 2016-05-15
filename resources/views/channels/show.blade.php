@@ -49,7 +49,7 @@ else {
         <img src="http://ideweb2.hh.se/~sigsto14/Herz/public/images/channel/default.png">
         </div>
         <!-- Första låda, här finns profil --> 
-        <div class="col-lg-4" id="user-box">
+        <div class="col-lg-4 col-sm-2" id="user-box">
           <div class="row">
             <h2>{{ $channel->channelname }}</h2>
             </div>
@@ -112,7 +112,7 @@ else {
         </div>
 
           <!-- Andra lådan, här fins podar -->
-        <div class="col-lg-8"  id="uc-tabus">        
+        <div class="col-lg-8 col-sm-6"  id="uc-tabus">        
           <ul class="nav nav-tabs" role="tablist" >
             <li role="presentation" class="active"><a href="#chome" role="tab" data-toggle="tab">{{ $channel->channelname }}</a></li>
             <li role="presentation"><a href="#fav" role="tab" data-toggle="tab">Serier</a></li>
