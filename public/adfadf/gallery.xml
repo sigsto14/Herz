@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<GALLERY COLUMNS="1" XPOSITION="30" YPOSITION="30" WIDTH="150" HEIGHT="150">
-<IMAGE  THUMB="thumbs/thumb1.jpg" />
-<IMAGE  THUMB="thumbs/thumb2.jpg" />
-<IMAGE  THUMB="thumbs/thumb3.jpg" />
-</GALLERY>
