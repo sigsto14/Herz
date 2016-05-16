@@ -22,22 +22,22 @@
 {{-- formulär som även visar den data som är i databasen, för ändringar i users och channels tabeller--}}
 {!!     Form::model($user, array('route' => array('user.update', $user->userID), 'files' => 'true', 'method' => 'PUT')) !!}
 {!! csrf_field() !!}
-<!-- Redigering av användarnamn -->
-<div>
-    <label>Användarnamn:</label>
-    <input type="text" name="username" data-toggle="tooltip" title="Ditt användarnamn får bestå av max 10 tecken">
-</div>
-<!-- Redigering av E-post adress -->
-<div>
-   <label>Email:</label>
-   <input type="email" name="email" data-toggle="tooltip" title="Du måste ange en giltig e-postadress">
-</div>
-<!-- Val av Profilbild -->
-<div>
-	<label>Profilbild:</label>
-	<img src="{{ $user->profilePicture }}"/>
-    <input type="file" name="image" accept="image/*" data-toggle="tooltip" title="Välj en bild som ska visas på din profil">
-</div>
+{!!     Form::label('username', 'Användarnamn:') !!}
+{!!     Form::text('username') !!}
+
+
+
+
+{!!     Form::label('email', 'Email:') !!}
+{!!     Form::text('email') !!}
+
+{!! Form::label('Profilbild') !!}<br>
+<img src="{{ $user->profilePicture }}" style="width:145px;height:159px;"/>
+
+{!! Form::file('image', null) !!}
+
+
+
 
 <input type="submit" class="btn" value="Uppdatera">
 
