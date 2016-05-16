@@ -225,7 +225,7 @@ $loadMore = $favorites->render();
 
 
  @foreach($favorites as $favorite)  
-           <div class="col-md-5 col-sm-3" id="uc-box">
+           <div class="col-md-5" id="uc-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><image src="{{ $favorite->podpicture }}" id="pod-mini-img"></a>
                <div class="podtitle-box">
                <a href="http://localhost/Herz/public/sound/{{ $favorite->soundID }}"><h4>{{ $favorite->title }}</h4></a>
