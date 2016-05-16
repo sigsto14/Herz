@@ -8381,10 +8381,10 @@
 	/*Allmänna */	
  	 /*Sidans bakgrund */
 		body{
-  			background: url('http://localhost/Herz/public/images/bak2.png') ;
+  			background: url('http://localhost/Herz/public/images/reklam.png') ;
      		background-repeat: no-repeat;
-    		background-position: right top;
-    		background-attachment: fixed;
+    		background-position: center top;
+    		background-color:  #333333;
    		}
 
    		#flashContent embed{
